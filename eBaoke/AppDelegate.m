@@ -7,7 +7,9 @@
 //
 
 #import "AppDelegate.h"
-
+#import "UIDevice+IdentifierAddition.h"
+#import "AppContext.h"
+#import "NSString+MD5Addition.h"
 @interface AppDelegate ()
 
 @end
@@ -16,6 +18,15 @@
             
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
+    NSLog(@"111");
+    [[UINavigationBar appearance] setBackgroundImage:[UIImage imageNamed:@"NavBar"] forBarMetrics:UIBarMetricsDefault];
+
+    NSString *ugdi = [[UIDevice currentDevice] uniqueGlobalDeviceIdentifier];
+    NSLog(@"%@",ugdi);
+    
+    [AppContext setTempContextValueByKey:kUniqueGlobalDeviceIdentifierKey value:ugdi];
+    [AppContext setTempContextValueByKey:kUniqueAppKey value:[[NSString stringWithFormat:@"%@%@",ugdi, [AppContext getContextValueByKey:@"AppKey"]] stringFromMD5]];
+    NSLog(@"%@",[NSString stringWithFormat:@"%@%@",ugdi, [AppContext getContextValueByKey:@"AppKey"]]);
     // Override point for customization after application launch.
     return YES;
 }

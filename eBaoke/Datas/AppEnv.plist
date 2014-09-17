@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>AppMode</key>
+	<string>_Circ_UAT_Extra</string>
+	<key>AppVersion</key>
+	<string>CIRC_1.0</string>
+	<key>AppKey</key>
+	<string>_EBAO_MOB_CIRC</string>
+	<key>AppServer_Local</key>
+	<string>http://localhost:8080</string>
+	<key>AppServer_Office</key>
+	<string>http://172.31.201.152:8080</string>
+	<key>AppServer_Office_2</key>
+	<string>http://172.25.12.106:8080</string>
+	<key>AppServer_Circ_UAT</key>
+	<string>http://10.192.17.106:8080</string>
+	<key>AppServer_Circ_UAT_Extra</key>
+	<string>http://114.80.84.9</string>
+	<key>AppServer_PROD</key>
+	<string>http://114.80.84.12</string>
+	<key>AppServer_Home</key>
+	<string>http://192.168.1.5:8080</string>
+	<key>AppServer_Release</key>
+	<string>http://210.13.77.91</string>
+	<key>CatalogListServiceUrl</key>
+	<string>/mob/serviceDesktop/CircCatalogList/IOS/IOS/?</string>
+	<key>CatalogSearchServiceUrl</key>
+	<string>/mob/serviceDesktop/CircCatalogSearch/IOS/IOS/?</string>
+	<key>CarDetailServiceUrl</key>
+	<string>/mob/serviceDesktop/CircCarDetail/IOS/IOS/?</string>
+	<key>CircUserLoginUrl</key>
+	<string>/mob/serviceDesktop/CircUserLogin/IOS/IOS/?</string>
+	<key>CircUserRegistrationUrl</key>
+	<string>/mob/serviceDesktop/CircUserRegistration/IOS/IOS/?</string>
+	<key>CircUserSMSValidateUrl</key>
+	<string>/mob/serviceDesktop/CircUserSMSValidate/IOS/IOS/?</string>
+	<key>CircUserClaimListUrl</key>
+	<string>/mob/serviceDesktop/CricClaimList/IOS/IOS/?</string>
+	<key>CircUserClaimDetailUrl</key>
+	<string>/mob/serviceDesktop/CricClaimDetail/IOS/IOS/?</string>
+	<key>CircUserReSMSUrl</key>
+	<string>/mob/serviceDesktop/CircUserReSMS/IOS/IOS/?</string>
+	<key>CircUserPremiumCalculate</key>
+	<string>/mob/serviceDesktop/premiumCalculate/IOS/IOS/?</string>
+	<key>CircDeleteVehicleResp</key>
+	<string>/mob/serviceDesktop/DeleteVehicle/IOS/IOS/?</string>
+	<key>CricAddVehicleResp</key>
+	<string>/mob/serviceDesktop/AddVehicle/IOS/IOS/?</string>
+	<key>CricBindingQueryResp</key>
+	<string>/mob/serviceDesktop/BindingQuery/IOS/IOS/?</string>
+	<key>CircBindingModifyResp</key>
+	<string>/mob/serviceDesktop/BindingModify/IOS/IOS/?</string>
+	<key>EBAO_ERR_MOB_SYS_0004</key>
+	<string>服务好像暂时不可用或者出错了，过会儿再试试吧</string>
+</dict>
+</plist>

@@ -9,5 +9,17 @@
 #ifndef eBaoke_Globals_h
 #define eBaoke_Globals_h
 
+#import "AFNetworking.h"
+#import "JSONKit.h"
+#import "UIViewExt.h"
+#import "AppContext.h"
+
+#define kDeviceWidth [UIScreen mainScreen].bounds.size.width
+#define KDeviceHeight [UIScreen mainScreen].bounds.size.height
+
+#define IOSVersion [[UIDevice currentDevice]systemVersion].floatValue
+
+#define IS_IPHONE_5 [[UIScreen mainScreen ]bounds].size.height == 568
+#define IS_IPHONE_4 [[UIScreen mainScreen ]bounds].size.height == 480
 
 #endif
