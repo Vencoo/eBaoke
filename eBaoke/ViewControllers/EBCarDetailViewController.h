@@ -10,4 +10,7 @@
 
 @interface EBCarDetailViewController : EBBaseViewController
 
+@property(nonatomic)NSString *titleString;
+@property(nonatomic)NSString *vehicleId;
+
 @end

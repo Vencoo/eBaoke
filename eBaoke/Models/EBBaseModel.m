@@ -10,4 +10,13 @@
 
 @implementation EBBaseModel
 
+- (id)initWithArray:(NSArray *)dataArray
+{
+    self = [super init];
+    if (self) {
+        
+    }
+    return self;
+}
+
 @end

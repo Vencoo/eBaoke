@@ -10,6 +10,6 @@
 
 @interface EBRegisterViewController : EBBaseViewController
 {
-    UIScrollView *_scrollView;
+   
 }
 @end

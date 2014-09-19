@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="5056" systemVersion="13D65" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none">
+    <dependencies>
+        <deployment defaultVersion="1536" identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="3733"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="iN0-l3-epB" customClass="EBCarListCell">
+            <rect key="frame" x="0.0" y="0.0" width="320" height="160"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="azS-Vg-kJp">
+                    <rect key="frame" x="124" y="13" width="229" height="21"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="Obi-Xd-F4Y">
+                    <rect key="frame" x="124" y="37" width="229" height="21"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="Hfk-cW-9oc">
+                    <rect key="frame" x="124" y="61" width="229" height="21"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="930-hc-MQW">
+                    <rect key="frame" x="124" y="83" width="229" height="21"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="xLe-li-jI3">
+                    <rect key="frame" x="21" y="122" width="55" height="20"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="10"/>
+                    <state key="normal" title="承保信息" backgroundImage="btnGray.png">
+                        <color key="titleColor" red="0.89247847579999995" green="0.46750947659999997" blue="0.1506571172" alpha="1" colorSpace="calibratedRGB"/>
+                        <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                    </state>
+                    <state key="highlighted" backgroundImage="btnGreen.png">
+                        <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                    </state>
+                    <connections>
+                        <action selector="insuranceButton:" destination="iN0-l3-epB" eventType="touchUpInside" id="FkY-F1-4nL"/>
+                    </connections>
+                </button>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="n84-SS-mtD">
+                    <rect key="frame" x="137" y="122" width="55" height="20"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="10"/>
+                    <state key="normal" title="保费试算" backgroundImage="btnGray.png">
+                        <color key="titleColor" red="0.89247847579999995" green="0.46750947659999997" blue="0.1506571172" alpha="1" colorSpace="calibratedRGB"/>
+                        <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                    </state>
+                    <state key="highlighted" backgroundImage="btnGreen.png">
+                        <color key="titleColor" cocoaTouchSystemColor="tableCellGroupedBackgroundColor"/>
+                    </state>
+                    <connections>
+                        <action selector="premiumButton:" destination="iN0-l3-epB" eventType="touchUpInside" id="7Hs-eY-H8Y"/>
+                    </connections>
+                </button>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="pV1-Bq-hPu">
+                    <rect key="frame" x="250" y="122" width="55" height="20"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="10"/>
+                    <state key="normal" title="违章记录" backgroundImage="btnGray.png">
+                        <color key="titleColor" red="0.89247847579999995" green="0.46750947659999997" blue="0.1506571172" alpha="1" colorSpace="calibratedRGB"/>
+                        <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                    </state>
+                    <state key="highlighted" backgroundImage="btnGreen.png">
+                        <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                    </state>
+                    <connections>
+                        <action selector="violationButton:" destination="iN0-l3-epB" eventType="touchUpInside" id="goz-wp-fO8"/>
+                    </connections>
+                </button>
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="VehicleList.png" id="NEr-Nw-IF0">
+                    <rect key="frame" x="0.0" y="0.0" width="320" height="155"/>
+                </imageView>
+            </subviews>
+            <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <connections>
+                <outlet property="PremiumButton" destination="n84-SS-mtD" id="ych-rb-lPx"/>
+                <outlet property="VINLabel" destination="930-hc-MQW" id="tKi-iB-AhB"/>
+                <outlet property="backgroundView" destination="NEr-Nw-IF0" id="ZE2-V7-idw"/>
+                <outlet property="ebgineLabel" destination="Hfk-cW-9oc" id="hYc-fI-woG"/>
+                <outlet property="insuranceButton" destination="xLe-li-jI3" id="PVX-d7-Zum"/>
+                <outlet property="ownLabel" destination="Obi-Xd-F4Y" id="z2X-t3-t4G"/>
+                <outlet property="plateLabel" destination="azS-Vg-kJp" id="oQV-G6-G5y"/>
+                <outlet property="violationButton" destination="pV1-Bq-hPu" id="fTR-Fh-hJe"/>
+            </connections>
+        </view>
+    </objects>
+    <resources>
+        <image name="VehicleList.png" width="640" height="348"/>
+        <image name="btnGray.png" width="119" height="45"/>
+        <image name="btnGreen.png" width="119" height="45"/>
+    </resources>
+</document>

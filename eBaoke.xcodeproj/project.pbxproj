@@ -28,7 +28,49 @@
 		403C91AD19C697230081F864 /* CarTypeList.plist in Resources */ = {isa = PBXBuildFile; fileRef = 403C91AC19C697230081F864 /* CarTypeList.plist */; };
 		403C91B019C69A790081F864 /* LoginBtn.png in Resources */ = {isa = PBXBuildFile; fileRef = 403C91AE19C69A790081F864 /* LoginBtn.png */; };
 		403C91B119C69A790081F864 /* LoginBtnPressed.png in Resources */ = {isa = PBXBuildFile; fileRef = 403C91AF19C69A790081F864 /* LoginBtnPressed.png */; };
+		D71F84EA19CA8E8E00D61707 /* SendSMS.png in Resources */ = {isa = PBXBuildFile; fileRef = D71F84E919CA8E8E00D61707 /* SendSMS.png */; };
+		D71F84F419CAD23D00D61707 /* EBCarListCell.m in Sources */ = {isa = PBXBuildFile; fileRef = D71F84F319CAD23D00D61707 /* EBCarListCell.m */; };
+		D71F84FA19CAD5D300D61707 /* EBCarListCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = D71F84F919CAD5D300D61707 /* EBCarListCell.xib */; };
+		D71F84FF19CAD92000D61707 /* EBCarTypeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D71F84FE19CAD92000D61707 /* EBCarTypeViewController.m */; };
+		D7373AC419CBCD7E0056C772 /* EBCarListModel.m in Sources */ = {isa = PBXBuildFile; fileRef = D7373AC319CBCD7E0056C772 /* EBCarListModel.m */; };
+		D7373AC719CBF1AB0056C772 /* EBCarDetailModel.m in Sources */ = {isa = PBXBuildFile; fileRef = D7373AC619CBF1AB0056C772 /* EBCarDetailModel.m */; };
 		D770E94F19C93578001F9B60 /* MBProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = D770E94C19C93578001F9B60 /* MBProgressHUD.m */; };
+		D770E97B19C98BB9001F9B60 /* 车辆绑定信息确认-1.png in Resources */ = {isa = PBXBuildFile; fileRef = D770E95519C98BB9001F9B60 /* 车辆绑定信息确认-1.png */; };
+		D770E97C19C98BB9001F9B60 /* 车辆绑定信息确认-17.png in Resources */ = {isa = PBXBuildFile; fileRef = D770E95619C98BB9001F9B60 /* 车辆绑定信息确认-17.png */; };
+		D770E97D19C98BB9001F9B60 /* 车辆绑定信息确认-2.png in Resources */ = {isa = PBXBuildFile; fileRef = D770E95719C98BB9001F9B60 /* 车辆绑定信息确认-2.png */; };
+		D770E97E19C98BB9001F9B60 /* 车辆绑定信息确认-3.png in Resources */ = {isa = PBXBuildFile; fileRef = D770E95819C98BB9001F9B60 /* 车辆绑定信息确认-3.png */; };
+		D770E97F19C98BB9001F9B60 /* 车辆绑定信息确认-4.png in Resources */ = {isa = PBXBuildFile; fileRef = D770E95919C98BB9001F9B60 /* 车辆绑定信息确认-4.png */; };
+		D770E98019C98BB9001F9B60 /* 车辆绑定信息确认-5.png in Resources */ = {isa = PBXBuildFile; fileRef = D770E95A19C98BB9001F9B60 /* 车辆绑定信息确认-5.png */; };
+		D770E98119C98BB9001F9B60 /* 车辆绑定信息确认-6.png in Resources */ = {isa = PBXBuildFile; fileRef = D770E95B19C98BB9001F9B60 /* 车辆绑定信息确认-6.png */; };
+		D770E98219C98BB9001F9B60 /* 车辆绑定信息确认-7.png in Resources */ = {isa = PBXBuildFile; fileRef = D770E95C19C98BB9001F9B60 /* 车辆绑定信息确认-7.png */; };
+		D770E98319C98BB9001F9B60 /* 车辆绑定信息确认-8.png in Resources */ = {isa = PBXBuildFile; fileRef = D770E95D19C98BB9001F9B60 /* 车辆绑定信息确认-8.png */; };
+		D770E98419C98BB9001F9B60 /* remeberButton.png in Resources */ = {isa = PBXBuildFile; fileRef = D770E95F19C98BB9001F9B60 /* remeberButton.png */; };
+		D770E98519C98BB9001F9B60 /* remeberYes.png in Resources */ = {isa = PBXBuildFile; fileRef = D770E96019C98BB9001F9B60 /* remeberYes.png */; };
+		D770E98619C98BB9001F9B60 /* 新增页面.png in Resources */ = {isa = PBXBuildFile; fileRef = D770E96119C98BB9001F9B60 /* 新增页面.png */; };
+		D770E98719C98BB9001F9B60 /* 新增页面2.png in Resources */ = {isa = PBXBuildFile; fileRef = D770E96219C98BB9001F9B60 /* 新增页面2.png */; };
+		D770E98819C98BB9001F9B60 /* 新增页面3.png in Resources */ = {isa = PBXBuildFile; fileRef = D770E96319C98BB9001F9B60 /* 新增页面3.png */; };
+		D770E98919C98BB9001F9B60 /* 新增页面4.png in Resources */ = {isa = PBXBuildFile; fileRef = D770E96419C98BB9001F9B60 /* 新增页面4.png */; };
+		D770E98A19C98BB9001F9B60 /* 新增页面5.png in Resources */ = {isa = PBXBuildFile; fileRef = D770E96519C98BB9001F9B60 /* 新增页面5.png */; };
+		D770E98B19C98BB9001F9B60 /* 车辆列表-1.png in Resources */ = {isa = PBXBuildFile; fileRef = D770E96619C98BB9001F9B60 /* 车辆列表-1.png */; };
+		D770E98C19C98BB9001F9B60 /* 车辆列表-2.png in Resources */ = {isa = PBXBuildFile; fileRef = D770E96719C98BB9001F9B60 /* 车辆列表-2.png */; };
+		D770E98D19C98BB9001F9B60 /* 车辆列表-3.png in Resources */ = {isa = PBXBuildFile; fileRef = D770E96819C98BB9001F9B60 /* 车辆列表-3.png */; };
+		D770E98E19C98BB9001F9B60 /* 车辆列表-4.png in Resources */ = {isa = PBXBuildFile; fileRef = D770E96919C98BB9001F9B60 /* 车辆列表-4.png */; };
+		D770E98F19C98BB9001F9B60 /* delete.png in Resources */ = {isa = PBXBuildFile; fileRef = D770E96B19C98BB9001F9B60 /* delete.png */; };
+		D770E99019C98BB9001F9B60 /* delete_1.png in Resources */ = {isa = PBXBuildFile; fileRef = D770E96C19C98BB9001F9B60 /* delete_1.png */; };
+		D770E99119C98BB9001F9B60 /* Register.png in Resources */ = {isa = PBXBuildFile; fileRef = D770E96D19C98BB9001F9B60 /* Register.png */; };
+		D770E99219C98BB9001F9B60 /* Register2.png in Resources */ = {isa = PBXBuildFile; fileRef = D770E96E19C98BB9001F9B60 /* Register2.png */; };
+		D770E99319C98BB9001F9B60 /* 新增车辆-1.png in Resources */ = {isa = PBXBuildFile; fileRef = D770E96F19C98BB9001F9B60 /* 新增车辆-1.png */; };
+		D770E99419C98BB9001F9B60 /* 新增车辆-10.png in Resources */ = {isa = PBXBuildFile; fileRef = D770E97019C98BB9001F9B60 /* 新增车辆-10.png */; };
+		D770E99519C98BB9001F9B60 /* 新增车辆-11.png in Resources */ = {isa = PBXBuildFile; fileRef = D770E97119C98BB9001F9B60 /* 新增车辆-11.png */; };
+		D770E99619C98BB9001F9B60 /* 新增车辆-12.png in Resources */ = {isa = PBXBuildFile; fileRef = D770E97219C98BB9001F9B60 /* 新增车辆-12.png */; };
+		D770E99719C98BB9001F9B60 /* 新增车辆-2.png in Resources */ = {isa = PBXBuildFile; fileRef = D770E97319C98BB9001F9B60 /* 新增车辆-2.png */; };
+		D770E99819C98BB9001F9B60 /* 新增车辆-3.png in Resources */ = {isa = PBXBuildFile; fileRef = D770E97419C98BB9001F9B60 /* 新增车辆-3.png */; };
+		D770E99919C98BB9001F9B60 /* 新增车辆-4.png in Resources */ = {isa = PBXBuildFile; fileRef = D770E97519C98BB9001F9B60 /* 新增车辆-4.png */; };
+		D770E99A19C98BB9001F9B60 /* 新增车辆-5.png in Resources */ = {isa = PBXBuildFile; fileRef = D770E97619C98BB9001F9B60 /* 新增车辆-5.png */; };
+		D770E99B19C98BB9001F9B60 /* 新增车辆-6.png in Resources */ = {isa = PBXBuildFile; fileRef = D770E97719C98BB9001F9B60 /* 新增车辆-6.png */; };
+		D770E99C19C98BB9001F9B60 /* 新增车辆-7.png in Resources */ = {isa = PBXBuildFile; fileRef = D770E97819C98BB9001F9B60 /* 新增车辆-7.png */; };
+		D770E99D19C98BB9001F9B60 /* 新增车辆-8.png in Resources */ = {isa = PBXBuildFile; fileRef = D770E97919C98BB9001F9B60 /* 新增车辆-8.png */; };
+		D770E99E19C98BB9001F9B60 /* 新增车辆-9.png in Resources */ = {isa = PBXBuildFile; fileRef = D770E97A19C98BB9001F9B60 /* 新增车辆-9.png */; };
 		D7D2191719C6B80200C585FA /* arrow.png in Resources */ = {isa = PBXBuildFile; fileRef = D7D218A219C6B80200C585FA /* arrow.png */; };
 		D7D2191819C6B80200C585FA /* Background.png in Resources */ = {isa = PBXBuildFile; fileRef = D7D218A319C6B80200C585FA /* Background.png */; };
 		D7D2191919C6B80200C585FA /* CarDetail_r10_c1.png in Resources */ = {isa = PBXBuildFile; fileRef = D7D218A519C6B80200C585FA /* CarDetail_r10_c1.png */; };
@@ -203,8 +245,55 @@
 		403C91AC19C697230081F864 /* CarTypeList.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = CarTypeList.plist; sourceTree = "<group>"; };
 		403C91AE19C69A790081F864 /* LoginBtn.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = LoginBtn.png; sourceTree = "<group>"; };
 		403C91AF19C69A790081F864 /* LoginBtnPressed.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = LoginBtnPressed.png; sourceTree = "<group>"; };
+		D71F84E919CA8E8E00D61707 /* SendSMS.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = SendSMS.png; sourceTree = "<group>"; };
+		D71F84F219CAD23C00D61707 /* EBCarListCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EBCarListCell.h; sourceTree = "<group>"; };
+		D71F84F319CAD23D00D61707 /* EBCarListCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EBCarListCell.m; sourceTree = "<group>"; };
+		D71F84F919CAD5D300D61707 /* EBCarListCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = EBCarListCell.xib; sourceTree = "<group>"; };
+		D71F84FB19CAD8DF00D61707 /* EBBaseViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = EBBaseViewController.h; sourceTree = "<group>"; };
+		D71F84FD19CAD92000D61707 /* EBCarTypeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EBCarTypeViewController.h; sourceTree = "<group>"; };
+		D71F84FE19CAD92000D61707 /* EBCarTypeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EBCarTypeViewController.m; sourceTree = "<group>"; };
+		D7373AC219CBCD7E0056C772 /* EBCarListModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EBCarListModel.h; sourceTree = "<group>"; };
+		D7373AC319CBCD7E0056C772 /* EBCarListModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EBCarListModel.m; sourceTree = "<group>"; };
+		D7373AC519CBF1AB0056C772 /* EBCarDetailModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EBCarDetailModel.h; sourceTree = "<group>"; };
+		D7373AC619CBF1AB0056C772 /* EBCarDetailModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EBCarDetailModel.m; sourceTree = "<group>"; };
 		D770E94B19C93578001F9B60 /* MBProgressHUD.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MBProgressHUD.h; sourceTree = "<group>"; };
 		D770E94C19C93578001F9B60 /* MBProgressHUD.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MBProgressHUD.m; sourceTree = "<group>"; };
+		D770E95519C98BB9001F9B60 /* 车辆绑定信息确认-1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "车辆绑定信息确认-1.png"; sourceTree = "<group>"; };
+		D770E95619C98BB9001F9B60 /* 车辆绑定信息确认-17.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "车辆绑定信息确认-17.png"; sourceTree = "<group>"; };
+		D770E95719C98BB9001F9B60 /* 车辆绑定信息确认-2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "车辆绑定信息确认-2.png"; sourceTree = "<group>"; };
+		D770E95819C98BB9001F9B60 /* 车辆绑定信息确认-3.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "车辆绑定信息确认-3.png"; sourceTree = "<group>"; };
+		D770E95919C98BB9001F9B60 /* 车辆绑定信息确认-4.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "车辆绑定信息确认-4.png"; sourceTree = "<group>"; };
+		D770E95A19C98BB9001F9B60 /* 车辆绑定信息确认-5.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "车辆绑定信息确认-5.png"; sourceTree = "<group>"; };
+		D770E95B19C98BB9001F9B60 /* 车辆绑定信息确认-6.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "车辆绑定信息确认-6.png"; sourceTree = "<group>"; };
+		D770E95C19C98BB9001F9B60 /* 车辆绑定信息确认-7.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "车辆绑定信息确认-7.png"; sourceTree = "<group>"; };
+		D770E95D19C98BB9001F9B60 /* 车辆绑定信息确认-8.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "车辆绑定信息确认-8.png"; sourceTree = "<group>"; };
+		D770E95F19C98BB9001F9B60 /* remeberButton.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = remeberButton.png; sourceTree = "<group>"; };
+		D770E96019C98BB9001F9B60 /* remeberYes.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = remeberYes.png; sourceTree = "<group>"; };
+		D770E96119C98BB9001F9B60 /* 新增页面.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "新增页面.png"; sourceTree = "<group>"; };
+		D770E96219C98BB9001F9B60 /* 新增页面2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "新增页面2.png"; sourceTree = "<group>"; };
+		D770E96319C98BB9001F9B60 /* 新增页面3.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "新增页面3.png"; sourceTree = "<group>"; };
+		D770E96419C98BB9001F9B60 /* 新增页面4.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "新增页面4.png"; sourceTree = "<group>"; };
+		D770E96519C98BB9001F9B60 /* 新增页面5.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "新增页面5.png"; sourceTree = "<group>"; };
+		D770E96619C98BB9001F9B60 /* 车辆列表-1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "车辆列表-1.png"; sourceTree = "<group>"; };
+		D770E96719C98BB9001F9B60 /* 车辆列表-2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "车辆列表-2.png"; sourceTree = "<group>"; };
+		D770E96819C98BB9001F9B60 /* 车辆列表-3.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "车辆列表-3.png"; sourceTree = "<group>"; };
+		D770E96919C98BB9001F9B60 /* 车辆列表-4.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "车辆列表-4.png"; sourceTree = "<group>"; };
+		D770E96B19C98BB9001F9B60 /* delete.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = delete.png; sourceTree = "<group>"; };
+		D770E96C19C98BB9001F9B60 /* delete_1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = delete_1.png; sourceTree = "<group>"; };
+		D770E96D19C98BB9001F9B60 /* Register.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Register.png; sourceTree = "<group>"; };
+		D770E96E19C98BB9001F9B60 /* Register2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Register2.png; sourceTree = "<group>"; };
+		D770E96F19C98BB9001F9B60 /* 新增车辆-1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "新增车辆-1.png"; sourceTree = "<group>"; };
+		D770E97019C98BB9001F9B60 /* 新增车辆-10.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "新增车辆-10.png"; sourceTree = "<group>"; };
+		D770E97119C98BB9001F9B60 /* 新增车辆-11.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "新增车辆-11.png"; sourceTree = "<group>"; };
+		D770E97219C98BB9001F9B60 /* 新增车辆-12.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "新增车辆-12.png"; sourceTree = "<group>"; };
+		D770E97319C98BB9001F9B60 /* 新增车辆-2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "新增车辆-2.png"; sourceTree = "<group>"; };
+		D770E97419C98BB9001F9B60 /* 新增车辆-3.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "新增车辆-3.png"; sourceTree = "<group>"; };
+		D770E97519C98BB9001F9B60 /* 新增车辆-4.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "新增车辆-4.png"; sourceTree = "<group>"; };
+		D770E97619C98BB9001F9B60 /* 新增车辆-5.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "新增车辆-5.png"; sourceTree = "<group>"; };
+		D770E97719C98BB9001F9B60 /* 新增车辆-6.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "新增车辆-6.png"; sourceTree = "<group>"; };
+		D770E97819C98BB9001F9B60 /* 新增车辆-7.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "新增车辆-7.png"; sourceTree = "<group>"; };
+		D770E97919C98BB9001F9B60 /* 新增车辆-8.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "新增车辆-8.png"; sourceTree = "<group>"; };
+		D770E97A19C98BB9001F9B60 /* 新增车辆-9.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "新增车辆-9.png"; sourceTree = "<group>"; };
 		D7D218A219C6B80200C585FA /* arrow.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = arrow.png; sourceTree = "<group>"; };
 		D7D218A319C6B80200C585FA /* Background.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Background.png; sourceTree = "<group>"; };
 		D7D218A519C6B80200C585FA /* CarDetail_r10_c1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = CarDetail_r10_c1.png; sourceTree = "<group>"; };
@@ -437,6 +526,9 @@
 		403C917719C686D20081F864 /* Images */ = {
 			isa = PBXGroup;
 			children = (
+				D770E95419C98BB9001F9B60 /* 车辆绑定信息确认 */,
+				D770E95E19C98BB9001F9B60 /* 车辆列表切图 */,
+				D770E96A19C98BB9001F9B60 /* 新增车辆切图 */,
 				D7D218A119C6B80200C585FA /* PNG */,
 				403C91AE19C69A790081F864 /* LoginBtn.png */,
 				403C91AF19C69A790081F864 /* LoginBtnPressed.png */,
@@ -460,6 +552,9 @@
 				403C918B19C6934B0081F864 /* EBCarDetailCell.h */,
 				403C918C19C6934B0081F864 /* EBCarDetailCell.m */,
 				403C918D19C6934B0081F864 /* EBCarDetailCell.xib */,
+				D71F84F219CAD23C00D61707 /* EBCarListCell.h */,
+				D71F84F319CAD23D00D61707 /* EBCarListCell.m */,
+				D71F84F919CAD5D300D61707 /* EBCarListCell.xib */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -469,6 +564,10 @@
 			children = (
 				403C917C19C688450081F864 /* EBBaseModel.h */,
 				403C917D19C688450081F864 /* EBBaseModel.m */,
+				D7373AC219CBCD7E0056C772 /* EBCarListModel.h */,
+				D7373AC319CBCD7E0056C772 /* EBCarListModel.m */,
+				D7373AC519CBF1AB0056C772 /* EBCarDetailModel.h */,
+				D7373AC619CBF1AB0056C772 /* EBCarDetailModel.m */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -485,6 +584,8 @@
 		403C918A19C6930B0081F864 /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
+				D71F84FC19CAD8FE00D61707 /* SubViewControllers */,
+				D71F84FB19CAD8DF00D61707 /* EBBaseViewController.h */,
 				403C919019C694180081F864 /* EBBaseViewController.h */,
 				403C919119C694180081F864 /* EBBaseViewController.m */,
 				403C919619C694740081F864 /* EBLoginViewController.h */,
@@ -519,6 +620,15 @@
 			path = Datas;
 			sourceTree = "<group>";
 		};
+		D71F84FC19CAD8FE00D61707 /* SubViewControllers */ = {
+			isa = PBXGroup;
+			children = (
+				D71F84FD19CAD92000D61707 /* EBCarTypeViewController.h */,
+				D71F84FE19CAD92000D61707 /* EBCarTypeViewController.m */,
+			);
+			path = SubViewControllers;
+			sourceTree = "<group>";
+		};
 		D770E94919C93578001F9B60 /* MBProgressHUD */ = {
 			isa = PBXGroup;
 			children = (
@@ -528,9 +638,67 @@
 			path = MBProgressHUD;
 			sourceTree = "<group>";
 		};
+		D770E95419C98BB9001F9B60 /* 车辆绑定信息确认 */ = {
+			isa = PBXGroup;
+			children = (
+				D770E95519C98BB9001F9B60 /* 车辆绑定信息确认-1.png */,
+				D770E95619C98BB9001F9B60 /* 车辆绑定信息确认-17.png */,
+				D770E95719C98BB9001F9B60 /* 车辆绑定信息确认-2.png */,
+				D770E95819C98BB9001F9B60 /* 车辆绑定信息确认-3.png */,
+				D770E95919C98BB9001F9B60 /* 车辆绑定信息确认-4.png */,
+				D770E95A19C98BB9001F9B60 /* 车辆绑定信息确认-5.png */,
+				D770E95B19C98BB9001F9B60 /* 车辆绑定信息确认-6.png */,
+				D770E95C19C98BB9001F9B60 /* 车辆绑定信息确认-7.png */,
+				D770E95D19C98BB9001F9B60 /* 车辆绑定信息确认-8.png */,
+			);
+			path = "车辆绑定信息确认";
+			sourceTree = "<group>";
+		};
+		D770E95E19C98BB9001F9B60 /* 车辆列表切图 */ = {
+			isa = PBXGroup;
+			children = (
+				D770E95F19C98BB9001F9B60 /* remeberButton.png */,
+				D770E96019C98BB9001F9B60 /* remeberYes.png */,
+				D770E96119C98BB9001F9B60 /* 新增页面.png */,
+				D770E96219C98BB9001F9B60 /* 新增页面2.png */,
+				D770E96319C98BB9001F9B60 /* 新增页面3.png */,
+				D770E96419C98BB9001F9B60 /* 新增页面4.png */,
+				D770E96519C98BB9001F9B60 /* 新增页面5.png */,
+				D770E96619C98BB9001F9B60 /* 车辆列表-1.png */,
+				D770E96719C98BB9001F9B60 /* 车辆列表-2.png */,
+				D770E96819C98BB9001F9B60 /* 车辆列表-3.png */,
+				D770E96919C98BB9001F9B60 /* 车辆列表-4.png */,
+			);
+			path = "车辆列表切图";
+			sourceTree = "<group>";
+		};
+		D770E96A19C98BB9001F9B60 /* 新增车辆切图 */ = {
+			isa = PBXGroup;
+			children = (
+				D770E96B19C98BB9001F9B60 /* delete.png */,
+				D770E96C19C98BB9001F9B60 /* delete_1.png */,
+				D770E96D19C98BB9001F9B60 /* Register.png */,
+				D770E96E19C98BB9001F9B60 /* Register2.png */,
+				D770E96F19C98BB9001F9B60 /* 新增车辆-1.png */,
+				D770E97019C98BB9001F9B60 /* 新增车辆-10.png */,
+				D770E97119C98BB9001F9B60 /* 新增车辆-11.png */,
+				D770E97219C98BB9001F9B60 /* 新增车辆-12.png */,
+				D770E97319C98BB9001F9B60 /* 新增车辆-2.png */,
+				D770E97419C98BB9001F9B60 /* 新增车辆-3.png */,
+				D770E97519C98BB9001F9B60 /* 新增车辆-4.png */,
+				D770E97619C98BB9001F9B60 /* 新增车辆-5.png */,
+				D770E97719C98BB9001F9B60 /* 新增车辆-6.png */,
+				D770E97819C98BB9001F9B60 /* 新增车辆-7.png */,
+				D770E97919C98BB9001F9B60 /* 新增车辆-8.png */,
+				D770E97A19C98BB9001F9B60 /* 新增车辆-9.png */,
+			);
+			path = "新增车辆切图";
+			sourceTree = "<group>";
+		};
 		D7D218A119C6B80200C585FA /* PNG */ = {
 			isa = PBXGroup;
 			children = (
+				D71F84E919CA8E8E00D61707 /* SendSMS.png */,
 				D7D218A219C6B80200C585FA /* arrow.png */,
 				D7D218A319C6B80200C585FA /* Background.png */,
 				D7D218A419C6B80200C585FA /* CarDetail */,
@@ -834,9 +1002,11 @@
 			files = (
 				D7D2192219C6B80200C585FA /* CarDetail_r19_c1.png in Resources */,
 				D7D2196E19C6B80200C585FA /* Register_2.png in Resources */,
+				D770E98219C98BB9001F9B60 /* 车辆绑定信息确认-7.png in Resources */,
 				D7D2195F19C6B80200C585FA /* Popup_pressed_r5_c1.png in Resources */,
 				D7D2195B19C6B80200C585FA /* Popup_pressed_r1_c1.png in Resources */,
 				D7D2194519C6B80200C585FA /* feedback.png in Resources */,
+				D770E99B19C98BB9001F9B60 /* 新增车辆-6.png in Resources */,
 				D7D2194F19C6B80200C585FA /* liked.png in Resources */,
 				D7D2191A19C6B80200C585FA /* CarDetail_r11_c1.png in Resources */,
 				D7D2195319C6B80200C585FA /* NavBar@2x.png in Resources */,
@@ -845,24 +1015,31 @@
 				D7D2191B19C6B80200C585FA /* CarDetail_r12_c1.png in Resources */,
 				D7D2193019C6B80200C585FA /* ChatBubbleGray.png in Resources */,
 				D7D2198119C6B80200C585FA /* up.png in Resources */,
+				D770E98B19C98BB9001F9B60 /* 车辆列表-1.png in Resources */,
+				D770E99219C98BB9001F9B60 /* Register2.png in Resources */,
 				D7D2193219C6B80200C585FA /* ChatBubbleGreen.png in Resources */,
 				D7D2191819C6B80200C585FA /* Background.png in Resources */,
 				D7D2191C19C6B80200C585FA /* CarDetail_r13_c1.png in Resources */,
 				D7D2197519C6B80200C585FA /* Search-box-adv_r1_c1.png in Resources */,
+				D770E97E19C98BB9001F9B60 /* 车辆绑定信息确认-3.png in Resources */,
+				D71F84FA19CAD5D300D61707 /* EBCarListCell.xib in Resources */,
 				D7D2195C19C6B80200C585FA /* Popup_pressed_r2_c1.png in Resources */,
 				D7D2192A19C6B80200C585FA /* CarDetail_r7_c1.png in Resources */,
 				D7D2192619C6B80200C585FA /* CarDetail_r3_c1.png in Resources */,
 				D7D2194719C6B80200C585FA /* green.png in Resources */,
 				D7D2192E19C6B80200C585FA /* PopupShadow.png in Resources */,
 				D7D2195A19C6B80200C585FA /* Segment_bg.png in Resources */,
+				D770E98819C98BB9001F9B60 /* 新增页面3.png in Resources */,
 				D7D2196B19C6B80200C585FA /* QuoteResult_r2_c1.png in Resources */,
 				D7D2192419C6B80200C585FA /* CarDetail_r20_c1.png in Resources */,
+				D770E98319C98BB9001F9B60 /* 车辆绑定信息确认-8.png in Resources */,
 				D7D2193C19C6B80200C585FA /* btnGray.png in Resources */,
 				D7D2197019C6B80200C585FA /* Register_3.png in Resources */,
 				D7D2193419C6B80200C585FA /* ChatBubbleGreen_L.png in Resources */,
 				D7D2192819C6B80200C585FA /* CarDetail_r5_c1.png in Resources */,
 				D7D2197F19C6B80200C585FA /* swipe.png in Resources */,
 				D7D2192D19C6B80200C585FA /* Popup.png in Resources */,
+				D770E99319C98BB9001F9B60 /* 新增车辆-1.png in Resources */,
 				D7D2194319C6B80200C585FA /* face.png in Resources */,
 				D7D2194619C6B80200C585FA /* go-to-recommend.png in Resources */,
 				D7D2197119C6B80200C585FA /* rotation.png in Resources */,
@@ -872,6 +1049,8 @@
 				D7D2197219C6B80200C585FA /* ConnectionFailed.png in Resources */,
 				D7D2195D19C6B80200C585FA /* Popup_pressed_r3_c1.png in Resources */,
 				D7D2192C19C6B80200C585FA /* CarDetail_r9_c1.png in Resources */,
+				D770E99419C98BB9001F9B60 /* 新增车辆-10.png in Resources */,
+				D770E99E19C98BB9001F9B60 /* 新增车辆-9.png in Resources */,
 				D7D2191D19C6B80200C585FA /* CarDetail_r14_c1.png in Resources */,
 				D7D2195919C6B80200C585FA /* PolicyList_surrender.png in Resources */,
 				D7D2196A19C6B80200C585FA /* QuoteResult_r1_c1.png in Resources */,
@@ -881,60 +1060,84 @@
 				D7D2193519C6B80200C585FA /* ChatBubbleGreen_L@2x.png in Resources */,
 				D7D2194A19C6B80200C585FA /* icon.png in Resources */,
 				D7D2194C19C6B80200C585FA /* icon@2x.png in Resources */,
+				D770E99519C98BB9001F9B60 /* 新增车辆-11.png in Resources */,
 				D7D2196319C6B80200C585FA /* Popup_r4_c1.png in Resources */,
 				D7D2193E19C6B80200C585FA /* btnGreen.png in Resources */,
 				403C918F19C6934B0081F864 /* EBCarDetailCell.xib in Resources */,
 				D7D2194419C6B80200C585FA /* face@2x.png in Resources */,
+				D770E99819C98BB9001F9B60 /* 新增车辆-3.png in Resources */,
 				D7D2197D19C6B80200C585FA /* SendButton.png in Resources */,
+				D770E98E19C98BB9001F9B60 /* 车辆列表-4.png in Resources */,
 				403C916119C6786D0081F864 /* Images.xcassets in Resources */,
 				D7D2192B19C6B80200C585FA /* CarDetail_r8_c1.png in Resources */,
+				D770E98619C98BB9001F9B60 /* 新增页面.png in Resources */,
 				D7D2193A19C6B80200C585FA /* Default.png in Resources */,
 				D7D2195719C6B80200C585FA /* PolicyList_inforce.png in Resources */,
 				D7D2192F19C6B80200C585FA /* ChatBar.png in Resources */,
 				D7D2196C19C6B80200C585FA /* Register_+2.png in Resources */,
+				D770E98A19C98BB9001F9B60 /* 新增页面5.png in Resources */,
+				D770E97B19C98BB9001F9B60 /* 车辆绑定信息确认-1.png in Resources */,
 				D7D2193819C6B80200C585FA /* ClaimList.png in Resources */,
 				D7D2194819C6B80200C585FA /* icon copy.png in Resources */,
 				D7D2195019C6B80200C585FA /* Login2.png in Resources */,
+				D770E99119C98BB9001F9B60 /* Register.png in Resources */,
+				D770E97C19C98BB9001F9B60 /* 车辆绑定信息确认-17.png in Resources */,
+				D770E98D19C98BB9001F9B60 /* 车辆列表-3.png in Resources */,
 				D7D2196919C6B80200C585FA /* QuoteClaimList.png in Resources */,
+				D770E98919C98BB9001F9B60 /* 新增页面4.png in Resources */,
 				D7D2196D19C6B80200C585FA /* Register_1.png in Resources */,
 				D7D2193919C6B80200C585FA /* line.png in Resources */,
 				D7D2194119C6B80200C585FA /* empty.png in Resources */,
 				D7D2191F19C6B80200C585FA /* CarDetail_r16_c1.png in Resources */,
+				D770E98F19C98BB9001F9B60 /* delete.png in Resources */,
 				D7D2196819C6B80200C585FA /* Quote_r2_c2.png in Resources */,
 				D7D2192519C6B80200C585FA /* CarDetail_r2_c1.png in Resources */,
 				D7D2192319C6B80200C585FA /* CarDetail_r1_c1.png in Resources */,
 				D7D2194019C6B80200C585FA /* down.png in Resources */,
+				D770E98019C98BB9001F9B60 /* 车辆绑定信息确认-5.png in Resources */,
 				D7D2195219C6B80200C585FA /* LoginBtnPressed.png in Resources */,
 				D7D2192719C6B80200C585FA /* CarDetail_r4_c1.png in Resources */,
 				D7D2195619C6B80200C585FA /* PolicyDetail_r2_c1.png in Resources */,
 				D7D2194B19C6B80200C585FA /* icon@2x copy.png in Resources */,
+				D770E98719C98BB9001F9B60 /* 新增页面2.png in Resources */,
 				D7D2197719C6B80200C585FA /* Search-box-adv_r3_c1.png in Resources */,
 				D7D2193F19C6B80200C585FA /* btnGreen_pressed.png in Resources */,
 				D7D2196519C6B80200C585FA /* cell_backgd.png in Resources */,
 				403C91AD19C697230081F864 /* CarTypeList.plist in Resources */,
+				D770E97F19C98BB9001F9B60 /* 车辆绑定信息确认-4.png in Resources */,
 				D7D2195819C6B80200C585FA /* PolicyList_lapse.png in Resources */,
 				D7D2193319C6B80200C585FA /* ChatBubbleGreen@2x.png in Resources */,
 				D7D2197819C6B80200C585FA /* Search-box-adv_r4_c1.png in Resources */,
+				D770E98419C98BB9001F9B60 /* remeberButton.png in Resources */,
 				D7D2195419C6B80200C585FA /* newmsg.png in Resources */,
+				D770E98519C98BB9001F9B60 /* remeberYes.png in Resources */,
 				D7D2197E19C6B80200C585FA /* SendButton@2x.png in Resources */,
 				D7D2194919C6B80200C585FA /* icon-144.png in Resources */,
+				D770E99C19C98BB9001F9B60 /* 新增车辆-7.png in Resources */,
 				D7D2196F19C6B80200C585FA /* Register_2_1.png in Resources */,
 				D7D2196719C6B80200C585FA /* quote_btn.png in Resources */,
+				D770E98119C98BB9001F9B60 /* 车辆绑定信息确认-6.png in Resources */,
 				D7D2193D19C6B80200C585FA /* btnGray_pressed.png in Resources */,
 				D7D2195519C6B80200C585FA /* PolicyDetail_r1_c1.png in Resources */,
 				D7D2191719C6B80200C585FA /* arrow.png in Resources */,
+				D770E99919C98BB9001F9B60 /* 新增车辆-4.png in Resources */,
 				D7D2193619C6B80200C585FA /* chatview-screenshot.png in Resources */,
 				D7D2194E19C6B80200C585FA /* like.png in Resources */,
 				D7D2192019C6B80200C585FA /* CarDetail_r17_c1.png in Resources */,
+				D770E99719C98BB9001F9B60 /* 新增车辆-2.png in Resources */,
 				D7D2191919C6B80200C585FA /* CarDetail_r10_c1.png in Resources */,
+				D770E99619C98BB9001F9B60 /* 新增车辆-12.png in Resources */,
 				D7D2191E19C6B80200C585FA /* CarDetail_r15_c1.png in Resources */,
 				D7D2198019C6B80200C585FA /* tap.png in Resources */,
 				D7D2197319C6B80200C585FA /* NoResultFound.png in Resources */,
 				D7D2195119C6B80200C585FA /* LoginBtn.png in Resources */,
+				D770E97D19C98BB9001F9B60 /* 车辆绑定信息确认-2.png in Resources */,
+				D71F84EA19CA8E8E00D61707 /* SendSMS.png in Resources */,
 				D7D2195E19C6B80200C585FA /* Popup_pressed_r4_c1.png in Resources */,
 				D7D2197B19C6B80200C585FA /* Search_box_advanced.png in Resources */,
 				D7D2197619C6B80200C585FA /* Search-box-adv_r2_c1.png in Resources */,
 				D7D2196019C6B80200C585FA /* Popup_r1_c1.png in Resources */,
+				D770E99019C98BB9001F9B60 /* delete_1.png in Resources */,
 				D7D2196219C6B80200C585FA /* Popup_r3_c1.png in Resources */,
 				D7D2196419C6B80200C585FA /* Popup_r5_c1.png in Resources */,
 				D7D2197919C6B80200C585FA /* Search-Option-advanced.png in Resources */,
@@ -942,11 +1145,14 @@
 				D7D2194D19C6B80200C585FA /* ipad2.png in Resources */,
 				D7D2197C19C6B80200C585FA /* Search_box_simple.png in Resources */,
 				D7D219AA19C6D51900C585FA /* AppEnv.plist in Resources */,
+				D770E99D19C98BB9001F9B60 /* 新增车辆-8.png in Resources */,
 				D7D2193119C6B80200C585FA /* ChatBubbleGray@2x.png in Resources */,
 				D7D2194219C6B80200C585FA /* EPRecordList.png in Resources */,
 				D7D2197A19C6B80200C585FA /* Search-Option-simple.png in Resources */,
 				D7D2198219C6B80200C585FA /* VehicleList.png in Resources */,
 				D7D2197419C6B80200C585FA /* NoResultFound_en_US.png in Resources */,
+				D770E99A19C98BB9001F9B60 /* 新增车辆-5.png in Resources */,
+				D770E98C19C98BB9001F9B60 /* 车辆列表-2.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -964,6 +1170,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D71F84FF19CAD92000D61707 /* EBCarTypeViewController.m in Sources */,
 				D7D219A319C6C7B800C585FA /* AFURLConnectionOperation.m in Sources */,
 				403C919E19C694AD0081F864 /* EBCarAddViewController.m in Sources */,
 				403C91A119C694BE0081F864 /* EBCarDetailViewController.m in Sources */,
@@ -977,11 +1184,14 @@
 				D7D219A219C6C7B800C585FA /* AFPropertyListRequestOperation.m in Sources */,
 				D7D2199F19C6C7B800C585FA /* AFImageRequestOperation.m in Sources */,
 				403C91A719C695230081F864 /* EBPremiumViewController.m in Sources */,
+				D7373AC719CBF1AB0056C772 /* EBCarDetailModel.m in Sources */,
 				D7D2198519C6B89900C585FA /* UIViewExt.m in Sources */,
 				403C918E19C6934B0081F864 /* EBCarDetailCell.m in Sources */,
+				D71F84F419CAD23D00D61707 /* EBCarListCell.m in Sources */,
 				403C919B19C6948F0081F864 /* EBCarListViewController.m in Sources */,
 				403C91AA19C695940081F864 /* EBViolationViewController.m in Sources */,
 				403C91A419C694E40081F864 /* EBInsuranceViewController.m in Sources */,
+				D7373AC419CBCD7E0056C772 /* EBCarListModel.m in Sources */,
 				403C918319C690850081F864 /* JSONKit.m in Sources */,
 				D7D219A519C6C7B800C585FA /* UIImageView+AFNetworking.m in Sources */,
 				D7D219B019C6DD9400C585FA /* NSString+MD5Addition.m in Sources */,
@@ -1107,7 +1317,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				INFOPLIST_FILE = eBaoke/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TARGETED_DEVICE_FAMILY = 1;
@@ -1120,7 +1330,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				INFOPLIST_FILE = eBaoke/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TARGETED_DEVICE_FAMILY = 1;

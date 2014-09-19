@@ -254,7 +254,7 @@
         NSLog(@"url=%@",url);
         [request setHTTPMethod:@"POST"];
         request.HTTPBody = [postContent dataUsingEncoding:NSUTF8StringEncoding];
-        [request setValue:@"multipart/form-data; boundary=3i2ndDfv2rTHiSisAbouNdArYfORhtTPEefj3q2f" forHTTPHeaderField:@"content-type"];//请求头
+        [request setValue:kHTTPHeader forHTTPHeaderField:@"content-type"];//请求头
         NSURLConnection *connection = [[NSURLConnection alloc]initWithRequest:request delegate:self];
         [AppContext didStartNetworking];
         

@@ -9,6 +9,7 @@
 #import "EBRegisterViewController.h"
 #import "Globals.h"
 #import "MBProgressHUD.h"
+#import "EBCarTypeViewController.h"
 
 #define numOfRows 4
 #define sendMsgTime 60
@@ -93,8 +94,6 @@
             [carTypeBtn setTitle:[AppContext getTempContextValueByKey:@"car_type"] forState:UIControlStateNormal];
         }
     }
-
-    
 }
 
 - (void)viewDidLoad {
@@ -103,11 +102,6 @@
         [self setEdgesForExtendedLayout:UIRectEdgeNone];
         self.navigationController.navigationBar.translucent = NO;
     }
-    
-    _scrollView = [[UIScrollView alloc]initWithFrame:self.view.bounds];
-    _scrollView.contentSize = CGSizeMake(kDeviceWidth, KDeviceHeight);
-    [_scrollView setScrollEnabled:NO];
-    [self.view addSubview:_scrollView];
     
     isNewCarBtnTouched=NO;
     
@@ -188,7 +182,7 @@
                     k ++;
                 }
             }
-            //            [AppContext setPreferenceByKey:[registerArray objectAtIndex:i] value:texts.text];
+                    [AppContext setPreferenceByKey:[registerArray objectAtIndex:i] value:texts.text];
         }
         UIView *lastView = (UIView *)[self.view viewWithTag:1000 + current_page];
         [UIView beginAnimations:@"animationID" context:nil];
@@ -221,6 +215,37 @@
     }
 }
 
+-(void)finishRegister
+{
+    if (![self judgeInfoIncurrentPage:current_page])
+    {
+        return;
+    }
+    sendType = ksendTypeFinishRegister;
+    [self postToServer];
+}
+
+-(void)tap:(UITapGestureRecognizer*)send
+{
+    UIView * pageView = [self.view viewWithTag:1002];
+    UITextField * textField = (UITextField *)[pageView viewWithTag:203];
+    if (isNewCarBtnTouched==NO) {
+        isNewCarBtnTouched=YES;
+        isNewCarImage.hidden=NO;
+        carTypeBtn.hidden=YES;
+        textField.placeholder = @"发动机号";
+    }else
+    {
+        isNewCarImage.hidden=YES;
+        carTypeBtn.hidden=NO;
+        isNewCarBtnTouched =NO;
+        textField.placeholder = @"号牌号码";
+    }
+    
+    [self performSelector:@selector(reSetTopButton) withObject:nil afterDelay:0.1];
+    
+}
+
 
 -(void)reloadView
 {
@@ -242,11 +267,12 @@
             infoText.borderStyle = UITextBorderStyleNone;
             infoText.clearButtonMode = UITextFieldViewModeWhileEditing;
             infoText.placeholder = [infoArray objectAtIndex:i];
-            if ([AppContext getPreferenceByKey:[registerArray objectAtIndex:i] needMerge:NO]) { // || ![[AppContext getPreferenceByKey:[registerArray objectAtIndex:i] needMerge:NO]isEqualToString:@""]
-                infoText.text = [AppContext getPreferenceByKey:[registerArray objectAtIndex:i]needMerge:NO];
-            }else{
-                infoText.text = @"";
-            }
+//            if ([AppContext getPreferenceByKey:[registerArray objectAtIndex:i] needMerge:NO]) { // || ![[AppContext getPreferenceByKey:[registerArray objectAtIndex:i] needMerge:NO]isEqualToString:@""]
+//                infoText.text = [AppContext getPreferenceByKey:[registerArray objectAtIndex:i]needMerge:NO];
+//            }else{
+//                infoText.text = @"";
+//            }
+             infoText.text = @"";
             if (i == 3) {
                 infoText.secureTextEntry = YES;
                 infoText.keyboardType = UIKeyboardTypeDefault;
@@ -282,8 +308,7 @@
                 [carTypeBtn setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
                 [carTypeBtn.titleLabel setTextAlignment:NSTextAlignmentLeft];
                 if ([AppContext getTempContextValueByKey:@"car_type"]) {
-//                    TTTableTextItem *item = [AppContext getTempContextValueByKey:@"car_type"];
-//                    [carTypeBtn setTitle:[item text] forState:UIControlStateNormal];
+                    [carTypeBtn setTitle:[AppContext getTempContextValueByKey:@"car_type"] forState:UIControlStateNormal];
                 }else{
                     [carTypeBtn setTitle:@"请选择号牌类型" forState:UIControlStateNormal];
                 }
@@ -297,11 +322,12 @@
             infoText.clearButtonMode = UITextFieldViewModeWhileEditing;
             infoText.placeholder = [infoArray objectAtIndex:5 + i];
             infoText.borderStyle = UITextBorderStyleNone;
-            if ([AppContext getPreferenceByKey:[registerArray objectAtIndex:i] needMerge:NO]) {
-                infoText.text = [AppContext getPreferenceByKey:[registerArray objectAtIndex:5 + i]needMerge:NO];
-            }else{
-                infoText.text = @"";
-            }
+            infoText.text = @"";
+//            if ([AppContext getPreferenceByKey:[registerArray objectAtIndex:i] needMerge:NO]) {
+//                infoText.text = [AppContext getPreferenceByKey:[registerArray objectAtIndex:5 + i]needMerge:NO];
+//            }else{
+//                infoText.text = @"";
+//            }
             if (i == 2) {
                 infoText.returnKeyType = UIReturnKeyDone;
                 infoText.autocapitalizationType = UITextAutocapitalizationTypeNone;
@@ -351,16 +377,40 @@
         [resendBtn setTitle:[NSString stringWithFormat:@"重新发送短信验证码（%d）",second] forState:UIControlStateNormal ];
         [resendBtn setTitleColor:[UIColor grayColor] forState:UIControlStateNormal];
         [resendBtn.titleLabel setFont:[UIFont systemFontOfSize:20]];
-        resendBtn.enabled = NO;
+        resendBtn.userInteractionEnabled = NO;
         [resendBtn addTarget:self action:@selector(sendMSG) forControlEvents:UIControlEventTouchUpInside];
         [pageView addSubview:resendBtn];
 
-       // time =  [NSTimer scheduledTimerWithTimeInterval:1.0 target:self selector:@selector(changeTime) userInfo:nil repeats:YES];
+        time =  [NSTimer scheduledTimerWithTimeInterval:1.0 target:self selector:@selector(changeTime) userInfo:nil repeats:YES];
     }
     [self.view addSubview:pageView];
     
-    //[self performSelector:@selector(reSetTopButton) withObject:nil afterDelay:0.1];
+    [self performSelector:@selector(reSetTopButton) withObject:nil afterDelay:0.1];
 }
+
+-(void)changeTime{
+    second --;
+   
+    if (second == 0) {
+        [resendBtn setTitle:@"重新发送短信验证码" forState:UIControlStateNormal ];
+        [resendBtn setTitleColor:[UIColor colorWithRed:56/255.0 green:143/255.0 blue:205/255.0 alpha:1.0] forState:UIControlStateNormal];
+        resendBtn.userInteractionEnabled = YES;
+        [time invalidate];
+    }else{
+        NSString *timeNum = [NSString stringWithFormat:@"重新发送短信验证码(%d)",second];
+        [resendBtn setTitleColor:[UIColor grayColor] forState:UIControlStateNormal];
+        [resendBtn setTitle:timeNum forState:UIControlStateNormal ];
+        resendBtn.userInteractionEnabled = NO;
+
+    }
+    
+}
+
+-(void)switchCarType{
+    EBCarTypeViewController *carTypeVC = [[EBCarTypeViewController alloc]init];
+    [self.navigationController pushViewController:carTypeVC animated:YES];
+}
+
 
 -(void)oneTap{
     if (current_page == 1) {
@@ -452,7 +502,7 @@
         [request setHTTPMethod:@"POST"];
         request.HTTPBody = [postContent dataUsingEncoding:NSUTF8StringEncoding];
         requestTag = kCarDataRequest;
-        //[request setValue:@"multipart/form-data; boundary=3i2ndDfv2rTHiSisAbouNdArYfORhtTPEefj3q2f" forHTTPHeaderField:@"content-type"];//请求头
+        [request setValue:kHTTPHeader forHTTPHeaderField:@"content-type"];//请求头
         NSURLConnection *connection = [[NSURLConnection alloc]initWithRequest:request delegate:self];
         [AppContext didStartNetworking];
         
@@ -562,8 +612,7 @@
         NSLog(@"url=%@",url);
         [request setHTTPMethod:@"POST"];
         request.HTTPBody = [postContent dataUsingEncoding:NSUTF8StringEncoding];
-        requestTag = kCarDataRequest;
-        //[request setValue:@"multipart/form-data; boundary=3i2ndDfv2rTHiSisAbouNdArYfORhtTPEefj3q2f" forHTTPHeaderField:@"content-type"];//请求头
+        [request setValue:kHTTPHeader forHTTPHeaderField:@"content-type"];//请求头
         NSURLConnection *connection = [[NSURLConnection alloc]initWithRequest:request delegate:self];
         [AppContext didStartNetworking];
         
@@ -574,11 +623,16 @@
 
 -(void)sendMSG
 {
+    
     if (reSendCount == 2)
     {
         [self alertShowWithMessage:@"短信验证码只能重发两次!"];
         return;
     }
+    
+    second = sendMsgTime;
+    time =  [NSTimer scheduledTimerWithTimeInterval:1.0 target:self selector:@selector(changeTime) userInfo:nil repeats:YES];
+    [resendBtn setTitle:[NSString stringWithFormat:@"重新发送短信验证码（%d）",second] forState:UIControlStateNormal ];
     
     reSendCount ++;
     sendType = ksendTypeReSMS;
@@ -593,7 +647,6 @@
     NSLog(@"---- kRequestURLPath %@", kRequestURLPath);
     NSString *postContent = [AppContext dictionaryToXml:postDict error:&error];
     
-    
     if (!error) {
         NSLog(@"---- content %@", postContent);
         
@@ -601,8 +654,7 @@
         NSLog(@"url=%@",url);
         [request setHTTPMethod:@"POST"];
         request.HTTPBody = [postContent dataUsingEncoding:NSUTF8StringEncoding];
-        requestTag = kCarDataRequest;
-        //[request setValue:@"multipart/form-data; boundary=3i2ndDfv2rTHiSisAbouNdArYfORhtTPEefj3q2f" forHTTPHeaderField:@"content-type"];//请求头
+        [request setValue:kHTTPHeader forHTTPHeaderField:@"content-type"];//请求头
         NSURLConnection *connection = [[NSURLConnection alloc]initWithRequest:request delegate:self];
         [AppContext didStartNetworking];
         
@@ -641,9 +693,9 @@
     NSDictionary *dict = [AppContext nsDataToObject:data encoding:NSUTF8StringEncoding];
     NSLog(@"sss%@",dict);
     
-    if (kCarDataRequest == 1002)
+    if ( requestTag == 1002)
     {
-        NSLog(@"car_owner == %@",[dict objectForKey:@"faces"]);
+//        NSLog(@"car_owner == %@",[dict objectForKey:@"faces"]);
         NSLog(@"car_owner == %@",[dict objectForKey:@"car_owner"]);
         NSLog(@"engine_no == %@",[dict objectForKey:@"engine_no"]);
         NSLog(@"vin_code == %@",[dict objectForKey:@"vin_code"]);
@@ -728,6 +780,7 @@
             [UIView setAnimationTransition:UIViewAnimationTransitionFlipFromRight forView:lastView cache:YES];
             [UIView commitAnimations];
             [AppContext setPreferenceByKey:@"registration_id" value:[dict objectForKey:@"registration_id"]];
+            NSLog(@"registration_ = %@",[dict objectForKey:@"registration_id"]);
         }
     }
     
@@ -744,6 +797,7 @@
 }
 
 - (void)showAffirmInfoView {
+    [self oneTap];
     
     affirmInfoView = [[UIView alloc]initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height)];
     affirmInfoView.backgroundColor = [UIColor clearColor];
@@ -770,17 +824,17 @@
     ownerInfo.image = [UIImage imageNamed:@"车辆绑定信息确认-3"];
     [info_view addSubview:ownerInfo];
     
-    name_label = [[UILabel alloc]initWithFrame:CGRectMake(CGRectGetMaxX(ownerInfo.frame)+5, CGRectGetMinY(ownerInfo.frame), 200, 17)];
+    name_label = [[UILabel alloc]initWithFrame:CGRectMake(CGRectGetMaxX(ownerInfo.frame)+5, CGRectGetMinY(ownerInfo.frame), 150, 17)];
     name_label.font = [UIFont systemFontOfSize:15];
     name_label.textColor = [UIColor grayColor];
     [info_view addSubview:name_label];
     
-    engineNo_label = [[UILabel alloc]initWithFrame:CGRectMake(CGRectGetMaxX(ownerInfo.frame)+5, CGRectGetMaxY(name_label.frame)+33, 200, 17)];
+    engineNo_label = [[UILabel alloc]initWithFrame:CGRectMake(CGRectGetMaxX(ownerInfo.frame)+5, CGRectGetMaxY(name_label.frame)+33, 150, 17)];
     engineNo_label.font = [UIFont systemFontOfSize:15];
     engineNo_label.textColor = [UIColor grayColor];
     [info_view addSubview:engineNo_label];
     
-    vinCode_label = [[UILabel alloc]initWithFrame:CGRectMake(CGRectGetMaxX(ownerInfo.frame)+5, CGRectGetMaxY(engineNo_label.frame)+36, 200, 17)];
+    vinCode_label = [[UILabel alloc]initWithFrame:CGRectMake(CGRectGetMaxX(ownerInfo.frame)+5, CGRectGetMaxY(engineNo_label.frame)+36, 150, 17)];
     vinCode_label.font = [UIFont systemFontOfSize:15];
     vinCode_label.textColor = [UIColor grayColor];
     [info_view addSubview:vinCode_label];
@@ -800,6 +854,7 @@
 
 - (void)affirmAction {
     [affirmInfoView removeFromSuperview];
+    requestTag = 0;
     [self toPage3];
 }
 
@@ -843,6 +898,7 @@
     }
     else
     {
+        NSLog(@"ksendTypeUploadInfo");
         sendType = ksendTypeUploadInfo;
         [self postToServer];
     }
@@ -998,15 +1054,14 @@
                 }
             }
         }
-        //原型
-        //        if ([carTypeBtn.titleLabel.text isEqualToString:@"请选择号牌类型"]||[carTypeBtn.titleLabel.text isEqualToString:@"全部"]) {
-        //            [self alertShowWithMessage:@"请选择具体的车辆类型再提交！"];
-        //            return NO;
-        //        }else{
-        //
-        //            TTTableTextItem *item = [AppContext getTempContextValueByKey:@"car_type"];
-        //            [AppContext setPreferenceByKey:[registerArray objectAtIndex:8] value:[item URL]];
-        //        }
+//        //原型
+//        if ([carTypeBtn.titleLabel.text isEqualToString:@"请选择号牌类型"]||[carTypeBtn.titleLabel.text isEqualToString:@"全部"]) {
+//                [self alertShowWithMessage:@"请选择具体的车辆类型再提交！"];
+//                return NO;
+//            }else{
+//        
+//                [AppContext setPreferenceByKey:[registerArray objectAtIndex:8] value:[AppContext getTempContextValueByKey:@"car_type"]];
+//                }
         
         //myChange 修改后
         if (isNewCarImage.hidden==YES) {
@@ -1015,8 +1070,7 @@
                 return NO;
             }else{
                 
-//                TTTableTextItem *item = [AppContext getTempContextValueByKey:@"car_type"];
-//                [AppContext setPreferenceByKey:[registerArray objectAtIndex:8] value:[item URL]];
+                [AppContext setPreferenceByKey:[registerArray objectAtIndex:8] value:[AppContext getTempContextValueByKey:@"car_type"]];
             }
         }
     }
@@ -1064,8 +1118,8 @@
     
     [self performSelector:@selector(reSetTopButton) withObject:nil afterDelay:0.1];
 }
-
-
+//
+//
 -(void)textFieldDidEndEditing:(UITextField *)textField{
     if ([textField.text isEqualToString:@""]) {
         if (textField.tag > 100 && textField.tag < 200) {
@@ -1140,6 +1194,12 @@
     [self performSelector:@selector(reSetTopButton) withObject:nil afterDelay:0.1];
     
     return NO;
+}
+
+#pragma -mark UIAlertView delegate
+- (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex {
+    
+    [self performSelector:@selector(reSetTopButton) withObject:nil afterDelay:0.1];
 }
 
 

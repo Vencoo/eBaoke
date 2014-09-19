@@ -10,4 +10,6 @@
 
 @interface EBBaseModel : NSObject
 
+- (id)initWithArray:(NSArray *)dataArray;
+
 @end

@@ -13,6 +13,7 @@
 #import "JSONKit.h"
 #import "UIViewExt.h"
 #import "AppContext.h"
+#import "MBProgressHUD.h"
 
 #define kDeviceWidth [UIScreen mainScreen].bounds.size.width
 #define KDeviceHeight [UIScreen mainScreen].bounds.size.height
@@ -21,5 +22,7 @@
 
 #define IS_IPHONE_5 [[UIScreen mainScreen ]bounds].size.height == 568
 #define IS_IPHONE_4 [[UIScreen mainScreen ]bounds].size.height == 480
+
+#define kHTTPHeader @"multipart/form-data; boundary=3i2ndDfv2rTHiSisAbouNdArYfORhtTPEefj3q2f"
 
 #endif
