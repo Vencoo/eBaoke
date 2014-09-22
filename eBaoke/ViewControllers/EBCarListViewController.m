@@ -11,6 +11,7 @@
 #import "EBCarListCell.h"
 #import "EBCarListModel.h"
 #import "EBCarDetailViewController.h"
+#import "EBInsuranceViewController.h"
 
 #define kCancelButtonItem 101
 #define kEditButtonItem 102
@@ -206,9 +207,19 @@
 }
 
 #pragma -mark carListCellButtonDelegate
-- (void)pushToViewController:(UIViewController *)viewController
+- (void)pushToInsuranceViewControllerWithTag:(NSInteger)tag
 {
-    [self.navigationController pushViewController:viewController animated:YES];
+    EBInsuranceViewController *insuranceVC = [[EBInsuranceViewController alloc]init];
+    EBCarListModel *model = [_dataArray objectAtIndex:tag];
+    
+    NSLog(@"----------------%@",model);
+    
+    [AppContext setTempContextValueByKey:@"car_owner" value:model.carOwner];
+    [AppContext setTempContextValueByKey:@"vehicle_id" value:model.vehicleId];
+    [AppContext setTempContextValueByKey:@"vin_code" value:model.vinCode];
+    
+
+    [self.navigationController pushViewController:insuranceVC animated:YES];
 }
 
 

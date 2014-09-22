@@ -38,6 +38,8 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
+        self.view.backgroundColor = [UIColor colorWithRed:55/255.0 green:157.0/255.0 blue:215.0/255.0 alpha:1];
+    
     [self initializeNavBar];
     
     if (IOSVersion>=7.0) {

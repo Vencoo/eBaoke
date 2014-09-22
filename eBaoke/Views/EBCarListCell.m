@@ -7,7 +7,7 @@
 //
 
 #import "EBCarListCell.h"
-#import "EBInsuranceViewController.h"
+
 
 @implementation EBCarListCell
 
@@ -30,12 +30,11 @@
     return self;
 }
 
-- (IBAction)insuranceButton:(UIButton*)sender {
-    switch (sender.tag) {
+- (IBAction)insuranceButton:(UIButton*)button {
+    switch (button.tag) {
         case 0:
         {
-            EBInsuranceViewController *insuranceVC = [[EBInsuranceViewController alloc]init];
-            [_delegate pushToViewController:insuranceVC];
+            [_delegate pushToInsuranceViewControllerWithTag:button.tag];
         }
             break;
         case 1:

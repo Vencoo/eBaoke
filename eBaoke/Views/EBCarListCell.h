@@ -10,7 +10,7 @@
 
 @protocol  carListCellButtonDelegate <NSObject>
 
-- (void)pushToViewController:(UIViewController *)viewController;
+- (void)pushToInsuranceViewControllerWithTag:(NSInteger)tag;
 
 @end
 

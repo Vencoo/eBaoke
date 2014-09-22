@@ -309,7 +309,7 @@ static NSInteger networkingCount = 0;
 
 + (void)didStopNetworking
 {
-    assert(networkingCount > 0);
+    //assert(networkingCount > 0);
     networkingCount -= 1;
     [UIApplication sharedApplication].networkActivityIndicatorVisible = (networkingCount != 0);
 }

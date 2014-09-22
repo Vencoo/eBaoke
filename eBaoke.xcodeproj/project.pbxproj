@@ -224,7 +224,6 @@
 		403C918B19C6934B0081F864 /* EBCarDetailCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EBCarDetailCell.h; sourceTree = "<group>"; };
 		403C918C19C6934B0081F864 /* EBCarDetailCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EBCarDetailCell.m; sourceTree = "<group>"; };
 		403C918D19C6934B0081F864 /* EBCarDetailCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = EBCarDetailCell.xib; sourceTree = "<group>"; };
-		403C919019C694180081F864 /* EBBaseViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EBBaseViewController.h; sourceTree = "<group>"; };
 		403C919119C694180081F864 /* EBBaseViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EBBaseViewController.m; sourceTree = "<group>"; };
 		403C919319C694580081F864 /* EBRegisterViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EBRegisterViewController.h; sourceTree = "<group>"; };
 		403C919419C694580081F864 /* EBRegisterViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EBRegisterViewController.m; sourceTree = "<group>"; };
@@ -249,7 +248,6 @@
 		D71F84F219CAD23C00D61707 /* EBCarListCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EBCarListCell.h; sourceTree = "<group>"; };
 		D71F84F319CAD23D00D61707 /* EBCarListCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EBCarListCell.m; sourceTree = "<group>"; };
 		D71F84F919CAD5D300D61707 /* EBCarListCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = EBCarListCell.xib; sourceTree = "<group>"; };
-		D71F84FB19CAD8DF00D61707 /* EBBaseViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = EBBaseViewController.h; sourceTree = "<group>"; };
 		D71F84FD19CAD92000D61707 /* EBCarTypeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EBCarTypeViewController.h; sourceTree = "<group>"; };
 		D71F84FE19CAD92000D61707 /* EBCarTypeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EBCarTypeViewController.m; sourceTree = "<group>"; };
 		D7373AC219CBCD7E0056C772 /* EBCarListModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EBCarListModel.h; sourceTree = "<group>"; };
@@ -294,6 +292,7 @@
 		D770E97819C98BB9001F9B60 /* 新增车辆-7.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "新增车辆-7.png"; sourceTree = "<group>"; };
 		D770E97919C98BB9001F9B60 /* 新增车辆-8.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "新增车辆-8.png"; sourceTree = "<group>"; };
 		D770E97A19C98BB9001F9B60 /* 新增车辆-9.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "新增车辆-9.png"; sourceTree = "<group>"; };
+		D7AA2DE319CFCB5300216930 /* EBBaseViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = EBBaseViewController.h; path = SubViewControllers/EBBaseViewController.h; sourceTree = "<group>"; };
 		D7D218A219C6B80200C585FA /* arrow.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = arrow.png; sourceTree = "<group>"; };
 		D7D218A319C6B80200C585FA /* Background.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Background.png; sourceTree = "<group>"; };
 		D7D218A519C6B80200C585FA /* CarDetail_r10_c1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = CarDetail_r10_c1.png; sourceTree = "<group>"; };
@@ -585,8 +584,7 @@
 			isa = PBXGroup;
 			children = (
 				D71F84FC19CAD8FE00D61707 /* SubViewControllers */,
-				D71F84FB19CAD8DF00D61707 /* EBBaseViewController.h */,
-				403C919019C694180081F864 /* EBBaseViewController.h */,
+				D7AA2DE319CFCB5300216930 /* EBBaseViewController.h */,
 				403C919119C694180081F864 /* EBBaseViewController.m */,
 				403C919619C694740081F864 /* EBLoginViewController.h */,
 				403C919719C694740081F864 /* EBLoginViewController.m */,
