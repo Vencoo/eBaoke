@@ -7,10 +7,11 @@
 //
 
 #import "EBCarListViewController.h"
-#import "Globals.h"
 #import "EBCarListCell.h"
 #import "EBCarListModel.h"
 #import "EBCarDetailViewController.h"
+#import "EBCarEditViewController.h"
+#import "EBCarAddViewController.h"
 #import "EBInsuranceViewController.h"
 
 #define kCancelButtonItem 101
@@ -23,9 +24,13 @@
     MBProgressHUD *HUD;
     
     UIBarButtonItem *_leftButtonItem;
+    
     UIBarButtonItem *_rightButtonItem;
     
     NSMutableArray *_dataArray;
+    
+    // 标记是否在编辑状态
+    BOOL _isEditing;
     
 }
 @end
@@ -79,19 +84,29 @@
 #pragma -mark Button Action
 - (void)leftButtonItem:(UIBarButtonItem *)buttonItem
 {
-    switch (buttonItem.tag) {
-        case kCancelButtonItem:
-            [self.navigationController popViewControllerAnimated:YES];
-            break;
-            
-        default:
-            break;
+    if (_isEditing )
+    {
+        _isEditing = NO;
+        _rightButtonItem.title = @"编辑";
+        _leftButtonItem.title = @"退出";
+    }else {
+        // 注销
+        [self.navigationController popViewControllerAnimated:YES];
     }
 }
 
 - (void)rightButtonItem:(UIBarButtonItem *)buttonItem
 {
-    
+    if (!_isEditing)
+    {
+        _isEditing = YES;
+        _rightButtonItem.title = @"添加";
+        _leftButtonItem.title = @"完成";
+    }else {
+        //进入新增页面
+        EBCarAddViewController *addVC = [[EBCarAddViewController alloc] init];
+        [self.navigationController pushViewController:addVC animated:YES];
+    }
 }
 
 - (void)didReceiveMemoryWarning {
@@ -199,11 +214,18 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    EBCarDetailViewController *detailVC = [[EBCarDetailViewController alloc]init];
-    EBCarListModel *model = [_dataArray objectAtIndex:indexPath.row];
-    detailVC.titleString = model.plateNo;
-    detailVC.vehicleId = model.vehicleId;
-    [self.navigationController pushViewController:detailVC animated:YES];
+    if(_isEditing) {
+        EBCarEditViewController *editVC = [[EBCarEditViewController alloc] initWithNibName:@"EBCarEditViewController" bundle:[NSBundle mainBundle]];
+        [self.navigationController pushViewController:editVC animated:YES];
+        
+    }else {
+        EBCarDetailViewController *detailVC = [[EBCarDetailViewController alloc]init];
+        EBCarListModel *model = [_dataArray objectAtIndex:indexPath.row];
+        detailVC.titleString = model.plateNo;
+        detailVC.vehicleId = model.vehicleId;
+        [self.navigationController pushViewController:detailVC animated:YES];
+    }
+
 }
 
 #pragma -mark carListCellButtonDelegate

@@ -7,7 +7,6 @@
 //
 
 #import "EBLoginViewController.h"
-#import "Globals.h"
 #import "EBRegisterViewController.h"
 #import "MBProgressHUD.h"
 #import "EBCarListViewController.h"

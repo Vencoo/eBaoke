@@ -7,7 +7,6 @@
 //
 
 #import "EBInsuranceViewController.h"
-#import "Globals.h"
 
 @interface EBInsuranceViewController ()
 {

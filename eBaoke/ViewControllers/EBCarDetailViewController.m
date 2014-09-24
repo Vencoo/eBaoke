@@ -7,7 +7,6 @@
 //
 
 #import "EBCarDetailViewController.h"
-#import "Globals.h"
 #import "EBCarDetailModel.h"
 
 @interface EBCarDetailViewController ()<UITableViewDelegate,UITableViewDataSource>

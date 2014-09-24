@@ -28,10 +28,14 @@
 		403C91AD19C697230081F864 /* CarTypeList.plist in Resources */ = {isa = PBXBuildFile; fileRef = 403C91AC19C697230081F864 /* CarTypeList.plist */; };
 		403C91B019C69A790081F864 /* LoginBtn.png in Resources */ = {isa = PBXBuildFile; fileRef = 403C91AE19C69A790081F864 /* LoginBtn.png */; };
 		403C91B119C69A790081F864 /* LoginBtnPressed.png in Resources */ = {isa = PBXBuildFile; fileRef = 403C91AF19C69A790081F864 /* LoginBtnPressed.png */; };
+		A20A79A919D14D6900C2D68E /* EBCarTypeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A20A79A819D14D6900C2D68E /* EBCarTypeViewController.m */; };
+		A20A79AF19D160C600C2D68E /* EBConfirmEditVC.m in Sources */ = {isa = PBXBuildFile; fileRef = A20A79AD19D160C600C2D68E /* EBConfirmEditVC.m */; };
+		A20A79B019D160C600C2D68E /* EBConfirmEditVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = A20A79AE19D160C600C2D68E /* EBConfirmEditVC.xib */; };
+		A20A79B419D1645400C2D68E /* EBCarEditViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A20A79B219D1645400C2D68E /* EBCarEditViewController.m */; };
+		A20A79B519D1645400C2D68E /* EBCarEditViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = A20A79B319D1645400C2D68E /* EBCarEditViewController.xib */; };
 		D71F84EA19CA8E8E00D61707 /* SendSMS.png in Resources */ = {isa = PBXBuildFile; fileRef = D71F84E919CA8E8E00D61707 /* SendSMS.png */; };
 		D71F84F419CAD23D00D61707 /* EBCarListCell.m in Sources */ = {isa = PBXBuildFile; fileRef = D71F84F319CAD23D00D61707 /* EBCarListCell.m */; };
 		D71F84FA19CAD5D300D61707 /* EBCarListCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = D71F84F919CAD5D300D61707 /* EBCarListCell.xib */; };
-		D71F84FF19CAD92000D61707 /* EBCarTypeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D71F84FE19CAD92000D61707 /* EBCarTypeViewController.m */; };
 		D7373AC419CBCD7E0056C772 /* EBCarListModel.m in Sources */ = {isa = PBXBuildFile; fileRef = D7373AC319CBCD7E0056C772 /* EBCarListModel.m */; };
 		D7373AC719CBF1AB0056C772 /* EBCarDetailModel.m in Sources */ = {isa = PBXBuildFile; fileRef = D7373AC619CBF1AB0056C772 /* EBCarDetailModel.m */; };
 		D770E94F19C93578001F9B60 /* MBProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = D770E94C19C93578001F9B60 /* MBProgressHUD.m */; };
@@ -244,12 +248,19 @@
 		403C91AC19C697230081F864 /* CarTypeList.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = CarTypeList.plist; sourceTree = "<group>"; };
 		403C91AE19C69A790081F864 /* LoginBtn.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = LoginBtn.png; sourceTree = "<group>"; };
 		403C91AF19C69A790081F864 /* LoginBtnPressed.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = LoginBtnPressed.png; sourceTree = "<group>"; };
+		A20A79A619D14D5D00C2D68E /* EBBaseViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = EBBaseViewController.h; sourceTree = "<group>"; };
+		A20A79A719D14D6900C2D68E /* EBCarTypeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EBCarTypeViewController.h; sourceTree = "<group>"; };
+		A20A79A819D14D6900C2D68E /* EBCarTypeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EBCarTypeViewController.m; sourceTree = "<group>"; };
+		A20A79AC19D160C600C2D68E /* EBConfirmEditVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EBConfirmEditVC.h; sourceTree = "<group>"; };
+		A20A79AD19D160C600C2D68E /* EBConfirmEditVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EBConfirmEditVC.m; sourceTree = "<group>"; };
+		A20A79AE19D160C600C2D68E /* EBConfirmEditVC.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = EBConfirmEditVC.xib; sourceTree = "<group>"; };
+		A20A79B119D1645400C2D68E /* EBCarEditViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EBCarEditViewController.h; sourceTree = "<group>"; };
+		A20A79B219D1645400C2D68E /* EBCarEditViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EBCarEditViewController.m; sourceTree = "<group>"; };
+		A20A79B319D1645400C2D68E /* EBCarEditViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = EBCarEditViewController.xib; sourceTree = "<group>"; };
 		D71F84E919CA8E8E00D61707 /* SendSMS.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = SendSMS.png; sourceTree = "<group>"; };
 		D71F84F219CAD23C00D61707 /* EBCarListCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EBCarListCell.h; sourceTree = "<group>"; };
 		D71F84F319CAD23D00D61707 /* EBCarListCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EBCarListCell.m; sourceTree = "<group>"; };
 		D71F84F919CAD5D300D61707 /* EBCarListCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = EBCarListCell.xib; sourceTree = "<group>"; };
-		D71F84FD19CAD92000D61707 /* EBCarTypeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EBCarTypeViewController.h; sourceTree = "<group>"; };
-		D71F84FE19CAD92000D61707 /* EBCarTypeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EBCarTypeViewController.m; sourceTree = "<group>"; };
 		D7373AC219CBCD7E0056C772 /* EBCarListModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EBCarListModel.h; sourceTree = "<group>"; };
 		D7373AC319CBCD7E0056C772 /* EBCarListModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EBCarListModel.m; sourceTree = "<group>"; };
 		D7373AC519CBF1AB0056C772 /* EBCarDetailModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EBCarDetailModel.h; sourceTree = "<group>"; };
@@ -292,7 +303,6 @@
 		D770E97819C98BB9001F9B60 /* 新增车辆-7.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "新增车辆-7.png"; sourceTree = "<group>"; };
 		D770E97919C98BB9001F9B60 /* 新增车辆-8.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "新增车辆-8.png"; sourceTree = "<group>"; };
 		D770E97A19C98BB9001F9B60 /* 新增车辆-9.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "新增车辆-9.png"; sourceTree = "<group>"; };
-		D7AA2DE319CFCB5300216930 /* EBBaseViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = EBBaseViewController.h; path = SubViewControllers/EBBaseViewController.h; sourceTree = "<group>"; };
 		D7D218A219C6B80200C585FA /* arrow.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = arrow.png; sourceTree = "<group>"; };
 		D7D218A319C6B80200C585FA /* Background.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Background.png; sourceTree = "<group>"; };
 		D7D218A519C6B80200C585FA /* CarDetail_r10_c1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = CarDetail_r10_c1.png; sourceTree = "<group>"; };
@@ -554,6 +564,9 @@
 				D71F84F219CAD23C00D61707 /* EBCarListCell.h */,
 				D71F84F319CAD23D00D61707 /* EBCarListCell.m */,
 				D71F84F919CAD5D300D61707 /* EBCarListCell.xib */,
+				A20A79AC19D160C600C2D68E /* EBConfirmEditVC.h */,
+				A20A79AD19D160C600C2D68E /* EBConfirmEditVC.m */,
+				A20A79AE19D160C600C2D68E /* EBConfirmEditVC.xib */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -583,8 +596,7 @@
 		403C918A19C6930B0081F864 /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
-				D71F84FC19CAD8FE00D61707 /* SubViewControllers */,
-				D7AA2DE319CFCB5300216930 /* EBBaseViewController.h */,
+				A20A79A619D14D5D00C2D68E /* EBBaseViewController.h */,
 				403C919119C694180081F864 /* EBBaseViewController.m */,
 				403C919619C694740081F864 /* EBLoginViewController.h */,
 				403C919719C694740081F864 /* EBLoginViewController.m */,
@@ -594,6 +606,11 @@
 				403C919A19C6948F0081F864 /* EBCarListViewController.m */,
 				403C919C19C694AD0081F864 /* EBCarAddViewController.h */,
 				403C919D19C694AD0081F864 /* EBCarAddViewController.m */,
+				A20A79B119D1645400C2D68E /* EBCarEditViewController.h */,
+				A20A79B219D1645400C2D68E /* EBCarEditViewController.m */,
+				A20A79B319D1645400C2D68E /* EBCarEditViewController.xib */,
+				A20A79A719D14D6900C2D68E /* EBCarTypeViewController.h */,
+				A20A79A819D14D6900C2D68E /* EBCarTypeViewController.m */,
 				403C919F19C694BE0081F864 /* EBCarDetailViewController.h */,
 				403C91A019C694BE0081F864 /* EBCarDetailViewController.m */,
 				403C91A219C694E40081F864 /* EBInsuranceViewController.h */,
@@ -616,15 +633,6 @@
 				403C91AC19C697230081F864 /* CarTypeList.plist */,
 			);
 			path = Datas;
-			sourceTree = "<group>";
-		};
-		D71F84FC19CAD8FE00D61707 /* SubViewControllers */ = {
-			isa = PBXGroup;
-			children = (
-				D71F84FD19CAD92000D61707 /* EBCarTypeViewController.h */,
-				D71F84FE19CAD92000D61707 /* EBCarTypeViewController.m */,
-			);
-			path = SubViewControllers;
 			sourceTree = "<group>";
 		};
 		D770E94919C93578001F9B60 /* MBProgressHUD */ = {
@@ -1137,8 +1145,10 @@
 				D7D2196019C6B80200C585FA /* Popup_r1_c1.png in Resources */,
 				D770E99019C98BB9001F9B60 /* delete_1.png in Resources */,
 				D7D2196219C6B80200C585FA /* Popup_r3_c1.png in Resources */,
+				A20A79B519D1645400C2D68E /* EBCarEditViewController.xib in Resources */,
 				D7D2196419C6B80200C585FA /* Popup_r5_c1.png in Resources */,
 				D7D2197919C6B80200C585FA /* Search-Option-advanced.png in Resources */,
+				A20A79B019D160C600C2D68E /* EBConfirmEditVC.xib in Resources */,
 				403C91B119C69A790081F864 /* LoginBtnPressed.png in Resources */,
 				D7D2194D19C6B80200C585FA /* ipad2.png in Resources */,
 				D7D2197C19C6B80200C585FA /* Search_box_simple.png in Resources */,
@@ -1168,7 +1178,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				D71F84FF19CAD92000D61707 /* EBCarTypeViewController.m in Sources */,
 				D7D219A319C6C7B800C585FA /* AFURLConnectionOperation.m in Sources */,
 				403C919E19C694AD0081F864 /* EBCarAddViewController.m in Sources */,
 				403C91A119C694BE0081F864 /* EBCarDetailViewController.m in Sources */,
@@ -1186,7 +1195,9 @@
 				D7D2198519C6B89900C585FA /* UIViewExt.m in Sources */,
 				403C918E19C6934B0081F864 /* EBCarDetailCell.m in Sources */,
 				D71F84F419CAD23D00D61707 /* EBCarListCell.m in Sources */,
+				A20A79AF19D160C600C2D68E /* EBConfirmEditVC.m in Sources */,
 				403C919B19C6948F0081F864 /* EBCarListViewController.m in Sources */,
+				A20A79A919D14D6900C2D68E /* EBCarTypeViewController.m in Sources */,
 				403C91AA19C695940081F864 /* EBViolationViewController.m in Sources */,
 				403C91A419C694E40081F864 /* EBInsuranceViewController.m in Sources */,
 				D7373AC419CBCD7E0056C772 /* EBCarListModel.m in Sources */,
@@ -1195,6 +1206,7 @@
 				D7D219B019C6DD9400C585FA /* NSString+MD5Addition.m in Sources */,
 				403C919519C694580081F864 /* EBRegisterViewController.m in Sources */,
 				D7D219A919C6D51900C585FA /* AppContext.m in Sources */,
+				A20A79B419D1645400C2D68E /* EBCarEditViewController.m in Sources */,
 				D7D219B119C6DD9400C585FA /* UIDevice+IdentifierAddition.m in Sources */,
 				403C915619C6786D0081F864 /* main.m in Sources */,
 				D7D2199E19C6C7B800C585FA /* AFHTTPRequestOperation.m in Sources */,

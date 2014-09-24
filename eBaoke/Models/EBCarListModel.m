@@ -18,7 +18,7 @@
         _plateNo = [dataArray objectAtIndex:1];
         _carOwner = [dataArray objectAtIndex:2];
         _engineNo = [dataArray objectAtIndex:3];
-        _vinCode = [dataArray objectAtIndex:4];
+        _vinCode = [dataArray objectAtIndex:3];
 
         
     }

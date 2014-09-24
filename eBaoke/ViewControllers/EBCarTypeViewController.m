@@ -7,7 +7,6 @@
 //
 
 #import "EBCarTypeViewController.h"
-#import "Globals.h"
 
 @interface EBCarTypeViewController ()<UITableViewDataSource,UITableViewDelegate>
 {

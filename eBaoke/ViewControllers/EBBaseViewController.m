@@ -7,7 +7,6 @@
 //
 
 #import "EBBaseViewController.h"
-#import "Globals.h"
 
 @interface EBBaseViewController ()
 
