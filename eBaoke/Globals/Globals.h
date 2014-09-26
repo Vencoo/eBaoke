@@ -14,6 +14,9 @@
 #import "UIViewExt.h"
 #import "AppContext.h"
 #import "MBProgressHUD.h"
+#import "EBCarListModel.h"
+#import "EBCarDetailModel.h"
+
 
 #define kDeviceWidth [UIScreen mainScreen].bounds.size.width
 #define KDeviceHeight [UIScreen mainScreen].bounds.size.height

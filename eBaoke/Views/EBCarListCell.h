@@ -7,14 +7,13 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "Globals.h"
 
-@protocol  carListCellButtonDelegate <NSObject>
-
-- (void)pushToInsuranceViewControllerWithTag:(NSInteger)tag;
-
-@end
+@protocol  carListCellButtonDelegate;
 
 @interface EBCarListCell : UITableViewCell
+
+@property (strong, nonatomic) EBCarListModel *carModel;
 
 @property (strong, nonatomic) IBOutlet UILabel *plateLabel;
 @property (strong, nonatomic) IBOutlet UILabel *ownLabel;
@@ -25,6 +24,21 @@
 @property (strong, nonatomic) IBOutlet UIButton *PremiumButton;
 @property (strong, nonatomic) IBOutlet UIButton *violationButton;
 
+@property (weak, nonatomic) IBOutlet UIButton *deleteButton;
+@property (weak, nonatomic) IBOutlet UIButton *deleteSignButton;
+
 @property(nonatomic)id<carListCellButtonDelegate>delegate;
+
+// 设置删除状态
+- (void)setDeleteStatus:(BOOL)status;
+
+@end
+
+@protocol  carListCellButtonDelegate <NSObject>
+
+- (void)cellInsuranceAction:(EBCarListCell *)cell;
+- (void)cellPremiumBAction:(EBCarListCell *)cell;
+- (void)cellViolationAction:(EBCarListCell *)cell;
+- (void)cellDeleteAction:(EBCarListCell *)cell;
 
 @end

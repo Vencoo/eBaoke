@@ -33,6 +33,13 @@
 		A20A79B019D160C600C2D68E /* EBConfirmEditVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = A20A79AE19D160C600C2D68E /* EBConfirmEditVC.xib */; };
 		A20A79B419D1645400C2D68E /* EBCarEditViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A20A79B219D1645400C2D68E /* EBCarEditViewController.m */; };
 		A20A79B519D1645400C2D68E /* EBCarEditViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = A20A79B319D1645400C2D68E /* EBCarEditViewController.xib */; };
+		A2D177D919D3EB310001AFF2 /* EBViolationModel.m in Sources */ = {isa = PBXBuildFile; fileRef = A2D177D819D3EB310001AFF2 /* EBViolationModel.m */; };
+		A2D177DB19D4030D0001AFF2 /* EBPremiumViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = A2D177DA19D4030D0001AFF2 /* EBPremiumViewController.xib */; };
+		A2D177DE19D416680001AFF2 /* EBSelectOptionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A2D177DD19D416680001AFF2 /* EBSelectOptionViewController.m */; };
+		A2D177E019D435940001AFF2 /* CarItemsList.plist in Resources */ = {isa = PBXBuildFile; fileRef = A2D177DF19D435940001AFF2 /* CarItemsList.plist */; };
+		A2D7A4E319D2BFCC008EF275 /* AppContext.m in Sources */ = {isa = PBXBuildFile; fileRef = A2D7A4E219D2BFCC008EF275 /* AppContext.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		A2D7A4E719D2EBB3008EF275 /* EBViolationCell.m in Sources */ = {isa = PBXBuildFile; fileRef = A2D7A4E519D2EBB3008EF275 /* EBViolationCell.m */; };
+		A2D7A4E819D2EBB3008EF275 /* EBViolationCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = A2D7A4E619D2EBB3008EF275 /* EBViolationCell.xib */; };
 		D71F84EA19CA8E8E00D61707 /* SendSMS.png in Resources */ = {isa = PBXBuildFile; fileRef = D71F84E919CA8E8E00D61707 /* SendSMS.png */; };
 		D71F84F419CAD23D00D61707 /* EBCarListCell.m in Sources */ = {isa = PBXBuildFile; fileRef = D71F84F319CAD23D00D61707 /* EBCarListCell.m */; };
 		D71F84FA19CAD5D300D61707 /* EBCarListCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = D71F84F919CAD5D300D61707 /* EBCarListCell.xib */; };
@@ -106,7 +113,6 @@
 		D7D2193319C6B80200C585FA /* ChatBubbleGreen@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D7D218BF19C6B80200C585FA /* ChatBubbleGreen@2x.png */; };
 		D7D2193419C6B80200C585FA /* ChatBubbleGreen_L.png in Resources */ = {isa = PBXBuildFile; fileRef = D7D218C019C6B80200C585FA /* ChatBubbleGreen_L.png */; };
 		D7D2193519C6B80200C585FA /* ChatBubbleGreen_L@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D7D218C119C6B80200C585FA /* ChatBubbleGreen_L@2x.png */; };
-		D7D2193619C6B80200C585FA /* chatview-screenshot.png in Resources */ = {isa = PBXBuildFile; fileRef = D7D218C219C6B80200C585FA /* chatview-screenshot.png */; };
 		D7D2193719C6B80200C585FA /* CarDetail_header.png in Resources */ = {isa = PBXBuildFile; fileRef = D7D218C419C6B80200C585FA /* CarDetail_header.png */; };
 		D7D2193819C6B80200C585FA /* ClaimList.png in Resources */ = {isa = PBXBuildFile; fileRef = D7D218C519C6B80200C585FA /* ClaimList.png */; };
 		D7D2193919C6B80200C585FA /* line.png in Resources */ = {isa = PBXBuildFile; fileRef = D7D218C619C6B80200C585FA /* line.png */; };
@@ -119,17 +125,10 @@
 		D7D2194019C6B80200C585FA /* down.png in Resources */ = {isa = PBXBuildFile; fileRef = D7D218CE19C6B80200C585FA /* down.png */; };
 		D7D2194119C6B80200C585FA /* empty.png in Resources */ = {isa = PBXBuildFile; fileRef = D7D218CF19C6B80200C585FA /* empty.png */; };
 		D7D2194219C6B80200C585FA /* EPRecordList.png in Resources */ = {isa = PBXBuildFile; fileRef = D7D218D119C6B80200C585FA /* EPRecordList.png */; };
-		D7D2194319C6B80200C585FA /* face.png in Resources */ = {isa = PBXBuildFile; fileRef = D7D218D219C6B80200C585FA /* face.png */; };
 		D7D2194419C6B80200C585FA /* face@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D7D218D319C6B80200C585FA /* face@2x.png */; };
 		D7D2194519C6B80200C585FA /* feedback.png in Resources */ = {isa = PBXBuildFile; fileRef = D7D218D419C6B80200C585FA /* feedback.png */; };
 		D7D2194619C6B80200C585FA /* go-to-recommend.png in Resources */ = {isa = PBXBuildFile; fileRef = D7D218D519C6B80200C585FA /* go-to-recommend.png */; };
 		D7D2194719C6B80200C585FA /* green.png in Resources */ = {isa = PBXBuildFile; fileRef = D7D218D619C6B80200C585FA /* green.png */; };
-		D7D2194819C6B80200C585FA /* icon copy.png in Resources */ = {isa = PBXBuildFile; fileRef = D7D218D719C6B80200C585FA /* icon copy.png */; };
-		D7D2194919C6B80200C585FA /* icon-144.png in Resources */ = {isa = PBXBuildFile; fileRef = D7D218D819C6B80200C585FA /* icon-144.png */; };
-		D7D2194A19C6B80200C585FA /* icon.png in Resources */ = {isa = PBXBuildFile; fileRef = D7D218D919C6B80200C585FA /* icon.png */; };
-		D7D2194B19C6B80200C585FA /* icon@2x copy.png in Resources */ = {isa = PBXBuildFile; fileRef = D7D218DA19C6B80200C585FA /* icon@2x copy.png */; };
-		D7D2194C19C6B80200C585FA /* icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D7D218DB19C6B80200C585FA /* icon@2x.png */; };
-		D7D2194D19C6B80200C585FA /* ipad2.png in Resources */ = {isa = PBXBuildFile; fileRef = D7D218DC19C6B80200C585FA /* ipad2.png */; };
 		D7D2194E19C6B80200C585FA /* like.png in Resources */ = {isa = PBXBuildFile; fileRef = D7D218DD19C6B80200C585FA /* like.png */; };
 		D7D2194F19C6B80200C585FA /* liked.png in Resources */ = {isa = PBXBuildFile; fileRef = D7D218DE19C6B80200C585FA /* liked.png */; };
 		D7D2195019C6B80200C585FA /* Login2.png in Resources */ = {isa = PBXBuildFile; fileRef = D7D218DF19C6B80200C585FA /* Login2.png */; };
@@ -193,7 +192,6 @@
 		D7D219A319C6C7B800C585FA /* AFURLConnectionOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = D7D2199819C6C7B800C585FA /* AFURLConnectionOperation.m */; };
 		D7D219A419C6C7B800C585FA /* AFXMLRequestOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = D7D2199A19C6C7B800C585FA /* AFXMLRequestOperation.m */; };
 		D7D219A519C6C7B800C585FA /* UIImageView+AFNetworking.m in Sources */ = {isa = PBXBuildFile; fileRef = D7D2199C19C6C7B800C585FA /* UIImageView+AFNetworking.m */; };
-		D7D219A919C6D51900C585FA /* AppContext.m in Sources */ = {isa = PBXBuildFile; fileRef = D7D219A719C6D51900C585FA /* AppContext.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		D7D219AA19C6D51900C585FA /* AppEnv.plist in Resources */ = {isa = PBXBuildFile; fileRef = D7D219A819C6D51900C585FA /* AppEnv.plist */; };
 		D7D219B019C6DD9400C585FA /* NSString+MD5Addition.m in Sources */ = {isa = PBXBuildFile; fileRef = D7D219AD19C6DD9400C585FA /* NSString+MD5Addition.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		D7D219B119C6DD9400C585FA /* UIDevice+IdentifierAddition.m in Sources */ = {isa = PBXBuildFile; fileRef = D7D219AF19C6DD9400C585FA /* UIDevice+IdentifierAddition.m */; };
@@ -257,6 +255,17 @@
 		A20A79B119D1645400C2D68E /* EBCarEditViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EBCarEditViewController.h; sourceTree = "<group>"; };
 		A20A79B219D1645400C2D68E /* EBCarEditViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EBCarEditViewController.m; sourceTree = "<group>"; };
 		A20A79B319D1645400C2D68E /* EBCarEditViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = EBCarEditViewController.xib; sourceTree = "<group>"; };
+		A2D177D719D3EB310001AFF2 /* EBViolationModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EBViolationModel.h; sourceTree = "<group>"; };
+		A2D177D819D3EB310001AFF2 /* EBViolationModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EBViolationModel.m; sourceTree = "<group>"; };
+		A2D177DA19D4030D0001AFF2 /* EBPremiumViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = EBPremiumViewController.xib; sourceTree = "<group>"; };
+		A2D177DC19D416680001AFF2 /* EBSelectOptionViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EBSelectOptionViewController.h; sourceTree = "<group>"; };
+		A2D177DD19D416680001AFF2 /* EBSelectOptionViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EBSelectOptionViewController.m; sourceTree = "<group>"; };
+		A2D177DF19D435940001AFF2 /* CarItemsList.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = CarItemsList.plist; sourceTree = "<group>"; };
+		A2D7A4E119D2BFCC008EF275 /* AppContext.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AppContext.h; sourceTree = "<group>"; };
+		A2D7A4E219D2BFCC008EF275 /* AppContext.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AppContext.m; sourceTree = "<group>"; };
+		A2D7A4E419D2EBB3008EF275 /* EBViolationCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EBViolationCell.h; sourceTree = "<group>"; };
+		A2D7A4E519D2EBB3008EF275 /* EBViolationCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EBViolationCell.m; sourceTree = "<group>"; };
+		A2D7A4E619D2EBB3008EF275 /* EBViolationCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = EBViolationCell.xib; sourceTree = "<group>"; };
 		D71F84E919CA8E8E00D61707 /* SendSMS.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = SendSMS.png; sourceTree = "<group>"; };
 		D71F84F219CAD23C00D61707 /* EBCarListCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EBCarListCell.h; sourceTree = "<group>"; };
 		D71F84F319CAD23D00D61707 /* EBCarListCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EBCarListCell.m; sourceTree = "<group>"; };
@@ -334,7 +343,6 @@
 		D7D218BF19C6B80200C585FA /* ChatBubbleGreen@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "ChatBubbleGreen@2x.png"; sourceTree = "<group>"; };
 		D7D218C019C6B80200C585FA /* ChatBubbleGreen_L.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ChatBubbleGreen_L.png; sourceTree = "<group>"; };
 		D7D218C119C6B80200C585FA /* ChatBubbleGreen_L@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "ChatBubbleGreen_L@2x.png"; sourceTree = "<group>"; };
-		D7D218C219C6B80200C585FA /* chatview-screenshot.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "chatview-screenshot.png"; sourceTree = "<group>"; };
 		D7D218C419C6B80200C585FA /* CarDetail_header.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = CarDetail_header.png; sourceTree = "<group>"; };
 		D7D218C519C6B80200C585FA /* ClaimList.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ClaimList.png; sourceTree = "<group>"; };
 		D7D218C619C6B80200C585FA /* line.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = line.png; sourceTree = "<group>"; };
@@ -347,17 +355,10 @@
 		D7D218CE19C6B80200C585FA /* down.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = down.png; sourceTree = "<group>"; };
 		D7D218CF19C6B80200C585FA /* empty.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = empty.png; sourceTree = "<group>"; };
 		D7D218D119C6B80200C585FA /* EPRecordList.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = EPRecordList.png; sourceTree = "<group>"; };
-		D7D218D219C6B80200C585FA /* face.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = face.png; sourceTree = "<group>"; };
 		D7D218D319C6B80200C585FA /* face@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "face@2x.png"; sourceTree = "<group>"; };
 		D7D218D419C6B80200C585FA /* feedback.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = feedback.png; sourceTree = "<group>"; };
 		D7D218D519C6B80200C585FA /* go-to-recommend.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "go-to-recommend.png"; sourceTree = "<group>"; };
 		D7D218D619C6B80200C585FA /* green.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = green.png; sourceTree = "<group>"; };
-		D7D218D719C6B80200C585FA /* icon copy.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon copy.png"; sourceTree = "<group>"; };
-		D7D218D819C6B80200C585FA /* icon-144.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon-144.png"; sourceTree = "<group>"; };
-		D7D218D919C6B80200C585FA /* icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon.png; sourceTree = "<group>"; };
-		D7D218DA19C6B80200C585FA /* icon@2x copy.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon@2x copy.png"; sourceTree = "<group>"; };
-		D7D218DB19C6B80200C585FA /* icon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon@2x.png"; sourceTree = "<group>"; };
-		D7D218DC19C6B80200C585FA /* ipad2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ipad2.png; sourceTree = "<group>"; };
 		D7D218DD19C6B80200C585FA /* like.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = like.png; sourceTree = "<group>"; };
 		D7D218DE19C6B80200C585FA /* liked.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = liked.png; sourceTree = "<group>"; };
 		D7D218DF19C6B80200C585FA /* Login2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Login2.png; sourceTree = "<group>"; };
@@ -432,8 +433,6 @@
 		D7D2199A19C6C7B800C585FA /* AFXMLRequestOperation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AFXMLRequestOperation.m; sourceTree = "<group>"; };
 		D7D2199B19C6C7B800C585FA /* UIImageView+AFNetworking.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImageView+AFNetworking.h"; sourceTree = "<group>"; };
 		D7D2199C19C6C7B800C585FA /* UIImageView+AFNetworking.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImageView+AFNetworking.m"; sourceTree = "<group>"; };
-		D7D219A619C6D51900C585FA /* AppContext.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AppContext.h; sourceTree = "<group>"; };
-		D7D219A719C6D51900C585FA /* AppContext.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AppContext.m; sourceTree = "<group>"; };
 		D7D219A819C6D51900C585FA /* AppEnv.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = AppEnv.plist; sourceTree = "<group>"; };
 		D7D219AC19C6DD9400C585FA /* NSString+MD5Addition.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+MD5Addition.h"; sourceTree = "<group>"; };
 		D7D219AD19C6DD9400C585FA /* NSString+MD5Addition.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+MD5Addition.m"; sourceTree = "<group>"; };
@@ -528,6 +527,8 @@
 				403C917F19C6905D0081F864 /* Globals.h */,
 				D7D2198319C6B89900C585FA /* UIViewExt.h */,
 				D7D2198419C6B89900C585FA /* UIViewExt.m */,
+				A2D7A4E119D2BFCC008EF275 /* AppContext.h */,
+				A2D7A4E219D2BFCC008EF275 /* AppContext.m */,
 			);
 			path = Globals;
 			sourceTree = "<group>";
@@ -564,6 +565,9 @@
 				D71F84F219CAD23C00D61707 /* EBCarListCell.h */,
 				D71F84F319CAD23D00D61707 /* EBCarListCell.m */,
 				D71F84F919CAD5D300D61707 /* EBCarListCell.xib */,
+				A2D7A4E419D2EBB3008EF275 /* EBViolationCell.h */,
+				A2D7A4E519D2EBB3008EF275 /* EBViolationCell.m */,
+				A2D7A4E619D2EBB3008EF275 /* EBViolationCell.xib */,
 				A20A79AC19D160C600C2D68E /* EBConfirmEditVC.h */,
 				A20A79AD19D160C600C2D68E /* EBConfirmEditVC.m */,
 				A20A79AE19D160C600C2D68E /* EBConfirmEditVC.xib */,
@@ -580,6 +584,8 @@
 				D7373AC319CBCD7E0056C772 /* EBCarListModel.m */,
 				D7373AC519CBF1AB0056C772 /* EBCarDetailModel.h */,
 				D7373AC619CBF1AB0056C772 /* EBCarDetailModel.m */,
+				A2D177D719D3EB310001AFF2 /* EBViolationModel.h */,
+				A2D177D819D3EB310001AFF2 /* EBViolationModel.m */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -617,6 +623,9 @@
 				403C91A319C694E40081F864 /* EBInsuranceViewController.m */,
 				403C91A519C695230081F864 /* EBPremiumViewController.h */,
 				403C91A619C695230081F864 /* EBPremiumViewController.m */,
+				A2D177DA19D4030D0001AFF2 /* EBPremiumViewController.xib */,
+				A2D177DC19D416680001AFF2 /* EBSelectOptionViewController.h */,
+				A2D177DD19D416680001AFF2 /* EBSelectOptionViewController.m */,
 				403C91A819C695940081F864 /* EBViolationViewController.h */,
 				403C91A919C695940081F864 /* EBViolationViewController.m */,
 			);
@@ -627,10 +636,9 @@
 			isa = PBXGroup;
 			children = (
 				D7D219AB19C6DD9400C585FA /* UUID */,
-				D7D219A619C6D51900C585FA /* AppContext.h */,
-				D7D219A719C6D51900C585FA /* AppContext.m */,
 				D7D219A819C6D51900C585FA /* AppEnv.plist */,
 				403C91AC19C697230081F864 /* CarTypeList.plist */,
+				A2D177DF19D435940001AFF2 /* CarItemsList.plist */,
 			);
 			path = Datas;
 			sourceTree = "<group>";
@@ -715,7 +723,6 @@
 				D7D218BF19C6B80200C585FA /* ChatBubbleGreen@2x.png */,
 				D7D218C019C6B80200C585FA /* ChatBubbleGreen_L.png */,
 				D7D218C119C6B80200C585FA /* ChatBubbleGreen_L@2x.png */,
-				D7D218C219C6B80200C585FA /* chatview-screenshot.png */,
 				D7D218C319C6B80200C585FA /* ClaimList */,
 				D7D218C719C6B80200C585FA /* Default.png */,
 				D7D218C819C6B80200C585FA /* Default@2x.png */,
@@ -723,17 +730,10 @@
 				D7D218CE19C6B80200C585FA /* down.png */,
 				D7D218CF19C6B80200C585FA /* empty.png */,
 				D7D218D019C6B80200C585FA /* EP */,
-				D7D218D219C6B80200C585FA /* face.png */,
 				D7D218D319C6B80200C585FA /* face@2x.png */,
 				D7D218D419C6B80200C585FA /* feedback.png */,
 				D7D218D519C6B80200C585FA /* go-to-recommend.png */,
 				D7D218D619C6B80200C585FA /* green.png */,
-				D7D218D719C6B80200C585FA /* icon copy.png */,
-				D7D218D819C6B80200C585FA /* icon-144.png */,
-				D7D218D919C6B80200C585FA /* icon.png */,
-				D7D218DA19C6B80200C585FA /* icon@2x copy.png */,
-				D7D218DB19C6B80200C585FA /* icon@2x.png */,
-				D7D218DC19C6B80200C585FA /* ipad2.png */,
 				D7D218DD19C6B80200C585FA /* like.png */,
 				D7D218DE19C6B80200C585FA /* liked.png */,
 				D7D218DF19C6B80200C585FA /* Login2.png */,
@@ -975,6 +975,7 @@
 				TargetAttributes = {
 					403C914F19C6786D0081F864 = {
 						CreatedOnToolsVersion = 6.0;
+						DevelopmentTeam = 99F82YZ52E;
 					};
 					403C916519C6786D0081F864 = {
 						CreatedOnToolsVersion = 6.0;
@@ -1026,6 +1027,7 @@
 				D7D2193219C6B80200C585FA /* ChatBubbleGreen.png in Resources */,
 				D7D2191819C6B80200C585FA /* Background.png in Resources */,
 				D7D2191C19C6B80200C585FA /* CarDetail_r13_c1.png in Resources */,
+				A2D177E019D435940001AFF2 /* CarItemsList.plist in Resources */,
 				D7D2197519C6B80200C585FA /* Search-box-adv_r1_c1.png in Resources */,
 				D770E97E19C98BB9001F9B60 /* 车辆绑定信息确认-3.png in Resources */,
 				D71F84FA19CAD5D300D61707 /* EBCarListCell.xib in Resources */,
@@ -1034,6 +1036,7 @@
 				D7D2192619C6B80200C585FA /* CarDetail_r3_c1.png in Resources */,
 				D7D2194719C6B80200C585FA /* green.png in Resources */,
 				D7D2192E19C6B80200C585FA /* PopupShadow.png in Resources */,
+				A2D177DB19D4030D0001AFF2 /* EBPremiumViewController.xib in Resources */,
 				D7D2195A19C6B80200C585FA /* Segment_bg.png in Resources */,
 				D770E98819C98BB9001F9B60 /* 新增页面3.png in Resources */,
 				D7D2196B19C6B80200C585FA /* QuoteResult_r2_c1.png in Resources */,
@@ -1046,7 +1049,6 @@
 				D7D2197F19C6B80200C585FA /* swipe.png in Resources */,
 				D7D2192D19C6B80200C585FA /* Popup.png in Resources */,
 				D770E99319C98BB9001F9B60 /* 新增车辆-1.png in Resources */,
-				D7D2194319C6B80200C585FA /* face.png in Resources */,
 				D7D2194619C6B80200C585FA /* go-to-recommend.png in Resources */,
 				D7D2197119C6B80200C585FA /* rotation.png in Resources */,
 				403C915F19C6786D0081F864 /* Main.storyboard in Resources */,
@@ -1064,8 +1066,6 @@
 				D7D2196619C6B80200C585FA /* Quote_bg.png in Resources */,
 				D7D2193B19C6B80200C585FA /* Default@2x.png in Resources */,
 				D7D2193519C6B80200C585FA /* ChatBubbleGreen_L@2x.png in Resources */,
-				D7D2194A19C6B80200C585FA /* icon.png in Resources */,
-				D7D2194C19C6B80200C585FA /* icon@2x.png in Resources */,
 				D770E99519C98BB9001F9B60 /* 新增车辆-11.png in Resources */,
 				D7D2196319C6B80200C585FA /* Popup_r4_c1.png in Resources */,
 				D7D2193E19C6B80200C585FA /* btnGreen.png in Resources */,
@@ -1084,7 +1084,6 @@
 				D770E98A19C98BB9001F9B60 /* 新增页面5.png in Resources */,
 				D770E97B19C98BB9001F9B60 /* 车辆绑定信息确认-1.png in Resources */,
 				D7D2193819C6B80200C585FA /* ClaimList.png in Resources */,
-				D7D2194819C6B80200C585FA /* icon copy.png in Resources */,
 				D7D2195019C6B80200C585FA /* Login2.png in Resources */,
 				D770E99119C98BB9001F9B60 /* Register.png in Resources */,
 				D770E97C19C98BB9001F9B60 /* 车辆绑定信息确认-17.png in Resources */,
@@ -1104,7 +1103,6 @@
 				D7D2195219C6B80200C585FA /* LoginBtnPressed.png in Resources */,
 				D7D2192719C6B80200C585FA /* CarDetail_r4_c1.png in Resources */,
 				D7D2195619C6B80200C585FA /* PolicyDetail_r2_c1.png in Resources */,
-				D7D2194B19C6B80200C585FA /* icon@2x copy.png in Resources */,
 				D770E98719C98BB9001F9B60 /* 新增页面2.png in Resources */,
 				D7D2197719C6B80200C585FA /* Search-box-adv_r3_c1.png in Resources */,
 				D7D2193F19C6B80200C585FA /* btnGreen_pressed.png in Resources */,
@@ -1118,8 +1116,8 @@
 				D7D2195419C6B80200C585FA /* newmsg.png in Resources */,
 				D770E98519C98BB9001F9B60 /* remeberYes.png in Resources */,
 				D7D2197E19C6B80200C585FA /* SendButton@2x.png in Resources */,
-				D7D2194919C6B80200C585FA /* icon-144.png in Resources */,
 				D770E99C19C98BB9001F9B60 /* 新增车辆-7.png in Resources */,
+				A2D7A4E819D2EBB3008EF275 /* EBViolationCell.xib in Resources */,
 				D7D2196F19C6B80200C585FA /* Register_2_1.png in Resources */,
 				D7D2196719C6B80200C585FA /* quote_btn.png in Resources */,
 				D770E98119C98BB9001F9B60 /* 车辆绑定信息确认-6.png in Resources */,
@@ -1127,7 +1125,6 @@
 				D7D2195519C6B80200C585FA /* PolicyDetail_r1_c1.png in Resources */,
 				D7D2191719C6B80200C585FA /* arrow.png in Resources */,
 				D770E99919C98BB9001F9B60 /* 新增车辆-4.png in Resources */,
-				D7D2193619C6B80200C585FA /* chatview-screenshot.png in Resources */,
 				D7D2194E19C6B80200C585FA /* like.png in Resources */,
 				D7D2192019C6B80200C585FA /* CarDetail_r17_c1.png in Resources */,
 				D770E99719C98BB9001F9B60 /* 新增车辆-2.png in Resources */,
@@ -1150,7 +1147,6 @@
 				D7D2197919C6B80200C585FA /* Search-Option-advanced.png in Resources */,
 				A20A79B019D160C600C2D68E /* EBConfirmEditVC.xib in Resources */,
 				403C91B119C69A790081F864 /* LoginBtnPressed.png in Resources */,
-				D7D2194D19C6B80200C585FA /* ipad2.png in Resources */,
 				D7D2197C19C6B80200C585FA /* Search_box_simple.png in Resources */,
 				D7D219AA19C6D51900C585FA /* AppEnv.plist in Resources */,
 				D770E99D19C98BB9001F9B60 /* 新增车辆-8.png in Resources */,
@@ -1178,6 +1174,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A2D177DE19D416680001AFF2 /* EBSelectOptionViewController.m in Sources */,
 				D7D219A319C6C7B800C585FA /* AFURLConnectionOperation.m in Sources */,
 				403C919E19C694AD0081F864 /* EBCarAddViewController.m in Sources */,
 				403C91A119C694BE0081F864 /* EBCarDetailViewController.m in Sources */,
@@ -1199,14 +1196,16 @@
 				403C919B19C6948F0081F864 /* EBCarListViewController.m in Sources */,
 				A20A79A919D14D6900C2D68E /* EBCarTypeViewController.m in Sources */,
 				403C91AA19C695940081F864 /* EBViolationViewController.m in Sources */,
+				A2D7A4E319D2BFCC008EF275 /* AppContext.m in Sources */,
 				403C91A419C694E40081F864 /* EBInsuranceViewController.m in Sources */,
 				D7373AC419CBCD7E0056C772 /* EBCarListModel.m in Sources */,
 				403C918319C690850081F864 /* JSONKit.m in Sources */,
 				D7D219A519C6C7B800C585FA /* UIImageView+AFNetworking.m in Sources */,
 				D7D219B019C6DD9400C585FA /* NSString+MD5Addition.m in Sources */,
+				A2D7A4E719D2EBB3008EF275 /* EBViolationCell.m in Sources */,
 				403C919519C694580081F864 /* EBRegisterViewController.m in Sources */,
-				D7D219A919C6D51900C585FA /* AppContext.m in Sources */,
 				A20A79B419D1645400C2D68E /* EBCarEditViewController.m in Sources */,
+				A2D177D919D3EB310001AFF2 /* EBViolationModel.m in Sources */,
 				D7D219B119C6DD9400C585FA /* UIDevice+IdentifierAddition.m in Sources */,
 				403C915619C6786D0081F864 /* main.m in Sources */,
 				D7D2199E19C6C7B800C585FA /* AFHTTPRequestOperation.m in Sources */,
@@ -1326,10 +1325,12 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				INFOPLIST_FILE = eBaoke/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
@@ -1339,10 +1340,12 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				INFOPLIST_FILE = eBaoke/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;

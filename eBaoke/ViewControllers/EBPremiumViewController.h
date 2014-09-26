@@ -10,4 +10,6 @@
 
 @interface EBPremiumViewController : EBBaseViewController
 
+@property (strong, nonatomic) EBCarListModel *carModel;
+
 @end

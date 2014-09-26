@@ -16,10 +16,12 @@
     if (self) {
         _vehicleId = [dataArray objectAtIndex:0];
         _plateNo = [dataArray objectAtIndex:1];
+        if([_plateNo isEqualToString:@""]) {
+            _plateNo = @"无";
+        }
         _carOwner = [dataArray objectAtIndex:2];
         _engineNo = [dataArray objectAtIndex:3];
-        _vinCode = [dataArray objectAtIndex:3];
-
+        _vinCode = [dataArray objectAtIndex:4];
         
     }
     return self;

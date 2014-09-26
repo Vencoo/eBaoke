@@ -13,6 +13,8 @@
 #import "EBCarEditViewController.h"
 #import "EBCarAddViewController.h"
 #import "EBInsuranceViewController.h"
+#import "EBPremiumViewController.h"
+#import "EBViolationViewController.h"
 
 #define kCancelButtonItem 101
 #define kEditButtonItem 102
@@ -41,6 +43,16 @@
 
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
+    
+    [self setEditing:NO];
+    
+    [self sendRequest];
+    
+}
+
+- (void)viewDidLoad {
+    [super viewDidLoad];
+    
     UILabel *titleLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, 100, 30)];
     titleLabel.font = [UIFont systemFontOfSize:17];
     titleLabel.textColor = [UIColor whiteColor];
@@ -51,11 +63,7 @@
     self.navigationController.navigationBar.hidden = NO;
     self.navigationItem.hidesBackButton = YES;
     self.navigationController.navigationBar.tintColor = [UIColor colorWithRed:69 /  255.0 green:155 / 255.0 blue:206 / 255.0 alpha:1.0];
-}
-
-- (void)viewDidLoad {
-    [super viewDidLoad];
-    [self sendRequest];
+    
     self.view.backgroundColor = [UIColor grayColor];
     if (IOSVersion>=7.0) {
         [self setEdgesForExtendedLayout:UIRectEdgeNone];
@@ -81,16 +89,20 @@
     self.navigationItem.leftBarButtonItem = _leftButtonItem;
 }
 
-#pragma -mark Button Action
+- (void)didReceiveMemoryWarning {
+    [super didReceiveMemoryWarning];
+    // Dispose of any resources that can be recreated.
+}
+
+#pragma mark - Button Action
 - (void)leftButtonItem:(UIBarButtonItem *)buttonItem
 {
     if (_isEditing )
     {
-        _isEditing = NO;
-        _rightButtonItem.title = @"编辑";
-        _leftButtonItem.title = @"退出";
+        // 完成按钮
+        [self setEditing:NO];
     }else {
-        // 注销
+        // 注销按钮
         [self.navigationController popViewControllerAnimated:YES];
     }
 }
@@ -99,22 +111,33 @@
 {
     if (!_isEditing)
     {
-        _isEditing = YES;
-        _rightButtonItem.title = @"添加";
-        _leftButtonItem.title = @"完成";
+        // 编辑按钮
+
+        [self setEditing:YES];
     }else {
-        //进入新增页面
+        // 添加按钮
         EBCarAddViewController *addVC = [[EBCarAddViewController alloc] init];
         [self.navigationController pushViewController:addVC animated:YES];
     }
 }
 
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
+- (void)setEditing:(BOOL)editing
+{
+    _isEditing = editing;
+    [_tableView reloadData];
+    
+    if (editing) {
+        _rightButtonItem.title = @"添加";
+        _leftButtonItem.title = @"完成";
+        
+    }else {
+        _rightButtonItem.title = @"编辑";
+        _leftButtonItem.title = @"退出";
+        
+    }
 }
 
-#pragma mark--1.10	账号/车辆绑定信息查询接口
+#pragma mark - 1.10	账号/车辆绑定信息查询接口
 
 -(void)sendRequest
 {
@@ -134,6 +157,7 @@
         request.HTTPBody = [postContent dataUsingEncoding:NSUTF8StringEncoding];
         [request setValue:kHTTPHeader forHTTPHeaderField:@"content-type"];//请求头
         NSURLConnection *connection = [[NSURLConnection alloc]initWithRequest:request delegate:self];
+        [connection start];
         [AppContext didStartNetworking];
         HUD = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
         HUD.labelText = @"加载中...";
@@ -160,7 +184,6 @@
     NSDictionary *dict = [AppContext nsDataToObject:data encoding:NSUTF8StringEncoding];
     NSLog(@"bangding%@",dict);
 
-    
     if ([AppContext checkResponse:dict])
     {
         NSArray *keys = [[dict allKeys] sortedArrayUsingSelector:@selector(compare:)];
@@ -168,14 +191,12 @@
         for (NSString *key in keys) {
             
                 if ([[dict objectForKey:key] isKindOfClass:[NSArray class]]) {
+                    
                     NSMutableArray *keyVal = [dict objectForKey:key];
-                    for (int i=0; i<[keyVal count]; i++) {
-                        if ([[keyVal objectAtIndex:i]isEqualToString:@""]){
-                            [keyVal removeObject:[keyVal objectAtIndex:i]];
-                        }
-                    }
+                    
                     EBCarListModel *model = [[EBCarListModel alloc]initWithArray:keyVal];
                     [_dataArray addObject:model];
+                    
                     NSLog(@"_dataArray=%@",_dataArray );
             }
             [_tableView reloadData];
@@ -185,8 +206,12 @@
 #pragma mark - UITableView delegate
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-
     return _dataArray.count;
+}
+
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    return 160;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath;
@@ -197,19 +222,12 @@
     cell.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"Background"]];
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
     EBCarListModel *model = [_dataArray objectAtIndex:indexPath.row];
-    cell.plateLabel.text = model.plateNo;
-    cell.ownLabel.text = model.carOwner;
-    cell.ebgineLabel.text = model.engineNo;
-    cell.VINLabel.text = model.vinCode;
-    cell.insuranceButton.tag = indexPath.row;
-    cell.PremiumButton.tag = indexPath.row;
-    cell.violationButton.tag = indexPath.row;
+   
+    [cell setCarModel:model];
+    
+    [cell setDeleteStatus:_isEditing];
+    
     return cell;
-}
-
-- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    return 160;
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
@@ -228,21 +246,38 @@
 
 }
 
-#pragma -mark carListCellButtonDelegate
-- (void)pushToInsuranceViewControllerWithTag:(NSInteger)tag
+#pragma -mark carListCellDelegate
+
+- (void)cellInsuranceAction:(EBCarListCell *)cell
 {
     EBInsuranceViewController *insuranceVC = [[EBInsuranceViewController alloc]init];
-    EBCarListModel *model = [_dataArray objectAtIndex:tag];
+   
+    insuranceVC.carModel = cell.carModel;
     
-    NSLog(@"----------------%@",model);
-    
-    [AppContext setTempContextValueByKey:@"car_owner" value:model.carOwner];
-    [AppContext setTempContextValueByKey:@"vehicle_id" value:model.vehicleId];
-    [AppContext setTempContextValueByKey:@"vin_code" value:model.vinCode];
-    
-
     [self.navigationController pushViewController:insuranceVC animated:YES];
 }
 
+- (void)cellPremiumBAction:(EBCarListCell *)cell
+{
+    EBPremiumViewController *pVC = [[EBPremiumViewController alloc] initWithNibName:@"EBPremiumViewController" bundle:[NSBundle mainBundle]];
+    
+    pVC.carModel = cell.carModel;
+    
+    [self.navigationController pushViewController:pVC animated:YES];
+}
+
+- (void)cellViolationAction:(EBCarListCell *)cell
+{
+    EBViolationViewController *vVC = [[EBViolationViewController alloc] init];
+    
+    vVC.carModel = cell.carModel;
+    
+    [self.navigationController pushViewController:vVC animated:YES];
+}
+
+- (void)cellDeleteAction:(EBCarListCell *)cell
+{
+    NSLog(@"delete:%@",cell.carModel.carOwner);
+}
 
 @end

@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="5056" systemVersion="13D65" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="6246" systemVersion="13F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none">
     <dependencies>
-        <deployment defaultVersion="1536" identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="3733"/>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6239"/>
     </dependencies>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
@@ -11,6 +11,9 @@
             <rect key="frame" x="0.0" y="0.0" width="320" height="160"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="VehicleList.png" id="NEr-Nw-IF0">
+                    <rect key="frame" x="0.0" y="0.0" width="320" height="155"/>
+                </imageView>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="azS-Vg-kJp">
                     <rect key="frame" x="124" y="13" width="229" height="21"/>
                     <fontDescription key="fontDescription" type="system" pointSize="15"/>
@@ -36,7 +39,7 @@
                     <nil key="highlightedColor"/>
                 </label>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="xLe-li-jI3">
-                    <rect key="frame" x="21" y="122" width="55" height="20"/>
+                    <rect key="frame" x="32" y="122" width="55" height="20"/>
                     <fontDescription key="fontDescription" type="system" pointSize="10"/>
                     <state key="normal" title="承保信息" backgroundImage="btnGray.png">
                         <color key="titleColor" red="0.89247847579999995" green="0.46750947659999997" blue="0.1506571172" alpha="1" colorSpace="calibratedRGB"/>
@@ -64,7 +67,7 @@
                     </connections>
                 </button>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="pV1-Bq-hPu">
-                    <rect key="frame" x="250" y="122" width="55" height="20"/>
+                    <rect key="frame" x="233" y="122" width="55" height="20"/>
                     <fontDescription key="fontDescription" type="system" pointSize="10"/>
                     <state key="normal" title="违章记录" backgroundImage="btnGray.png">
                         <color key="titleColor" red="0.89247847579999995" green="0.46750947659999997" blue="0.1506571172" alpha="1" colorSpace="calibratedRGB"/>
@@ -77,16 +80,33 @@
                         <action selector="violationButton:" destination="iN0-l3-epB" eventType="touchUpInside" id="goz-wp-fO8"/>
                     </connections>
                 </button>
-                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="VehicleList.png" id="NEr-Nw-IF0">
-                    <rect key="frame" x="0.0" y="0.0" width="320" height="155"/>
-                </imageView>
+                <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="bIw-H6-bXA">
+                    <rect key="frame" x="8" y="60" width="23" height="23"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <state key="normal" image="delete_1.png">
+                        <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                    </state>
+                </button>
+                <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="SOq-4h-DBQ">
+                    <rect key="frame" x="229" y="56" width="53" height="31"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <state key="normal" image="delete.png">
+                        <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                    </state>
+                    <connections>
+                        <action selector="deleteAction:" destination="iN0-l3-epB" eventType="touchUpInside" id="VUo-sh-MQl"/>
+                    </connections>
+                </button>
             </subviews>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+            <nil key="simulatedStatusBarMetrics"/>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
             <connections>
                 <outlet property="PremiumButton" destination="n84-SS-mtD" id="ych-rb-lPx"/>
                 <outlet property="VINLabel" destination="930-hc-MQW" id="tKi-iB-AhB"/>
                 <outlet property="backgroundView" destination="NEr-Nw-IF0" id="ZE2-V7-idw"/>
+                <outlet property="deleteButton" destination="SOq-4h-DBQ" id="bII-o8-X22"/>
+                <outlet property="deleteSignButton" destination="bIw-H6-bXA" id="Om8-sz-015"/>
                 <outlet property="ebgineLabel" destination="Hfk-cW-9oc" id="hYc-fI-woG"/>
                 <outlet property="insuranceButton" destination="xLe-li-jI3" id="PVX-d7-Zum"/>
                 <outlet property="ownLabel" destination="Obi-Xd-F4Y" id="z2X-t3-t4G"/>
@@ -99,5 +119,12 @@
         <image name="VehicleList.png" width="640" height="348"/>
         <image name="btnGray.png" width="119" height="45"/>
         <image name="btnGreen.png" width="119" height="45"/>
+        <image name="delete.png" width="74" height="51"/>
+        <image name="delete_1.png" width="38" height="40"/>
     </resources>
+    <simulatedMetricsContainer key="defaultSimulatedMetrics">
+        <simulatedStatusBarMetrics key="statusBar"/>
+        <simulatedOrientationMetrics key="orientation"/>
+        <simulatedScreenMetrics key="destination" type="retina4"/>
+    </simulatedMetricsContainer>
 </document>

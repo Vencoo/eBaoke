@@ -46,7 +46,7 @@
                           @"商业险",
                           nil]];
     [_segmentedControl addTarget:self action:@selector(segmentAction:) forControlEvents:UIControlEventValueChanged];
-    _segmentedControl.frame = CGRectMake(5, 10, kDeviceWidth-10, 20);
+    _segmentedControl.frame = CGRectMake(5, 10, kDeviceWidth-10, 30);
     [_segmentedControl setBackgroundImage:[UIImage imageNamed:@"Segment_bg"] forState:UIControlStateNormal barMetrics:UIBarMetricsDefault];
     _segmentedControl.momentary = NO;
      _segmentedControl.segmentedControlStyle = UISegmentedControlStyleBar;
@@ -68,9 +68,9 @@
     NSMutableDictionary *postDict = [[NSMutableDictionary alloc] init];
     [postDict setObject:[AppContext getTempContextValueByKey:@"user_id"] forKey:@"user_id"];
     [postDict setObject:@"policy_list" forKey:@"select"];
-    [postDict setObject:[AppContext getTempContextValueByKey:@"car_owner"] forKey:@"car_owner"];
-    [postDict setObject:[AppContext getTempContextValueByKey:@"vehicle_id"] forKey:@"vehicle_id"] ;
-    [postDict setObject:[AppContext getTempContextValueByKey:@"vin_code"] forKey:@"vin_code"] ;
+    [postDict setObject:_carModel.carOwner forKey:@"car_owner"];
+    [postDict setObject:_carModel.vehicleId forKey:@"vehicle_id"] ;
+    [postDict setObject:_carModel.vinCode forKey:@"vin_code"] ;
     NSString *postContent = [AppContext dictionaryToXml:postDict error:&error];
     if (!error) {
         NSLog(@"---- content %@", postContent);

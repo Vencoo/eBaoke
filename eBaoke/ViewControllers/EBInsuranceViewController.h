@@ -10,4 +10,6 @@
 
 @interface EBInsuranceViewController : EBBaseViewController
 
+@property (strong, nonatomic) EBCarListModel *carModel;
+
 @end

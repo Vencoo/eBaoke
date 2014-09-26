@@ -12,7 +12,11 @@
 @implementation EBCarListCell
 
 - (void)awakeFromNib {
-
+    
+    [self bringSubviewToFront:_deleteButton];
+    [self bringSubviewToFront:_insuranceButton];
+    [self bringSubviewToFront:_violationButton];
+    [self bringSubviewToFront:_PremiumButton];
 }
 
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {
@@ -21,39 +25,49 @@
     // Configure the view for the selected state
 }
 
-- (instancetype)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier
+- (void)setCarModel:(EBCarListModel *)carModel
 {
-    self = [super initWithStyle:style reuseIdentifier:reuseIdentifier];
-    if (self) {
-        
-    }
-    return self;
+    _carModel = carModel;
+    
+    self.plateLabel.text = _carModel.plateNo;
+    self.ownLabel.text = _carModel.carOwner;
+    self.ebgineLabel.text = _carModel.engineNo;
+    self.VINLabel.text = _carModel.vinCode;
+}
+
+- (void)setDeleteStatus:(BOOL)status
+{
+    [_deleteButton setHidden:!status];
+    [_deleteSignButton setHidden:!status];
+    
 }
 
 - (IBAction)insuranceButton:(UIButton*)button {
-    switch (button.tag) {
-        case 0:
-        {
-            [_delegate pushToInsuranceViewControllerWithTag:button.tag];
-        }
-            break;
-        case 1:
-            NSLog(@"insuranceButton1");
-            break;
-        case 2:
-            NSLog(@"insuranceButton2");
-            break;
-        default:
-            break;
+    // 承保信息
+    
+    if (_delegate) {
+        [_delegate cellInsuranceAction:self];
     }
 }
 - (IBAction)premiumButton:(UIButton*)sender {
-    NSLog(@"premiumButton");
+    // 保费试算
+    if (_delegate) {
+        [_delegate cellPremiumBAction:self];
+    }
 
 }
 - (IBAction)violationButton:(id)sender {
-    NSLog(@"premiumButton");
+    // 违章记录
+    if (_delegate) {
+        [_delegate cellViolationAction:self];
+    }
 
+}
+- (IBAction)deleteAction:(id)sender {
+    // 删除
+    if (_delegate) {
+        [_delegate cellDeleteAction:self];
+    }
 }
 
 @end
