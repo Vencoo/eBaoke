@@ -57,10 +57,9 @@
                         </label>
                         <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Luz-17-iNy">
                             <rect key="frame" x="20" y="149" width="280" height="31"/>
-                            <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                            <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
                             <state key="normal" title="号牌种类" backgroundImage="cell_backgd.png">
                                 <color key="titleColor" red="0.1204331988" green="0.6533369819" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                             </state>
                             <connections>
                                 <action selector="carTypeAction:" destination="-1" eventType="touchUpInside" id="xnA-yk-9CY"/>

@@ -9,13 +9,16 @@
 #ifndef eBaoke_Globals_h
 #define eBaoke_Globals_h
 
-#import "AFNetworking.h"
+#import "Globals_keys.h"
+
 #import "JSONKit.h"
 #import "UIViewExt.h"
 #import "AppContext.h"
 #import "MBProgressHUD.h"
+
 #import "EBCarListModel.h"
 #import "EBCarDetailModel.h"
+#import "EBPremiumModel.h"
 
 
 #define kDeviceWidth [UIScreen mainScreen].bounds.size.width

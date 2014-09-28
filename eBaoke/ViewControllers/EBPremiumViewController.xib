@@ -7,6 +7,9 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="EBPremiumViewController">
             <connections>
+                <outlet property="_carTaxFlagButton" destination="CCb-Ed-W5q" id="t4f-sq-cnZ"/>
+                <outlet property="_carTypeButton" destination="40a-hl-mWb" id="j4a-73-dna"/>
+                <outlet property="_carUseNatureButton" destination="cyW-DM-slm" id="mWp-Ef-Nh9"/>
                 <outlet property="view" destination="iN0-l3-epB" id="Jvf-kR-ob8"/>
             </connections>
         </placeholder>
@@ -21,7 +24,7 @@
                 <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="40a-hl-mWb">
                     <rect key="frame" x="19" y="19" width="283" height="32"/>
                     <fontDescription key="fontDescription" name="STHeitiSC-Medium" family="Heiti SC" pointSize="15"/>
-                    <state key="normal" title="车辆种类                                            " backgroundImage="cell_backgd.png">
+                    <state key="normal" title="车辆种类" backgroundImage="cell_backgd.png">
                         <color key="titleColor" red="0.37030905689999999" green="0.67486557920000001" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                     </state>
                     <connections>
@@ -31,7 +34,7 @@
                 <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cyW-DM-slm">
                     <rect key="frame" x="19" y="59" width="283" height="32"/>
                     <fontDescription key="fontDescription" name="STHeitiSC-Medium" family="Heiti SC" pointSize="15"/>
-                    <state key="normal" title="车辆使用性质                                     " backgroundImage="cell_backgd.png">
+                    <state key="normal" title="车辆使用性质" backgroundImage="cell_backgd.png">
                         <color key="titleColor" red="0.37030905689999999" green="0.67486557920000001" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                     </state>
                     <connections>
@@ -41,7 +44,7 @@
                 <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="CCb-Ed-W5q">
                     <rect key="frame" x="19" y="99" width="283" height="32"/>
                     <fontDescription key="fontDescription" name="STHeitiSC-Medium" family="Heiti SC" pointSize="15"/>
-                    <state key="normal" title="车辆税标志                                         " backgroundImage="cell_backgd.png">
+                    <state key="normal" title="车船税标志" backgroundImage="cell_backgd.png">
                         <color key="titleColor" red="0.37030905689999999" green="0.67486557920000001" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                     </state>
                     <connections>

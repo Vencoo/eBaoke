@@ -35,7 +35,6 @@
 
     [self getTableViewData];
     
-    
     _leftButtonItem =[[UIBarButtonItem alloc]initWithTitle:@"返回" style:UIBarButtonItemStyleBordered target:self action:@selector(leftButtonItem:)];
     self.navigationItem.leftBarButtonItem = _leftButtonItem;
     
@@ -115,13 +114,20 @@
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     
-    [AppContext setTempContextValueByKey:@"car_type" value:[[_dataArray objectAtIndex:indexPath.row]objectForKey:@"CARMARK_CATEGORY_NAME"]];
+    if ([_navTitle isEqual:@"车辆类型"]) {
+        [AppContext setTempContextValueByKey:kTempKeyCarType value:[[_dataArray objectAtIndex:indexPath.row]objectForKey:@"itemKey"]];
+        [AppContext setTempContextValueByKey:kTempKeyCarTypeDes value:[[_dataArray objectAtIndex:indexPath.row]objectForKey:@"itemDescribe"]];
+    }
     
-    NSString *selected_plate_type = [[_dataArray objectAtIndex:indexPath.row]objectForKey:@"CARMARK_CATEGORY_CODE"];
+    if ([_navTitle isEqual:@"车辆使用性质"]) {
+        [AppContext setTempContextValueByKey:kTempKeyCarUseNature value:[[_dataArray objectAtIndex:indexPath.row]objectForKey:@"itemKey"]];
+        [AppContext setTempContextValueByKey:kTempKeyCarUseNatureDes value:[[_dataArray objectAtIndex:indexPath.row]objectForKey:@"itemDescribe"]];
+    }
     
-    [[NSUserDefaults standardUserDefaults]setObject:selected_plate_type forKey:@"selected_plate_type"];
-    
-    [[NSUserDefaults standardUserDefaults]setBool:YES forKey:@"CarCategorySymbol"];
+    if ([_navTitle isEqual:@"车船税标志"]) {
+        [AppContext setTempContextValueByKey:kTempKeyCarTaxFlag value:[[_dataArray objectAtIndex:indexPath.row]objectForKey:@"itemKey"]];
+        [AppContext setTempContextValueByKey:kTempKeyCarTaxFlagDes value:[[_dataArray objectAtIndex:indexPath.row]objectForKey:@"itemDescribe"]];
+    }
     
     [self.navigationController popViewControllerAnimated:YES];
 }

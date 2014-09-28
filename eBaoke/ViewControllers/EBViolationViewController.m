@@ -36,6 +36,15 @@
     _tableView.dataSource = self;
     [self.view addSubview:_tableView];
     
+    self.navigationController.navigationBar.hidden = NO;
+    self.view.backgroundColor = [UIColor lightGrayColor];
+    UILabel *titleLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, 100, 30)];
+    titleLabel.font = [UIFont systemFontOfSize:17];
+    titleLabel.textColor = [UIColor whiteColor];
+    titleLabel.backgroundColor = [UIColor clearColor];
+    titleLabel.textAlignment = NSTextAlignmentCenter;
+    titleLabel.text = @"违章记录";
+    self.navigationItem.titleView = titleLabel;
     
     _leftButtonItem =[[UIBarButtonItem alloc]initWithTitle:@"返回" style:UIBarButtonItemStyleBordered target:self action:@selector(leftButtonItem:)];
     self.navigationItem.leftBarButtonItem = _leftButtonItem;

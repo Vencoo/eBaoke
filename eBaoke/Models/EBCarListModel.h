@@ -18,6 +18,4 @@
 @property(nonatomic)NSString *useType;
 @property(nonatomic)NSString *plateNo;
 
-- (id)initWithArray:(NSArray *)dataArray;
-
 @end

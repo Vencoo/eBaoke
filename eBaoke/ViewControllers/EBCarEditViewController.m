@@ -51,7 +51,7 @@
 {
     [super viewWillAppear:animated];
     
-    _carType = [AppContext getTempContextValueByKey:@"car_type"];
+    _carType = [AppContext getTempContextValueByKey:kTempKeyPlateNumberType];
     
     [_cateButton setTitle:_carType forState:UIControlStateNormal];
 }

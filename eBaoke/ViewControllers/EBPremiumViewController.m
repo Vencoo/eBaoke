@@ -13,6 +13,11 @@
 @interface EBPremiumViewController ()
 {
     
+    __weak IBOutlet UIButton *_carTypeButton;
+    __weak IBOutlet UIButton *_carUseNatureButton;
+    __weak IBOutlet UIButton *_carTaxFlagButton;
+    
+    
     UIBarButtonItem *_leftButtonItem;
     
 }
@@ -24,11 +29,35 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
    
-   
-    
     _leftButtonItem =[[UIBarButtonItem alloc]initWithTitle:@"返回" style:UIBarButtonItemStyleBordered target:self action:@selector(leftButtonItem:)];
     self.navigationItem.leftBarButtonItem = _leftButtonItem;
     
+    self.navigationController.navigationBar.hidden = NO;
+    self.view.backgroundColor = [UIColor lightGrayColor];
+    UILabel *titleLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, 100, 30)];
+    titleLabel.font = [UIFont systemFontOfSize:17];
+    titleLabel.textColor = [UIColor whiteColor];
+    titleLabel.backgroundColor = [UIColor clearColor];
+    titleLabel.textAlignment = NSTextAlignmentCenter;
+    titleLabel.text = @"保费试算";
+    self.navigationItem.titleView = titleLabel;
+    
+    [AppContext setTempContextValueByKey:kTempKeyCarType value:@"-1"];
+    [AppContext setTempContextValueByKey:kTempKeyCarUseNature value:@"-1"];
+    [AppContext setTempContextValueByKey:kTempKeyCarTaxFlag value:@"-1"];
+    [AppContext setTempContextValueByKey:kTempKeyCarTypeDes value:@"车辆种类"];
+    [AppContext setTempContextValueByKey:kTempKeyCarUseNatureDes value:@"车辆使用性质"];
+    [AppContext setTempContextValueByKey:kTempKeyCarTaxFlagDes value:@"车船税标志"];
+    
+}
+
+- (void)viewWillAppear:(BOOL)animated
+{
+    [super viewWillAppear:animated];
+    
+    [_carTypeButton setTitle:[AppContext getTempContextValueByKey:kTempKeyCarTypeDes] forState:UIControlStateNormal];
+    [_carUseNatureButton setTitle:[AppContext getTempContextValueByKey:kTempKeyCarUseNatureDes] forState:UIControlStateNormal];
+    [_carTaxFlagButton setTitle:[AppContext getTempContextValueByKey:kTempKeyCarTaxFlagDes] forState:UIControlStateNormal];
 }
 
 - (void)didReceiveMemoryWarning {

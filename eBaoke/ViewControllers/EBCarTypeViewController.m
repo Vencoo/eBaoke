@@ -93,13 +93,8 @@
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     
-    [AppContext setTempContextValueByKey:@"car_type" value:[[_dataArray objectAtIndex:indexPath.row]objectForKey:@"CARMARK_CATEGORY_NAME"]];
-    
-    NSString *selected_plate_type = [[_dataArray objectAtIndex:indexPath.row]objectForKey:@"CARMARK_CATEGORY_CODE"];
-    
-    [[NSUserDefaults standardUserDefaults]setObject:selected_plate_type forKey:@"selected_plate_type"];
-    
-    [[NSUserDefaults standardUserDefaults]setBool:YES forKey:@"CarCategorySymbol"];
+    [AppContext setTempContextValueByKey:kTempKeyPlateNumberType value:[[_dataArray objectAtIndex:indexPath.row]objectForKey:@"CARMARK_CATEGORY_CODE"]];
+    [AppContext setTempContextValueByKey:kTempKeyPlateNumberTypeDes value:[[_dataArray objectAtIndex:indexPath.row]objectForKey:@"CARMARK_CATEGORY_NAME"]];
     
     [self.navigationController popViewControllerAnimated:YES];
 }

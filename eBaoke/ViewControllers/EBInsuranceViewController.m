@@ -8,9 +8,19 @@
 
 #import "EBInsuranceViewController.h"
 
-@interface EBInsuranceViewController ()
+#import "EBPremiumDetailViewController.h"
+#import "EBPremiumCell.h"
+
+@interface EBInsuranceViewController ()<UITableViewDataSource,UITableViewDelegate,premiumCellButtonDelegate>
 {
     UITableView *_tableView;
+    
+    NSMutableArray *_dataArray;
+    
+    // 交强险
+    NSMutableArray *_dataArray1;
+    // 商业险
+    NSMutableArray *_dataArray2;
     
     UISegmentedControl *_segmentedControl;
     
@@ -20,11 +30,9 @@
 
 @implementation EBInsuranceViewController
 
-- (void)viewWillAppear:(BOOL)animated {
-    [super viewWillAppear:animated];
-    
-    
-    
+
+- (void)viewDidLoad {
+    [super viewDidLoad];
     UILabel *titleLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, 100, 30)];
     titleLabel.font = [UIFont systemFontOfSize:17];
     titleLabel.textColor = [UIColor whiteColor];
@@ -35,10 +43,17 @@
     
     UIBarButtonItem *backItem = [[UIBarButtonItem alloc]initWithTitle:@"返回" style:UIBarButtonItemStyleBordered target:self action:@selector(back)];
     self.navigationItem.leftBarButtonItem = backItem;
-}
-
-- (void)viewDidLoad {
-    [super viewDidLoad];
+    
+    _tableView = [[UITableView alloc]initWithFrame:CGRectMake(0, (IOSVersion>=7.0?50:50), kDeviceWidth, KDeviceHeight-20-44-50) style:UITableViewStylePlain];
+    _tableView.backgroundView = [[UIImageView alloc]initWithImage:[UIImage imageNamed:@"Background"]];
+    _tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
+    _tableView.delegate = self;
+    _tableView.dataSource = self;
+    [self.view addSubview:_tableView];
+    
+    _dataArray = [[NSMutableArray alloc] init];
+    _dataArray1 = [[NSMutableArray alloc] init];
+    _dataArray2 = [[NSMutableArray alloc] init];
     
     _segmentedControl = [[UISegmentedControl alloc] initWithItems:
                          [NSArray arrayWithObjects:
@@ -58,6 +73,11 @@
     
     
     // Do any additional setup after loading the view.
+}
+
+- (void)viewWillAppear:(BOOL)animated {
+    [super viewWillAppear:animated];
+    
 }
 
 -(void)sendRequest
@@ -107,9 +127,22 @@
     NSDictionary *dict = [AppContext nsDataToObject:data encoding:NSUTF8StringEncoding];
     NSLog(@"dict=%@",dict);
     
+    [_dataArray1 removeAllObjects];
+    [_dataArray2 removeAllObjects];
     
     if ([AppContext checkResponse:dict])
     {
+        for (NSArray *array in [dict allValues]) {
+            EBPremiumModel *model = [[EBPremiumModel alloc] initWithArray:array];
+            if (model.policyType == 1) {
+                [_dataArray1 addObject:model];
+            }else if (model.policyType == 2) {
+                [_dataArray2 addObject:model];
+            }
+            
+        }
+        
+        [self segmentAction:_segmentedControl];
     }
 }
 
@@ -123,6 +156,72 @@
 - (void)segmentAction:(UISegmentedControl*)segmentedControl
 {
     
+    [UIView animateWithDuration:0.4 delay:0.0 options:UIViewAnimationOptionCurveEaseIn animations:^{
+        _tableView.alpha = 0.0;
+    } completion:^(BOOL finished) {
+        _tableView.alpha = 1.0;
+        NSInteger index = _segmentedControl.selectedSegmentIndex;
+        if (index == 0) {
+            _dataArray = _dataArray1;
+        }else if (index == 1)
+        {
+            _dataArray = _dataArray2;
+        }
+        [_tableView reloadData];
+    }];
+   
 }
+
+#pragma mark - UITableView delegate
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
+{
+    return _dataArray.count;
+}
+
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    return 200;
+}
+
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath;
+{
+    
+    EBPremiumCell *cell = [[[NSBundle mainBundle] loadNibNamed:@"EBPremiumCell" owner:nil options:nil] objectAtIndex:0];
+
+    cell.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"Background"]];
+    cell.selectionStyle = UITableViewCellSelectionStyleNone;
+    EBPremiumModel *model = [_dataArray objectAtIndex:indexPath.row];
+    [cell setPModel:model];
+    cell.delegate = self;
+    return cell;
+}
+
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    EBPremiumModel *pModel;
+    NSInteger index = _segmentedControl.selectedSegmentIndex;
+    switch (index) {
+        case 0:
+            pModel = [_dataArray1 objectAtIndex:indexPath.row];
+            break;
+        case 1:
+            pModel = [_dataArray2 objectAtIndex:indexPath.row];
+            break;
+        default:
+            return;
+            break;
+    }
+    // 进入详情页面
+    EBPremiumDetailViewController *pVC = [[EBPremiumDetailViewController alloc] initWithNibName:@"EBPremiumDetailViewController" bundle:[NSBundle mainBundle]];
+    pVC.pModel = pModel;
+    [self.navigationController pushViewController:pVC animated:YES];
+    
+}
+
+- (void)cellClaimsRecordAction:(EBPremiumCell *)cell
+{
+    
+}
+
 
 @end
