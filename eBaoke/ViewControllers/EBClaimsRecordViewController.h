@@ -12,4 +12,6 @@
 
 @interface EBClaimsRecordViewController : EBBaseViewController
 
+@property (nonatomic)EBPremiumModel *pModel;
+
 @end

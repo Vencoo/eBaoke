@@ -27,8 +27,8 @@
     
     _insuranceCompanyLabel.text = _pModel.insuranceCompany;
     _policyNoLabel.text = _pModel.policyNo;
-    _startTimeLabel.text = _pModel.startTime;
-    _endTimeLabel.text = _pModel.endTime;
+    _startTimeLabel.text = _pModel.startDate;
+    _endTimeLabel.text = _pModel.endDate;
 }
 - (IBAction)claimRecordAction:(id)sender {
     if (_delegate) {

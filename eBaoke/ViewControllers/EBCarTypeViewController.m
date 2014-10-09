@@ -17,8 +17,24 @@
 
 @implementation EBCarTypeViewController
 
+
+- (void)viewDidLoad {
+    
+    [super viewDidLoad];
+    
+    [self initBackButton];
+    [self initView];
+    [self getTableViewData];
+}
+
+
 -(void)viewWillAppear:(BOOL)animated{
     [super viewWillAppear:animated];
+    
+}
+
+- (void)initView
+{
     self.navigationController.navigationBar.hidden = NO;
     self.view.backgroundColor = [UIColor lightGrayColor];
     UILabel *titleLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, 100, 30)];
@@ -28,18 +44,7 @@
     titleLabel.textAlignment = NSTextAlignmentCenter;
     titleLabel.text = @"车辆类型";
     self.navigationItem.titleView = titleLabel;
-}
-
-
-- (void)viewDidLoad {
-    [super viewDidLoad];
-    [self initBackButton];
-    [self initView];
-    [self getTableViewData];
-}
-
-- (void)initView
-{
+    
     _tableView = [[UITableView alloc]initWithFrame:CGRectMake(0, 0, kDeviceWidth, KDeviceHeight-50) style:UITableViewStyleGrouped];
     _tableView.backgroundView = [[UIImageView alloc]initWithImage:[UIImage imageNamed:@"Background"]];
     _tableView.separatorColor = [UIColor colorWithRed:221.0/255 green:221.0/255 blue:221.0/255 alpha:1.0];

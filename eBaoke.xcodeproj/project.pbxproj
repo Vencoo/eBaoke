@@ -31,6 +31,7 @@
 		A20A79A919D14D6900C2D68E /* EBCarTypeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A20A79A819D14D6900C2D68E /* EBCarTypeViewController.m */; };
 		A20A79B419D1645400C2D68E /* EBCarEditViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A20A79B219D1645400C2D68E /* EBCarEditViewController.m */; };
 		A20A79B519D1645400C2D68E /* EBCarEditViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = A20A79B319D1645400C2D68E /* EBCarEditViewController.xib */; };
+		A21F568719E6369800E367D5 /* EBPremiumDetailModel.m in Sources */ = {isa = PBXBuildFile; fileRef = A21F568619E6369800E367D5 /* EBPremiumDetailModel.m */; };
 		A27B2D5319DA98B1006E93DC /* EBConfirmEditVC.m in Sources */ = {isa = PBXBuildFile; fileRef = A27B2D5119DA98B1006E93DC /* EBConfirmEditVC.m */; };
 		A27B2D5419DA98B1006E93DC /* EBConfirmEditVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = A27B2D5219DA98B1006E93DC /* EBConfirmEditVC.xib */; };
 		A2D177D919D3EB310001AFF2 /* EBViolationModel.m in Sources */ = {isa = PBXBuildFile; fileRef = A2D177D819D3EB310001AFF2 /* EBViolationModel.m */; };
@@ -237,6 +238,8 @@
 		A20A79B119D1645400C2D68E /* EBCarEditViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EBCarEditViewController.h; sourceTree = "<group>"; };
 		A20A79B219D1645400C2D68E /* EBCarEditViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EBCarEditViewController.m; sourceTree = "<group>"; };
 		A20A79B319D1645400C2D68E /* EBCarEditViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = EBCarEditViewController.xib; sourceTree = "<group>"; };
+		A21F568519E6369800E367D5 /* EBPremiumDetailModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EBPremiumDetailModel.h; sourceTree = "<group>"; };
+		A21F568619E6369800E367D5 /* EBPremiumDetailModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EBPremiumDetailModel.m; sourceTree = "<group>"; };
 		A27B2D5019DA98B1006E93DC /* EBConfirmEditVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EBConfirmEditVC.h; sourceTree = "<group>"; };
 		A27B2D5119DA98B1006E93DC /* EBConfirmEditVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EBConfirmEditVC.m; sourceTree = "<group>"; };
 		A27B2D5219DA98B1006E93DC /* EBConfirmEditVC.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = EBConfirmEditVC.xib; sourceTree = "<group>"; };
@@ -556,6 +559,8 @@
 				D7373AC619CBF1AB0056C772 /* EBCarDetailModel.m */,
 				A2D177F419D7E46A0001AFF2 /* EBPremiumModel.h */,
 				A2D177F519D7E46A0001AFF2 /* EBPremiumModel.m */,
+				A21F568519E6369800E367D5 /* EBPremiumDetailModel.h */,
+				A21F568619E6369800E367D5 /* EBPremiumDetailModel.m */,
 				A2D177D719D3EB310001AFF2 /* EBViolationModel.h */,
 				A2D177D819D3EB310001AFF2 /* EBViolationModel.m */,
 			);
@@ -1129,6 +1134,7 @@
 				A2D177EA19D531420001AFF2 /* EBPremiumRecordCell.m in Sources */,
 				403C918319C690850081F864 /* JSONKit.m in Sources */,
 				D7D219B019C6DD9400C585FA /* NSString+MD5Addition.m in Sources */,
+				A21F568719E6369800E367D5 /* EBPremiumDetailModel.m in Sources */,
 				A2D177F219D536460001AFF2 /* EBPremiumDetailViewController.m in Sources */,
 				A2D7A4E719D2EBB3008EF275 /* EBViolationCell.m in Sources */,
 				403C919519C694580081F864 /* EBRegisterViewController.m in Sources */,

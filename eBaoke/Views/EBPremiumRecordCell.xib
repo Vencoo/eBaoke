@@ -37,6 +37,11 @@
                     </label>
                 </subviews>
             </tableViewCellContentView>
+            <connections>
+                <outlet property="dateLabel" destination="wJl-wo-jqE" id="Dl3-iA-iU4"/>
+                <outlet property="numberLabel" destination="mZE-nY-5Mm" id="YAL-Rg-7Pn"/>
+                <outlet property="statusLabel" destination="a4E-Sh-BuK" id="WeK-fa-kmQ"/>
+            </connections>
             <point key="canvasLocation" x="148" y="191"/>
         </tableViewCell>
         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="k8r-fv-FYu">

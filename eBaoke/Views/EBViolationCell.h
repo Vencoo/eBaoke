@@ -18,6 +18,6 @@
 @property (weak, nonatomic) IBOutlet UILabel *locateLabel;
 @property (weak, nonatomic) IBOutlet UILabel *actionLabel;
 
-@property (strong, nonatomic) EBCarListModel *carModel;
+@property (strong, nonatomic) EBViolationModel *vModel;
 
 @end

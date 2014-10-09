@@ -10,4 +10,8 @@
 
 @interface EBPremiumRecordCell : UITableViewCell
 
+@property (weak, nonatomic) IBOutlet UILabel *statusLabel;
+@property (weak, nonatomic) IBOutlet UILabel *numberLabel;
+@property (weak, nonatomic) IBOutlet UILabel *dateLabel;
+
 @end

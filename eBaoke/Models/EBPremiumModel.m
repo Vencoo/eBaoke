@@ -18,12 +18,12 @@
             return self;
         }
         _policyNo = [dataArray objectAtIndex:2];
-        _policyStatus = [[dataArray objectAtIndex:5] integerValue];
+        _policyStatus = [dataArray objectAtIndex:5];
         _insuranceCompany = [dataArray objectAtIndex:1];
-        _startTime = [dataArray objectAtIndex:3];
-        _endTime = [dataArray objectAtIndex:4];
-        _policyType = [[dataArray objectAtIndex:6] integerValue];
-        _policyId = [[dataArray objectAtIndex:0] integerValue];
+        _startDate = [dataArray objectAtIndex:3];
+        _endDate = [dataArray objectAtIndex:4];
+        _policyType = [dataArray objectAtIndex:6];
+        _policyId = [dataArray objectAtIndex:0];
     }
     return self;
 }

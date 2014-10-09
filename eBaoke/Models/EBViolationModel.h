@@ -10,6 +10,9 @@
 
 @interface EBViolationModel : EBBaseModel
 
-
+@property (nonatomic) NSString *peccancyTime;
+@property (nonatomic) NSString *acceptDate;
+@property (nonatomic) NSString *peccancyPlace;
+@property (nonatomic) NSString *peccancyDes;
 
 @end

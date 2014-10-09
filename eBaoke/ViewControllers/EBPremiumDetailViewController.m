@@ -11,6 +11,7 @@
 @interface EBPremiumDetailViewController ()
 {
     UIBarButtonItem *_leftButtonItem;
+    EBPremiumDetailModel *_pdModel;
 
     // 保单号码
     __weak IBOutlet UILabel *_policyNoLabel;
@@ -65,12 +66,16 @@
 
 -(void)sendRequest
 {
-    NSString *kRequestURLPath = [NSString stringWithFormat:@"%@",[AppContext getServiceUrl:@"polilcyInfoQuery"]];
+    NSString *kRequestURLPath = [NSString stringWithFormat:@"%@",[AppContext getServiceUrl:@"CarDetailServiceUrl"]];
     NSURL *url = [NSURL URLWithString:kRequestURLPath];
     NSString *error;
     NSMutableDictionary *postDict = [[NSMutableDictionary alloc] init];
     [postDict setObject:[AppContext getTempContextValueByKey:kTempKeyUserId] forKey:@"user_id"];
-    [postDict setObject:@"policy_list" forKey:@"select"];
+    [postDict setObject:_pModel.policyType forKey:@"policy_type"];
+    
+    [postDict setObject:_pModel.policyId forKey:@"policy_id"];
+    
+    [postDict setObject:@"policy_info" forKey:@"select"];
   
     NSString *postContent = [AppContext dictionaryToXml:postDict error:&error];
     if (!error) {
@@ -82,6 +87,7 @@
         request.HTTPBody = [postContent dataUsingEncoding:NSUTF8StringEncoding];
         [request setValue:kHTTPHeader forHTTPHeaderField:@"content-type"];//请求头
         NSURLConnection *connection = [[NSURLConnection alloc]initWithRequest:request delegate:self];
+        [connection start];
         [AppContext didStartNetworking];
         HUD = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
         HUD.labelText = @"加载中...";
@@ -106,9 +112,32 @@
     [AppContext didStopNetworking];
     
     NSDictionary *dict = [AppContext nsDataToObject:data encoding:NSUTF8StringEncoding];
-    NSLog(@"dict=%@",dict);
+    NSLog(@"p-info=%@",dict);
     
+    if ([AppContext checkResponse:dict])
+    {
+        NSArray *array = [[dict allValues] lastObject];
+
+        _pdModel = [[EBPremiumDetailModel alloc] initWithArray:array];
+        
+        [self reflashDatas];
+    }
     
+}
+
+- (void)reflashDatas
+{
+    _policyNoLabel.text = _pdModel.policyNo;
+    _startDateLabel.text = _pdModel.startDate;
+    _endDateLabel.text = _pdModel.endDate;
+    _normalFeeLabel.text = _pdModel.standardPremium;
+    _fixedFeeLabel.text = _pdModel.basedPremium;
+    _indemnityLabel.text = _pdModel.limitAmount;
+    _useNatureLabel.text = _pdModel.useType;
+    _carOwnerLabel.text = _pdModel.carOwner;
+    _applicantLabel.text = _pdModel.policyHolder;
+    _insuredLabel.text = _pdModel.insured;
+    _issueDateLabel.text = _pdModel.signDate;
     
 }
 

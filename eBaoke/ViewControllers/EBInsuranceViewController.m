@@ -9,6 +9,7 @@
 #import "EBInsuranceViewController.h"
 
 #import "EBPremiumDetailViewController.h"
+#import "EBClaimsRecordViewController.h"
 #import "EBPremiumCell.h"
 
 @interface EBInsuranceViewController ()<UITableViewDataSource,UITableViewDelegate,premiumCellButtonDelegate>
@@ -134,9 +135,11 @@
     {
         for (NSArray *array in [dict allValues]) {
             EBPremiumModel *model = [[EBPremiumModel alloc] initWithArray:array];
-            if (model.policyType == 1) {
+            model.vehicleId = _carModel.vehicleId;
+            
+            if ([model.policyType isEqualToString:@"1"]) {
                 [_dataArray1 addObject:model];
-            }else if (model.policyType == 2) {
+            }else if ([model.policyType isEqualToString:@"2"]) {
                 [_dataArray2 addObject:model];
             }
             
@@ -220,7 +223,9 @@
 
 - (void)cellClaimsRecordAction:(EBPremiumCell *)cell
 {
-    
+    EBClaimsRecordViewController *cVC = [[EBClaimsRecordViewController alloc] init];
+    cVC.pModel = cell.pModel;
+    [self.navigationController pushViewController:cVC animated:YES];
 }
 
 

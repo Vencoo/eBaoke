@@ -19,6 +19,8 @@
 #import "EBCarListModel.h"
 #import "EBCarDetailModel.h"
 #import "EBPremiumModel.h"
+#import "EBPremiumDetailModel.h"
+#import "EBViolationModel.h"
 
 
 #define kDeviceWidth [UIScreen mainScreen].bounds.size.width

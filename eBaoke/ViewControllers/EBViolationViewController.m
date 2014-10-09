@@ -46,6 +46,8 @@
     
     _leftButtonItem =[[UIBarButtonItem alloc]initWithTitle:@"返回" style:UIBarButtonItemStyleBordered target:self action:@selector(leftButtonItem:)];
     self.navigationItem.leftBarButtonItem = _leftButtonItem;
+    
+    [self sendRequest];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -64,7 +66,6 @@
 #pragma mark - UITableView delegate
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return 3;
     return _dataArray.count;
 }
 
@@ -79,21 +80,87 @@
     EBViolationCell *cell = [[[NSBundle mainBundle] loadNibNamed:@"EBViolationCell" owner:nil options:nil] objectAtIndex:0];
     cell.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"Background"]];
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
-    //EBCarListModel *model = [_dataArray objectAtIndex:indexPath.row];
+    EBViolationModel *model = [_dataArray objectAtIndex:indexPath.row];
     
-    //[cell setCarModel:model];
+    [cell setVModel:model];
     
     return cell;
 }
 
-/*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
+-(void)sendRequest
+{
+    NSString *kRequestURLPath = [NSString stringWithFormat:@"%@",[AppContext getServiceUrl:@"CarDetailServiceUrl"]];
+    NSURL *url = [NSURL URLWithString:kRequestURLPath];
+    NSString *error;
+    NSMutableDictionary *postDict = [[NSMutableDictionary alloc] init];
+    [postDict setObject:[AppContext getTempContextValueByKey:kTempKeyUserId] forKey:@"user_id"];
+    [postDict setObject:_carModel.vehicleId forKey:@"vehicle_id"];
+    
+    [postDict setObject:@"voilation_list" forKey:@"select"];
+    
+    NSString *postContent = [AppContext dictionaryToXml:postDict error:&error];
+    if (!error) {
+        NSLog(@"---- content %@", postContent);
+        
+        NSMutableURLRequest* request = [NSMutableURLRequest requestWithURL:url];
+        NSLog(@"url=%@",url);
+        [request setHTTPMethod:@"POST"];
+        request.HTTPBody = [postContent dataUsingEncoding:NSUTF8StringEncoding];
+        [request setValue:kHTTPHeader forHTTPHeaderField:@"content-type"];//请求头
+        NSURLConnection *connection = [[NSURLConnection alloc]initWithRequest:request delegate:self];
+        [connection start];
+        [AppContext didStartNetworking];
+        HUD = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+        HUD.labelText = @"加载中...";
+        
+    }else {
+        [AppContext alertContent:error];
+    }
 }
-*/
+
+#pragma mark - connection delegate
+- (void)connection:(NSURLConnection *)connection didFailWithError:(NSError *)error
+{
+    [HUD hide:YES];
+    [AppContext didStopNetworking];
+    [AppContext alertContent:NSLocalizedString(@"连接错误,请稍后再试", nil)];
+    
+}
+
+-(void)connection:(NSURLConnection *)connection didReceiveData:(NSData *)data
+{
+    [HUD hide:YES];
+    [AppContext didStopNetworking];
+    
+    NSDictionary *dict = [AppContext nsDataToObject:data encoding:NSUTF8StringEncoding];
+    
+    
+    if ([AppContext checkResponse:dict])
+    {
+        
+        // 处理详情
+        NSArray *array = [[dict allValues] lastObject];
+        NSLog(@"c-list=%@",dict);
+        
+        NSArray *keys = [[dict allKeys] sortedArrayUsingSelector:@selector(compare:)];
+        
+        [_dataArray removeAllObjects];
+        for (NSString *key in keys) {
+            
+            if ([[dict objectForKey:key] isKindOfClass:[NSArray class]]) {
+                
+                NSArray *keyVal = [dict objectForKey:key];
+                
+                EBViolationModel *model = [[EBViolationModel alloc]initWithArray:keyVal];
+                [_dataArray addObject:model];
+                
+            }
+        }
+        
+        [_tableView reloadData];
+        
+    }
+    
+}
 
 @end
