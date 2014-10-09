@@ -11,7 +11,6 @@
 
 @interface EBCarDetailViewController ()<UITableViewDelegate,UITableViewDataSource>
 {
-    MBProgressHUD *HUD;
     
     UITableView *_tableView;
     
@@ -64,9 +63,12 @@
     NSURL *url = [NSURL URLWithString:kRequestURLPath];
     NSString *error;
     NSMutableDictionary *postDict = [[NSMutableDictionary alloc] init];
-    [postDict setObject:[AppContext getTempContextValueByKey:@"user_id"] forKey:@"user_id"];
+ 
+    
     [postDict setObject:@"vehicle_detail" forKey:@"select"];
+    
     [postDict setObject:_vehicleId forKey:@"vehicle_id"];
+    
     NSString *postContent = [AppContext dictionaryToXml:postDict error:&error];
     if (!error) {
         NSLog(@"---- content %@", postContent);
@@ -77,6 +79,7 @@
         request.HTTPBody = [postContent dataUsingEncoding:NSUTF8StringEncoding];
         [request setValue:kHTTPHeader forHTTPHeaderField:@"content-type"];//请求头
         NSURLConnection *connection = [[NSURLConnection alloc]initWithRequest:request delegate:self];
+        [connection start];
         [AppContext didStartNetworking];
         HUD = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
         HUD.labelText = @"加载中...";

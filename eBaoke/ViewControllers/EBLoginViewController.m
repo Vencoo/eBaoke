@@ -22,8 +22,6 @@
 {
     UIScrollView *_scrollView;
     
-    MBProgressHUD *HUD;
-
 }
 @end
 
@@ -241,8 +239,8 @@
     NSLog(@"---- kRequestURLPath %@", kRequestURLPath);
     NSString *error;
     NSMutableDictionary *postDict = [[NSMutableDictionary alloc] init];
-    NSLog(@"%@",_userName.text);
-    NSLog(@"%@",_userPassword.text);
+    //NSLog(@"%@",_userName.text);
+    //NSLog(@"%@",_userPassword.text);
     [postDict setObject:@"login" forKey:kPostContentTypeSelect];
     [postDict setObject:_userName.text forKey:kPostContentTypeUsername];
     [postDict setObject:_userPassword.text forKey:kPostContentTypePassword];
@@ -257,6 +255,7 @@
         request.HTTPBody = [postContent dataUsingEncoding:NSUTF8StringEncoding];
         [request setValue:kHTTPHeader forHTTPHeaderField:@"content-type"];//请求头
         NSURLConnection *connection = [[NSURLConnection alloc]initWithRequest:request delegate:self];
+        [connection start];
         [AppContext didStartNetworking];
         
     }else {
@@ -302,20 +301,17 @@
         return;
     }
     
-    NSString *user_type = [dict objectForKey:@"user_type"];
-    
-    [AppContext setPreferenceByKey:@"user_type" value:user_type];
-    
-    [[NSUserDefaults standardUserDefaults]setObject:user_type forKey:@"user_type"];
-    
-    [AppContext setTempContextValueByKey:kPostContentTypeUserId value:[dict objectForKey:kPostContentTypeUserId]];
+    // 保存临时用户信息
+    [AppContext setTempContextValueByKey:kTempKeyUserId value:[dict objectForKey:@"user_id"]];
+    [AppContext setTempContextValueByKey:kTempKeyUserName value:[dict objectForKey:@"user_name"]];
+    [AppContext setTempContextValueByKey:kTempKeyUserType value:[dict objectForKey:@"user_type"]];
 
-    
-    EBCarListViewController *carListVC = [[EBCarListViewController alloc]init];
-    [self.navigationController pushViewController:carListVC animated:YES];
+    // 保存登陆信息
     [AppContext setPreferenceByKey:kUsername value:_userName.text];
     [AppContext setPreferenceByKey:kUserPassword value:_userPassword.text];
 
+    EBCarListViewController *carListVC = [[EBCarListViewController alloc]init];
+    [self.navigationController pushViewController:carListVC animated:YES];
 }
 
 - (void) dismissKeyboard:(id)sender{

@@ -9,6 +9,10 @@
 #import <UIKit/UIKit.h>
 
 #import "Globals.h"
-@interface EBBaseViewController : UIViewController
 
+@interface EBBaseViewController : UIViewController
+{
+    MBProgressHUD *HUD;
+
+}
 @end

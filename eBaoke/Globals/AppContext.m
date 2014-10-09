@@ -337,7 +337,7 @@ static NSInteger networkingCount = 0;
         return nil;
     
     NSString *string = [[NSString alloc]initWithData:data encoding:encoding];
-    NSLog(@"%@",string);
+    NSLog(@"doc=%@",string);
     
     @try {
         id result = [string propertyList];

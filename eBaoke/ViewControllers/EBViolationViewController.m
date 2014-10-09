@@ -13,9 +13,7 @@
 @interface EBViolationViewController ()<UITableViewDelegate,UITableViewDataSource>
 {
     UITableView *_tableView;
-    
-    MBProgressHUD *HUD;
-    
+        
     UIBarButtonItem *_leftButtonItem;
         
     NSMutableArray *_dataArray;

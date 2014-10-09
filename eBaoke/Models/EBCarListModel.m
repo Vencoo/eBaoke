@@ -14,14 +14,12 @@
 {
     self = [super initWithArray:dataArray];
     if (self) {
-        _vehicleId = [dataArray objectAtIndex:0];
-        _plateNo = [dataArray objectAtIndex:1];
-        if([_plateNo isEqualToString:@""]) {
-            _plateNo = @"无";
-        }
+        _userCarId = [dataArray objectAtIndex:0];
+        _plateNo = [dataArray objectAtIndex:6];
         _carOwner = [dataArray objectAtIndex:2];
         _engineNo = [dataArray objectAtIndex:3];
         _vinCode = [dataArray objectAtIndex:4];
+        _plateType = [dataArray objectAtIndex:5];
         
     }
     return self;

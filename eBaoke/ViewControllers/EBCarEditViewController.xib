@@ -8,6 +8,9 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="EBCarEditViewController">
             <connections>
                 <outlet property="_cateButton" destination="Luz-17-iNy" id="O8e-jR-0wG"/>
+                <outlet property="_engineTextField" destination="n3j-qJ-RGF" id="3qh-bM-FNU"/>
+                <outlet property="_nameTextField" destination="Eu8-Ky-hFS" id="BUO-Vo-d05"/>
+                <outlet property="_plateNumTextField" destination="Xbh-qq-ztb" id="3c5-WK-xfq"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>

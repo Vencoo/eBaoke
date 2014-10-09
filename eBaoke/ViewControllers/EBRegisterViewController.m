@@ -63,8 +63,6 @@
     
     NSString *selected_plate_type;
     
-    MBProgressHUD *HUD;
-
     //标记请求类型
     int requestTag;
 }
@@ -784,7 +782,7 @@
     }
     
     if ([sendType isEqualToString:ksendTypeFinishRegister]) {
-        [AppContext setPreferenceByKey:kPostContentTypeUserId value:[dict objectForKey:kPostContentTypeUserId]];
+        [AppContext setPreferenceByKey:kTempKeyUserId value:[dict objectForKey:@"user_id"]];
         [AppContext setPreferenceByKey:@"_user_password" value:[AppContext getPreferenceByKey:[registerArray objectAtIndex:3] needMerge:NO]];
         [self alertShowWithMessage:@"注册成功，现在您可以登陆主页面了！"];
         [self back];

@@ -40,4 +40,12 @@
     return NO;
 }
 
+- (void)connection:(NSURLConnection *)connection didFailWithError:(NSError *)error
+{
+    [HUD hide:YES];
+    [AppContext didStopNetworking];
+    [AppContext alertContent:NSLocalizedString(@"连接错误,请稍后再试", nil)];
+    
+}
+
 @end

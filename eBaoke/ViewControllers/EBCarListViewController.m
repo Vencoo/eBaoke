@@ -22,9 +22,7 @@
 @interface EBCarListViewController ()<UITextFieldDelegate,UITableViewDelegate,UITableViewDataSource,carListCellButtonDelegate>
 {
     UITableView *_tableView;
-    
-    MBProgressHUD *HUD;
-    
+        
     UIBarButtonItem *_leftButtonItem;
     
     UIBarButtonItem *_rightButtonItem;
@@ -46,8 +44,8 @@
     
     [self setEditing:NO];
     
-    [self sendRequest];
-    
+    [self getCarListRequest];
+
 }
 
 - (void)viewDidLoad {
@@ -112,7 +110,6 @@
     if (!_isEditing)
     {
         // 编辑按钮
-
         [self setEditing:YES];
     }else {
         // 添加按钮
@@ -137,16 +134,16 @@
     }
 }
 
-#pragma mark - 1.10	账号/车辆绑定信息查询接口
+#pragma mark -  1.3
 
--(void)sendRequest
+-(void)getCarListRequest
 {
     NSString *kRequestURLPath = [NSString stringWithFormat:@"%@",[AppContext getServiceUrl:@"CatalogListServiceUrl"]];
     NSURL *url = [NSURL URLWithString:kRequestURLPath];
     NSString *error;
     NSMutableDictionary *postDict = [[NSMutableDictionary alloc] init];
-    [postDict setObject:[AppContext getTempContextValueByKey:@"user_id"] forKey:@"user_id"];
-    [postDict setObject:@"vehicle_list_query" forKey:@"select"];
+    [postDict setObject:[AppContext getTempContextValueByKey:kTempKeyUserId] forKey:@"user_id"];
+    [postDict setObject:@"binding_query" forKey:@"select"];
     NSString *postContent = [AppContext dictionaryToXml:postDict error:&error];
     if (!error) {
         NSLog(@"---- content %@", postContent);
@@ -157,6 +154,76 @@
         request.HTTPBody = [postContent dataUsingEncoding:NSUTF8StringEncoding];
         [request setValue:kHTTPHeader forHTTPHeaderField:@"content-type"];//请求头
         NSURLConnection *connection = [[NSURLConnection alloc]initWithRequest:request delegate:self];
+
+        [connection start];
+        [AppContext didStartNetworking];
+        HUD = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+        HUD.labelText = @"加载中...";
+        
+    }else {
+        [AppContext alertContent:error];
+    }
+}
+
+#pragma mark -  1.10
+
+- (void)searchCarListRequest
+{
+    NSString *kRequestURLPath = [NSString stringWithFormat:@"%@",[AppContext getServiceUrl:@"CatalogSearchServiceUrl"]];
+    NSURL *url = [NSURL URLWithString:kRequestURLPath];
+    NSString *error;
+    NSMutableDictionary *postDict = [[NSMutableDictionary alloc] init];
+    [postDict setObject:[AppContext getTempContextValueByKey:kTempKeyUserId] forKey:@"user_id"];
+    [postDict setObject:[AppContext getTempContextValueByKey:kTempKeyUserType] forKey:@"user_type"];
+    [postDict setObject:@"vehicle_list_query" forKey:@"select"];
+    
+    NSString *postContent = [AppContext dictionaryToXml:postDict error:&error];
+    if (!error) {
+        NSLog(@"---- content %@", postContent);
+        
+        NSMutableURLRequest* request = [NSMutableURLRequest requestWithURL:url];
+        NSLog(@"url=%@",url);
+        [request setHTTPMethod:@"POST"];
+        request.HTTPBody = [postContent dataUsingEncoding:NSUTF8StringEncoding];
+        [request setValue:kHTTPHeader forHTTPHeaderField:@"content-type"];//请求头
+        NSURLConnection *connection = [[NSURLConnection alloc]initWithRequest:request delegate:self];
+        
+        [connection start];
+        [AppContext didStartNetworking];
+        HUD = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+        HUD.labelText = @"加载中...";
+        
+    }else {
+        [AppContext alertContent:error];
+    }
+}
+
+#pragma mark - 删除请求
+
+- (void)deleteCar:(NSString *)userCarId
+{
+    NSString *kRequestURLPath = [NSString stringWithFormat:@"%@",[AppContext getServiceUrl:@"CircDeleteVehicleResp"]];
+    NSURL *url = [NSURL URLWithString:kRequestURLPath];
+    NSString *error;
+    NSMutableDictionary *postDict = [[NSMutableDictionary alloc] init];
+    
+    [postDict setObject:[AppContext getTempContextValueByKey:kTempKeyUserId] forKey:@"user_id"];
+    
+    [postDict setObject:userCarId forKey:@"usercar_id"];
+    
+    [postDict setObject:@"delete_vehicle" forKey:@"select"];
+    
+    NSString *postContent = [AppContext dictionaryToXml:postDict error:&error];
+    if (!error) {
+        NSLog(@"---- content %@", postContent);
+        
+        NSMutableURLRequest* request = [NSMutableURLRequest requestWithURL:url];
+        NSLog(@"url=%@",url);
+        [request setHTTPMethod:@"POST"];
+        request.HTTPBody = [postContent dataUsingEncoding:NSUTF8StringEncoding];
+        [request setValue:kHTTPHeader forHTTPHeaderField:@"content-type"];//请求头
+        NSURLConnection *connection = [[NSURLConnection alloc]initWithRequest:request delegate:self];
+        
         [connection start];
         [AppContext didStartNetworking];
         HUD = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
@@ -180,16 +247,23 @@
 {
     [HUD hide:YES];
     [AppContext didStopNetworking];
-    
+
     NSDictionary *dict = [AppContext nsDataToObject:data encoding:NSUTF8StringEncoding];
-    NSLog(@"bangding%@",dict);
 
     if ([AppContext checkResponse:dict])
     {
-        NSArray *keys = [[dict allKeys] sortedArrayUsingSelector:@selector(compare:)];
-        [_dataArray removeAllObjects];
-        for (NSString *key in keys) {
-            
+        NSLog(@"数据接收成功URL=:%@",[connection.currentRequest.URL description]);
+   
+        NSString *str = [connection description];
+
+        if ([str rangeOfString:@"CircCatalogList"].length > 0) {
+            // 处理列表
+            NSLog(@"1.3列表接口数据：%@",dict);
+            // 获取列表 处理数据
+            NSArray *keys = [[dict allKeys] sortedArrayUsingSelector:@selector(compare:)];
+            [_dataArray removeAllObjects];
+            for (NSString *key in keys) {
+                
                 if ([[dict objectForKey:key] isKindOfClass:[NSArray class]]) {
                     
                     NSMutableArray *keyVal = [dict objectForKey:key];
@@ -197,11 +271,52 @@
                     EBCarListModel *model = [[EBCarListModel alloc]initWithArray:keyVal];
                     [_dataArray addObject:model];
                     
-                    NSLog(@"_dataArray=%@",_dataArray );
+                }
             }
+            
+            // 请求第二个接口
+            [self searchCarListRequest];
+        }
+        
+        if ([str rangeOfString:@"CircCatalogSearch"].length > 0) {
+            // 处理列表
+            NSLog(@"1.10列表接口数据：%@",dict);
+            // 获取列表 处理数据
+            NSArray *keys = [[dict allKeys] sortedArrayUsingSelector:@selector(compare:)];
+            
+            // 注意 第一个数据有问题 需要屏蔽
+            
+            for (int i=1; i<[keys count]; i++) {
+                NSString *key = [keys objectAtIndex:i];
+                
+                if ([[dict objectForKey:key] isKindOfClass:[NSArray class]]) {
+                    
+                    NSMutableArray *keyVal = [dict objectForKey:key];
+                    
+                    EBCarListModel *model =  [_dataArray objectAtIndex:i-1];
+                    
+                    model.plateNo = [keyVal objectAtIndex:1];
+                    
+                    model.vehicleId = [keyVal objectAtIndex:0];
+                }
+            }
+            
             [_tableView reloadData];
         }
+        
+        if ([str rangeOfString:@"DeleteVehicle"].length > 0) {
+            // 处理列表
+            NSLog(@"删除车辆：%@",dict);
+            // 获取列表 处理数据
+           
+            [self getCarListRequest];
+        }
+        
+    }else {
+        [AppContext alertContent:@"返回数据错误"];
     }
+    
+
 }
 #pragma mark - UITableView delegate
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
@@ -277,7 +392,7 @@
 
 - (void)cellDeleteAction:(EBCarListCell *)cell
 {
-    NSLog(@"delete:%@",cell.carModel.carOwner);
+    [self deleteCar:cell.carModel.userCarId];
 }
 
 @end

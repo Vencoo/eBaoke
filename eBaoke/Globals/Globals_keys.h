@@ -19,5 +19,8 @@
 #define kTempKeyCarUseNatureDes         @"_car_use_nature_des"
 #define kTempKeyCarTaxFlagDes           @"_car_tax_flag_des"
 
+#define kTempKeyUserId                  @"_user_id"
+#define kTempKeyUserName                @"_user_name"
+#define kTempKeyUserType                @"_user_type"
 
 #endif

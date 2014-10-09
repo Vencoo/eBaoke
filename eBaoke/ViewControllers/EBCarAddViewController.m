@@ -9,6 +9,7 @@
 #import "EBCarAddViewController.h"
 
 #import "EBCarTypeViewController.h"
+#import "EBConfirmEditVC.h"
 
 @interface EBCarAddViewController ()<UITextFieldDelegate>
 {
@@ -32,8 +33,10 @@
     UIButton *_cateButton;
     
     BOOL _isNewCar;
-    
-    NSString *_carType;
+
+    NSString *_plateNumberType;
+
+    NSString *_plateNumberTypeDes;
     
 }
 @end
@@ -102,7 +105,8 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     
-    [AppContext setTempContextValueByKey:@"car_type" value:@"号牌类型"];
+    [AppContext setTempContextValueByKey:kTempKeyPlateNumberTypeDes value:@"号牌类型"];
+    [AppContext setTempContextValueByKey:kTempKeyPlateNumberType value:@"-1"];
     
     UILabel *titleLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, 100, 30)];
     titleLabel.font = [UIFont systemFontOfSize:17];
@@ -123,9 +127,13 @@
 {
     [super viewWillAppear:animated];
     
-    _carType = [AppContext getTempContextValueByKey:@"car_type"];
+    _contentView.center = CGPointMake(160, 416/2);
+
+    _plateNumberType = [AppContext getTempContextValueByKey:kTempKeyPlateNumberType];
     
-    [_cateButton setTitle:_carType forState:UIControlStateNormal];
+    _plateNumberTypeDes = [AppContext getTempContextValueByKey:kTempKeyPlateNumberTypeDes];
+    
+    [_cateButton setTitle:_plateNumberTypeDes forState:UIControlStateNormal];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -143,9 +151,93 @@
 
 - (void)rightButtonItem:(UIBarButtonItem *)buttonItem
 {
-    // 退出
-    //[self.navigationController popViewControllerAnimated:YES];
+    // 完成
+    [self checkSubmit];
     
+}
+
+- (void)checkSubmit
+{
+    if ([_nameTextField.text isEqualToString:@""]) {
+        [AppContext alertContent:@"姓名不能为空"];
+        return;
+    }
+    if (!(_idTextField.text.length == 15 || _idTextField.text.length == 18)) {
+        [AppContext alertContent:@"身份证为15位或者18位"];
+        return;
+    }
+    
+    if (_isNewCar) {
+        // 新车 无号牌
+        if ([_numberTextField.text isEqualToString:@""]) {
+            [AppContext alertContent:@"请填写发动机编号"];
+            return;
+        }
+        
+    }else {
+        // 非新车 有号牌
+        if ([_numberTextField.text isEqualToString:@""]) {
+            [AppContext alertContent:@"请填写号牌号码"];
+            return;
+        }
+        
+        if ([_plateNumberType isEqualToString:@"-1"] || _plateNumberType ==nil) {
+            [AppContext alertContent:@"请选择号牌类型"];
+            return;
+        }
+    }
+    
+    [self submitRequest];
+}
+
+- (void)submitRequest
+{
+    // 提交验证
+    NSString *kRequestURLPath;
+    NSString *error;
+    NSMutableDictionary *postDict = [[NSMutableDictionary alloc] init];
+   
+    [postDict setObject:_nameTextField.text forKey:@"car_owner"];
+    
+    [postDict setObject:@"add_vehicle" forKey:@"select"];
+    
+    [postDict setObject:[AppContext getTempContextValueByKey:kTempKeyUserId] forKey:@"user_id"];
+    
+    // 检查标志
+    [postDict setObject:@"3" forKey:@"process_flag"];
+    
+    if (_isNewCar) {
+        [postDict setObject:_numberTextField.text forKey:@"engine_no"];
+    } else{
+        [postDict setObject:_numberTextField.text forKey:@"plate_no"];
+        [postDict setObject:_plateNumberType forKey:@"plate_type"];
+    }
+    
+    kRequestURLPath = [NSString stringWithFormat:@"%@",[AppContext getServiceUrl:@"CricAddVehicleResp"]];
+    
+    NSString *postContent = [AppContext dictionaryToXml:postDict error:&error];
+    
+    NSLog(@"%@",postContent);
+    NSLog(@"---- kRequestURLPath %@", kRequestURLPath);
+    
+    if (!error) {
+        NSLog(@"---- content %@", postContent);
+        NSURL *url = [NSURL URLWithString:kRequestURLPath];
+
+        NSMutableURLRequest* request = [NSMutableURLRequest requestWithURL:url];
+        NSLog(@"url=%@",url);
+        [request setHTTPMethod:@"POST"];
+        request.HTTPBody = [postContent dataUsingEncoding:NSUTF8StringEncoding];
+        [request setValue:kHTTPHeader forHTTPHeaderField:@"content-type"];//请求头
+        NSURLConnection *connection = [[NSURLConnection alloc]initWithRequest:request delegate:self];
+        [connection start];
+        [AppContext didStartNetworking];
+        HUD = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+        HUD.labelText = @"加载中...";
+        
+    }else {
+        [AppContext alertContent:error];
+    }
 }
 
 - (void)bgTaped:(UITapGestureRecognizer *)tap
@@ -182,16 +274,55 @@
         _cateButton.hidden = NO;
     }
 }
-
-/*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
+#pragma mark - connection delegate
+- (void)connection:(NSURLConnection *)connection didFailWithError:(NSError *)error
+{
+    [HUD hide:YES];
+    [AppContext didStopNetworking];
+    [AppContext alertContent:NSLocalizedString(@"连接错误,请稍后再试", nil)];
+    
 }
-*/
+
+-(void)connection:(NSURLConnection *)connection didReceiveData:(NSData *)data
+{
+    [HUD hide:YES];
+    [AppContext didStopNetworking];
+    
+    NSDictionary *dict = [AppContext nsDataToObject:data encoding:NSUTF8StringEncoding];
+    NSLog(@"bangding1%@",dict);
+    
+    if ([AppContext checkResponse:dict])
+    {
+       
+        if ([[dict allKeys]containsObject:@"errorDesc"]) {
+            [AppContext alertContent:[dict objectForKey:@"errorDesc"]];
+        }else {
+            
+            // 获取确认信息
+            EBCarListModel *model = [[EBCarListModel alloc] init];
+            model.carOwner = [dict objectForKey:@"car_owner"];
+            model.engineNo = [dict objectForKey:@"engine_no"];
+            model.vehicleId = [dict objectForKey:@"vehicle_id"];
+            model.vinCode = [dict objectForKey:@"vin_code"];
+            
+            model.isNewCar = _isNewCar;
+            
+            // 因为不返回车牌号 所以这里记录下
+            if (!_isNewCar) {
+                model.plateNo = _numberTextField.text;
+                model.plateType = _plateNumberType;
+            }
+            
+            EBConfirmEditVC *vc = [[EBConfirmEditVC alloc] initWithNibName:@"EBConfirmEditVC" bundle:[NSBundle mainBundle]];
+            vc.carModel = model;
+            vc.addVC = self;
+            [self presentViewController:vc animated:YES completion:^{
+                
+            }];
+        }
+        
+    }
+}
 
 #pragma mark - UITextFieldDelegate
 

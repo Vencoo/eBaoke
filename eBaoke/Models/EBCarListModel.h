@@ -9,13 +9,21 @@
 #import "EBBaseModel.h"
 
 @interface EBCarListModel : EBBaseModel
-
-//@property(nonatomic)NSString *sId;
-@property(nonatomic)NSString *carOwner;
-@property(nonatomic)NSString *vehicleId;
-@property(nonatomic)NSString *engineNo;
-@property(nonatomic)NSString *vinCode;
-@property(nonatomic)NSString *useType;
-@property(nonatomic)NSString *plateNo;
+// 车辆所有人
+@property (nonatomic) NSString *carOwner;
+// 车辆ID
+@property (nonatomic) NSString *vehicleId;
+// 发动机号
+@property (nonatomic) NSString *engineNo;
+// 车架号
+@property (nonatomic) NSString *vinCode;
+// 车辆类型
+@property (nonatomic) NSString *plateType;
+// 车牌号
+@property (nonatomic) NSString *plateNo;
+// 车辆和人的绑定ID
+@property (nonatomic) NSString *userCarId;
+// 是否新车
+@property (nonatomic) BOOL isNewCar;
 
 @end

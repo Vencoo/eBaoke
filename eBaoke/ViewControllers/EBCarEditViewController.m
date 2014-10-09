@@ -19,8 +19,18 @@
     
     NSString *_carType;
     
+    NSString *_plateNumberType;
+    
+    NSString *_plateNumberTypeDes;
+    
     IBOutlet UIButton *_cateButton;
     
+    __weak IBOutlet UITextField *_nameTextField;
+    
+    __weak IBOutlet UITextField *_plateNumTextField;
+    
+    __weak IBOutlet UITextField *_engineTextField;
+
 }
 @end
 
@@ -29,6 +39,9 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
+    
+    [AppContext setTempContextValueByKey:kTempKeyPlateNumberTypeDes value:@"号牌类型"];
+    [AppContext setTempContextValueByKey:kTempKeyPlateNumberType value:@"-1"];
     
     [AppContext setTempContextValueByKey:@"car_type" value:@"号牌类型"];
     
@@ -51,9 +64,11 @@
 {
     [super viewWillAppear:animated];
     
-    _carType = [AppContext getTempContextValueByKey:kTempKeyPlateNumberType];
+    _plateNumberType = [AppContext getTempContextValueByKey:kTempKeyPlateNumberType];
     
-    [_cateButton setTitle:_carType forState:UIControlStateNormal];
+    _plateNumberTypeDes = [AppContext getTempContextValueByKey:kTempKeyPlateNumberTypeDes];
+    
+    [_cateButton setTitle:_plateNumberTypeDes forState:UIControlStateNormal];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -72,10 +87,17 @@
 
 - (void)rightButtonItem:(UIBarButtonItem *)buttonItem
 {
-    // 退出
-    //[self.navigationController popViewControllerAnimated:YES];
+    // 完成
+    [self checkEdit];
     
 }
+
+- (void)checkEdit
+{
+
+    
+}
+
 - (IBAction)carTypeAction:(id)sender {
     
     // 进入选择号牌类型的页面

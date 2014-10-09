@@ -24,7 +24,6 @@
     
     UISegmentedControl *_segmentedControl;
     
-    MBProgressHUD *HUD;
 }
 @end
 
@@ -86,7 +85,7 @@
     NSURL *url = [NSURL URLWithString:kRequestURLPath];
     NSString *error;
     NSMutableDictionary *postDict = [[NSMutableDictionary alloc] init];
-    [postDict setObject:[AppContext getTempContextValueByKey:@"user_id"] forKey:@"user_id"];
+    [postDict setObject:[AppContext getTempContextValueByKey:kTempKeyUserId] forKey:@"user_id"];
     [postDict setObject:@"policy_list" forKey:@"select"];
     [postDict setObject:_carModel.carOwner forKey:@"car_owner"];
     [postDict setObject:_carModel.vehicleId forKey:@"vehicle_id"] ;
@@ -101,6 +100,7 @@
         request.HTTPBody = [postContent dataUsingEncoding:NSUTF8StringEncoding];
         [request setValue:kHTTPHeader forHTTPHeaderField:@"content-type"];//请求头
         NSURLConnection *connection = [[NSURLConnection alloc]initWithRequest:request delegate:self];
+        [connection start];
         [AppContext didStartNetworking];
         HUD = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
         HUD.labelText = @"加载中...";
