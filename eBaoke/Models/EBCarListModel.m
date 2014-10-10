@@ -10,9 +10,25 @@
 
 @implementation EBCarListModel
 
+- (id) init
+{
+    self = [super init];
+    if (self) {
+        _carOwner = @"";
+        _vehicleId = @"";
+        _engineNo = @"";
+        _vinCode = @"";
+        _plateNo = @"";
+        _plateType = @"";
+        _userCarId = @"";
+        
+    }
+    return self;
+}
+
 - (id)initWithArray:(NSArray *)dataArray
 {
-    self = [super initWithArray:dataArray];
+    self = [self init];
     if (self) {
         _userCarId = [dataArray objectAtIndex:0];
         _plateNo = [dataArray objectAtIndex:6];

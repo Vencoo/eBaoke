@@ -145,6 +145,7 @@
     [postDict setObject:[AppContext getTempContextValueByKey:kTempKeyUserId] forKey:@"user_id"];
     [postDict setObject:@"binding_query" forKey:@"select"];
     NSString *postContent = [AppContext dictionaryToXml:postDict error:&error];
+    _rData = [[NSMutableData alloc] init];
     if (!error) {
         NSLog(@"---- content %@", postContent);
         
@@ -154,8 +155,8 @@
         request.HTTPBody = [postContent dataUsingEncoding:NSUTF8StringEncoding];
         [request setValue:kHTTPHeader forHTTPHeaderField:@"content-type"];//请求头
         NSURLConnection *connection = [[NSURLConnection alloc]initWithRequest:request delegate:self];
-
         [connection start];
+        
         [AppContext didStartNetworking];
         HUD = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
         HUD.labelText = @"加载中...";
@@ -178,6 +179,7 @@
     [postDict setObject:@"vehicle_list_query" forKey:@"select"];
     
     NSString *postContent = [AppContext dictionaryToXml:postDict error:&error];
+    _rData = [[NSMutableData alloc] init];
     if (!error) {
         NSLog(@"---- content %@", postContent);
         
@@ -187,8 +189,8 @@
         request.HTTPBody = [postContent dataUsingEncoding:NSUTF8StringEncoding];
         [request setValue:kHTTPHeader forHTTPHeaderField:@"content-type"];//请求头
         NSURLConnection *connection = [[NSURLConnection alloc]initWithRequest:request delegate:self];
-        
         [connection start];
+        
         [AppContext didStartNetworking];
         HUD = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
         HUD.labelText = @"加载中...";
@@ -214,6 +216,7 @@
     [postDict setObject:@"delete_vehicle" forKey:@"select"];
     
     NSString *postContent = [AppContext dictionaryToXml:postDict error:&error];
+    _rData = [[NSMutableData alloc] init];
     if (!error) {
         NSLog(@"---- content %@", postContent);
         
@@ -223,8 +226,8 @@
         request.HTTPBody = [postContent dataUsingEncoding:NSUTF8StringEncoding];
         [request setValue:kHTTPHeader forHTTPHeaderField:@"content-type"];//请求头
         NSURLConnection *connection = [[NSURLConnection alloc]initWithRequest:request delegate:self];
-        
         [connection start];
+        
         [AppContext didStartNetworking];
         HUD = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
         HUD.labelText = @"加载中...";
@@ -235,27 +238,19 @@
 }
 
 #pragma mark - connection delegate
-- (void)connection:(NSURLConnection *)connection didFailWithError:(NSError *)error
+- (void)connectionDidFinishLoading:(NSURLConnection *)connection
 {
     [HUD hide:YES];
     [AppContext didStopNetworking];
-    [AppContext alertContent:NSLocalizedString(@"连接错误,请稍后再试", nil)];
     
-}
-
--(void)connection:(NSURLConnection *)connection didReceiveData:(NSData *)data
-{
-    [HUD hide:YES];
-    [AppContext didStopNetworking];
-
-    NSDictionary *dict = [AppContext nsDataToObject:data encoding:NSUTF8StringEncoding];
-
+    NSDictionary *dict = [AppContext nsDataToObject:_rData encoding:NSUTF8StringEncoding];
+    
     if ([AppContext checkResponse:dict])
     {
         NSLog(@"数据接收成功URL=:%@",[connection.currentRequest.URL description]);
-   
+        
         NSString *str = [connection description];
-
+        
         if ([str rangeOfString:@"CircCatalogList"].length > 0) {
             // 处理列表
             NSLog(@"1.3列表接口数据：%@",dict);
@@ -308,7 +303,7 @@
             // 处理列表
             NSLog(@"删除车辆：%@",dict);
             // 获取列表 处理数据
-           
+            
             [self getCarListRequest];
         }
         
@@ -316,8 +311,8 @@
         [AppContext alertContent:@"返回数据错误"];
     }
     
-
 }
+
 #pragma mark - UITableView delegate
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {

@@ -47,7 +47,7 @@
     
     _dataArray = [[NSMutableArray alloc]init];
 
-    _tableView = [[UITableView alloc]initWithFrame:CGRectMake(0, IOSVersion>=7.0?-20:0, kDeviceWidth, KDeviceHeight-50) style:UITableViewStyleGrouped];
+    _tableView = [[UITableView alloc]initWithFrame:CGRectMake(0, IOSVersion>=7.0?0:0, kDeviceWidth, KDeviceHeight-64) style:UITableViewStylePlain];
     _tableView.backgroundView = [[UIImageView alloc]initWithImage:[UIImage imageNamed:@"Background"]];
     _tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
     _tableView.delegate = self;
@@ -63,13 +63,13 @@
     NSURL *url = [NSURL URLWithString:kRequestURLPath];
     NSString *error;
     NSMutableDictionary *postDict = [[NSMutableDictionary alloc] init];
- 
     
     [postDict setObject:@"vehicle_detail" forKey:@"select"];
     
     [postDict setObject:_vehicleId forKey:@"vehicle_id"];
     
     NSString *postContent = [AppContext dictionaryToXml:postDict error:&error];
+    _rData = [[NSMutableData alloc] init];
     if (!error) {
         NSLog(@"---- content %@", postContent);
         
@@ -90,19 +90,12 @@
 }
 
 #pragma mark - connection delegate
-- (void)connection:(NSURLConnection *)connection didFailWithError:(NSError *)error
-{
-    [HUD hide:YES];
-    [AppContext didStopNetworking];
-    [AppContext alertContent:NSLocalizedString(@"连接错误,请稍后再试", nil)];
-    
-}
 
--(void)connection:(NSURLConnection *)connection didReceiveData:(NSData *)data
+- (void)connectionDidFinishLoading:(NSURLConnection *)connection
 {
     [HUD hide:YES];
     [AppContext didStopNetworking];
-    NSDictionary *dict = [AppContext nsDataToObject:data encoding:NSUTF8StringEncoding];
+    NSDictionary *dict = [AppContext nsDataToObject:_rData encoding:NSUTF8StringEncoding];
     NSLog(@"dict=%@",dict);
     if ([AppContext checkResponse:dict]) {
         NSArray *keys = [[dict allKeys] sortedArrayUsingSelector:@selector(compare:)];
@@ -136,7 +129,7 @@
 {
 
     UITableViewCell  *cell = [[UITableViewCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:nil];
-    NSString *imageStr = [NSString stringWithFormat:@"CarDetail_r%ld_c1.png",indexPath.row+1];
+    NSString *imageStr = [NSString stringWithFormat:@"CarDetail_r%d_c1.png",indexPath.row+1];
     cell.backgroundView = [[UIImageView alloc]initWithImage:[UIImage imageNamed:imageStr]];
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
     

@@ -349,7 +349,7 @@ static NSInteger networkingCount = 0;
         return nil;
     }
     @finally {
-        [string release];
+        //[string release];
     }
 }
 

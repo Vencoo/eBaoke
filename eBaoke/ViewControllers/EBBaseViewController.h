@@ -14,5 +14,6 @@
 {
     MBProgressHUD *HUD;
 
+    NSMutableData *_rData;
 }
 @end

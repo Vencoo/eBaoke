@@ -48,4 +48,14 @@
     
 }
 
+-(void)connection:(NSURLConnection *)connection didReceiveData:(NSData *)data
+{
+    [_rData appendData:data];
+}
+
+- (void)connectionDidFinishLoading:(NSURLConnection *)connection
+{
+    [HUD hide:YES];
+    [AppContext didStopNetworking];
+}
 @end

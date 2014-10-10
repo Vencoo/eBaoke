@@ -491,6 +491,7 @@
 
     NSLog(@"%@",postContent);
     NSLog(@"---- kRequestURLPath == %@", kRequestURLPath);
+    _rData = [[NSMutableData alloc] init];
     if (!error) {
         NSLog(@"---- content %@", postContent);
         
@@ -501,6 +502,7 @@
         requestTag = kCarDataRequest;
         [request setValue:kHTTPHeader forHTTPHeaderField:@"content-type"];//请求头
         NSURLConnection *connection = [[NSURLConnection alloc]initWithRequest:request delegate:self];
+        [connection start];
         [AppContext didStartNetworking];
         
     }else {
@@ -601,7 +603,7 @@
     NSLog(@"---- kRequestURLPath == %@", kRequestURLPath);
     NSURL *url = [NSURL URLWithString:kRequestURLPath];
     NSString *postContent = [AppContext dictionaryToXml:postDict error:&error];
-
+    _rData = [[NSMutableData alloc] init];
     if (!error) {
         NSLog(@"---- content %@", postContent);
         
@@ -611,6 +613,7 @@
         request.HTTPBody = [postContent dataUsingEncoding:NSUTF8StringEncoding];
         [request setValue:kHTTPHeader forHTTPHeaderField:@"content-type"];//请求头
         NSURLConnection *connection = [[NSURLConnection alloc]initWithRequest:request delegate:self];
+        [connection start];
         [AppContext didStartNetworking];
         
     }else {
@@ -643,7 +646,7 @@
     NSLog(@"---- postDict %@", postDict);
     NSLog(@"---- kRequestURLPath %@", kRequestURLPath);
     NSString *postContent = [AppContext dictionaryToXml:postDict error:&error];
-    
+    _rData = [[NSMutableData alloc] init];
     if (!error) {
         NSLog(@"---- content %@", postContent);
         
@@ -653,6 +656,7 @@
         request.HTTPBody = [postContent dataUsingEncoding:NSUTF8StringEncoding];
         [request setValue:kHTTPHeader forHTTPHeaderField:@"content-type"];//请求头
         NSURLConnection *connection = [[NSURLConnection alloc]initWithRequest:request delegate:self];
+        [connection start];
         [AppContext didStartNetworking];
         
     }else {
@@ -678,7 +682,7 @@
     
 }
 
--(void)connection:(NSURLConnection *)connection didReceiveData:(NSData *)data
+- (void)connectionDidFinishLoading:(NSURLConnection *)connection
 {
     if ([sendType isEqualToString:ksendTypeUploadInfo] || [sendType isEqualToString:ksendTypeFinishRegister] || [sendType isEqualToString:ksendTypeReSMS])
     {
@@ -687,7 +691,7 @@
     
     [AppContext didStopNetworking];
     
-    NSDictionary *dict = [AppContext nsDataToObject:data encoding:NSUTF8StringEncoding];
+    NSDictionary *dict = [AppContext nsDataToObject:_rData encoding:NSUTF8StringEncoding];
     NSLog(@"sss%@",dict);
     
     if ( requestTag == 1002)

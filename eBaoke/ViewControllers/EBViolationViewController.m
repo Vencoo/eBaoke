@@ -17,6 +17,7 @@
     UIBarButtonItem *_leftButtonItem;
         
     NSMutableArray *_dataArray;
+
 }
 @end
 
@@ -98,6 +99,8 @@
     
     [postDict setObject:@"voilation_list" forKey:@"select"];
     
+    _rData = [[NSMutableData alloc] init];
+    
     NSString *postContent = [AppContext dictionaryToXml:postDict error:&error];
     if (!error) {
         NSLog(@"---- content %@", postContent);
@@ -119,27 +122,19 @@
 }
 
 #pragma mark - connection delegate
-- (void)connection:(NSURLConnection *)connection didFailWithError:(NSError *)error
-{
-    [HUD hide:YES];
-    [AppContext didStopNetworking];
-    [AppContext alertContent:NSLocalizedString(@"连接错误,请稍后再试", nil)];
-    
-}
 
--(void)connection:(NSURLConnection *)connection didReceiveData:(NSData *)data
+- (void)connectionDidFinishLoading:(NSURLConnection *)connection
 {
     [HUD hide:YES];
     [AppContext didStopNetworking];
     
-    NSDictionary *dict = [AppContext nsDataToObject:data encoding:NSUTF8StringEncoding];
+    NSDictionary *dict = [AppContext nsDataToObject:_rData encoding:NSUTF8StringEncoding];
     
     
     if ([AppContext checkResponse:dict])
     {
         
         // 处理详情
-        NSArray *array = [[dict allValues] lastObject];
         NSLog(@"c-list=%@",dict);
         
         NSArray *keys = [[dict allKeys] sortedArrayUsingSelector:@selector(compare:)];
@@ -160,7 +155,7 @@
         [_tableView reloadData];
         
     }
-    
+
 }
 
 @end

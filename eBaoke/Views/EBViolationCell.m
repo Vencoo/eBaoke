@@ -26,7 +26,7 @@
     
     NSString *vDate = vModel.peccancyTime;
     NSDateFormatter *format = [[NSDateFormatter alloc] init];
-    [format setDateFormat:@"yyyy/mm/dd hh:MM"];
+    [format setDateFormat:@"yyyy/MM/dd HH:mm"];
     NSDate *dateTime = [format dateFromString:vDate];
     
     NSCalendar *cal = [NSCalendar currentCalendar];
@@ -39,8 +39,8 @@
     //int second = (int)[dateComps second];
 
     _dateMonthLabel.text = [NSString stringWithFormat:@"%d月",month];
-    _dateDayLabel.text = [NSString stringWithFormat:@"%2d",day];
-    _dateHourLabel.text = [NSString stringWithFormat:@"%2d:%2d",hour,minute];
+    _dateDayLabel.text = [NSString stringWithFormat:@"%02d",day];
+    _dateHourLabel.text = [NSString stringWithFormat:@"%02d:%02d",hour,minute];
     
     _dateLabel.text = _vModel.acceptDate;
     
