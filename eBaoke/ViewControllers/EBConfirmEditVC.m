@@ -55,7 +55,15 @@
     
     [postDict setObject:_carModel.carOwner forKey:@"car_owner"];
     
-    [postDict setObject:@"add_vehicle" forKey:@"select"];
+    if (_isEditAction) {
+        [postDict setObject:@"binding_query" forKey:@"select"];
+        
+        kRequestURLPath = [NSString stringWithFormat:@"%@",[AppContext getServiceUrl:@"CricBindingQueryResp"]];
+    }else {
+        [postDict setObject:@"add_vehicle" forKey:@"select"];
+        
+        kRequestURLPath = [NSString stringWithFormat:@"%@",[AppContext getServiceUrl:@"CricAddVehicleResp"]];
+    }
     
     [postDict setObject:[AppContext getTempContextValueByKey:kTempKeyUserId] forKey:@"user_id"];
     
@@ -65,17 +73,13 @@
 
     [postDict setObject:_carModel.engineNo forKey:@"engine_no"];
 
-    // 检查标志
+    [postDict setObject:_carModel.plateNo forKey:@"plate_no"];
+    
+    [postDict setObject:_carModel.plateType forKey:@"plate_type"];
+    
+    // 确认标志
     [postDict setObject:@"2" forKey:@"process_flag"];
 
-    if (_carModel.isNewCar) {
-    } else{
-        [postDict setObject:_carModel.plateNo forKey:@"plate_no"];
-        [postDict setObject:_carModel.plateType forKey:@"plate_type"];
-    }
-    
-    kRequestURLPath = [NSString stringWithFormat:@"%@",[AppContext getServiceUrl:@"CricAddVehicleResp"]];
-    
     NSString *postContent = [AppContext dictionaryToXml:postDict error:&error];
     
     NSLog(@"%@",postContent);
@@ -124,7 +128,7 @@
             [AppContext alertContent:[dict objectForKey:@"errorDesc"]];
         }else {
             // 新增成功
-            [AppContext alertContent:@"新增成功"];
+            [AppContext alertContent:@"操作成功"];
             [self dismissViewControllerAnimated:YES completion:^{
                 if (_addVC) {
                     [_addVC.navigationController popViewControllerAnimated:YES];

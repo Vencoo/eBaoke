@@ -266,7 +266,7 @@
                 
                 if ([[dict objectForKey:key] isKindOfClass:[NSArray class]]) {
                     
-                    NSMutableArray *keyVal = [dict objectForKey:key];
+                    NSArray *keyVal = [dict objectForKey:key];
                     
                     EBCarListModel *model = [[EBCarListModel alloc]initWithArray:keyVal];
                     [_dataArray addObject:model];
@@ -349,6 +349,8 @@
 {
     if(_isEditing) {
         EBCarEditViewController *editVC = [[EBCarEditViewController alloc] initWithNibName:@"EBCarEditViewController" bundle:[NSBundle mainBundle]];
+        EBCarListModel *model = [_dataArray objectAtIndex:indexPath.row];
+        editVC.carModel = model;
         [self.navigationController pushViewController:editVC animated:YES];
         
     }else {
