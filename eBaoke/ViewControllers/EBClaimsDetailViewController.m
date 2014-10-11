@@ -28,7 +28,7 @@
     
     __weak IBOutlet UILabel *_happenLocationLabel;
     
-    __weak IBOutlet UILabel *_courseLabel;
+    __weak IBOutlet UITextView *_courseTextView;
     
     __weak IBOutlet UILabel *_reportDateLabel;
     
@@ -37,6 +37,7 @@
     
     UIBarButtonItem *_leftButtonItem;
 
+    EBClaimsDetailModel *_cdModel;
 }
 
 @end
@@ -59,6 +60,8 @@
     
     _leftButtonItem =[[UIBarButtonItem alloc]initWithTitle:@"返回" style:UIBarButtonItemStyleBordered target:self action:@selector(leftButtonItem:)];
     self.navigationItem.leftBarButtonItem = _leftButtonItem;
+    
+    [self sendRequest];
 }
 
 - (void)viewDidAppear:(BOOL)animated {
@@ -66,7 +69,7 @@
  
     _scrollView.frame = CGRectMake(0, 0, kDeviceWidth, KDeviceHeight-64);
     _scrollView.layer.masksToBounds = YES;
-    _scrollView.contentSize = CGSizeMake(320, 540);
+    _scrollView.contentSize = CGSizeMake(320, 560);
     _scrollView.scrollEnabled = YES;
 }
 
@@ -83,5 +86,76 @@
     
 }
 
+-(void)sendRequest
+{
+    NSString *kRequestURLPath = [NSString stringWithFormat:@"%@",[AppContext getServiceUrl:@"CircUserClaimDetailUrl"]];
+    NSURL *url = [NSURL URLWithString:kRequestURLPath];
+    NSString *error;
+    NSMutableDictionary *postDict = [[NSMutableDictionary alloc] init];
+    [postDict setObject:[AppContext getTempContextValueByKey:kTempKeyUserId] forKey:@"user_id"];
+    [postDict setObject:_cModel.caseId forKey:@"case_id"];
+    
+    [postDict setObject:_cModel.caseType forKey:@"case_type"];
+    
+    [postDict setObject:@"claim_detail" forKey:@"select"];
+    
+    NSString *postContent = [AppContext dictionaryToXml:postDict error:&error];
+    _rData = [[NSMutableData alloc] init];
+    if (!error) {
+        NSLog(@"---- content %@", postContent);
+        
+        NSMutableURLRequest* request = [NSMutableURLRequest requestWithURL:url];
+        NSLog(@"url=%@",url);
+        [request setHTTPMethod:@"POST"];
+        request.HTTPBody = [postContent dataUsingEncoding:NSUTF8StringEncoding];
+        [request setValue:kHTTPHeader forHTTPHeaderField:@"content-type"];//请求头
+        NSURLConnection *connection = [[NSURLConnection alloc]initWithRequest:request delegate:self];
+        [connection start];
+        [AppContext didStartNetworking];
+        HUD = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+        HUD.labelText = @"加载中...";
+        
+    }else {
+        [AppContext alertContent:error];
+    }
+}
+
+#pragma mark - connection delegate
+
+- (void)connectionDidFinishLoading:(NSURLConnection *)connection
+{
+    [HUD hide:YES];
+    [AppContext didStopNetworking];
+    
+    NSDictionary *dict = [AppContext nsDataToObject:_rData encoding:NSUTF8StringEncoding];
+    NSLog(@"cp-detail=%@",dict);
+    
+    if ([AppContext checkResponse:dict])
+    {
+        NSArray *array = [dict objectForKey:@"000:000"];
+        
+        _cdModel = [[EBClaimsDetailModel alloc] initWithArray:array];
+        
+        [self reflashDatas];
+        
+    }
+    
+}
+
+- (void)reflashDatas
+{
+    _statusLabel.text = _cdModel.caseStatus;
+    _happenTimeLabel.text = _cdModel.happenTime;
+    _closedTimeLabel.text = _cdModel.closedTime;
+    _reparationAmountLabel.text = _cdModel.reparationAmount;
+    _driverNameLabel.text = _cdModel.driverName;
+    _resDivisionLabel.text = _cdModel.resDivision;
+    _refusePayReasonLabel.text = _cdModel.refusePayReason;
+    _happenLocationLabel.text = _cdModel.happenLocation;
+    _courseTextView.text = _cdModel.course;
+    _reportDateLabel.text = _cdModel.reportDate;
+    _caseStartTimeLabel.text = _cdModel.caseStartTime;
+    
+}
 
 @end

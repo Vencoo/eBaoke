@@ -91,7 +91,9 @@
 }
 
 - (IBAction)calculateAction:(id)sender {
-    
+    //6
+    //非营运 个人
+    //纳税
 }
 
 /*

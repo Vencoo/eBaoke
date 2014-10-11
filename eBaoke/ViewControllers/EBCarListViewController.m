@@ -286,7 +286,7 @@
                 
                 if ([[dict objectForKey:key] isKindOfClass:[NSArray class]]) {
                     
-                    NSMutableArray *keyVal = [dict objectForKey:key];
+                    NSArray *keyVal = [dict objectForKey:key];
                     
                     EBCarListModel *model =  [_dataArray objectAtIndex:i-1];
                     

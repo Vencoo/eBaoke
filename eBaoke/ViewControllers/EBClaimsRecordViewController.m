@@ -171,10 +171,10 @@
                 
                 if ([[dict objectForKey:key] isKindOfClass:[NSArray class]]) {
                     
-//                    NSMutableArray *keyVal = [dict objectForKey:key];
-//                    
-//                    EBCarListModel *model = [[EBCarListModel alloc]initWithArray:keyVal];
-//                    [_dataArray addObject:model];
+                    NSArray *keyVal = [dict objectForKey:key];
+                    
+                    EBClaimsRecordModel *model = [[EBClaimsRecordModel alloc]initWithArray:keyVal];
+                    [_dataArray addObject:model];
                     
                 }
             }
@@ -188,23 +188,39 @@
 #pragma -mark UITableView delegate dataSource
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return 10;
+    if ([_dataArray count] == 0) {
+        return 1;
+    }
     return _dataArray.count;
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
+    if ([_dataArray count] == 0) {
+        return tableView.frame.size.height;
+    }
     return 98.0;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath;
 {
+    if ([_dataArray count] == 0) {
+        UITableViewCell *cell = [[UITableViewCell alloc] initWithFrame:tableView.bounds];
+        UILabel *label = [[UILabel alloc] initWithFrame:CGRectMake(0, 100, 100, 30)];
+        label.text = @"无数据";
+        label.textAlignment = NSTextAlignmentCenter;
+        label.center = cell.center;
+        [cell addSubview:label];
+        return cell;
+    }
+    
     EBPremiumRecordCell *cell = [[[NSBundle mainBundle] loadNibNamed:@"EBPremiumRecordCell" owner:nil options:nil] objectAtIndex:0];
     
     cell.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"Background"]];
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
     
-    cell.numberLabel.text = @"2131231";
+    EBClaimsRecordModel *cModel = [_dataArray objectAtIndex:indexPath.row];
+    cell.cModel = cModel;
     
     return cell;
 }
@@ -212,6 +228,7 @@
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     EBClaimsDetailViewController *cVC = [[EBClaimsDetailViewController alloc] initWithNibName:@"EBClaimsDetailViewController" bundle:[NSBundle mainBundle]];
+    cVC.cModel = [_dataArray objectAtIndex:indexPath.row];
     [self.navigationController pushViewController:cVC animated:YES];
     
 }

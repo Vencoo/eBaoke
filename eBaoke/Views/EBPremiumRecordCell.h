@@ -7,11 +7,14 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "Globals.h"
 
 @interface EBPremiumRecordCell : UITableViewCell
 
 @property (weak, nonatomic) IBOutlet UILabel *statusLabel;
 @property (weak, nonatomic) IBOutlet UILabel *numberLabel;
 @property (weak, nonatomic) IBOutlet UILabel *dateLabel;
+
+@property (nonatomic) EBClaimsRecordModel *cModel;
 
 @end

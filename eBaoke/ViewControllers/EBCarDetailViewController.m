@@ -103,7 +103,7 @@
         for (NSString *key in keys) {
             
             if ([[dict objectForKey:key] isKindOfClass:[NSArray class]]) {
-                NSMutableArray *keyVal = [dict objectForKey:key];
+                NSArray *keyVal = [dict objectForKey:key];
                 [_dataArray addObject:keyVal];
             }
             [_tableView reloadData];

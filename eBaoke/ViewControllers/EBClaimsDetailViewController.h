@@ -12,4 +12,6 @@
 
 @interface EBClaimsDetailViewController : EBBaseViewController
 
+@property (nonatomic) EBClaimsRecordModel *cModel;
+
 @end

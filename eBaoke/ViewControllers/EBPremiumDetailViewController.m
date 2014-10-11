@@ -110,7 +110,7 @@
     
     if ([AppContext checkResponse:dict])
     {
-        NSArray *array = [[dict allValues] lastObject];
+        NSArray *array = [dict objectForKey:@"000:000"];
 
         _pdModel = [[EBPremiumDetailModel alloc] initWithArray:array];
         

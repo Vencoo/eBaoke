@@ -20,4 +20,12 @@
     // Configure the view for the selected state
 }
 
+- (void)setCModel:(EBClaimsRecordModel *)cModel
+{
+    _cModel = cModel;
+    
+    _numberLabel.text = _cModel.reportNo;
+    _dateLabel.text = _cModel.happenTime;
+}
+
 @end
