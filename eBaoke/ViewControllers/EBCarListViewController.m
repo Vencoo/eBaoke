@@ -16,9 +16,6 @@
 #import "EBPremiumViewController.h"
 #import "EBViolationViewController.h"
 
-#define kCancelButtonItem 101
-#define kEditButtonItem 102
-
 @interface EBCarListViewController ()<UITextFieldDelegate,UITableViewDelegate,UITableViewDataSource,carListCellButtonDelegate>
 {
     UITableView *_tableView;
@@ -80,10 +77,8 @@
     [self.view addSubview:_tableView];
     
     _rightButtonItem =[[UIBarButtonItem alloc]initWithTitle:@"编辑" style:UIBarButtonItemStyleBordered target:self action:@selector(rightButtonItem:)];
-    _rightButtonItem.tag = kEditButtonItem;
     self.navigationItem.rightBarButtonItem = _rightButtonItem;
     _leftButtonItem =[[UIBarButtonItem alloc]initWithTitle:@"注销" style:UIBarButtonItemStyleBordered target:self action:@selector(leftButtonItem:)];
-    _leftButtonItem.tag = kCancelButtonItem;
     self.navigationItem.leftBarButtonItem = _leftButtonItem;
 }
 

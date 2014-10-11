@@ -34,7 +34,6 @@
     
     __weak IBOutlet UILabel *_caseStartTimeLabel;
     
-    
     UIBarButtonItem *_leftButtonItem;
 
     EBClaimsDetailModel *_cdModel;

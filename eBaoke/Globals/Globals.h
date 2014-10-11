@@ -23,6 +23,7 @@
 #import "EBViolationModel.h"
 #import "EBClaimsRecordModel.h"
 #import "EBClaimsDetailModel.h"
+#import "EBClaimsCaculateModel.h"
 
 
 #define kDeviceWidth [UIScreen mainScreen].bounds.size.width

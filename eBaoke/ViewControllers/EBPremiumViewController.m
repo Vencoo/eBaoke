@@ -9,6 +9,7 @@
 #import "EBPremiumViewController.h"
 
 #import "EBSelectOptionViewController.h"
+#import "EBPremiumCalculateViewController.h"
 
 @interface EBPremiumViewController ()
 {
@@ -16,7 +17,6 @@
     __weak IBOutlet UIButton *_carTypeButton;
     __weak IBOutlet UIButton *_carUseNatureButton;
     __weak IBOutlet UIButton *_carTaxFlagButton;
-    
     
     UIBarButtonItem *_leftButtonItem;
     
@@ -91,19 +91,86 @@
 }
 
 - (IBAction)calculateAction:(id)sender {
-    //6
-    //非营运 个人
-    //纳税
+    
+    [self checkInput];
 }
 
-/*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
+- (void)checkInput
+{
+    if ([[AppContext getTempContextValueByKey:kTempKeyCarType] isEqualToString:@"-1"]) {
+        [AppContext alertContent:@"请选择车辆种类"];
+        return;
+    }
+    if ([[AppContext getTempContextValueByKey:kTempKeyCarUseNature] isEqualToString:@"-1"]) {
+        [AppContext alertContent:@"请选择车辆使用性质"];
+        return;
+    }
+    if ([[AppContext getTempContextValueByKey:kTempKeyCarTaxFlag] isEqualToString:@"-1"]) {
+        [AppContext alertContent:@"请选择车船税标志"];
+        return;
+    }
+    
+    [self sendRequest];
 }
-*/
+
+- (void)sendRequest
+{
+    NSString *kRequestURLPath = [NSString stringWithFormat:@"%@",[AppContext getServiceUrl:@"CircUserPremiumCalculate"]];
+    NSURL *url = [NSURL URLWithString:kRequestURLPath];
+    NSString *error;
+    NSMutableDictionary *postDict = [[NSMutableDictionary alloc] init];
+    [postDict setObject:[AppContext getTempContextValueByKey:kTempKeyUserId] forKey:@"user_id"];
+    [postDict setObject:_carModel.vehicleId forKey:@"vehicle_id"];
+    
+    [postDict setObject:[AppContext getTempContextValueByKey:kTempKeyCarType] forKey:@"vehicle_type"];
+    [postDict setObject:[AppContext getTempContextValueByKey:kTempKeyCarUseNature] forKey:@"nature_use"];
+    [postDict setObject:[AppContext getTempContextValueByKey:kTempKeyCarTaxFlag] forKey:@"tax_flag"];
+    
+    [postDict setObject:@"premiumCalculate" forKey:@"select"];
+    
+    NSString *postContent = [AppContext dictionaryToXml:postDict error:&error];
+    _rData = [[NSMutableData alloc] init];
+    if (!error) {
+        NSLog(@"---- content %@", postContent);
+        
+        NSMutableURLRequest* request = [NSMutableURLRequest requestWithURL:url];
+        NSLog(@"url=%@",url);
+        [request setHTTPMethod:@"POST"];
+        request.HTTPBody = [postContent dataUsingEncoding:NSUTF8StringEncoding];
+        [request setValue:kHTTPHeader forHTTPHeaderField:@"content-type"];//请求头
+        NSURLConnection *connection = [[NSURLConnection alloc]initWithRequest:request delegate:self];
+        [connection start];
+        [AppContext didStartNetworking];
+        HUD = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+        HUD.labelText = @"加载中...";
+        
+    }else {
+        [AppContext alertContent:error];
+    }
+}
+
+#pragma mark - connection delegate
+
+- (void)connectionDidFinishLoading:(NSURLConnection *)connection
+{
+    [HUD hide:YES];
+    [AppContext didStopNetworking];
+    
+    NSDictionary *dict = [AppContext nsDataToObject:_rData encoding:NSUTF8StringEncoding];
+    NSLog(@"cp-保费试算=%@",dict);
+    
+    //if ([AppContext checkResponse:dict])
+    {
+        NSArray *array = [dict objectForKey:@"001:001"];
+    
+        EBClaimsCaculateModel *model = [[EBClaimsCaculateModel alloc] initWithArray:array];
+        
+        // 进入结果显示页面
+        EBPremiumCalculateViewController *pVC = [[EBPremiumCalculateViewController alloc] initWithNibName:@"EBPremiumCalculateViewController" bundle:[NSBundle mainBundle]];
+        pVC.cModel = model;
+        [self.navigationController pushViewController:pVC animated:YES];
+    }
+    
+}
 
 @end

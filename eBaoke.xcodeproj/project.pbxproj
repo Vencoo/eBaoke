@@ -33,6 +33,11 @@
 		A20A79B519D1645400C2D68E /* EBCarEditViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = A20A79B319D1645400C2D68E /* EBCarEditViewController.xib */; };
 		A20C10D719E7DB5100A68340 /* EBClaimsRecordModel.m in Sources */ = {isa = PBXBuildFile; fileRef = A20C10D619E7DB5100A68340 /* EBClaimsRecordModel.m */; };
 		A20C10DA19E8CCD100A68340 /* EBClaimsDetailModel.m in Sources */ = {isa = PBXBuildFile; fileRef = A20C10D919E8CCD100A68340 /* EBClaimsDetailModel.m */; };
+		A20C10DE19E8E2B500A68340 /* EBPremiumCalculateViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A20C10DC19E8E2B500A68340 /* EBPremiumCalculateViewController.m */; };
+		A20C10DF19E8E2B500A68340 /* EBPremiumCalculateViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = A20C10DD19E8E2B500A68340 /* EBPremiumCalculateViewController.xib */; };
+		A20C10E219E9126800A68340 /* EBClaimsCaculateModel.m in Sources */ = {isa = PBXBuildFile; fileRef = A20C10E119E9126800A68340 /* EBClaimsCaculateModel.m */; };
+		A20C10E619E932AA00A68340 /* EBSearchViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A20C10E419E932AA00A68340 /* EBSearchViewController.m */; };
+		A20C10E719E932AA00A68340 /* EBSearchViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = A20C10E519E932AA00A68340 /* EBSearchViewController.xib */; };
 		A21F568719E6369800E367D5 /* EBPremiumDetailModel.m in Sources */ = {isa = PBXBuildFile; fileRef = A21F568619E6369800E367D5 /* EBPremiumDetailModel.m */; };
 		A27B2D5319DA98B1006E93DC /* EBConfirmEditVC.m in Sources */ = {isa = PBXBuildFile; fileRef = A27B2D5119DA98B1006E93DC /* EBConfirmEditVC.m */; };
 		A27B2D5419DA98B1006E93DC /* EBConfirmEditVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = A27B2D5219DA98B1006E93DC /* EBConfirmEditVC.xib */; };
@@ -244,6 +249,14 @@
 		A20C10D619E7DB5100A68340 /* EBClaimsRecordModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EBClaimsRecordModel.m; sourceTree = "<group>"; };
 		A20C10D819E8CCD100A68340 /* EBClaimsDetailModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EBClaimsDetailModel.h; sourceTree = "<group>"; };
 		A20C10D919E8CCD100A68340 /* EBClaimsDetailModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EBClaimsDetailModel.m; sourceTree = "<group>"; };
+		A20C10DB19E8E2B500A68340 /* EBPremiumCalculateViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EBPremiumCalculateViewController.h; sourceTree = "<group>"; };
+		A20C10DC19E8E2B500A68340 /* EBPremiumCalculateViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EBPremiumCalculateViewController.m; sourceTree = "<group>"; };
+		A20C10DD19E8E2B500A68340 /* EBPremiumCalculateViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = EBPremiumCalculateViewController.xib; sourceTree = "<group>"; };
+		A20C10E019E9126800A68340 /* EBClaimsCaculateModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EBClaimsCaculateModel.h; sourceTree = "<group>"; };
+		A20C10E119E9126800A68340 /* EBClaimsCaculateModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EBClaimsCaculateModel.m; sourceTree = "<group>"; };
+		A20C10E319E932AA00A68340 /* EBSearchViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EBSearchViewController.h; sourceTree = "<group>"; };
+		A20C10E419E932AA00A68340 /* EBSearchViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EBSearchViewController.m; sourceTree = "<group>"; };
+		A20C10E519E932AA00A68340 /* EBSearchViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = EBSearchViewController.xib; sourceTree = "<group>"; };
 		A21F568519E6369800E367D5 /* EBPremiumDetailModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EBPremiumDetailModel.h; sourceTree = "<group>"; };
 		A21F568619E6369800E367D5 /* EBPremiumDetailModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EBPremiumDetailModel.m; sourceTree = "<group>"; };
 		A27B2D5019DA98B1006E93DC /* EBConfirmEditVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EBConfirmEditVC.h; sourceTree = "<group>"; };
@@ -571,6 +584,8 @@
 				A20C10D919E8CCD100A68340 /* EBClaimsDetailModel.m */,
 				A21F568519E6369800E367D5 /* EBPremiumDetailModel.h */,
 				A21F568619E6369800E367D5 /* EBPremiumDetailModel.m */,
+				A20C10E019E9126800A68340 /* EBClaimsCaculateModel.h */,
+				A20C10E119E9126800A68340 /* EBClaimsCaculateModel.m */,
 				A2D177D719D3EB310001AFF2 /* EBViolationModel.h */,
 				A2D177D819D3EB310001AFF2 /* EBViolationModel.m */,
 			);
@@ -597,6 +612,9 @@
 				403C919419C694580081F864 /* EBRegisterViewController.m */,
 				403C919919C6948F0081F864 /* EBCarListViewController.h */,
 				403C919A19C6948F0081F864 /* EBCarListViewController.m */,
+				A20C10E319E932AA00A68340 /* EBSearchViewController.h */,
+				A20C10E419E932AA00A68340 /* EBSearchViewController.m */,
+				A20C10E519E932AA00A68340 /* EBSearchViewController.xib */,
 				403C919C19C694AD0081F864 /* EBCarAddViewController.h */,
 				403C919D19C694AD0081F864 /* EBCarAddViewController.m */,
 				A27B2D5019DA98B1006E93DC /* EBConfirmEditVC.h */,
@@ -624,6 +642,9 @@
 				A2D177DA19D4030D0001AFF2 /* EBPremiumViewController.xib */,
 				A2D177DC19D416680001AFF2 /* EBSelectOptionViewController.h */,
 				A2D177DD19D416680001AFF2 /* EBSelectOptionViewController.m */,
+				A20C10DB19E8E2B500A68340 /* EBPremiumCalculateViewController.h */,
+				A20C10DC19E8E2B500A68340 /* EBPremiumCalculateViewController.m */,
+				A20C10DD19E8E2B500A68340 /* EBPremiumCalculateViewController.xib */,
 				403C91A819C695940081F864 /* EBViolationViewController.h */,
 				403C91A919C695940081F864 /* EBViolationViewController.m */,
 			);
@@ -980,11 +1001,13 @@
 				D770E99219C98BB9001F9B60 /* Register2.png in Resources */,
 				D7D2191819C6B80200C585FA /* Background.png in Resources */,
 				D7D2191C19C6B80200C585FA /* CarDetail_r13_c1.png in Resources */,
+				A20C10DF19E8E2B500A68340 /* EBPremiumCalculateViewController.xib in Resources */,
 				A2D177F319D536460001AFF2 /* EBPremiumDetailViewController.xib in Resources */,
 				A2D177E019D435940001AFF2 /* CarItemsList.plist in Resources */,
 				D7D2197519C6B80200C585FA /* Search-box-adv_r1_c1.png in Resources */,
 				D770E97E19C98BB9001F9B60 /* 车辆绑定信息确认-3.png in Resources */,
 				D71F84FA19CAD5D300D61707 /* EBCarListCell.xib in Resources */,
+				A20C10E719E932AA00A68340 /* EBSearchViewController.xib in Resources */,
 				D7D2195C19C6B80200C585FA /* Popup_pressed_r2_c1.png in Resources */,
 				D7D2192A19C6B80200C585FA /* CarDetail_r7_c1.png in Resources */,
 				D7D2192619C6B80200C585FA /* CarDetail_r3_c1.png in Resources */,
@@ -1124,6 +1147,8 @@
 				403C917E19C688450081F864 /* EBBaseModel.m in Sources */,
 				403C919819C694740081F864 /* EBLoginViewController.m in Sources */,
 				403C915919C6786D0081F864 /* AppDelegate.m in Sources */,
+				A20C10DE19E8E2B500A68340 /* EBPremiumCalculateViewController.m in Sources */,
+				A20C10E619E932AA00A68340 /* EBSearchViewController.m in Sources */,
 				403C919219C694180081F864 /* EBBaseViewController.m in Sources */,
 				403C91A719C695230081F864 /* EBPremiumViewController.m in Sources */,
 				D7373AC719CBF1AB0056C772 /* EBCarDetailModel.m in Sources */,
@@ -1143,6 +1168,7 @@
 				A2D177F619D7E46A0001AFF2 /* EBPremiumModel.m in Sources */,
 				D7373AC419CBCD7E0056C772 /* EBCarListModel.m in Sources */,
 				A2D177EA19D531420001AFF2 /* EBPremiumRecordCell.m in Sources */,
+				A20C10E219E9126800A68340 /* EBClaimsCaculateModel.m in Sources */,
 				403C918319C690850081F864 /* JSONKit.m in Sources */,
 				D7D219B019C6DD9400C585FA /* NSString+MD5Addition.m in Sources */,
 				A21F568719E6369800E367D5 /* EBPremiumDetailModel.m in Sources */,

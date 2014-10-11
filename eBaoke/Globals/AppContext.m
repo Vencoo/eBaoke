@@ -133,7 +133,7 @@ static NSInteger networkingCount = 0;
 	NSString *errCode = [responseContent objectForKey:@"ERR_CODE"];
 	NSString *responseCode = [responseContent objectForKey:@"RESPONSE_CODE"];
 	
-	NSString *alertMsg;
+	NSString *alertMsg = @"";
 	if (errCode != nil) {
 		alertMsg = [responseContent objectForKey:@"ERR_MSG"];
 		if (alertMsg == nil) {
