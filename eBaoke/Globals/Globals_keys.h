@@ -23,4 +23,10 @@
 #define kTempKeyUserName                @"_user_name"
 #define kTempKeyUserType                @"_user_type"
 
+
+#define kUsername                       @"_user_name"
+#define kUserPassword                   @"_user_password"
+#define kRememberUser                   @"_remember_user"
+
+
 #endif

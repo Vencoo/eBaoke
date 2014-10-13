@@ -10,13 +10,11 @@
 #import "EBRegisterViewController.h"
 #import "MBProgressHUD.h"
 #import "EBCarListViewController.h"
+#import "EBSearchViewController.h"
 
 #define loginButton 1
 #define registerButton 2
 
-#define kUsername           @"_user_name"
-#define kUserPassword       @"_user_password"
-#define kRememberUser       @"_remember_user"
 
 @interface EBLoginViewController ()
 {
@@ -304,8 +302,17 @@
     [AppContext setPreferenceByKey:kUsername value:_userName.text];
     [AppContext setPreferenceByKey:kUserPassword value:_userPassword.text];
 
-    EBCarListViewController *carListVC = [[EBCarListViewController alloc]init];
-    [self.navigationController pushViewController:carListVC animated:YES];
+    // 根据用户类型 进入页面
+    NSString *type = @"0";
+    if ([type isEqualToString:@"1"]) {
+        EBCarListViewController *vc1 = [[EBCarListViewController alloc] init];
+        [self.navigationController pushViewController:vc1 animated:YES];
+
+    }else {
+        EBSearchViewController *vc2 = [[EBSearchViewController alloc] initWithNibName:@"EBSearchViewController" bundle:[NSBundle mainBundle]];
+        [self.navigationController pushViewController:vc2 animated:YES];
+    }
+    
 }
 
 - (void) dismissKeyboard:(id)sender{

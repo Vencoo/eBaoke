@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>K</key>
+	<string>查封</string>
+	<key>L</key>
+	<string>暂扣</string>
+	<key>M</key>
+	<string>强制注销</string>
+	<key>N</key>
+	<string>事故逃逸</string>
+	<key>O</key>
+	<string>锁定</string>
+	<key>A</key>
+	<string>正常</string>
+	<key>B</key>
+	<string>转出</string>
+	<key>C</key>
+	<string>被盗抢</string>
+	<key>D</key>
+	<string>停驶</string>
+	<key>E</key>
+	<string>注销</string>
+	<key>G</key>
+	<string>违法未处理</string>
+	<key>H</key>
+	<string>海关监管</string>
+	<key>I</key>
+	<string>事故未处理</string>
+	<key>J</key>
+	<string>嫌疑车</string>
+	<key>g</key>
+	<string>平台注销</string>
+</dict>
+</plist>

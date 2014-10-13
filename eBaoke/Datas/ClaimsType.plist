@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>0</key>
+	<string>有责涉及死亡赔案</string>
+	<key>1</key>
+	<string>有责不涉及死亡赔案</string>
+	<key>2</key>
+	<string>无责赔案</string>
+	<key>3</key>
+	<string>垫付赔案</string>
+	<key>4</key>
+	<string>垫付救助基金</string>
+	<key>9</key>
+	<string>其它</string>
+</dict>
+</plist>

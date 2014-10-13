@@ -38,6 +38,10 @@
 		A20C10E219E9126800A68340 /* EBClaimsCaculateModel.m in Sources */ = {isa = PBXBuildFile; fileRef = A20C10E119E9126800A68340 /* EBClaimsCaculateModel.m */; };
 		A20C10E619E932AA00A68340 /* EBSearchViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A20C10E419E932AA00A68340 /* EBSearchViewController.m */; };
 		A20C10E719E932AA00A68340 /* EBSearchViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = A20C10E519E932AA00A68340 /* EBSearchViewController.xib */; };
+		A20C10E919EB769100A68340 /* VehicleStatus.plist in Resources */ = {isa = PBXBuildFile; fileRef = A20C10E819EB769100A68340 /* VehicleStatus.plist */; };
+		A20C10EB19EB7B2300A68340 /* CaseStatus.plist in Resources */ = {isa = PBXBuildFile; fileRef = A20C10EA19EB7B2300A68340 /* CaseStatus.plist */; };
+		A20C10ED19EB7CCA00A68340 /* ClaimsType.plist in Resources */ = {isa = PBXBuildFile; fileRef = A20C10EC19EB7CCA00A68340 /* ClaimsType.plist */; };
+		A20C10EF19EB7D4E00A68340 /* Responsibility.plist in Resources */ = {isa = PBXBuildFile; fileRef = A20C10EE19EB7D4E00A68340 /* Responsibility.plist */; };
 		A21F568719E6369800E367D5 /* EBPremiumDetailModel.m in Sources */ = {isa = PBXBuildFile; fileRef = A21F568619E6369800E367D5 /* EBPremiumDetailModel.m */; };
 		A27B2D5319DA98B1006E93DC /* EBConfirmEditVC.m in Sources */ = {isa = PBXBuildFile; fileRef = A27B2D5119DA98B1006E93DC /* EBConfirmEditVC.m */; };
 		A27B2D5419DA98B1006E93DC /* EBConfirmEditVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = A27B2D5219DA98B1006E93DC /* EBConfirmEditVC.xib */; };
@@ -257,6 +261,10 @@
 		A20C10E319E932AA00A68340 /* EBSearchViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EBSearchViewController.h; sourceTree = "<group>"; };
 		A20C10E419E932AA00A68340 /* EBSearchViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EBSearchViewController.m; sourceTree = "<group>"; };
 		A20C10E519E932AA00A68340 /* EBSearchViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = EBSearchViewController.xib; sourceTree = "<group>"; };
+		A20C10E819EB769100A68340 /* VehicleStatus.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = VehicleStatus.plist; sourceTree = "<group>"; };
+		A20C10EA19EB7B2300A68340 /* CaseStatus.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = CaseStatus.plist; sourceTree = "<group>"; };
+		A20C10EC19EB7CCA00A68340 /* ClaimsType.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = ClaimsType.plist; sourceTree = "<group>"; };
+		A20C10EE19EB7D4E00A68340 /* Responsibility.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Responsibility.plist; sourceTree = "<group>"; };
 		A21F568519E6369800E367D5 /* EBPremiumDetailModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EBPremiumDetailModel.h; sourceTree = "<group>"; };
 		A21F568619E6369800E367D5 /* EBPremiumDetailModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EBPremiumDetailModel.m; sourceTree = "<group>"; };
 		A27B2D5019DA98B1006E93DC /* EBConfirmEditVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EBConfirmEditVC.h; sourceTree = "<group>"; };
@@ -658,6 +666,10 @@
 				D7D219A819C6D51900C585FA /* AppEnv.plist */,
 				403C91AC19C697230081F864 /* CarTypeList.plist */,
 				A2D177DF19D435940001AFF2 /* CarItemsList.plist */,
+				A20C10E819EB769100A68340 /* VehicleStatus.plist */,
+				A20C10EA19EB7B2300A68340 /* CaseStatus.plist */,
+				A20C10EC19EB7CCA00A68340 /* ClaimsType.plist */,
+				A20C10EE19EB7D4E00A68340 /* Responsibility.plist */,
 			);
 			path = Datas;
 			sourceTree = "<group>";
@@ -1005,6 +1017,7 @@
 				A2D177F319D536460001AFF2 /* EBPremiumDetailViewController.xib in Resources */,
 				A2D177E019D435940001AFF2 /* CarItemsList.plist in Resources */,
 				D7D2197519C6B80200C585FA /* Search-box-adv_r1_c1.png in Resources */,
+				A20C10ED19EB7CCA00A68340 /* ClaimsType.plist in Resources */,
 				D770E97E19C98BB9001F9B60 /* 车辆绑定信息确认-3.png in Resources */,
 				D71F84FA19CAD5D300D61707 /* EBCarListCell.xib in Resources */,
 				A20C10E719E932AA00A68340 /* EBSearchViewController.xib in Resources */,
@@ -1053,6 +1066,7 @@
 				D7D2196C19C6B80200C585FA /* Register_+2.png in Resources */,
 				D770E98A19C98BB9001F9B60 /* 新增页面5.png in Resources */,
 				D770E97B19C98BB9001F9B60 /* 车辆绑定信息确认-1.png in Resources */,
+				A20C10E919EB769100A68340 /* VehicleStatus.plist in Resources */,
 				D7D2193819C6B80200C585FA /* ClaimList.png in Resources */,
 				D7D2195019C6B80200C585FA /* Login2.png in Resources */,
 				D770E99119C98BB9001F9B60 /* Register.png in Resources */,
@@ -1060,6 +1074,7 @@
 				D770E98D19C98BB9001F9B60 /* 车辆列表-3.png in Resources */,
 				D7D2196919C6B80200C585FA /* QuoteClaimList.png in Resources */,
 				D770E98919C98BB9001F9B60 /* 新增页面4.png in Resources */,
+				A20C10EF19EB7D4E00A68340 /* Responsibility.plist in Resources */,
 				D7D2196D19C6B80200C585FA /* Register_1.png in Resources */,
 				D7D2193919C6B80200C585FA /* line.png in Resources */,
 				D7D2194119C6B80200C585FA /* empty.png in Resources */,
@@ -1069,6 +1084,7 @@
 				D7D2192519C6B80200C585FA /* CarDetail_r2_c1.png in Resources */,
 				D7D2192319C6B80200C585FA /* CarDetail_r1_c1.png in Resources */,
 				D7D2194019C6B80200C585FA /* down.png in Resources */,
+				A20C10EB19EB7B2300A68340 /* CaseStatus.plist in Resources */,
 				D770E98019C98BB9001F9B60 /* 车辆绑定信息确认-5.png in Resources */,
 				D7D2195219C6B80200C585FA /* LoginBtnPressed.png in Resources */,
 				D7D2192719C6B80200C585FA /* CarDetail_r4_c1.png in Resources */,

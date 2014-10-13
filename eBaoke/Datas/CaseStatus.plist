@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>1</key>
+	<string>已报案</string>
+	<key>2</key>
+	<string>报案注销</string>
+	<key>3</key>
+	<string>已立案</string>
+	<key>4</key>
+	<string>立案注销</string>
+	<key>5</key>
+	<string>已结案</string>
+	<key>6</key>
+	<string></string>
+	<key>7</key>
+	<string>已厘算</string>
+	<key>8</key>
+	<string>厘算注销</string>
+	<key>9</key>
+	<string>其他</string>
+	<key>10</key>
+	<string></string>
+	<key>11</key>
+	<string>查勘/定损/核损</string>
+	<key>12</key>
+	<string>单证收集</string>
+	<key>13</key>
+	<string>厘算核赔</string>
+	<key>14</key>
+	<string>赔款支付</string>
+	<key>15</key>
+	<string>查勘/定损/核损注销</string>
+	<key>16</key>
+	<string>单证收集注销</string>
+	<key>17</key>
+	<string>厘算核赔注销</string>
+	<key>18</key>
+	<string>索赔申请书打印</string>
+	<key>19</key>
+	<string>定损单打印</string>
+	<key>20</key>
+	<string>索赔材料齐全回执单打印</string>
+	<key>21</key>
+	<string>拒赔通知书打印</string>
+	<key>22</key>
+	<string>索赔申请书打印注销</string>
+	<key>23</key>
+	<string>定损单打印注销</string>
+	<key>24</key>
+	<string>索赔材料齐全回执单打印注销</string>
+	<key>25</key>
+	<string>拒赔通知书打印注销</string>
+	<key>99</key>
+	<string>理赔不参与浮动</string>
+</dict>
+</plist>

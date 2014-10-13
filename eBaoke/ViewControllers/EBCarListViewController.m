@@ -34,17 +34,6 @@
 
 @implementation EBCarListViewController
 
-
-
-- (void)viewWillAppear:(BOOL)animated {
-    [super viewWillAppear:animated];
-    
-    [self setEditing:NO];
-    
-    [self getCarListRequest];
-
-}
-
 - (void)viewDidLoad {
     [super viewDidLoad];
     
@@ -69,7 +58,7 @@
     
     _dataArray = [[NSMutableArray alloc]init];
     
-    _tableView = [[UITableView alloc]initWithFrame:CGRectMake(0, (IOSVersion>=7.0?-20:0), kDeviceWidth, KDeviceHeight-30) style:UITableViewStyleGrouped];
+    _tableView = [[UITableView alloc]initWithFrame:CGRectMake(0, (IOSVersion>=7.0?-0:0), kDeviceWidth, KDeviceHeight-64) style:UITableViewStylePlain];
     _tableView.backgroundView = [[UIImageView alloc]initWithImage:[UIImage imageNamed:@"Background"]];
     _tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
     _tableView.delegate = self;
@@ -80,6 +69,15 @@
     self.navigationItem.rightBarButtonItem = _rightButtonItem;
     _leftButtonItem =[[UIBarButtonItem alloc]initWithTitle:@"注销" style:UIBarButtonItemStyleBordered target:self action:@selector(leftButtonItem:)];
     self.navigationItem.leftBarButtonItem = _leftButtonItem;
+}
+
+- (void)viewWillAppear:(BOOL)animated {
+    [super viewWillAppear:animated];
+    
+    [self setEditing:NO];
+    
+    [self getCarListRequest];
+    
 }
 
 - (void)didReceiveMemoryWarning {
@@ -302,10 +300,7 @@
             [self getCarListRequest];
         }
         
-    }else {
-        [AppContext alertContent:@"返回数据错误"];
     }
-    
 }
 
 #pragma mark - UITableView delegate
