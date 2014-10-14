@@ -158,15 +158,19 @@
     
     NSDictionary *dict = [AppContext nsDataToObject:_rData encoding:NSUTF8StringEncoding];
     NSLog(@"cp-保费试算=%@",dict);
+   
+    if ([dict objectForKey:@"ERR_MSG"]) {
+        [AppContext alertContent:[dict objectForKey:@"ERR_MSG"]];
+    }
+   
+    NSArray *array = [dict objectForKey:@"calculateInfo"];
     
-    //if ([AppContext checkResponse:dict])
-    {
-        NSArray *array = [dict objectForKey:@"001:001"];
-    
-        EBClaimsCaculateModel *model = [[EBClaimsCaculateModel alloc] initWithArray:array];
+    if (array) {
+        EBClaimsCaculateModel *model = [[EBClaimsCaculateModel alloc] initWithDic:dict];
         
         // 进入结果显示页面
         EBPremiumCalculateViewController *pVC = [[EBPremiumCalculateViewController alloc] initWithNibName:@"EBPremiumCalculateViewController" bundle:[NSBundle mainBundle]];
+        model.taxStatus = [AppContext getTempContextValueByKey:kTempKeyCarTaxFlagDes];
         pVC.cModel = model;
         [self.navigationController pushViewController:pVC animated:YES];
     }

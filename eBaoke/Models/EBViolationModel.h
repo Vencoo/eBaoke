@@ -15,4 +15,6 @@
 @property (nonatomic) NSString *peccancyPlace;
 @property (nonatomic) NSString *peccancyDes;
 
+- (id)initWithDic:(NSDictionary *)dic;
+
 @end

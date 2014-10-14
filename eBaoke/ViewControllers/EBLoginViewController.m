@@ -303,8 +303,8 @@
     [AppContext setPreferenceByKey:kUserPassword value:_userPassword.text];
 
     // 根据用户类型 进入页面
-    NSString *type = @"0";
-    if ([type isEqualToString:@"1"]) {
+    NSString *type = [dict objectForKey:@"user_type"];
+    if (![type isEqualToString:@"2"]) {
         EBCarListViewController *vc1 = [[EBCarListViewController alloc] init];
         [self.navigationController pushViewController:vc1 animated:YES];
 

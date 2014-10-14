@@ -43,6 +43,7 @@
 		A20C10ED19EB7CCA00A68340 /* ClaimsType.plist in Resources */ = {isa = PBXBuildFile; fileRef = A20C10EC19EB7CCA00A68340 /* ClaimsType.plist */; };
 		A20C10EF19EB7D4E00A68340 /* Responsibility.plist in Resources */ = {isa = PBXBuildFile; fileRef = A20C10EE19EB7D4E00A68340 /* Responsibility.plist */; };
 		A21F568719E6369800E367D5 /* EBPremiumDetailModel.m in Sources */ = {isa = PBXBuildFile; fileRef = A21F568619E6369800E367D5 /* EBPremiumDetailModel.m */; };
+		A25C6B1E19ECAC5E0019C1BC /* EBStartUpViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A25C6B1D19ECAC5E0019C1BC /* EBStartUpViewController.m */; };
 		A27B2D5319DA98B1006E93DC /* EBConfirmEditVC.m in Sources */ = {isa = PBXBuildFile; fileRef = A27B2D5119DA98B1006E93DC /* EBConfirmEditVC.m */; };
 		A27B2D5419DA98B1006E93DC /* EBConfirmEditVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = A27B2D5219DA98B1006E93DC /* EBConfirmEditVC.xib */; };
 		A2D177D919D3EB310001AFF2 /* EBViolationModel.m in Sources */ = {isa = PBXBuildFile; fileRef = A2D177D819D3EB310001AFF2 /* EBViolationModel.m */; };
@@ -267,6 +268,8 @@
 		A20C10EE19EB7D4E00A68340 /* Responsibility.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Responsibility.plist; sourceTree = "<group>"; };
 		A21F568519E6369800E367D5 /* EBPremiumDetailModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EBPremiumDetailModel.h; sourceTree = "<group>"; };
 		A21F568619E6369800E367D5 /* EBPremiumDetailModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EBPremiumDetailModel.m; sourceTree = "<group>"; };
+		A25C6B1C19ECAC5E0019C1BC /* EBStartUpViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EBStartUpViewController.h; sourceTree = "<group>"; };
+		A25C6B1D19ECAC5E0019C1BC /* EBStartUpViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EBStartUpViewController.m; sourceTree = "<group>"; };
 		A27B2D5019DA98B1006E93DC /* EBConfirmEditVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EBConfirmEditVC.h; sourceTree = "<group>"; };
 		A27B2D5119DA98B1006E93DC /* EBConfirmEditVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EBConfirmEditVC.m; sourceTree = "<group>"; };
 		A27B2D5219DA98B1006E93DC /* EBConfirmEditVC.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = EBConfirmEditVC.xib; sourceTree = "<group>"; };
@@ -614,6 +617,8 @@
 			children = (
 				A20A79A619D14D5D00C2D68E /* EBBaseViewController.h */,
 				403C919119C694180081F864 /* EBBaseViewController.m */,
+				A25C6B1C19ECAC5E0019C1BC /* EBStartUpViewController.h */,
+				A25C6B1D19ECAC5E0019C1BC /* EBStartUpViewController.m */,
 				403C919619C694740081F864 /* EBLoginViewController.h */,
 				403C919719C694740081F864 /* EBLoginViewController.m */,
 				403C919319C694580081F864 /* EBRegisterViewController.h */,
@@ -964,7 +969,7 @@
 				TargetAttributes = {
 					403C914F19C6786D0081F864 = {
 						CreatedOnToolsVersion = 6.0;
-						DevelopmentTeam = 99F82YZ52E;
+						DevelopmentTeam = W64H86P59A;
 					};
 					403C916519C6786D0081F864 = {
 						CreatedOnToolsVersion = 6.0;
@@ -1179,6 +1184,7 @@
 				A20A79A919D14D6900C2D68E /* EBCarTypeViewController.m in Sources */,
 				403C91AA19C695940081F864 /* EBViolationViewController.m in Sources */,
 				A2D7A4E319D2BFCC008EF275 /* AppContext.m in Sources */,
+				A25C6B1E19ECAC5E0019C1BC /* EBStartUpViewController.m in Sources */,
 				A2D177FE19D819660001AFF2 /* EBClaimsRecordViewController.m in Sources */,
 				403C91A419C694E40081F864 /* EBInsuranceViewController.m in Sources */,
 				A2D177F619D7E46A0001AFF2 /* EBPremiumModel.m in Sources */,

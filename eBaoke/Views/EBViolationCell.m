@@ -26,21 +26,27 @@
     
     NSString *vDate = vModel.peccancyTime;
     NSDateFormatter *format = [[NSDateFormatter alloc] init];
-    [format setDateFormat:@"yyyy/MM/dd HH:mm"];
+    [format setDateFormat:@"yyyy/MM/dd HH:mm:ss"];
     NSDate *dateTime = [format dateFromString:vDate];
-    
-    NSCalendar *cal = [NSCalendar currentCalendar];
-    NSDateComponents *dateComps = [cal components:NSYearCalendarUnit|NSMonthCalendarUnit|NSDayCalendarUnit|NSHourCalendarUnit|NSMinuteCalendarUnit fromDate:dateTime];
-    //int year = (int)[dateComps year];
-    int month = (int)[dateComps month];
-    int day = (int)[dateComps day];
-    int hour = (int)[dateComps hour];
-    int minute = (int)[dateComps minute];
-    //int second = (int)[dateComps second];
-
-    _dateMonthLabel.text = [NSString stringWithFormat:@"%d月",month];
-    _dateDayLabel.text = [NSString stringWithFormat:@"%02d",day];
-    _dateHourLabel.text = [NSString stringWithFormat:@"%02d:%02d",hour,minute];
+    if (!dateTime) {
+        [format setDateFormat:@"yyyy/MM/dd HH:mm"];
+        dateTime = [format dateFromString:vDate];
+    }
+    if (dateTime) {
+        NSCalendar *cal = [NSCalendar currentCalendar];
+        NSDateComponents *dateComps = [cal components:NSYearCalendarUnit|NSMonthCalendarUnit|NSDayCalendarUnit|NSHourCalendarUnit|NSMinuteCalendarUnit fromDate:dateTime];
+        //int year = (int)[dateComps year];
+        int month = (int)[dateComps month];
+        int day = (int)[dateComps day];
+        int hour = (int)[dateComps hour];
+        int minute = (int)[dateComps minute];
+        //int second = (int)[dateComps second];
+        
+        _dateMonthLabel.text = [NSString stringWithFormat:@"%d月",month];
+        _dateDayLabel.text = [NSString stringWithFormat:@"%02d",day];
+        _dateHourLabel.text = [NSString stringWithFormat:@"%02d:%02d",hour,minute];
+    }
+  
     
     _dateLabel.text = _vModel.acceptDate;
     

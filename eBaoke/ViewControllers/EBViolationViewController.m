@@ -15,8 +15,6 @@
     UITableView *_tableView;
         
     UIBarButtonItem *_leftButtonItem;
-        
-    NSMutableArray *_dataArray;
 
 }
 @end
@@ -26,7 +24,6 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
-    _dataArray = [[NSMutableArray alloc]init];
     
     _tableView = [[UITableView alloc]initWithFrame:CGRectMake(0, (IOSVersion>=7.0?-20:0), kDeviceWidth, KDeviceHeight-30) style:UITableViewStyleGrouped];
     _tableView.backgroundView = [[UIImageView alloc]initWithImage:[UIImage imageNamed:@"Background"]];
@@ -48,7 +45,12 @@
     _leftButtonItem =[[UIBarButtonItem alloc]initWithTitle:@"返回" style:UIBarButtonItemStyleBordered target:self action:@selector(leftButtonItem:)];
     self.navigationItem.leftBarButtonItem = _leftButtonItem;
     
-    [self sendRequest];
+    if (!_dataArray) {
+        _dataArray = [[NSMutableArray alloc]init];
+        [self sendRequest];
+    }else {
+        [_tableView reloadData];
+    }
 }
 
 - (void)didReceiveMemoryWarning {

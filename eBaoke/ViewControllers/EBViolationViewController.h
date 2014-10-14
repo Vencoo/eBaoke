@@ -14,4 +14,6 @@
 
 @property (strong, nonatomic) EBCarListModel *carModel;
 
+@property (strong, nonatomic) NSMutableArray *dataArray;;
+
 @end

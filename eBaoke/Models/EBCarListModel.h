@@ -26,4 +26,7 @@
 // 是否新车
 @property (nonatomic) BOOL isNewCar;
 
+- (id)initWithArray1_10:(NSArray *)dataArray;
+
+
 @end

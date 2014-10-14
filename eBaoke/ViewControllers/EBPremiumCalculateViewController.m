@@ -7,6 +7,7 @@
 //
 
 #import "EBPremiumCalculateViewController.h"
+#import "EBViolationViewController.h"
 
 @interface EBPremiumCalculateViewController ()
 {
@@ -91,6 +92,13 @@
 
 - (IBAction)violationRecordAction:(id)sender {
     // 查看违章记录
+    if ([_cModel.violationArray count] == 0) {
+        return;
+    }
+    EBViolationViewController *vc = [[EBViolationViewController alloc] init];
+    vc.dataArray = _cModel.violationArray;
+    [self.navigationController pushViewController:vc animated:YES];
+    
 }
 
 - (IBAction)claimsRecordAction:(id)sender {
@@ -108,23 +116,39 @@
 {
     if (_cModel) {
         _lab_0_0.text = _cModel.policyQueryNo;
-        _lab_1_0.text = _cModel.vehicleType;
-        _lab_1_1.text = _cModel.natureUse;
-        _lab_1_2.text = [_cModel.trafficLimitLiability stringValue];
+        
+        NSString *path = [[NSBundle mainBundle] pathForResource:@"CarItemsList" ofType:@"plist"];
+        NSDictionary *dict =[[NSDictionary alloc] initWithContentsOfFile:path];
+        NSArray *array1 = [dict objectForKey:@"vehicleType"];
+        for (NSDictionary *dic in array1) {
+            if ([[dic objectForKey:@"itemKey"] isEqualToString:_cModel.vehicleType]) {
+                _lab_1_0.text = [dic objectForKey:@"itemDescribe"];
+                break;
+            }
+        }
+        NSArray *array2 = [dict objectForKey:@"natureUse"];
+        for (NSDictionary *dic in array2) {
+            if ([[dic objectForKey:@"itemKey"] isEqualToString:_cModel.natureUse]) {
+                _lab_1_1.text = [dic objectForKey:@"itemDescribe"];
+                break;
+            }
+        }
+        
+        _lab_1_2.text = _cModel.trafficLimitLiability;
         _lab_1_3.text = [NSString stringWithFormat:@"%@ 至 %@",_cModel.startDate,_cModel.endDate];
-        _lab_2_0.text = [_cModel.basePremium stringValue];
+        _lab_2_0.text = _cModel.basePremium;
         _lab_3_0.text = _cModel.plateNo;
-        _lab_3_1.text = @"/";//发动机号
+        _lab_3_1.text = _cModel.engineNo;
         _lab_3_2.text = _cModel.vinCode;
-        _lab_4_0.text = @"/";//违法次数
+        _lab_4_0.text = [NSString stringWithFormat:@"%d",[_cModel.violationArray count]];//违章次数
         _lab_5_0.text = [NSString stringWithFormat:@"%.0f",[_cModel.trafficAdjustModulus floatValue]*100];
-        _lab_6_0.text = @"/";//理赔记录次数
+        _lab_6_0.text = [NSString stringWithFormat:@"%d",[_cModel.cliamArray count]];//理赔记录次数
         _lab_7_0.text = [NSString stringWithFormat:@"%.0f",[_cModel.accidentAdjustModulus floatValue]*100];
         _lab_8_0.text = _cModel.premiumFormula;
-        _lab_9_0.text = [_cModel.limitPremium stringValue];
-        //_lab_10_0.text = @"";
+        _lab_9_0.text = _cModel.limitPremium;
+        _lab_10_0.text = _cModel.taxStatus;
         _lab_11_0.text = _cModel.travelTax;
-        _lab_12_0.text = [_cModel.payAmount stringValue];
+        _lab_12_0.text = _cModel.payAmount;
     }
 }
 @end

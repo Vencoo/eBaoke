@@ -24,6 +24,11 @@
 {
     _cModel = cModel;
     
+    NSString *path = [[NSBundle mainBundle] pathForResource:@"CaseStatus" ofType:@"plist"];
+    NSDictionary *dict =[[NSDictionary alloc] initWithContentsOfFile:path];
+    
+    _statusLabel.text = [dict objectForKey:_cModel.caseStatus];
+    
     _numberLabel.text = _cModel.reportNo;
     _dateLabel.text = _cModel.happenTime;
 }

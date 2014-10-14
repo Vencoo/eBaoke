@@ -13,8 +13,9 @@
 #import "EBInsuranceViewController.h"
 #import "EBPremiumViewController.h"
 #import "EBViolationViewController.h"
+#import "EBCarTypeViewController.h"
 
-@interface EBSearchViewController ()<UITableViewDelegate,UITableViewDataSource,carListCellButtonDelegate>
+@interface EBSearchViewController ()<UITableViewDelegate,UITableViewDataSource,carListCellButtonDelegate,UITextFieldDelegate>
 {
     
     __weak IBOutlet UITableView *_tableView;
@@ -34,10 +35,13 @@
     __weak IBOutlet UITextField *_carOwnerTextField;
     
     UIBarButtonItem *_leftButtonItem;
-    
+    UIBarButtonItem *_rightButtonItem;
+
     NSMutableArray *_dataArray;
     
     BOOL _isOpen;
+    
+    UILabel *_rightNavInfoLabel;
 }
 @end
 
@@ -71,17 +75,14 @@
     
     _leftButtonItem =[[UIBarButtonItem alloc]initWithTitle:@"注销" style:UIBarButtonItemStyleBordered target:self action:@selector(leftButtonItem:)];
     self.navigationItem.leftBarButtonItem = _leftButtonItem;
-}
 
-- (void)viewWillAppear:(BOOL)animated {
-    [super viewWillAppear:animated];
+    _rightNavInfoLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, 100, 30)];
+    _rightNavInfoLabel.text = @"0个结果";
+    _rightNavInfoLabel.textAlignment = NSTextAlignmentRight;
+    _rightNavInfoLabel.textColor = [UIColor whiteColor];
     
-    [self getCarListRequest];
-}
-
-- (void)viewDidLayoutSubviews
-{
-    [super viewDidLayoutSubviews];
+    _rightButtonItem =[[UIBarButtonItem alloc]initWithCustomView:_rightNavInfoLabel];
+    self.navigationItem.rightBarButtonItem = _rightButtonItem;
     
     self.view.backgroundColor = [UIColor whiteColor];
     
@@ -93,6 +94,21 @@
     _searchSubView.frame = CGRectMake(0, 48, 320, 0);
     
     _searchSubView.layer.masksToBounds = YES;
+    
+    [AppContext setTempContextValueByKey:kTempKeyPlateNumberTypeDes value:@"号牌类型"];
+    [AppContext setTempContextValueByKey:kTempKeyPlateNumberType value:@"-1"];
+}
+
+- (void)viewWillAppear:(BOOL)animated {
+    [super viewWillAppear:animated];
+    
+    [_plateTypeButton setTitle:[AppContext getTempContextValueByKey:kTempKeyPlateNumberTypeDes] forState:UIControlStateNormal];
+}
+
+- (void)viewDidAppear:(BOOL)animated
+{
+    [super viewDidAppear:animated];
+    
 }
 
 - (void)didReceiveMemoryWarning {
@@ -106,35 +122,50 @@
     
     _isOpen = !_isOpen;
     
-    if (_isOpen) {
-        [UIView animateWithDuration:0.4 animations:^{
-             _searchSubView.frame = CGRectMake(0, 48, 320, 140);
-        } completion:^(BOOL finished) {
-            [_openButton setImage:[UIImage imageNamed:@"Search-Option-advanced.png"] forState:UIControlStateNormal];
-        }];
-    }else {
-        [UIView animateWithDuration:0.4 animations:^{
-            _searchSubView.frame = CGRectMake(0, 48, 320, 0);
-        } completion:^(BOOL finished) {
-            [_openButton setImage:[UIImage imageNamed:@"Search-Option-simple.png"] forState:UIControlStateNormal];
-        }];
-    }
-    
+    [self checkOpen];
     
 }
 
 - (IBAction)plateTypeAction:(id)sender {
+    
+    // 进入选择号牌类型的页面
+    EBCarTypeViewController *ctvc = [[EBCarTypeViewController alloc] init];
+    
+    [self.navigationController pushViewController:ctvc animated:YES];
 }
 
 #pragma mark - Button Action
+
+- (void)checkOpen
+{
+    if (_isOpen) {
+        [UIView animateWithDuration:0.4 animations:^{
+            _searchSubView.frame = CGRectMake(0, 48, 320, 140);
+            _tableView.frame = CGRectMake(0, 50+140, kDeviceWidth, KDeviceHeight-114-140);
+
+        } completion:^(BOOL finished) {
+            [_openButton setImage:[UIImage imageNamed:@"Search-Option-advanced.png"] forState:UIControlStateNormal];
+            
+        }];
+    }else {
+        [UIView animateWithDuration:0.4 animations:^{
+            _searchSubView.frame = CGRectMake(0, 48, 320, 0);
+            _tableView.frame = CGRectMake(0, 50, kDeviceWidth, KDeviceHeight-114);
+
+        } completion:^(BOOL finished) {
+            [_openButton setImage:[UIImage imageNamed:@"Search-Option-simple.png"] forState:UIControlStateNormal];
+        }];
+    }
+}
+
 - (void)leftButtonItem:(UIBarButtonItem *)buttonItem
 {
-    
     // 注销按钮
     [self.navigationController popViewControllerAnimated:YES];
 }
 
-#pragma mark -  1.3
+
+#pragma mark -  1.10
 
 -(void)getCarListRequest
 {
@@ -143,40 +174,19 @@
     NSString *error;
     NSMutableDictionary *postDict = [[NSMutableDictionary alloc] init];
     [postDict setObject:[AppContext getTempContextValueByKey:kTempKeyUserId] forKey:@"user_id"];
-    [postDict setObject:@"binding_query" forKey:@"select"];
-    NSString *postContent = [AppContext dictionaryToXml:postDict error:&error];
-    _rData = [[NSMutableData alloc] init];
-    if (!error) {
-        NSLog(@"---- content %@", postContent);
-        
-        NSMutableURLRequest* request = [NSMutableURLRequest requestWithURL:url];
-        NSLog(@"url=%@",url);
-        [request setHTTPMethod:@"POST"];
-        request.HTTPBody = [postContent dataUsingEncoding:NSUTF8StringEncoding];
-        [request setValue:kHTTPHeader forHTTPHeaderField:@"content-type"];//请求头
-        NSURLConnection *connection = [[NSURLConnection alloc]initWithRequest:request delegate:self];
-        [connection start];
-        
-        [AppContext didStartNetworking];
-        HUD = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
-        HUD.labelText = @"加载中...";
-        
-    }else {
-        [AppContext alertContent:error];
-    }
-}
-
-#pragma mark -  1.10
-
-- (void)searchCarListRequest
-{
-    NSString *kRequestURLPath = [NSString stringWithFormat:@"%@",[AppContext getServiceUrl:@"CatalogSearchServiceUrl"]];
-    NSURL *url = [NSURL URLWithString:kRequestURLPath];
-    NSString *error;
-    NSMutableDictionary *postDict = [[NSMutableDictionary alloc] init];
-    [postDict setObject:[AppContext getTempContextValueByKey:kTempKeyUserId] forKey:@"user_id"];
-    [postDict setObject:[AppContext getTempContextValueByKey:kTempKeyUserType] forKey:@"user_type"];
     [postDict setObject:@"vehicle_list_query" forKey:@"select"];
+    
+    if ([[AppContext getTempContextValueByKey:kTempKeyPlateNumberType] isEqualToString:@"-1"] || [[AppContext getTempContextValueByKey:kTempKeyPlateNumberType] isEqualToString:@"1000"]) {
+       
+    }else {
+         [postDict setObject:[AppContext getTempContextValueByKey:kTempKeyPlateNumberType] forKey:@"plate_type"];
+    }
+    
+    [postDict setObject:_plateNoTextField.text forKey:@"plate_no"];
+    
+    [postDict setObject:_vinNoTextField.text forKey:@"vin_no"];
+    
+    [postDict setObject:_carOwnerTextField.text forKey:@"owner_name"];
     
     NSString *postContent = [AppContext dictionaryToXml:postDict error:&error];
     _rData = [[NSMutableData alloc] init];
@@ -216,7 +226,7 @@
         
         if ([str rangeOfString:@"CircCatalogList"].length > 0) {
             // 处理列表
-            NSLog(@"1.3列表接口数据：%@",dict);
+            NSLog(@"1.10列表接口数据：%@",dict);
             // 获取列表 处理数据
             NSArray *keys = [[dict allKeys] sortedArrayUsingSelector:@selector(compare:)];
             [_dataArray removeAllObjects];
@@ -226,42 +236,15 @@
                     
                     NSArray *keyVal = [dict objectForKey:key];
                     
-                    EBCarListModel *model = [[EBCarListModel alloc]initWithArray:keyVal];
+                    EBCarListModel *model = [[EBCarListModel alloc]initWithArray1_10:keyVal];
                     [_dataArray addObject:model];
                     
                 }
             }
             
-            // 请求第二个接口
-            [self searchCarListRequest];
-        }
-        
-        if ([str rangeOfString:@"CircCatalogSearch"].length > 0) {
-            // 处理列表
-            NSLog(@"1.10列表接口数据：%@",dict);
-            // 获取列表 处理数据
-            NSArray *keys = [[dict allKeys] sortedArrayUsingSelector:@selector(compare:)];
-            
-            // 注意 第一个数据有问题 需要屏蔽
-            
-            for (int i=1; i<[keys count]; i++) {
-                NSString *key = [keys objectAtIndex:i];
-                
-                if ([[dict objectForKey:key] isKindOfClass:[NSArray class]]) {
-                    
-                    NSArray *keyVal = [dict objectForKey:key];
-                    
-                    EBCarListModel *model =  [_dataArray objectAtIndex:i-1];
-                    
-                    model.plateNo = [keyVal objectAtIndex:1];
-                    
-                    model.vehicleId = [keyVal objectAtIndex:0];
-                }
-            }
-            
+            _rightNavInfoLabel.text = [NSString stringWithFormat:@"%d个结果",[_dataArray count]];
             [_tableView reloadData];
         }
-        
     }
     
 }
@@ -337,5 +320,27 @@
     // 查找不调用删除
 }
 
+#pragma mark - UItextFieldDelegate
+
+- (BOOL)textFieldShouldReturn:(UITextField *)textField
+{
+    //搜索符合条件的内容
+    [self checkInput];
+    
+    [textField resignFirstResponder];
+    return YES;
+}
+
+- (void)checkInput
+{
+    // 满足有一项输入就可以搜索
+    
+    if (_plateNoTextField.text.length > 0 || _vinNoTextField.text.length >0 || _carOwnerTextField.text.length > 0) {
+        [self getCarListRequest];
+    }else {
+        [AppContext alertContent:@"请至少输入一项有效数据"];
+    }
+    
+}
 
 @end

@@ -20,15 +20,15 @@
 
 @property (nonatomic) NSString *natureUse;
 
-@property (nonatomic) NSNumber *trafficLimitLiability;
+@property (nonatomic) NSString *trafficLimitLiability;
 
 @property (nonatomic) NSString *startDate;
 
 @property (nonatomic) NSString *endDate;
 
-@property (nonatomic) NSNumber *basePremium;
+@property (nonatomic) NSString *basePremium;
 
-@property (nonatomic) NSNumber *limitPremium;
+@property (nonatomic) NSString *limitPremium;
 
 @property (nonatomic) NSString *trafficAdjustModulus;
 
@@ -38,6 +38,17 @@
 
 @property (nonatomic) NSString *travelTax;
 
-@property (nonatomic) NSNumber *payAmount;
+@property (nonatomic) NSString *payAmount;
+
+@property (nonatomic) NSString *engineNo;
+
+
+@property (nonatomic) NSMutableArray *cliamArray;
+
+@property (nonatomic) NSMutableArray *violationArray;
+
+@property (nonatomic) NSString *taxStatus;
+
+- (id)initWithDic:(NSDictionary *)dic;
 
 @end

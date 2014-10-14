@@ -143,7 +143,11 @@
 
 - (void)reflashDatas
 {
-    _statusLabel.text = _cdModel.caseStatus;
+    NSString *path = [[NSBundle mainBundle] pathForResource:@"CaseStatus" ofType:@"plist"];
+    NSDictionary *dict =[[NSDictionary alloc] initWithContentsOfFile:path];
+    
+    _statusLabel.text = [dict objectForKey:_cdModel.caseStatus];
+
     _happenTimeLabel.text = _cdModel.happenTime;
     _closedTimeLabel.text = _cdModel.closedTime;
     _reparationAmountLabel.text = _cdModel.reparationAmount;

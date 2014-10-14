@@ -23,4 +23,17 @@
     return self;
 }
 
+- (id)initWithDic:(NSDictionary *)dic
+{
+    self = [super init];
+    if (self) {
+        _peccancyPlace = [dic objectForKey:@"peccancyPlace"];
+        _peccancyDes = [dic objectForKey:@"peccancyDes"];
+        _peccancyTime = [dic objectForKey:@"peccancyTime"];
+        _acceptDate = [dic objectForKey:@"acceptDate"];
+    }
+    
+    return self;
+}
+
 @end

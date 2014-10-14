@@ -8,35 +8,13 @@
 
 #import "EBClaimsCaculateModel.h"
 
-@implementation EBClaimsCaculateModel
+#import "EBViolationModel.h"
 
-- (id) init
-{
-    self = [super init];
-    if (self) {
-        _policyQueryNo = @"";
-        _plateNo = @"";
-        _vinCode = @"";
-        _vehicleType = @"";
-        _natureUse = @"";
-        //_trafficLimitLiability = @"";
-        _startDate = @"";
-        _endDate = @"";
-        //_basePremium = @"";
-        //_limitPremium = @"";
-        _trafficAdjustModulus = @"";
-        _accidentAdjustModulus = @"";
-        _premiumFormula = @"";
-        //_travelTax = @"";
-        //_payAmount = @"";
-        
-    }
-    return self;
-}
+@implementation EBClaimsCaculateModel
 
 - (id)initWithArray:(NSArray *)dataArray
 {
-    self = [self init];
+    self = [super init];
     if (self) {
         _policyQueryNo = [dataArray objectAtIndex:0];
         _plateNo = [dataArray objectAtIndex:1];
@@ -62,6 +40,52 @@
         _travelTax = [dataArray objectAtIndex:13];
         _payAmount = [dataArray objectAtIndex:14];
         
+    }
+    return self;
+}
+
+- (id)initWithDic:(NSDictionary *)dic1
+{
+    self = [super init];
+    if (self) {
+        NSDictionary *dic = [[dic1 objectForKey:@"calculateInfo"] firstObject];
+        if (dic) {
+            _accidentAdjustModulus = [dic objectForKey:@"accidentAdjustModulus"];
+            _basePremium = [dic objectForKey:@"basePremium"];
+            _endDate = [dic objectForKey:@"endDate"];
+            _engineNo = [dic objectForKey:@"engineNo"];
+            _limitPremium = [dic objectForKey:@"limitPremium"];
+            _natureUse = [dic objectForKey:@"natureUse"];
+            _payAmount = [dic objectForKey:@"payAmount"];
+            _plateNo = [dic objectForKey:@"plateNo"];
+            _policyQueryNo = [dic objectForKey:@"policyQueryNo"];
+            _premiumFormula = [dic objectForKey:@"premiumFormula"];
+            _startDate = [dic objectForKey:@"startDate"];
+            _trafficAdjustModulus = [dic objectForKey:@"trafficAdjustModulus"];
+            _trafficLimitLiability = [dic objectForKey:@"trafficLimitLiability"];
+            _travelTax = [dic objectForKey:@"travelTax"];
+            _vehicleType = [dic objectForKey:@"vehicleType"];
+            _vinCode = [dic objectForKey:@"vinCode"];
+        }
+      
+        
+        NSArray *array1 = [dic1 objectForKey:@"cliamInfo"];
+        _cliamArray = [[NSMutableArray alloc] init];
+        if ([array1 isKindOfClass:[NSArray class]]) {
+            
+        }
+        
+        NSArray *array2 = [dic1 objectForKey:@"violationInfo"];
+        _violationArray = [[NSMutableArray alloc] init];
+        
+        if ([array2 isKindOfClass:[NSArray class]]) {
+
+            for (NSDictionary *dic2 in array2) {
+                EBViolationModel *model = [[EBViolationModel alloc] initWithDic:dic2];
+                [_violationArray addObject:model];
+            }
+        }
+
     }
     return self;
 }
