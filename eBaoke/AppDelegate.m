@@ -24,7 +24,7 @@
 
     // 生成一个新的UUID
     NSString *uuidStr = [self uuidForKeychina];
-    
+    NSLog(@"uuidStr=%@",uuidStr);
     // 获取保存的UUID
     KeychainItemWrapper *wrapper = [[KeychainItemWrapper alloc] initWithIdentifier:@"AccountNumber" accessGroup:@"W64H86P59A.com.vencoo.vencoo01id"];
     NSString *UUID = [wrapper objectForKey:(id)CFBridgingRelease(kSecAttrAccount)];
@@ -35,13 +35,15 @@
     }else {
         // 有设置过UUID
     }
-    NSLog(@"MY UUID=%@",[AppContext getContextValueByKey:@"AppKey"]);
+    
+    UUID = [wrapper objectForKey:(id)CFBridgingRelease(kSecAttrAccount)];
+    NSLog(@"MY UUID=%@",UUID);
 
     // 保存UUID
     [AppContext setTempContextValueByKey:kUniqueGlobalDeviceIdentifierKey value:UUID];
     
     // 保存UUID的MD5
-    [AppContext setTempContextValueByKey:kUniqueAppKey value:[[NSString stringWithFormat:@"%@", [AppContext getContextValueByKey:@"AppKey"]] stringFromMD5]];
+    [AppContext setTempContextValueByKey:kUniqueAppKey value:[UUID stringFromMD5]];
    
     return YES;
 }
