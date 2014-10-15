@@ -27,7 +27,12 @@
     NSString *path = [[NSBundle mainBundle] pathForResource:@"CaseStatus" ofType:@"plist"];
     NSDictionary *dict =[[NSDictionary alloc] initWithContentsOfFile:path];
     
-    _statusLabel.text = [dict objectForKey:_cModel.caseStatus];
+    if (_cModel.caseStatus == nil || [_cModel.caseStatus isEqualToString:@""]) {
+        _statusLabel.text = @"状态未知";
+    }else {
+        _statusLabel.text = [dict objectForKey:_cModel.caseStatus];
+
+    }
     
     _numberLabel.text = _cModel.reportNo;
     _dateLabel.text = _cModel.happenTime;

@@ -14,7 +14,7 @@
 @interface EBClaimsRecordViewController ()<UITableViewDataSource,UITableViewDelegate>
 {
     UITableView *_tableView;
-    NSMutableArray *_dataArray;
+
     UIBarButtonItem *_leftButtonItem;
 
     EBPremiumDetailModel *_pdModel;
@@ -48,10 +48,14 @@
     _leftButtonItem =[[UIBarButtonItem alloc]initWithTitle:@"返回" style:UIBarButtonItemStyleBordered target:self action:@selector(leftButtonItem:)];
     self.navigationItem.leftBarButtonItem = _leftButtonItem;
     
-    _dataArray = [[NSMutableArray alloc] init];
-    
-    // 请求数据
-    [self sendDetailRequest];
+    if (!_dataArray) {
+        _dataArray = [[NSMutableArray alloc] init];
+        
+        // 请求数据
+        [self sendDetailRequest];
+    }else {
+        [_tableView reloadData];
+    }
 }
 
 - (void)didReceiveMemoryWarning {
@@ -205,12 +209,10 @@
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath;
 {
     if ([_dataArray count] == 0) {
-        UITableViewCell *cell = [[UITableViewCell alloc] initWithFrame:tableView.bounds];
-        UILabel *label = [[UILabel alloc] initWithFrame:CGRectMake(0, 100, 100, 30)];
-        label.text = @"无数据";
-        label.textAlignment = NSTextAlignmentCenter;
-        label.center = cell.center;
-        [cell addSubview:label];
+        UITableViewCell *cell = [[UITableViewCell alloc] initWithFrame:CGRectMake(0, 0, tableView.frame.size.width, tableView.frame.size.height)];
+        UIImageView *imageV = [[UIImageView alloc] initWithFrame:CGRectMake(0, 50, 320, 132)];
+        imageV.image = [UIImage imageNamed:@"NoResultFound.png"];
+        [cell addSubview:imageV];
         return cell;
     }
     
@@ -227,8 +229,14 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
+    EBClaimsRecordModel *model = [_dataArray objectAtIndex:indexPath.row];
+    
+    if ([model.caseId isEqualToString:@""] || model.caseId == nil) {
+        return;
+    }
+    
     EBClaimsDetailViewController *cVC = [[EBClaimsDetailViewController alloc] initWithNibName:@"EBClaimsDetailViewController" bundle:[NSBundle mainBundle]];
-    cVC.cModel = [_dataArray objectAtIndex:indexPath.row];
+    cVC.cModel = model;
     [self.navigationController pushViewController:cVC animated:YES];
     
 }

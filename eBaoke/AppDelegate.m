@@ -7,8 +7,8 @@
 //
 
 #import "AppDelegate.h"
-#import "UIDevice+IdentifierAddition.h"
 #import "AppContext.h"
+#import "KeychainItemWrapper.h"
 #import "NSString+MD5Addition.h"
 
 @interface AppDelegate ()
@@ -22,13 +22,27 @@
 
     [[UINavigationBar appearance] setBackgroundImage:[UIImage imageNamed:@"NavBar"] forBarMetrics:UIBarMetricsDefault];
 
-    NSString *ugdi = [[UIDevice currentDevice] uniqueGlobalDeviceIdentifier];
-    NSLog(@"%@",ugdi);
+    // 生成一个新的UUID
+    NSString *uuidStr = [self uuidForKeychina];
     
-    [AppContext setTempContextValueByKey:kUniqueGlobalDeviceIdentifierKey value:ugdi];
-    [AppContext setTempContextValueByKey:kUniqueAppKey value:[[NSString stringWithFormat:@"%@%@",ugdi, [AppContext getContextValueByKey:@"AppKey"]] stringFromMD5]];
-    NSLog(@"%@",[NSString stringWithFormat:@"%@%@",ugdi, [AppContext getContextValueByKey:@"AppKey"]]);
+    // 获取保存的UUID
+    KeychainItemWrapper *wrapper = [[KeychainItemWrapper alloc] initWithIdentifier:@"AccountNumber" accessGroup:@"W64H86P59A.com.vencoo.vencoo01id"];
+    NSString *UUID = [wrapper objectForKey:(id)CFBridgingRelease(kSecAttrAccount)];
+
+    if ([UUID isEqualToString:@""] || UUID == nil) {
+        // 没有设置UUID
+        [wrapper setObject:uuidStr forKey:(id)CFBridgingRelease(kSecAttrAccount)];
+    }else {
+        // 有设置过UUID
+    }
+    NSLog(@"MY UUID=%@",[AppContext getContextValueByKey:@"AppKey"]);
+
+    // 保存UUID
+    [AppContext setTempContextValueByKey:kUniqueGlobalDeviceIdentifierKey value:UUID];
     
+    // 保存UUID的MD5
+    [AppContext setTempContextValueByKey:kUniqueAppKey value:[[NSString stringWithFormat:@"%@", [AppContext getContextValueByKey:@"AppKey"]] stringFromMD5]];
+   
     return YES;
 }
 
@@ -54,4 +68,12 @@
     // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
 }
 
+- (NSString *)uuidForKeychina
+{
+    CFUUIDRef uuidRef = CFUUIDCreate(kCFAllocatorDefault);
+    
+    NSString *uuid = (NSString *)CFBridgingRelease(CFUUIDCreateString (kCFAllocatorDefault,uuidRef));
+    
+    return uuid;
+}
 @end

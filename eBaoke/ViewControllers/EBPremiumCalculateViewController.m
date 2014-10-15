@@ -7,7 +7,9 @@
 //
 
 #import "EBPremiumCalculateViewController.h"
+
 #import "EBViolationViewController.h"
+#import "EBClaimsRecordViewController.h"
 
 @interface EBPremiumCalculateViewController ()
 {
@@ -78,7 +80,7 @@
     
     _scrollView.frame = CGRectMake(0, 0, kDeviceWidth, KDeviceHeight-64);
     _scrollView.layer.masksToBounds = YES;
-    _scrollView.contentSize = CGSizeMake(320, 850);
+    _scrollView.contentSize = CGSizeMake(320, 860);
     _scrollView.scrollEnabled = YES;
 }
 
@@ -103,6 +105,12 @@
 
 - (IBAction)claimsRecordAction:(id)sender {
     // 查看理赔记录
+    if ([_cModel.cliamArray count] == 0) {
+        return;
+    }
+    EBClaimsRecordViewController *vc = [[EBClaimsRecordViewController alloc] init];
+    vc.dataArray = _cModel.cliamArray;
+    [self.navigationController pushViewController:vc animated:YES];
 }
 
 - (void)leftButtonItem:(UIBarButtonItem *)buttonItem

@@ -69,16 +69,29 @@
 #pragma mark - UITableView delegate
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
+    if ([_dataArray count] == 0) {
+        return 1;
+    }
     return _dataArray.count;
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
+    if ([_dataArray count] == 0) {
+        return tableView.frame.size.height;
+    }
     return 250;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath;
 {
+    if ([_dataArray count] == 0) {
+        UITableViewCell *cell = [[UITableViewCell alloc] initWithFrame:CGRectMake(0, 0, tableView.frame.size.width, tableView.frame.size.height)];
+        UIImageView *imageV = [[UIImageView alloc] initWithFrame:CGRectMake(0, 50, 320, 132)];
+        imageV.image = [UIImage imageNamed:@"NoResultFound.png"];
+        [cell addSubview:imageV];
+        return cell;
+    }
     
     EBViolationCell *cell = [[[NSBundle mainBundle] loadNibNamed:@"EBViolationCell" owner:nil options:nil] objectAtIndex:0];
     cell.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"Background"]];

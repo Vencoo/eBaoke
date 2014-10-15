@@ -26,7 +26,7 @@ static NSInteger networkingCount = 0;
 	NSDictionary *dict =[[NSDictionary alloc] initWithContentsOfFile:path];
 	Names = dict;
 	// [dict release];
-    NSLog(@"Dictionary %@", Names);
+    //NSLog(@"Dictionary %@", Names);
 	
 	NSArray *array = [[Names allKeys] sortedArrayUsingSelector:@selector(compare:)];
 	Keys = array;
@@ -47,7 +47,7 @@ static NSInteger networkingCount = 0;
 
 +(NSString *) getServiceUrl:(NSString *) serviceKey{
 
-	return [NSString stringWithFormat:@"%@%@&serviceVersion=%@&ct=%li&cv=%@&ugdi=%@&appkey=%@",[self getContextValueByKey:@"AppServer"],[AppContext getContextValueByKey:serviceKey],[AppContext getContextValueByKey:@"AppVersion"],[[UIDevice currentDevice] userInterfaceIdiom],[[UIDevice currentDevice] systemVersion],[AppContext getTempContextValueByKey:kUniqueGlobalDeviceIdentifierKey],[AppContext getTempContextValueByKey:kUniqueAppKey]];
+	return [NSString stringWithFormat:@"%@%@&serviceVersion=%@&ct=%i&cv=%@&ugdi=%@&appkey=%@",[self getContextValueByKey:@"AppServer"],[AppContext getContextValueByKey:serviceKey],[AppContext getContextValueByKey:@"AppVersion"],[[UIDevice currentDevice] userInterfaceIdiom],[[UIDevice currentDevice] systemVersion],[AppContext getTempContextValueByKey:kUniqueGlobalDeviceIdentifierKey],[AppContext getTempContextValueByKey:kUniqueAppKey]];
 } 
 
 +(NSString *) getAppMode{
@@ -209,9 +209,6 @@ static NSInteger networkingCount = 0;
     if (BackupTempKeyValues == nil) {
         BackupTempKeyValues = [[NSMutableDictionary alloc] init];
     }
-    
-//    NSLog(@"Temp Key Value: %@", TempKeyValues);
-//    NSLog(@"Backup Temp Key Value: %@", BackupTempKeyValues);
 	
 	return [TempKeyValues objectForKey:key];
 }
@@ -234,9 +231,6 @@ static NSInteger networkingCount = 0;
 	}else {
 		[TempKeyValues removeObjectForKey:key];
 	}
-
-	NSLog(@"Temp Key Value: %@", TempKeyValues);
-    NSLog(@"Backup Temp Key Value: %@", BackupTempKeyValues);
 	
 }
 
@@ -291,9 +285,7 @@ static NSInteger networkingCount = 0;
         loading.autoresizingMask = UIViewAutoresizingFlexibleTopMargin | UIViewAutoresizingFlexibleBottomMargin;
 		[containerView addSubview:loading];
 	}
-	
-//	NSLog(@"-------- performCommonLoading %@ %@", containerView, loading);
-	
+		
 	if (isStart) {
 		[loading startAnimating];
 	}else {
@@ -337,7 +329,7 @@ static NSInteger networkingCount = 0;
         return nil;
     
     NSString *string = [[NSString alloc]initWithData:data encoding:encoding];
-    NSLog(@"doc=%@",string);
+    //NSLog(@"doc=%@",string);
     
     @try {
         id result = [string propertyList];
@@ -354,12 +346,10 @@ static NSInteger networkingCount = 0;
 }
 
 +(void) setPreferenceByKey:(NSString *) key value:(id) value{
-    NSLog(@"-------- setPreferenceByKey key: %@ value: %@", key,value);
+    //NSLog(@"-------- setPreferenceByKey key: %@ value: %@", key,value);
     
     [[NSUserDefaults standardUserDefaults] setObject:value forKey:key];
     [[NSUserDefaults standardUserDefaults] synchronize];
-   
-//    NSLog(@"--- %@", [[NSUserDefaults standardUserDefaults] stringForKey:key]);
     
     if (SYSTEM_VERSION_GREATER_THAN_OR_EQUAL_TO(@"5.0")) {
         
@@ -388,13 +378,13 @@ static NSInteger networkingCount = 0;
         } 
     }
     
-    NSLog(@"---- getPreferenceByKey \nkey = %@ \nlocal = %@  \ncloud = %@", key, localVal, cloudVal);
+    //NSLog(@"---- getPreferenceByKey \nkey = %@ \nlocal = %@  \ncloud = %@", key, localVal, cloudVal);
     
     if (needMerge && cloudVal && localVal) {
         cloudVal = [NSString stringWithFormat:@"%@,%@", cloudVal,localVal];
     }
     
-    NSLog(@"---- getPreferenceByKey \nreturn = %@", cloudVal? cloudVal : localVal);
+    //NSLog(@"---- getPreferenceByKey \nreturn = %@", cloudVal? cloudVal : localVal);
     
     return cloudVal? cloudVal : localVal;
 }

@@ -242,7 +242,7 @@
     [postDict setObject:@"login" forKey:kPostContentTypeSelect];
     [postDict setObject:_userName.text forKey:kPostContentTypeUsername];
     [postDict setObject:_userPassword.text forKey:kPostContentTypePassword];
-    [postDict setObject:[AppContext getTempContextValueByKey:kUniqueGlobalDeviceIdentifierKey] forKey:kPostContentTypeUuid];
+    [postDict setObject:[AppContext getTempContextValueByKey:kUniqueGlobalDeviceIdentifierKey] forKey:@"uuid"];
     NSString *postContent = [AppContext dictionaryToXml:postDict error:&error];
     _rData = [[NSMutableData alloc] init];
     if (!error) {

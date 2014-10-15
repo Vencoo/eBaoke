@@ -12,6 +12,9 @@
 
 @interface EBClaimsRecordViewController : EBBaseViewController
 
-@property (nonatomic)EBPremiumModel *pModel;
+@property (nonatomic) EBPremiumModel *pModel;
+
+@property (nonatomic) NSMutableArray *dataArray;
+
 
 @end

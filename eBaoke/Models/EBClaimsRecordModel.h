@@ -22,4 +22,7 @@
 
 @property (nonatomic) NSString *claimType;
 
+- (id)initWithDic:(NSDictionary *)dic1;
+
+
 @end

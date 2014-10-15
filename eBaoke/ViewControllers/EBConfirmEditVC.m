@@ -73,7 +73,7 @@
 
     [postDict setObject:_carModel.engineNo forKey:@"engine_no"];
 
-    [postDict setObject:_carModel.plateNo forKey:@"plate_no"];
+    [postDict setObject:[_carModel.plateNo uppercaseString] forKey:@"plate_no"];
     
     [postDict setObject:_carModel.plateType forKey:@"plate_type"];
     

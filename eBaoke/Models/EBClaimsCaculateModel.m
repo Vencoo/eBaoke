@@ -9,6 +9,7 @@
 #import "EBClaimsCaculateModel.h"
 
 #import "EBViolationModel.h"
+#import "EBClaimsRecordModel.h"
 
 @implementation EBClaimsCaculateModel
 
@@ -73,6 +74,10 @@
         _cliamArray = [[NSMutableArray alloc] init];
         if ([array1 isKindOfClass:[NSArray class]]) {
             
+            for (NSDictionary *dic in array1) {
+                EBClaimsRecordModel *model = [[EBClaimsRecordModel alloc] initWithDic:dic];
+                [_cliamArray addObject:model];
+            }
         }
         
         NSArray *array2 = [dic1 objectForKey:@"violationInfo"];

@@ -40,5 +40,14 @@
     return self;
 }
 
-
+- (id)initWithDic:(NSDictionary *)dic
+{
+    self = [self init];
+    if (self) {
+        _happenTime = [dic objectForKey:@"happenTime"];
+        _caseType = [dic objectForKey:@"caseType"];
+        _reportNo = [dic objectForKey:@"reportNo"];
+    }
+    return self;
+}
 @end
