@@ -44,10 +44,6 @@
 		A2424BC019ED311F001A6DB2 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A2424BBF19ED311F001A6DB2 /* Security.framework */; };
 		A24B91B419EE0AFB009D5AF7 /* KeychainItemWrapper.m in Sources */ = {isa = PBXBuildFile; fileRef = A24B91B319EE0AFB009D5AF7 /* KeychainItemWrapper.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		A24B91B719EE11E9009D5AF7 /* NSString+MD5Addition.m in Sources */ = {isa = PBXBuildFile; fileRef = A24B91B619EE11E9009D5AF7 /* NSString+MD5Addition.m */; };
-		A24B91C219EE47F6009D5AF7 /* ._btnGray.png in Resources */ = {isa = PBXBuildFile; fileRef = A24B91BA19EE47F6009D5AF7 /* ._btnGray.png */; };
-		A24B91C319EE47F6009D5AF7 /* ._btnGray_pressed.png in Resources */ = {isa = PBXBuildFile; fileRef = A24B91BB19EE47F6009D5AF7 /* ._btnGray_pressed.png */; };
-		A24B91C419EE47F6009D5AF7 /* ._btnGreen.png in Resources */ = {isa = PBXBuildFile; fileRef = A24B91BC19EE47F6009D5AF7 /* ._btnGreen.png */; };
-		A24B91C519EE47F6009D5AF7 /* ._btnGreen_pressed.png in Resources */ = {isa = PBXBuildFile; fileRef = A24B91BD19EE47F6009D5AF7 /* ._btnGreen_pressed.png */; };
 		A24B91C619EE47F6009D5AF7 /* btnGray.png in Resources */ = {isa = PBXBuildFile; fileRef = A24B91BE19EE47F6009D5AF7 /* btnGray.png */; };
 		A24B91C719EE47F6009D5AF7 /* btnGray_pressed.png in Resources */ = {isa = PBXBuildFile; fileRef = A24B91BF19EE47F6009D5AF7 /* btnGray_pressed.png */; };
 		A24B91C819EE47F6009D5AF7 /* btnGreen.png in Resources */ = {isa = PBXBuildFile; fileRef = A24B91C019EE47F6009D5AF7 /* btnGreen.png */; };
@@ -255,10 +251,6 @@
 		A24B91B319EE0AFB009D5AF7 /* KeychainItemWrapper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KeychainItemWrapper.m; sourceTree = "<group>"; };
 		A24B91B519EE11E9009D5AF7 /* NSString+MD5Addition.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+MD5Addition.h"; sourceTree = "<group>"; };
 		A24B91B619EE11E9009D5AF7 /* NSString+MD5Addition.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+MD5Addition.m"; sourceTree = "<group>"; };
-		A24B91BA19EE47F6009D5AF7 /* ._btnGray.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ._btnGray.png; sourceTree = "<group>"; };
-		A24B91BB19EE47F6009D5AF7 /* ._btnGray_pressed.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ._btnGray_pressed.png; sourceTree = "<group>"; };
-		A24B91BC19EE47F6009D5AF7 /* ._btnGreen.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ._btnGreen.png; sourceTree = "<group>"; };
-		A24B91BD19EE47F6009D5AF7 /* ._btnGreen_pressed.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ._btnGreen_pressed.png; sourceTree = "<group>"; };
 		A24B91BE19EE47F6009D5AF7 /* btnGray.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = btnGray.png; sourceTree = "<group>"; };
 		A24B91BF19EE47F6009D5AF7 /* btnGray_pressed.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = btnGray_pressed.png; sourceTree = "<group>"; };
 		A24B91C019EE47F6009D5AF7 /* btnGreen.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = btnGreen.png; sourceTree = "<group>"; };
@@ -661,10 +653,6 @@
 		A24B91B919EE47F6009D5AF7 /* DetailButtons */ = {
 			isa = PBXGroup;
 			children = (
-				A24B91BA19EE47F6009D5AF7 /* ._btnGray.png */,
-				A24B91BB19EE47F6009D5AF7 /* ._btnGray_pressed.png */,
-				A24B91BC19EE47F6009D5AF7 /* ._btnGreen.png */,
-				A24B91BD19EE47F6009D5AF7 /* ._btnGreen_pressed.png */,
 				A24B91BE19EE47F6009D5AF7 /* btnGray.png */,
 				A24B91BF19EE47F6009D5AF7 /* btnGray_pressed.png */,
 				A24B91C019EE47F6009D5AF7 /* btnGreen.png */,
@@ -951,7 +939,6 @@
 				D770E98219C98BB9001F9B60 /* 车辆绑定信息确认-7.png in Resources */,
 				D770E99B19C98BB9001F9B60 /* 新增车辆-6.png in Resources */,
 				D7D2191A19C6B80200C585FA /* CarDetail_r11_c1.png in Resources */,
-				A24B91C519EE47F6009D5AF7 /* ._btnGreen_pressed.png in Resources */,
 				D7D2195319C6B80200C585FA /* NavBar@2x.png in Resources */,
 				D7D2193719C6B80200C585FA /* CarDetail_header.png in Resources */,
 				D7D2191B19C6B80200C585FA /* CarDetail_r12_c1.png in Resources */,
@@ -978,7 +965,6 @@
 				D770E98319C98BB9001F9B60 /* 车辆绑定信息确认-8.png in Resources */,
 				D7D2197019C6B80200C585FA /* Register_3.png in Resources */,
 				D7D2192819C6B80200C585FA /* CarDetail_r5_c1.png in Resources */,
-				A24B91C319EE47F6009D5AF7 /* ._btnGray_pressed.png in Resources */,
 				D770E99319C98BB9001F9B60 /* 新增车辆-1.png in Resources */,
 				403C915F19C6786D0081F864 /* Main.storyboard in Resources */,
 				D7D2192119C6B80200C585FA /* CarDetail_r18_c1.png in Resources */,
@@ -1003,7 +989,6 @@
 				D7D2193A19C6B80200C585FA /* Default.png in Resources */,
 				D7D2195719C6B80200C585FA /* PolicyList_inforce.png in Resources */,
 				D7D2196C19C6B80200C585FA /* Register_+2.png in Resources */,
-				A24B91C419EE47F6009D5AF7 /* ._btnGreen.png in Resources */,
 				A24B91C819EE47F6009D5AF7 /* btnGreen.png in Resources */,
 				D770E98A19C98BB9001F9B60 /* 新增页面5.png in Resources */,
 				D770E97B19C98BB9001F9B60 /* 车辆绑定信息确认-1.png in Resources */,
@@ -1027,7 +1012,6 @@
 				A20C10EB19EB7B2300A68340 /* CaseStatus.plist in Resources */,
 				D770E98019C98BB9001F9B60 /* 车辆绑定信息确认-5.png in Resources */,
 				D7D2195219C6B80200C585FA /* LoginBtnPressed.png in Resources */,
-				A24B91C219EE47F6009D5AF7 /* ._btnGray.png in Resources */,
 				D7D2192719C6B80200C585FA /* CarDetail_r4_c1.png in Resources */,
 				D7D2195619C6B80200C585FA /* PolicyDetail_r2_c1.png in Resources */,
 				A2D177EB19D531420001AFF2 /* EBPremiumRecordCell.xib in Resources */,
