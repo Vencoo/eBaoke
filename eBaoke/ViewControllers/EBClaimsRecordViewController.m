@@ -155,8 +155,7 @@
         
         if ([str rangeOfString:@"CircCarDetail"].length > 0) {
             // 处理详情
-            NSArray *array = [[dict allValues] lastObject];
-            NSLog(@"pd-info=%@",dict);
+            NSArray *array = [dict objectForKey:@"000:000"];
             
             _pdModel = [[EBPremiumDetailModel alloc] initWithArray:array];
             
