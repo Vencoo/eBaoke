@@ -29,7 +29,7 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
    
-    _leftButtonItem =[[UIBarButtonItem alloc]initWithTitle:@"返回" style:UIBarButtonItemStyleBordered target:self action:@selector(leftButtonItem:)];
+    _leftButtonItem =[[UIBarButtonItem alloc]initWithTitle:@"车辆列表" style:UIBarButtonItemStyleBordered target:self action:@selector(leftButtonItem:)];
     self.navigationItem.leftBarButtonItem = _leftButtonItem;
     
     self.navigationController.navigationBar.hidden = NO;
@@ -159,7 +159,7 @@
     NSDictionary *dict = [AppContext nsDataToObject:_rData encoding:NSUTF8StringEncoding];
     NSLog(@"cp-保费试算=%@",dict);
    
-    if ([dict objectForKey:@"ERR_MSG"]) {
+    if (![[dict objectForKey:@"ERR_MSG"] isEqualToString:@"成功"]) {
         [AppContext alertContent:[dict objectForKey:@"ERR_MSG"]];
     }
    

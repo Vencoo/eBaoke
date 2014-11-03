@@ -117,7 +117,7 @@
     [_tableView reloadData];
     
     if (editing) {
-        _rightButtonItem.title = @"添加";
+        _rightButtonItem.title = @"新增";
         _leftButtonItem.title = @"完成";
         
     }else {
@@ -327,6 +327,7 @@
         UIImageView *imageV = [[UIImageView alloc] initWithFrame:CGRectMake(0, 50, 320, 132)];
         imageV.image = [UIImage imageNamed:@"NoResultFound.png"];
         [cell addSubview:imageV];
+        cell.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"Background"]];
         return cell;
     }
 

@@ -57,7 +57,7 @@
     titleLabel.text = @"理赔明细";
     self.navigationItem.titleView = titleLabel;
     
-    _leftButtonItem =[[UIBarButtonItem alloc]initWithTitle:@"返回" style:UIBarButtonItemStyleBordered target:self action:@selector(leftButtonItem:)];
+    _leftButtonItem =[[UIBarButtonItem alloc]initWithTitle:@"理赔列表" style:UIBarButtonItemStyleBordered target:self action:@selector(leftButtonItem:)];
     self.navigationItem.leftBarButtonItem = _leftButtonItem;
     
     [self sendRequest];

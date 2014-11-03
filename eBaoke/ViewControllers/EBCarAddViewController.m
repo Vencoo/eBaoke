@@ -105,7 +105,7 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     
-    [AppContext setTempContextValueByKey:kTempKeyPlateNumberTypeDes value:@"号牌类型"];
+    [AppContext setTempContextValueByKey:kTempKeyPlateNumberTypeDes value:@"请选择号牌类型"];
     [AppContext setTempContextValueByKey:kTempKeyPlateNumberType value:@"-1"];
     
     UILabel *titleLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, 100, 30)];

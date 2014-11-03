@@ -32,7 +32,7 @@
     self.navigationController.navigationBar.hidden = NO;
     self.navigationItem.hidesBackButton = YES;
     self.navigationController.navigationBar.tintColor = [UIColor colorWithRed:69 /  255.0 green:155 / 255.0 blue:206 / 255.0 alpha:1.0];
-    UIBarButtonItem *leftButtonItem =[[UIBarButtonItem alloc]initWithTitle:@"返回" style:UIBarButtonItemStyleBordered target:self action:@selector(leftButtonItem)];
+    UIBarButtonItem *leftButtonItem =[[UIBarButtonItem alloc]initWithTitle:@"车辆列表" style:UIBarButtonItemStyleBordered target:self action:@selector(leftButtonItem)];
     self.navigationItem.leftBarButtonItem = leftButtonItem;
 
 }

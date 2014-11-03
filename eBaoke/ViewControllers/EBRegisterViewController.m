@@ -78,19 +78,20 @@
     titleLabel.font = [UIFont systemFontOfSize:17];
     titleLabel.textColor = [UIColor whiteColor];
     titleLabel.backgroundColor = [UIColor clearColor];
-    titleLabel.textAlignment = UITextAlignmentCenter;
+    titleLabel.textAlignment = NSTextAlignmentCenter;
     titleLabel.text = @"免费注册";
     self.navigationItem.titleView = titleLabel;
 
     self.view.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"Background.png"]];
     
     if (current_page == 2) {
-        if ([AppContext getTempContextValueByKey:@"car_type"]) {
+        if ([AppContext getTempContextValueByKey:kTempKeyPlateNumberTypeDes]) {
             [carTypeBtn setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
             [carTypeBtn.titleLabel setTextAlignment:NSTextAlignmentLeft];
-            [carTypeBtn setTitle:[AppContext getTempContextValueByKey:@"car_type"] forState:UIControlStateNormal];
+            [carTypeBtn setTitle:[AppContext getTempContextValueByKey:kTempKeyPlateNumberTypeDes] forState:UIControlStateNormal];
         }
     }
+  
 }
 
 - (void)viewDidLoad {
@@ -100,6 +101,10 @@
         self.navigationController.navigationBar.translucent = NO;
     }
     
+    [AppContext setTempContextValueByKey:kTempKeyPlateNumberTypeDes value:@"请选择号牌类型"];
+    [AppContext setTempContextValueByKey:kTempKeyPlateNumberType value:@"-1"];
+    
+
     isNewCarBtnTouched=NO;
     
     total_page = 3;
@@ -474,14 +479,12 @@
         
         //测试
         //        [postDict setObject:@"02" forKey:@"plate_type"];
+     
+
+        NSString *plate_type = [AppContext getTempContextValueByKey:kTempKeyPlateNumberType];
         
-        NSString *plate_type = [[NSUserDefaults standardUserDefaults]objectForKey:@"selected_plate_type"];
-        
-        if (plate_type&&plate_type.length>0) {
-            selected_plate_type = [plate_type copy];
-            [[NSUserDefaults standardUserDefaults]removeObjectForKey:@"selected_plate_type"];
-        }
-        //[postDict setObject:selected_plate_type forKey:@"plate_type"];
+       
+        [postDict setObject:plate_type forKey:@"plate_type"];
     }
     
     kRequestURLPath = [NSString stringWithFormat:@"%@",[AppContext getServiceUrl:@"CircUserRegistrationUrl"]];

@@ -21,9 +21,10 @@
                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="Quote_bg.png" translatesAutoresizingMaskIntoConstraints="NO" id="Xdy-dY-GJI">
                     <rect key="frame" x="0.0" y="0.0" width="320" height="258"/>
                 </imageView>
-                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="40a-hl-mWb">
+                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="40a-hl-mWb">
                     <rect key="frame" x="19" y="19" width="283" height="32"/>
                     <fontDescription key="fontDescription" name="STHeitiSC-Medium" family="Heiti SC" pointSize="15"/>
+                    <inset key="contentEdgeInsets" minX="20" minY="0.0" maxX="0.0" maxY="0.0"/>
                     <state key="normal" title="车辆种类" backgroundImage="cell_backgd.png">
                         <color key="titleColor" red="0.37030905689999999" green="0.67486557920000001" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                     </state>
@@ -31,9 +32,10 @@
                         <action selector="typeAction:" destination="-1" eventType="touchUpInside" id="Mzi-I2-cJM"/>
                     </connections>
                 </button>
-                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cyW-DM-slm">
+                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cyW-DM-slm">
                     <rect key="frame" x="19" y="59" width="283" height="32"/>
                     <fontDescription key="fontDescription" name="STHeitiSC-Medium" family="Heiti SC" pointSize="15"/>
+                    <inset key="contentEdgeInsets" minX="20" minY="0.0" maxX="0.0" maxY="0.0"/>
                     <state key="normal" title="车辆使用性质" backgroundImage="cell_backgd.png">
                         <color key="titleColor" red="0.37030905689999999" green="0.67486557920000001" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                     </state>
@@ -41,9 +43,10 @@
                         <action selector="propertyAction:" destination="-1" eventType="touchUpInside" id="1AV-CL-j1u"/>
                     </connections>
                 </button>
-                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="CCb-Ed-W5q">
+                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="CCb-Ed-W5q">
                     <rect key="frame" x="19" y="99" width="283" height="32"/>
                     <fontDescription key="fontDescription" name="STHeitiSC-Medium" family="Heiti SC" pointSize="15"/>
+                    <inset key="contentEdgeInsets" minX="20" minY="0.0" maxX="0.0" maxY="0.0"/>
                     <state key="normal" title="车船税标志" backgroundImage="cell_backgd.png">
                         <color key="titleColor" red="0.37030905689999999" green="0.67486557920000001" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                     </state>

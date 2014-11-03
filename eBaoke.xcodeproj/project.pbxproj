@@ -51,6 +51,7 @@
 		A25C6B1E19ECAC5E0019C1BC /* EBStartUpViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A25C6B1D19ECAC5E0019C1BC /* EBStartUpViewController.m */; };
 		A27B2D5319DA98B1006E93DC /* EBConfirmEditVC.m in Sources */ = {isa = PBXBuildFile; fileRef = A27B2D5119DA98B1006E93DC /* EBConfirmEditVC.m */; };
 		A27B2D5419DA98B1006E93DC /* EBConfirmEditVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = A27B2D5219DA98B1006E93DC /* EBConfirmEditVC.xib */; };
+		A28181481A03A1CC007EDF12 /* 车辆绑定信息确认-3.png in Resources */ = {isa = PBXBuildFile; fileRef = A28181471A03A1CC007EDF12 /* 车辆绑定信息确认-3.png */; };
 		A2D177D919D3EB310001AFF2 /* EBViolationModel.m in Sources */ = {isa = PBXBuildFile; fileRef = A2D177D819D3EB310001AFF2 /* EBViolationModel.m */; };
 		A2D177DB19D4030D0001AFF2 /* EBPremiumViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = A2D177DA19D4030D0001AFF2 /* EBPremiumViewController.xib */; };
 		A2D177DE19D416680001AFF2 /* EBSelectOptionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A2D177DD19D416680001AFF2 /* EBSelectOptionViewController.m */; };
@@ -260,6 +261,7 @@
 		A27B2D5019DA98B1006E93DC /* EBConfirmEditVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EBConfirmEditVC.h; sourceTree = "<group>"; };
 		A27B2D5119DA98B1006E93DC /* EBConfirmEditVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EBConfirmEditVC.m; sourceTree = "<group>"; };
 		A27B2D5219DA98B1006E93DC /* EBConfirmEditVC.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = EBConfirmEditVC.xib; sourceTree = "<group>"; };
+		A28181471A03A1CC007EDF12 /* 车辆绑定信息确认-3.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "车辆绑定信息确认-3.png"; sourceTree = "<group>"; };
 		A2D177D719D3EB310001AFF2 /* EBViolationModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EBViolationModel.h; sourceTree = "<group>"; };
 		A2D177D819D3EB310001AFF2 /* EBViolationModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EBViolationModel.m; sourceTree = "<group>"; };
 		A2D177DA19D4030D0001AFF2 /* EBPremiumViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = EBPremiumViewController.xib; sourceTree = "<group>"; };
@@ -676,6 +678,7 @@
 				D770E95519C98BB9001F9B60 /* 车辆绑定信息确认-1.png */,
 				D770E95619C98BB9001F9B60 /* 车辆绑定信息确认-17.png */,
 				D770E95719C98BB9001F9B60 /* 车辆绑定信息确认-2.png */,
+				A28181471A03A1CC007EDF12 /* 车辆绑定信息确认-3.png */,
 				D770E95A19C98BB9001F9B60 /* 车辆绑定信息确认-5.png */,
 				D770E95B19C98BB9001F9B60 /* 车辆绑定信息确认-6.png */,
 				D770E95C19C98BB9001F9B60 /* 车辆绑定信息确认-7.png */,
@@ -1028,6 +1031,7 @@
 				D7D2196F19C6B80200C585FA /* Register_2_1.png in Resources */,
 				D7D2196719C6B80200C585FA /* quote_btn.png in Resources */,
 				D770E98119C98BB9001F9B60 /* 车辆绑定信息确认-6.png in Resources */,
+				A28181481A03A1CC007EDF12 /* 车辆绑定信息确认-3.png in Resources */,
 				D7D2195519C6B80200C585FA /* PolicyDetail_r1_c1.png in Resources */,
 				D7D2191719C6B80200C585FA /* arrow.png in Resources */,
 				D770E99919C98BB9001F9B60 /* 新增车辆-4.png in Resources */,

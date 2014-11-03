@@ -41,7 +41,7 @@
     titleLabel.text = NSLocalizedString(@"保单列表", nil);
     self.navigationItem.titleView = titleLabel;
     
-    UIBarButtonItem *backItem = [[UIBarButtonItem alloc]initWithTitle:@"返回" style:UIBarButtonItemStyleBordered target:self action:@selector(back)];
+    UIBarButtonItem *backItem = [[UIBarButtonItem alloc]initWithTitle:@"车辆列表" style:UIBarButtonItemStyleBordered target:self action:@selector(back)];
     self.navigationItem.leftBarButtonItem = backItem;
     
     _tableView = [[UITableView alloc]initWithFrame:CGRectMake(0, (IOSVersion>=7.0?50:50), kDeviceWidth, KDeviceHeight-20-44-50) style:UITableViewStylePlain];
@@ -60,6 +60,7 @@
                           @"交强险",
                           @"商业险",
                           nil]];
+    _segmentedControl.tintColor = [UIColor blueColor];
     [_segmentedControl addTarget:self action:@selector(segmentAction:) forControlEvents:UIControlEventValueChanged];
     _segmentedControl.frame = CGRectMake(5, 10, kDeviceWidth-10, 30);
     [_segmentedControl setBackgroundImage:[UIImage imageNamed:@"Segment_bg"] forState:UIControlStateNormal barMetrics:UIBarMetricsDefault];
@@ -153,19 +154,42 @@
 - (void)segmentAction:(UISegmentedControl*)segmentedControl
 {
     
-    [UIView animateWithDuration:0.4 delay:0.0 options:UIViewAnimationOptionCurveEaseIn animations:^{
-        _tableView.alpha = 0.0;
-    } completion:^(BOOL finished) {
-        _tableView.alpha = 1.0;
-        NSInteger index = _segmentedControl.selectedSegmentIndex;
-        if (index == 0) {
-            _dataArray = _dataArray1;
-        }else if (index == 1)
-        {
-            _dataArray = _dataArray2;
-        }
-        [_tableView reloadData];
-    }];
+//    [UIView animateWithDuration:0.4 delay:0.0 options:UIViewAnimationOptionCurveEaseIn animations:^{
+//        _tableView.alpha = 0.0;
+//    } completion:^(BOOL finished) {
+//        _tableView.alpha = 1.0;
+//        NSInteger index = _segmentedControl.selectedSegmentIndex;
+//        if (index == 0) {
+//            _dataArray = _dataArray1;
+//        }else if (index == 1)
+//        {
+//            _dataArray = _dataArray2;
+//        }
+//        [_tableView reloadData];
+//    }];
+    
+    
+    [UIView beginAnimations:@"animationID" context:nil];
+    [UIView setAnimationDuration:0.5f];
+    [UIView setAnimationCurve:UIViewAnimationCurveEaseInOut];
+    [UIView setAnimationDelegate:self];
+    [UIView setAnimationRepeatAutoreverses:NO];
+    if (segmentedControl.selectedSegmentIndex == 0) {
+        [UIView setAnimationTransition:UIViewAnimationTransitionFlipFromLeft forView:_tableView cache:YES];
+    }
+    if (segmentedControl.selectedSegmentIndex == 1) {
+        [UIView setAnimationTransition:UIViewAnimationTransitionFlipFromRight forView:_tableView cache:YES];
+    }
+    [UIView commitAnimations];
+    
+    NSInteger index = _segmentedControl.selectedSegmentIndex;
+    if (index == 0) {
+        _dataArray = _dataArray1;
+    }else if (index == 1)
+    {
+        _dataArray = _dataArray2;
+    }
+    [_tableView reloadData];
    
 }
 

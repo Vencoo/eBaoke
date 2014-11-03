@@ -272,9 +272,10 @@
     
     if ([_dataArray count] == 0) {
         UITableViewCell *cell = [[UITableViewCell alloc] initWithFrame:CGRectMake(0, 0, tableView.frame.size.width, tableView.frame.size.height)];
-        UIImageView *imageV = [[UIImageView alloc] initWithFrame:CGRectMake(0, 50, 320, 132)];
-        imageV.image = [UIImage imageNamed:@"NoResultFound.png"];
-        [cell addSubview:imageV];
+//        UIImageView *imageV = [[UIImageView alloc] initWithFrame:CGRectMake(0, 50, 320, 132)];
+//        imageV.image = [UIImage imageNamed:@"NoResultFound.png"];
+//        [cell addSubview:imageV];
+        cell.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"Background"]];
         return cell;
     }
     

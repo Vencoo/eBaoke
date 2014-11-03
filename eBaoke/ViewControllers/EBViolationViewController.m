@@ -42,7 +42,7 @@
     titleLabel.text = @"违章记录";
     self.navigationItem.titleView = titleLabel;
     
-    _leftButtonItem =[[UIBarButtonItem alloc]initWithTitle:@"返回" style:UIBarButtonItemStyleBordered target:self action:@selector(leftButtonItem:)];
+    _leftButtonItem =[[UIBarButtonItem alloc]initWithTitle:@"车辆列表" style:UIBarButtonItemStyleBordered target:self action:@selector(leftButtonItem:)];
     self.navigationItem.leftBarButtonItem = _leftButtonItem;
     
     if (!_dataArray) {

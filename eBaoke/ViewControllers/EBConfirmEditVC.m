@@ -56,9 +56,9 @@
     [postDict setObject:_carModel.carOwner forKey:@"car_owner"];
     
     if (_isEditAction) {
-        [postDict setObject:@"binding_query" forKey:@"select"];
+        [postDict setObject:@"binding_modify" forKey:@"select"];
         
-        kRequestURLPath = [NSString stringWithFormat:@"%@",[AppContext getServiceUrl:@"CricBindingQueryResp"]];
+        kRequestURLPath = [NSString stringWithFormat:@"%@",[AppContext getServiceUrl:@"CircBindingModifyResp"]];
     }else {
         [postDict setObject:@"add_vehicle" forKey:@"select"];
         
@@ -82,6 +82,7 @@
 
     NSString *postContent = [AppContext dictionaryToXml:postDict error:&error];
     
+    NSLog(@"%@",postDict);
     NSLog(@"%@",postContent);
     NSLog(@"---- kRequestURLPath %@", kRequestURLPath);
     _rData = [[NSMutableData alloc] init];

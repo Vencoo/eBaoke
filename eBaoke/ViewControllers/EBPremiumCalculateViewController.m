@@ -66,7 +66,7 @@
     titleLabel.textColor = [UIColor whiteColor];
     titleLabel.backgroundColor = [UIColor clearColor];
     titleLabel.textAlignment = NSTextAlignmentCenter;
-    titleLabel.text = @"理赔明细";
+    titleLabel.text = @"保费试算";
     self.navigationItem.titleView = titleLabel;
     
     _leftButtonItem =[[UIBarButtonItem alloc]initWithTitle:@"返回" style:UIBarButtonItemStyleBordered target:self action:@selector(leftButtonItem:)];

@@ -35,7 +35,7 @@
     titleLabel.textColor = [UIColor whiteColor];
     titleLabel.backgroundColor = [UIColor clearColor];
     titleLabel.textAlignment = NSTextAlignmentCenter;
-    titleLabel.text = @"理赔记录";
+    titleLabel.text = @"理赔列表";
     self.navigationItem.titleView = titleLabel;
     
     _tableView = [[UITableView alloc]initWithFrame:CGRectMake(0, 0, kDeviceWidth, KDeviceHeight-64) style:UITableViewStylePlain];
@@ -45,7 +45,7 @@
     _tableView.dataSource = self;
     [self.view addSubview:_tableView];
     
-    _leftButtonItem =[[UIBarButtonItem alloc]initWithTitle:@"返回" style:UIBarButtonItemStyleBordered target:self action:@selector(leftButtonItem:)];
+    _leftButtonItem =[[UIBarButtonItem alloc]initWithTitle:@"保单列表" style:UIBarButtonItemStyleBordered target:self action:@selector(leftButtonItem:)];
     self.navigationItem.leftBarButtonItem = _leftButtonItem;
     
     if (!_dataArray) {

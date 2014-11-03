@@ -11,7 +11,7 @@
 #import "EBCarTypeViewController.h"
 #import "EBConfirmEditVC.h"
 
-@interface EBCarEditViewController ()
+@interface EBCarEditViewController ()<UITextFieldDelegate>
 {
     
     UIBarButtonItem *_leftButtonItem;
@@ -195,6 +195,7 @@
                     NSString *vId = [array objectAtIndex:0];
                     if ([vId isEqualToString:_carModel.userCarId]) {
                         _getCarModel = [[EBCarListModel alloc] initWithArray:array];
+                        _getCarModel.plateNo = _plateNumTextField.text;
                         _getCarModel.vehicleId = _carModel.vehicleId;
                         // 进入确认界面
                         EBConfirmEditVC *vc = [[EBConfirmEditVC alloc] initWithNibName:@"EBConfirmEditVC" bundle:[NSBundle mainBundle]];
@@ -212,9 +213,15 @@
             [AppContext alertContent:@"错误数据无法提交"];
         }
        
-    }else {
-        [AppContext alertContent:@"返回数据错误"];
     }
 }
+
+- (BOOL)textFieldShouldReturn:(UITextField *)textField
+{
+    [self.view endEditing:YES];
+    
+    return YES;
+}
+
 
 @end
