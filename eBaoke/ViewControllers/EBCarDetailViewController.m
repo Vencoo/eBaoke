@@ -32,8 +32,14 @@
     self.navigationController.navigationBar.hidden = NO;
     self.navigationItem.hidesBackButton = YES;
     self.navigationController.navigationBar.tintColor = [UIColor colorWithRed:69 /  255.0 green:155 / 255.0 blue:206 / 255.0 alpha:1.0];
-    UIBarButtonItem *leftButtonItem =[[UIBarButtonItem alloc]initWithTitle:@"车辆列表" style:UIBarButtonItemStyleBordered target:self action:@selector(leftButtonItem)];
-    self.navigationItem.leftBarButtonItem = leftButtonItem;
+    
+    _lfBtn = [[UIButton alloc] initWithFrame:CGRectMake(0, 0, 90, 26)];
+    [_lfBtn addTarget:self action:@selector(leftButtonItem:) forControlEvents:UIControlEventTouchUpInside];
+    [_lfBtn setBackgroundImage:[UIImage imageNamed:@"btn_back"] forState:UIControlStateNormal];
+    [_lfBtn setTitle:@"车辆列表" forState:UIControlStateNormal];
+    _leftButtonItem = [[UIBarButtonItem alloc] initWithCustomView:_lfBtn];
+    self.navigationItem.leftBarButtonItem = _leftButtonItem;
+    
 
 }
 
@@ -111,11 +117,12 @@
     }
 }
 
-#pragma -mark button action
-
-- (void)leftButtonItem
+#pragma -mark Button Action
+- (void)leftButtonItem:(UIBarButtonItem *)buttonItem
 {
+    // 返回
     [self.navigationController popViewControllerAnimated:YES];
+    
 }
 
 #pragma mark - UITableView delegate

@@ -41,8 +41,13 @@
     titleLabel.text = NSLocalizedString(@"保单列表", nil);
     self.navigationItem.titleView = titleLabel;
     
-    UIBarButtonItem *backItem = [[UIBarButtonItem alloc]initWithTitle:@"车辆列表" style:UIBarButtonItemStyleBordered target:self action:@selector(back)];
-    self.navigationItem.leftBarButtonItem = backItem;
+    _lfBtn = [[UIButton alloc] initWithFrame:CGRectMake(0, 0, 90, 26)];
+    [_lfBtn addTarget:self action:@selector(leftButtonItem:) forControlEvents:UIControlEventTouchUpInside];
+    [_lfBtn setBackgroundImage:[UIImage imageNamed:@"btn_back"] forState:UIControlStateNormal];
+    [_lfBtn setTitle:@"保单列表" forState:UIControlStateNormal];
+    _leftButtonItem = [[UIBarButtonItem alloc] initWithCustomView:_lfBtn];
+    self.navigationItem.leftBarButtonItem = _leftButtonItem;
+    
     
     _tableView = [[UITableView alloc]initWithFrame:CGRectMake(0, (IOSVersion>=7.0?50:50), kDeviceWidth, KDeviceHeight-20-44-50) style:UITableViewStylePlain];
     _tableView.backgroundView = [[UIImageView alloc]initWithImage:[UIImage imageNamed:@"Background"]];
@@ -145,10 +150,12 @@
 }
 
 
-#pragma -mark button action
-- (void)back
+#pragma -mark Button Action
+- (void)leftButtonItem:(UIBarButtonItem *)buttonItem
 {
+    // 返回
     [self.navigationController popViewControllerAnimated:YES];
+    
 }
 
 - (void)segmentAction:(UISegmentedControl*)segmentedControl

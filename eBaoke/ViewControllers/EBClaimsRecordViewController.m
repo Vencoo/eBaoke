@@ -15,7 +15,7 @@
 {
     UITableView *_tableView;
 
-    UIBarButtonItem *_leftButtonItem;
+    
 
     EBPremiumDetailModel *_pdModel;
 
@@ -45,8 +45,13 @@
     _tableView.dataSource = self;
     [self.view addSubview:_tableView];
     
-    _leftButtonItem =[[UIBarButtonItem alloc]initWithTitle:@"保单列表" style:UIBarButtonItemStyleBordered target:self action:@selector(leftButtonItem:)];
+    _lfBtn = [[UIButton alloc] initWithFrame:CGRectMake(0, 0, 90, 26)];
+    [_lfBtn addTarget:self action:@selector(leftButtonItem:) forControlEvents:UIControlEventTouchUpInside];
+    [_lfBtn setBackgroundImage:[UIImage imageNamed:@"btn_back"] forState:UIControlStateNormal];
+    [_lfBtn setTitle:@"保单列表" forState:UIControlStateNormal];
+    _leftButtonItem = [[UIBarButtonItem alloc] initWithCustomView:_lfBtn];
     self.navigationItem.leftBarButtonItem = _leftButtonItem;
+    
     
     if (!_dataArray) {
         _dataArray = [[NSMutableArray alloc] init];

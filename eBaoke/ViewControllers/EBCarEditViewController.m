@@ -14,9 +14,9 @@
 @interface EBCarEditViewController ()<UITextFieldDelegate>
 {
     
-    UIBarButtonItem *_leftButtonItem;
     
-    UIBarButtonItem *_rightButtonItem;
+    
+    
     
     NSString *_carType;
     
@@ -60,10 +60,18 @@
     titleLabel.text = @"编辑车辆";
     self.navigationItem.titleView = titleLabel;
     
-    _leftButtonItem =[[UIBarButtonItem alloc]initWithTitle:@"返回" style:UIBarButtonItemStyleBordered target:self action:@selector(leftButtonItem:)];
+    _lfBtn = [[UIButton alloc] initWithFrame:CGRectMake(0, 0, 60, 26)];
+    [_lfBtn addTarget:self action:@selector(leftButtonItem:) forControlEvents:UIControlEventTouchUpInside];
+    [_lfBtn setBackgroundImage:[UIImage imageNamed:@"btn_back"] forState:UIControlStateNormal];
+    [_lfBtn setTitle:@"返回" forState:UIControlStateNormal];
+    _leftButtonItem = [[UIBarButtonItem alloc] initWithCustomView:_lfBtn];
     self.navigationItem.leftBarButtonItem = _leftButtonItem;
     
-    _rightButtonItem =[[UIBarButtonItem alloc]initWithTitle:@"完成" style:UIBarButtonItemStyleBordered target:self action:@selector(rightButtonItem:)];
+    _rgBtn = [[UIButton alloc] initWithFrame:CGRectMake(0, 0, 60, 26)];
+    [_rgBtn addTarget:self action:@selector(rightButtonItem:) forControlEvents:UIControlEventTouchUpInside];
+    [_rgBtn setBackgroundImage:[UIImage imageNamed:@"btn_bg"] forState:UIControlStateNormal];
+    [_rgBtn setTitle:@"完成" forState:UIControlStateNormal];
+    _rightButtonItem = [[UIBarButtonItem alloc] initWithCustomView:_rgBtn];
     self.navigationItem.rightBarButtonItem = _rightButtonItem;
 }
 

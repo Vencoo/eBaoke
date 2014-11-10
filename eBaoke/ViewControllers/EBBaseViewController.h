@@ -15,5 +15,15 @@
     MBProgressHUD *HUD;
 
     NSMutableData *_rData;
+    
+    // 导航右上角按钮
+    UIButton *_rgBtn;
+    
+    // 导航左上角按钮
+    UIButton *_lfBtn;
+    
+    UIBarButtonItem *_leftButtonItem;
+    
+    UIBarButtonItem *_rightButtonItem;
 }
 @end

@@ -33,9 +33,6 @@
     __weak IBOutlet UITextField *_vinNoTextField;
     
     __weak IBOutlet UITextField *_carOwnerTextField;
-    
-    UIBarButtonItem *_leftButtonItem;
-    UIBarButtonItem *_rightButtonItem;
 
     NSMutableArray *_dataArray;
     
@@ -73,10 +70,14 @@
     
     _dataArray = [[NSMutableArray alloc]init];
     
-    _leftButtonItem =[[UIBarButtonItem alloc]initWithTitle:@"注销" style:UIBarButtonItemStyleBordered target:self action:@selector(leftButtonItem:)];
+    _lfBtn = [[UIButton alloc] initWithFrame:CGRectMake(0, 0, 60, 26)];
+    [_lfBtn addTarget:self action:@selector(leftButtonItem:) forControlEvents:UIControlEventTouchUpInside];
+    [_lfBtn setBackgroundImage:[UIImage imageNamed:@"btn_bg"] forState:UIControlStateNormal];
+    [_lfBtn setTitle:@"注销" forState:UIControlStateNormal];
+    _leftButtonItem = [[UIBarButtonItem alloc] initWithCustomView:_lfBtn];
     self.navigationItem.leftBarButtonItem = _leftButtonItem;
 
-    _rightNavInfoLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, 100, 30)];
+    _rightNavInfoLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, 90, 26)];
     _rightNavInfoLabel.text = @"0个结果";
     _rightNavInfoLabel.textAlignment = NSTextAlignmentRight;
     _rightNavInfoLabel.textColor = [UIColor whiteColor];

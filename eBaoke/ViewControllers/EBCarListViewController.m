@@ -19,10 +19,6 @@
 @interface EBCarListViewController ()<UITextFieldDelegate,UITableViewDelegate,UITableViewDataSource,carListCellButtonDelegate>
 {
     UITableView *_tableView;
-        
-    UIBarButtonItem *_leftButtonItem;
-    
-    UIBarButtonItem *_rightButtonItem;
     
     NSMutableArray *_dataArray;
     
@@ -65,10 +61,20 @@
     _tableView.dataSource = self;
     [self.view addSubview:_tableView];
     
-    _rightButtonItem =[[UIBarButtonItem alloc]initWithTitle:@"编辑" style:UIBarButtonItemStyleBordered target:self action:@selector(rightButtonItem:)];
-    self.navigationItem.rightBarButtonItem = _rightButtonItem;
-    _leftButtonItem =[[UIBarButtonItem alloc]initWithTitle:@"注销" style:UIBarButtonItemStyleBordered target:self action:@selector(leftButtonItem:)];
+    _lfBtn = [[UIButton alloc] initWithFrame:CGRectMake(0, 0, 60, 26)];
+    [_lfBtn addTarget:self action:@selector(leftButtonItem:) forControlEvents:UIControlEventTouchUpInside];
+    [_lfBtn setBackgroundImage:[UIImage imageNamed:@"btn_bg"] forState:UIControlStateNormal];
+    [_lfBtn setTitle:@"退出" forState:UIControlStateNormal];
+    _leftButtonItem = [[UIBarButtonItem alloc] initWithCustomView:_lfBtn];
     self.navigationItem.leftBarButtonItem = _leftButtonItem;
+    
+    _rgBtn = [[UIButton alloc] initWithFrame:CGRectMake(0, 0, 60, 26)];
+    [_rgBtn addTarget:self action:@selector(rightButtonItem:) forControlEvents:UIControlEventTouchUpInside];
+    [_rgBtn setBackgroundImage:[UIImage imageNamed:@"btn_bg"] forState:UIControlStateNormal];
+    [_rgBtn setTitle:@"编辑" forState:UIControlStateNormal];
+    _rightButtonItem = [[UIBarButtonItem alloc] initWithCustomView:_rgBtn];
+    
+    self.navigationItem.rightBarButtonItem = _rightButtonItem;
 }
 
 - (void)viewWillAppear:(BOOL)animated {
@@ -117,12 +123,12 @@
     [_tableView reloadData];
     
     if (editing) {
-        _rightButtonItem.title = @"新增";
-        _leftButtonItem.title = @"完成";
+        [_rgBtn setTitle:@"新增" forState:UIControlStateNormal];
+        [_lfBtn setTitle:@"完成" forState:UIControlStateNormal];
         
     }else {
-        _rightButtonItem.title = @"编辑";
-        _leftButtonItem.title = @"退出";
+        [_rgBtn setTitle:@"编辑" forState:UIControlStateNormal];
+        [_lfBtn setTitle:@"退出" forState:UIControlStateNormal];
         
     }
 }

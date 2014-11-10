@@ -13,8 +13,6 @@
     UITableView *_tableView;
     
     NSArray *_dataArray;
-    
-    UIBarButtonItem *_leftButtonItem;
 
 }
 @end
@@ -35,7 +33,11 @@
 
     [self getTableViewData];
     
-    _leftButtonItem =[[UIBarButtonItem alloc]initWithTitle:@"返回" style:UIBarButtonItemStyleBordered target:self action:@selector(leftButtonItem:)];
+    _lfBtn = [[UIButton alloc] initWithFrame:CGRectMake(0, 0, 60, 26)];
+    [_lfBtn addTarget:self action:@selector(leftButtonItem:) forControlEvents:UIControlEventTouchUpInside];
+    [_lfBtn setBackgroundImage:[UIImage imageNamed:@"btn_back"] forState:UIControlStateNormal];
+    [_lfBtn setTitle:@"返回" forState:UIControlStateNormal];
+    _leftButtonItem = [[UIBarButtonItem alloc] initWithCustomView:_lfBtn];
     self.navigationItem.leftBarButtonItem = _leftButtonItem;
     
     self.navigationController.navigationBar.hidden = NO;

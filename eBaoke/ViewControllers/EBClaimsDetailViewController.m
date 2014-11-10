@@ -34,7 +34,7 @@
     
     __weak IBOutlet UILabel *_caseStartTimeLabel;
     
-    UIBarButtonItem *_leftButtonItem;
+    
 
     EBClaimsDetailModel *_cdModel;
 }
@@ -57,7 +57,11 @@
     titleLabel.text = @"理赔明细";
     self.navigationItem.titleView = titleLabel;
     
-    _leftButtonItem =[[UIBarButtonItem alloc]initWithTitle:@"理赔列表" style:UIBarButtonItemStyleBordered target:self action:@selector(leftButtonItem:)];
+    _lfBtn = [[UIButton alloc] initWithFrame:CGRectMake(0, 0, 90, 26)];
+    [_lfBtn addTarget:self action:@selector(leftButtonItem:) forControlEvents:UIControlEventTouchUpInside];
+    [_lfBtn setBackgroundImage:[UIImage imageNamed:@"btn_back"] forState:UIControlStateNormal];
+    [_lfBtn setTitle:@"理赔列表" forState:UIControlStateNormal];
+    _leftButtonItem = [[UIBarButtonItem alloc] initWithCustomView:_lfBtn];
     self.navigationItem.leftBarButtonItem = _leftButtonItem;
     
     [self sendRequest];
