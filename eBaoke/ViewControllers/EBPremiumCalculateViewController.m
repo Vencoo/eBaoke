@@ -60,7 +60,6 @@
     // Do any additional setup after loading the view from its nib.
     
     self.navigationController.navigationBar.hidden = NO;
-    self.view.backgroundColor = [UIColor lightGrayColor];
     UILabel *titleLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, 100, 30)];
     titleLabel.font = [UIFont systemFontOfSize:17];
     titleLabel.textColor = [UIColor whiteColor];

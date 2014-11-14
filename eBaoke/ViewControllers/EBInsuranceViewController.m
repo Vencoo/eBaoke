@@ -65,10 +65,10 @@
                           @"交强险",
                           @"商业险",
                           nil]];
-    _segmentedControl.tintColor = [UIColor blueColor];
+    _segmentedControl.tintColor = [UIColor redColor];
     [_segmentedControl addTarget:self action:@selector(segmentAction:) forControlEvents:UIControlEventValueChanged];
     _segmentedControl.frame = CGRectMake(5, 10, kDeviceWidth-10, 30);
-    [_segmentedControl setBackgroundImage:[UIImage imageNamed:@"Segment_bg"] forState:UIControlStateNormal barMetrics:UIBarMetricsDefault];
+    //[_segmentedControl setBackgroundImage:[UIImage imageNamed:@"Segment_bg"] forState:UIControlStateNormal barMetrics:UIBarMetricsDefault];
     _segmentedControl.momentary = NO;
      _segmentedControl.segmentedControlStyle = UISegmentedControlStyleBar;
     _segmentedControl.tintColor = [UIColor colorWithRed:255.0/255 green:131.0/255 blue:59.0/255 alpha:1.0];

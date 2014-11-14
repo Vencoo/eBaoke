@@ -25,6 +25,19 @@
   
 }
 
+- (void)viewWillAppear:(BOOL)animated {
+    [super viewWillAppear:animated];
+    
+    // 缩小按钮字体
+    if (_lfBtn) {
+        _lfBtn.titleLabel.font = [UIFont systemFontOfSize:14];
+    }
+    
+    if (_rgBtn) {
+        _rgBtn.titleLabel.font = [UIFont systemFontOfSize:14];
+    }
+}
+
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.

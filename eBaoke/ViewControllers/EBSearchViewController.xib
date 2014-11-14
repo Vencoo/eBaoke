@@ -78,18 +78,6 @@
                             <rect key="frame" x="0.0" y="80" width="320" height="60"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         </imageView>
-                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="eOI-Mo-UvZ">
-                            <rect key="frame" x="-120" y="-11" width="560" height="61"/>
-                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                            <fontDescription key="fontDescription" type="system" pointSize="16"/>
-                            <state key="normal" title="请选择号牌类型" backgroundImage="Register_2_1.png">
-                                <color key="titleColor" red="0.25837029430000003" green="0.50153760670000003" blue="0.78806600770000002" alpha="1" colorSpace="calibratedRGB"/>
-                                <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                            </state>
-                            <connections>
-                                <action selector="plateTypeAction:" destination="-1" eventType="touchUpInside" id="rrS-JD-PVw"/>
-                            </connections>
-                        </button>
                         <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="车架号" minimumFontSize="17" id="bnW-yh-WNU">
                             <rect key="frame" x="14" y="48" width="292" height="32"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -108,6 +96,18 @@
                                 <outlet property="delegate" destination="-1" id="1TM-sw-wFF"/>
                             </connections>
                         </textField>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="eOI-Mo-UvZ">
+                            <rect key="frame" x="7" y="3" width="306" height="34"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                            <state key="normal" title="请选择号牌类型" backgroundImage="Register_2_1.png">
+                                <color key="titleColor" red="0.25837029430000003" green="0.50153760670000003" blue="0.78806600770000002" alpha="1" colorSpace="calibratedRGB"/>
+                                <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                            </state>
+                            <connections>
+                                <action selector="plateTypeAction:" destination="-1" eventType="touchUpInside" id="rrS-JD-PVw"/>
+                            </connections>
+                        </button>
                     </subviews>
                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                 </view>

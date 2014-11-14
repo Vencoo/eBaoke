@@ -162,6 +162,40 @@ static NSInteger networkingCount = 0;
 	return NO;
 }
 
++(BOOL) checkResponseDoNotShowError:(NSDictionary *) responseContent{
+    
+    if (!responseContent || ![responseContent isKindOfClass:[NSDictionary class]]) {
+        
+        return NO;
+    }
+    
+    NSString *errCode = [responseContent objectForKey:@"ERR_CODE"];
+    NSString *responseCode = [responseContent objectForKey:@"RESPONSE_CODE"];
+    
+    NSString *alertMsg = @"";
+    if (errCode != nil) {
+        alertMsg = [responseContent objectForKey:@"ERR_MSG"];
+        if (alertMsg == nil) {
+            alertMsg = [AppContext getContextValueByKey:errCode];
+        }
+    }else if (responseCode != nil) {
+        alertMsg = [responseContent objectForKey:@"RESPONSE_MSG"];
+        if (alertMsg == nil) {
+            alertMsg = [AppContext getContextValueByKey:responseCode];
+        }
+    }
+    
+    if (errCode != nil || responseCode != nil) {
+       
+    }
+    
+    if (errCode == nil) {
+        return YES;
+    }
+    return NO;
+}
+
+
 +(BOOL) checkInput:(id) inputText  comment:(NSString *) comment{
     if ([inputText isKindOfClass:[UITextField class]] && (inputText == nil || [inputText text].length == 0)) {
         if (comment) {

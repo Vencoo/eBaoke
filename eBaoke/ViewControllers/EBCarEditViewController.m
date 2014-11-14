@@ -43,13 +43,29 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
     
-    [AppContext setTempContextValueByKey:kTempKeyPlateNumberTypeDes value:@"号牌类型"];
-    [AppContext setTempContextValueByKey:kTempKeyPlateNumberType value:@"-1"];
-    
+  
     if (_carModel) {
         _nameTextField.text = _carModel.carOwner;
         _plateNumTextField.text = _carModel.plateNo;
         _engineTextField.text = _carModel.engineNo;
+    }
+    
+    NSString *path = [[NSBundle mainBundle] pathForResource:@"CarTypeList" ofType:@"plist"];
+    NSDictionary *dict =[[NSDictionary alloc] initWithContentsOfFile:path];
+    NSArray *dataArray = [dict objectForKey:@"CarType"];
+    
+    [AppContext setTempContextValueByKey:kTempKeyPlateNumberTypeDes value:@"请选择号牌类型"];
+    [AppContext setTempContextValueByKey:kTempKeyPlateNumberType value:@"-1"];
+    if (_carModel.plateType) {
+        for (NSDictionary *dic in dataArray) {
+            if ([[dic objectForKey:@"CARMARK_CATEGORY_CODE"] isEqualToString:_carModel.plateType]) {
+                [AppContext setTempContextValueByKey:kTempKeyPlateNumberType
+                                               value:[dic objectForKey:@"CARMARK_CATEGORY_CODE"]];
+                [AppContext setTempContextValueByKey:kTempKeyPlateNumberTypeDes
+                                               value:[dic objectForKey:@"CARMARK_CATEGORY_NAME"]];
+                break;
+            }
+        }
     }
     
     UILabel *titleLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, 100, 30)];
@@ -83,6 +99,7 @@
     
     _plateNumberTypeDes = [AppContext getTempContextValueByKey:kTempKeyPlateNumberTypeDes];
     
+    [_cateButton setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
     [_cateButton setTitle:_plateNumberTypeDes forState:UIControlStateNormal];
 }
 
@@ -113,6 +130,14 @@
 {
     if([_nameTextField.text isEqualToString:@""]) {
         [AppContext alertContent:@"请填写车主信息"];
+        return;
+    }
+    if ([_plateNumberType isEqualToString:@"-1"] && _plateNumTextField.text.length>0) {
+        [AppContext alertContent:@"请填选择号牌类型"];
+        return;
+    }
+    if (![_plateNumberType isEqualToString:@"-1"] && _plateNumTextField.text.length == 0) {
+        [AppContext alertContent:@"请输入车牌号"];
         return;
     }
     
@@ -204,6 +229,7 @@
                     if ([vId isEqualToString:_carModel.userCarId]) {
                         _getCarModel = [[EBCarListModel alloc] initWithArray:array];
                         _getCarModel.plateNo = _plateNumTextField.text;
+                        _getCarModel.plateType = _plateNumberType;
                         _getCarModel.vehicleId = _carModel.vehicleId;
                         // 进入确认界面
                         EBConfirmEditVC *vc = [[EBConfirmEditVC alloc] initWithNibName:@"EBConfirmEditVC" bundle:[NSBundle mainBundle]];

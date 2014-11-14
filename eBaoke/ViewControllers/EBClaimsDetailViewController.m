@@ -48,7 +48,6 @@
     // Do any additional setup after loading the view from its nib.
     
     self.navigationController.navigationBar.hidden = NO;
-    self.view.backgroundColor = [UIColor lightGrayColor];
     UILabel *titleLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, 100, 30)];
     titleLabel.font = [UIFont systemFontOfSize:17];
     titleLabel.textColor = [UIColor whiteColor];
@@ -70,10 +69,16 @@
 - (void)viewDidAppear:(BOOL)animated {
     [super viewDidAppear:animated];
  
+ 
+}
+
+- (void)viewDidLayoutSubviews
+{
     _scrollView.frame = CGRectMake(0, 0, kDeviceWidth, KDeviceHeight-64);
     _scrollView.layer.masksToBounds = YES;
     _scrollView.contentSize = CGSizeMake(320, 560);
     _scrollView.scrollEnabled = YES;
+    
 }
 
 - (void)didReceiveMemoryWarning {

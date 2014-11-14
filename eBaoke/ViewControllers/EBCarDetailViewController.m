@@ -53,7 +53,7 @@
     
     _dataArray = [[NSMutableArray alloc]init];
 
-    _tableView = [[UITableView alloc]initWithFrame:CGRectMake(0, IOSVersion>=7.0?0:0, kDeviceWidth, KDeviceHeight-64) style:UITableViewStylePlain];
+    _tableView = [[UITableView alloc]initWithFrame:CGRectMake(0, 0, kDeviceWidth, KDeviceHeight-64) style:UITableViewStylePlain];
     _tableView.backgroundView = [[UIImageView alloc]initWithImage:[UIImage imageNamed:@"Background"]];
     _tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
     _tableView.delegate = self;
@@ -103,7 +103,7 @@
     [AppContext didStopNetworking];
     NSDictionary *dict = [AppContext nsDataToObject:_rData encoding:NSUTF8StringEncoding];
     NSLog(@"dict=%@",dict);
-    if ([AppContext checkResponse:dict]) {
+    if ([AppContext checkResponseDoNotShowError:dict]) {
         NSArray *keys = [[dict allKeys] sortedArrayUsingSelector:@selector(compare:)];
         [_dataArray removeAllObjects];
         for (NSString *key in keys) {
@@ -114,6 +114,13 @@
             }
             [_tableView reloadData];
         }
+    }else {
+        [_dataArray removeAllObjects];
+//        for (int i = 0; i<13; i++) {
+//            NSArray *arr = [[NSArray alloc] initWithObjects:@"",@"", nil];
+//            [_dataArray addObject:arr];
+//        }
+        [_tableView reloadData];
     }
 }
 
@@ -134,6 +141,15 @@
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath;
 {
+    
+    if (_dataArray.count == 0) {
+        UITableViewCell *cell = [[UITableViewCell alloc] initWithFrame:CGRectMake(0, 0, tableView.frame.size.width, tableView.frame.size.height)];
+        UIImageView *imageV = [[UIImageView alloc] initWithFrame:CGRectMake(0, 50, 320, 132)];
+        imageV.image = [UIImage imageNamed:@"NoResultFound.png"];
+        [cell addSubview:imageV];
+        cell.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"Background"]];
+        return cell;
+    }
 
     UITableViewCell  *cell = [[UITableViewCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:nil];
     NSString *imageStr = [NSString stringWithFormat:@"CarDetail_r%d_c1.png",indexPath.row+1];

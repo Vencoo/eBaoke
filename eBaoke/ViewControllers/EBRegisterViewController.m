@@ -81,8 +81,6 @@
     titleLabel.textAlignment = NSTextAlignmentCenter;
     titleLabel.text = @"免费注册";
     self.navigationItem.titleView = titleLabel;
-
-    self.view.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"Background.png"]];
     
     if (current_page == 2) {
         if ([AppContext getTempContextValueByKey:kTempKeyPlateNumberTypeDes]) {
@@ -475,7 +473,7 @@
     }
     else
     {
-        [postDict setObject:car_plate_num forKey:@"plate_no"];
+        [postDict setObject:[car_plate_num uppercaseString] forKey:@"plate_no"];
         
         //测试
         //        [postDict setObject:@"02" forKey:@"plate_type"];

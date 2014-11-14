@@ -60,7 +60,6 @@
     self.navigationItem.hidesBackButton = YES;
     self.navigationController.navigationBar.tintColor = [UIColor colorWithRed:69 /  255.0 green:155 / 255.0 blue:206 / 255.0 alpha:1.0];
     
-    self.view.backgroundColor = [UIColor grayColor];
     if (IOSVersion>=7.0) {
         [self setEdgesForExtendedLayout:UIRectEdgeNone];
         self.extendedLayoutIncludesOpaqueBars=NO;
@@ -84,9 +83,7 @@
     
     _rightButtonItem =[[UIBarButtonItem alloc]initWithCustomView:_rightNavInfoLabel];
     self.navigationItem.rightBarButtonItem = _rightButtonItem;
-    
-    self.view.backgroundColor = [UIColor whiteColor];
-    
+        
     _tableView.backgroundView = [[UIImageView alloc]initWithImage:[UIImage imageNamed:@"Background"]];
     _tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
     
@@ -96,7 +93,7 @@
     
     _searchSubView.layer.masksToBounds = YES;
     
-    [AppContext setTempContextValueByKey:kTempKeyPlateNumberTypeDes value:@"号牌类型"];
+    [AppContext setTempContextValueByKey:kTempKeyPlateNumberTypeDes value:@"请选择号牌类型"];
     [AppContext setTempContextValueByKey:kTempKeyPlateNumberType value:@"-1"];
 }
 
@@ -254,31 +251,18 @@
 #pragma mark - UITableView delegate
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    if ([_dataArray count] == 0) {
-        return 1;
-    }
+   
     return _dataArray.count;
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    if ([_dataArray count] == 0) {
-        return tableView.frame.size.height;
-    }
+   
     return 160;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath;
 {
-    
-    if ([_dataArray count] == 0) {
-        UITableViewCell *cell = [[UITableViewCell alloc] initWithFrame:CGRectMake(0, 0, tableView.frame.size.width, tableView.frame.size.height)];
-//        UIImageView *imageV = [[UIImageView alloc] initWithFrame:CGRectMake(0, 50, 320, 132)];
-//        imageV.image = [UIImage imageNamed:@"NoResultFound.png"];
-//        [cell addSubview:imageV];
-        cell.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"Background"]];
-        return cell;
-    }
     
     EBCarListCell *cell = [[[NSBundle mainBundle] loadNibNamed:@"EBCarListCell" owner:nil options:nil] objectAtIndex:0];
     cell.delegate = self;
@@ -293,6 +277,9 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
+    
+    [tableView deselectRowAtIndexPath:indexPath animated:YES];
+  
     
     EBCarDetailViewController *detailVC = [[EBCarDetailViewController alloc]init];
     EBCarListModel *model = [_dataArray objectAtIndex:indexPath.row];

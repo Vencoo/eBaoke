@@ -69,7 +69,7 @@
 +(NSString *) getFilePath:(NSString *) fileName;
 
 +(BOOL) checkResponse:(NSDictionary *) responseContent;
-
++(BOOL) checkResponseDoNotShowError:(NSDictionary *) responseContent;
 +(BOOL) checkInput:(id) inputText  comment:(NSString *) comment;
 
 +(void) alertException:(NSError*)error;

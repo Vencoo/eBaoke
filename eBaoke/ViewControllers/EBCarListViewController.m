@@ -44,7 +44,6 @@
     self.navigationItem.hidesBackButton = YES;
     self.navigationController.navigationBar.tintColor = [UIColor colorWithRed:69 /  255.0 green:155 / 255.0 blue:206 / 255.0 alpha:1.0];
     
-    self.view.backgroundColor = [UIColor grayColor];
     if (IOSVersion>=7.0) {
         [self setEdgesForExtendedLayout:UIRectEdgeNone];
         self.extendedLayoutIncludesOpaqueBars=NO;
@@ -328,6 +327,7 @@
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath;
 {
+    [tableView deselectRowAtIndexPath:indexPath animated:YES];
     if ([_dataArray count] == 0) {
         UITableViewCell *cell = [[UITableViewCell alloc] initWithFrame:CGRectMake(0, 0, tableView.frame.size.width, tableView.frame.size.height)];
         UIImageView *imageV = [[UIImageView alloc] initWithFrame:CGRectMake(0, 50, 320, 132)];

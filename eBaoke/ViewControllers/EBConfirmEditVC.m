@@ -23,9 +23,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
-    
-    self.view.backgroundColor = [UIColor lightGrayColor];
-    
+
     _nameLabel.text = _carModel.carOwner;
     _engineLabel.text = _carModel.engineNo;
     _frameLabel.text = _carModel.vinCode;
@@ -69,6 +67,8 @@
     
     [postDict setObject:_carModel.vehicleId forKey:@"vehicle_id"];
     
+    [postDict setObject:_carModel.userCarId forKey:@"usercar_id"];
+
     [postDict setObject:_carModel.vinCode forKey:@"vin_code"];
 
     [postDict setObject:_carModel.engineNo forKey:@"engine_no"];

@@ -57,7 +57,7 @@
                 <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="j2C-cv-6Fa">
                     <rect key="frame" x="24" y="146" width="272" height="30"/>
                     <fontDescription key="fontDescription" name="STHeitiSC-Medium" family="Heiti SC" pointSize="15"/>
-                    <state key="normal" title="保费计算" backgroundImage="quote_btn.png">
+                    <state key="normal" title="保费试算" backgroundImage="quote_btn.png">
                         <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </state>
                     <connections>
