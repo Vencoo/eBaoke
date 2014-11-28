@@ -101,6 +101,8 @@
     [super viewWillAppear:animated];
     
     [_plateTypeButton setTitle:[AppContext getTempContextValueByKey:kTempKeyPlateNumberTypeDes] forState:UIControlStateNormal];
+    [_plateTypeButton setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
+
 }
 
 - (void)viewDidAppear:(BOOL)animated
