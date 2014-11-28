@@ -25,6 +25,7 @@
     // 生成一个新的UUID
     NSString *uuidStr = [self uuidForKeychina];
     NSLog(@"uuidStr=%@",uuidStr);
+    
     // 获取保存的UUID
     KeychainItemWrapper *wrapper = [[KeychainItemWrapper alloc] initWithIdentifier:@"AccountNumber" accessGroup:@"W64H86P59A.com.vencoo.vencoo01id"];
     NSString *UUID = [wrapper objectForKey:(id)CFBridgingRelease(kSecAttrAccount)];

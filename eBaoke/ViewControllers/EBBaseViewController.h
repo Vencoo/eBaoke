@@ -26,4 +26,7 @@
     
     UIBarButtonItem *_rightButtonItem;
 }
+
+@property (nonatomic, assign) int vcType;
+
 @end

@@ -15,9 +15,6 @@
 {
     
     
-    
-    
-    
     UIView *_contentView;
     
     UIButton *_isNewCarBtn;
@@ -43,16 +40,43 @@
 
 @implementation EBCarAddViewController
 
-- (void)loadView
-{
-    [super loadView];
+
+
+- (void)viewDidLoad {
+    [super viewDidLoad];
+    // Do any additional setup after loading the view.
+    
+    [AppContext setTempContextValueByKey:kTempKeyPlateNumberTypeDes value:@"请选择号牌类型"];
+    [AppContext setTempContextValueByKey:kTempKeyPlateNumberType value:@"-1"];
+    
+    UILabel *titleLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, 100, 30)];
+    titleLabel.font = [UIFont systemFontOfSize:17];
+    titleLabel.textColor = [UIColor whiteColor];
+    titleLabel.backgroundColor = [UIColor clearColor];
+    titleLabel.textAlignment = NSTextAlignmentCenter;
+    titleLabel.text = @"新增车辆";
+    self.navigationItem.titleView = titleLabel;
+    
+    _lfBtn = [[UIButton alloc] initWithFrame:CGRectMake(0, 0, 90, 26)];
+    [_lfBtn addTarget:self action:@selector(leftButtonItem:) forControlEvents:UIControlEventTouchUpInside];
+    [_lfBtn setBackgroundImage:[UIImage imageNamed:@"btn_back"] forState:UIControlStateNormal];
+    [_lfBtn setTitle:@"车辆列表" forState:UIControlStateNormal];
+    _leftButtonItem = [[UIBarButtonItem alloc] initWithCustomView:_lfBtn];
+    self.navigationItem.leftBarButtonItem = _leftButtonItem;
+    
+    _rgBtn = [[UIButton alloc] initWithFrame:CGRectMake(0, 0, 90, 26)];
+    [_rgBtn addTarget:self action:@selector(rightButtonItem:) forControlEvents:UIControlEventTouchUpInside];
+    [_rgBtn setBackgroundImage:[UIImage imageNamed:@"btn_bg"] forState:UIControlStateNormal];
+    [_rgBtn setTitle:@"保存" forState:UIControlStateNormal];
+    _rightButtonItem = [[UIBarButtonItem alloc] initWithCustomView:_rgBtn];
+    self.navigationItem.rightBarButtonItem = _rightButtonItem;
     
     _contentView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 320, 480-64)];
     [self.view addSubview:_contentView];
     
     UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(bgTaped:)];
     [_contentView addGestureRecognizer:tap];
-   
+    
     UIImageView *bgView = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, 320, 480-64)];
     bgView.image = [UIImage imageNamed:@"Register2.png"];
     [_contentView addSubview:bgView];
@@ -70,7 +94,7 @@
     UIImageView *isNewCarImg = [[UIImageView alloc] initWithFrame:CGRectMake(55, 82, 60, 11)];
     isNewCarImg.image = [UIImage imageNamed:@"新增车辆-6.png"];
     [_contentView addSubview:isNewCarImg];
-
+    
     _nameTextField = [[UITextField alloc] initWithFrame:CGRectMake(20, 115, 280, 20)];
     _nameTextField.placeholder = @"车主姓名";
     _nameTextField.tag = 101;
@@ -99,37 +123,7 @@
     //[_cateButton setTitle:@"无号牌" forState:UIControlStateNormal];
     [_cateButton addTarget:self action:@selector(cateAction:) forControlEvents:UIControlEventTouchUpInside];
     [_contentView addSubview:_cateButton];
-    
-}
 
-- (void)viewDidLoad {
-    [super viewDidLoad];
-    // Do any additional setup after loading the view.
-    
-    [AppContext setTempContextValueByKey:kTempKeyPlateNumberTypeDes value:@"请选择号牌类型"];
-    [AppContext setTempContextValueByKey:kTempKeyPlateNumberType value:@"-1"];
-    
-    UILabel *titleLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, 100, 30)];
-    titleLabel.font = [UIFont systemFontOfSize:17];
-    titleLabel.textColor = [UIColor whiteColor];
-    titleLabel.backgroundColor = [UIColor clearColor];
-    titleLabel.textAlignment = NSTextAlignmentCenter;
-    titleLabel.text = @"新增车辆";
-    self.navigationItem.titleView = titleLabel;
-    
-    _lfBtn = [[UIButton alloc] initWithFrame:CGRectMake(0, 0, 90, 26)];
-    [_lfBtn addTarget:self action:@selector(leftButtonItem:) forControlEvents:UIControlEventTouchUpInside];
-    [_lfBtn setBackgroundImage:[UIImage imageNamed:@"btn_back"] forState:UIControlStateNormal];
-    [_lfBtn setTitle:@"车辆列表" forState:UIControlStateNormal];
-    _leftButtonItem = [[UIBarButtonItem alloc] initWithCustomView:_lfBtn];
-    self.navigationItem.leftBarButtonItem = _leftButtonItem;
-    
-    _rgBtn = [[UIButton alloc] initWithFrame:CGRectMake(0, 0, 60, 26)];
-    [_rgBtn addTarget:self action:@selector(rightButtonItem:) forControlEvents:UIControlEventTouchUpInside];
-    [_rgBtn setBackgroundImage:[UIImage imageNamed:@"btn_bg"] forState:UIControlStateNormal];
-    [_rgBtn setTitle:@"完成" forState:UIControlStateNormal];
-    _rightButtonItem = [[UIBarButtonItem alloc] initWithCustomView:_rgBtn];
-    self.navigationItem.rightBarButtonItem = _rightButtonItem;
 }
 
 - (void)viewWillAppear:(BOOL)animated

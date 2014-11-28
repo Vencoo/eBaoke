@@ -102,6 +102,7 @@
     }
     EBViolationViewController *vc = [[EBViolationViewController alloc] init];
     vc.dataArray = _cModel.violationArray;
+    vc.vcType = 1;
     [self.navigationController pushViewController:vc animated:YES];
     
 }
@@ -112,6 +113,7 @@
         return;
     }
     EBClaimsRecordViewController *vc = [[EBClaimsRecordViewController alloc] init];
+    vc.vcType = 1;
     vc.dataArray = _cModel.cliamArray;
     [self.navigationController pushViewController:vc animated:YES];
 }
@@ -151,9 +153,9 @@
         _lab_3_0.text = _cModel.plateNo;
         _lab_3_1.text = _cModel.engineNo;
         _lab_3_2.text = _cModel.vinCode;
-        _lab_4_0.text = [NSString stringWithFormat:@"%d",[_cModel.violationArray count]];//违章次数
+        _lab_4_0.text = [NSString stringWithFormat:@"%d",(int)[_cModel.violationArray count]];//违章次数
         _lab_5_0.text = [NSString stringWithFormat:@"%.0f",[_cModel.trafficAdjustModulus floatValue]*100];
-        _lab_6_0.text = [NSString stringWithFormat:@"%d",[_cModel.cliamArray count]];//理赔记录次数
+        _lab_6_0.text = [NSString stringWithFormat:@"%d",(int)[_cModel.cliamArray count]];//理赔记录次数
         _lab_7_0.text = [NSString stringWithFormat:@"%.0f",[_cModel.accidentAdjustModulus floatValue]*100];
         _lab_8_0.text = _cModel.premiumFormula;
         _lab_9_0.text = _cModel.limitPremium;

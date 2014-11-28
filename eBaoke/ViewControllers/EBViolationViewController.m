@@ -41,7 +41,6 @@
     titleLabel.text = @"违章记录";
     self.navigationItem.titleView = titleLabel;
     
-    
     _lfBtn = [[UIButton alloc] initWithFrame:CGRectMake(0, 0, 90, 26)];
     [_lfBtn addTarget:self action:@selector(leftButtonItem:) forControlEvents:UIControlEventTouchUpInside];
     [_lfBtn setBackgroundImage:[UIImage imageNamed:@"btn_back"] forState:UIControlStateNormal];
@@ -49,6 +48,11 @@
     _leftButtonItem = [[UIBarButtonItem alloc] initWithCustomView:_lfBtn];
     self.navigationItem.leftBarButtonItem = _leftButtonItem;
     
+    
+    if (self.vcType == 1) {
+        [_lfBtn setTitle:@"返回" forState:UIControlStateNormal];
+        _lfBtn.frame = CGRectMake(0, 0, 60, 26);
+    }
     
     if (!_dataArray) {
         _dataArray = [[NSMutableArray alloc]init];

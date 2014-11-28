@@ -51,6 +51,10 @@
     _leftButtonItem = [[UIBarButtonItem alloc] initWithCustomView:_lfBtn];
     self.navigationItem.leftBarButtonItem = _leftButtonItem;
     
+    if (self.vcType == 1) {
+        [_lfBtn setTitle:@"返回" forState:UIControlStateNormal];
+        _lfBtn.frame = CGRectMake(0, 0, 60, 26);
+    }
     
     if (!_dataArray) {
         _dataArray = [[NSMutableArray alloc] init];
