@@ -20,8 +20,14 @@
 
 @implementation EBCarDetailViewController
 
-- (void)viewWillAppear:(BOOL)animated {
-    [super viewWillAppear:animated];
+- (void)viewDidLoad {
+    [super viewDidLoad];
+    if (IOSVersion>=7.0)
+    {
+        [self setEdgesForExtendedLayout:UIRectEdgeNone];
+        self.navigationController.navigationBar.translucent=NO;
+    }
+    
     UILabel *titleLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, 100, 30)];
     titleLabel.font = [UIFont systemFontOfSize:17];
     titleLabel.textColor = [UIColor whiteColor];
@@ -39,18 +45,7 @@
     [_lfBtn setTitle:@"车辆列表" forState:UIControlStateNormal];
     _leftButtonItem = [[UIBarButtonItem alloc] initWithCustomView:_lfBtn];
     self.navigationItem.leftBarButtonItem = _leftButtonItem;
-    
 
-}
-
-- (void)viewDidLoad {
-    [super viewDidLoad];
-    if (IOSVersion>=7.0)
-    {
-        [self setEdgesForExtendedLayout:UIRectEdgeNone];
-        self.navigationController.navigationBar.translucent=NO;
-    }
-    
     _dataArray = [[NSMutableArray alloc]init];
 
     _tableView = [[UITableView alloc]initWithFrame:CGRectMake(0, 0, kDeviceWidth, KDeviceHeight-64) style:UITableViewStylePlain];
@@ -147,12 +142,12 @@
         UIImageView *imageV = [[UIImageView alloc] initWithFrame:CGRectMake(0, 50, 320, 132)];
         imageV.image = [UIImage imageNamed:@"NoResultFound.png"];
         [cell addSubview:imageV];
-        cell.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"Background"]];
+        cell.backgroundColor = [UIColor clearColor];
         return cell;
     }
 
     UITableViewCell  *cell = [[UITableViewCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:nil];
-    NSString *imageStr = [NSString stringWithFormat:@"CarDetail_r%d_c1.png",indexPath.row+1];
+    NSString *imageStr = [NSString stringWithFormat:@"CarDetail_r%d_c1.png",(int)indexPath.row+1];
     cell.backgroundView = [[UIImageView alloc]initWithImage:[UIImage imageNamed:imageStr]];
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
     

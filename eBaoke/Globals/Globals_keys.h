@@ -28,5 +28,5 @@
 #define kUserPassword                   @"_user_password"
 #define kRememberUser                   @"_remember_user"
 
-
+#define kColorLightBlue [UIColor colorWithRed:102/255.0 green:153/255.0 blue:204/255.0 alpha:1.0]
 #endif

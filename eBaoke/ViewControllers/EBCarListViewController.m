@@ -327,7 +327,6 @@
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath;
 {
-    [tableView deselectRowAtIndexPath:indexPath animated:YES];
     if ([_dataArray count] == 0) {
         UITableViewCell *cell = [[UITableViewCell alloc] initWithFrame:CGRectMake(0, 0, tableView.frame.size.width, tableView.frame.size.height)];
         UIImageView *imageV = [[UIImageView alloc] initWithFrame:CGRectMake(0, 50, 320, 132)];
@@ -352,6 +351,8 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
+    [tableView deselectRowAtIndexPath:indexPath animated:YES];
+
     if(_isEditing) {
         EBCarEditViewController *editVC = [[EBCarEditViewController alloc] initWithNibName:@"EBCarEditViewController" bundle:[NSBundle mainBundle]];
         EBCarListModel *model = [_dataArray objectAtIndex:indexPath.row];

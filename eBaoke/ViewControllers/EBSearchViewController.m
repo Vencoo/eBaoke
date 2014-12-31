@@ -39,6 +39,9 @@
     BOOL _isOpen;
     
     UILabel *_rightNavInfoLabel;
+    
+    // 当没有查询到结果的时候
+    BOOL _isNoRecord;
 }
 @end
 
@@ -93,7 +96,7 @@
     
     _searchSubView.layer.masksToBounds = YES;
     
-    [AppContext setTempContextValueByKey:kTempKeyPlateNumberTypeDes value:@"请选择号牌类型"];
+    [AppContext setTempContextValueByKey:kTempKeyPlateNumberTypeDes value:@"号牌类型 "];
     [AppContext setTempContextValueByKey:kTempKeyPlateNumberType value:@"-1"];
 }
 
@@ -231,19 +234,22 @@
             for (NSString *key in keys) {
                 
                 if ([[dict objectForKey:key] isKindOfClass:[NSArray class]]) {
-                    
+                    _isNoRecord = NO;
+
                     NSArray *keyVal = [dict objectForKey:key];
                     
                     EBCarListModel *model = [[EBCarListModel alloc]initWithArray1_10:keyVal];
                     [_dataArray addObject:model];
                     
+                }else {
+                    _isNoRecord = YES;
+
                 }
             }
             
-            _rightNavInfoLabel.text = [NSString stringWithFormat:@"%d个结果",[_dataArray count]];
+            _rightNavInfoLabel.text = [NSString stringWithFormat:@"%d个结果",(int)[_dataArray count]];
             [_tableView reloadData];
-        }
-    }
+        }    }
     
 }
 
@@ -251,22 +257,35 @@
 #pragma mark - UITableView delegate
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-   
+    if (_isNoRecord) {
+        return 1;
+    }
     return _dataArray.count;
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-   
+    if (_isNoRecord) {
+        return _tableView.frame.size.height;
+    }
     return 160;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath;
 {
     
+    if (_isNoRecord) {
+        UITableViewCell *cell = [[UITableViewCell alloc] initWithFrame:CGRectMake(0, 0, tableView.frame.size.width, tableView.frame.size.height)];
+        UIImageView *imageV = [[UIImageView alloc] initWithFrame:CGRectMake(0, 50, 320, 132)];
+        imageV.image = [UIImage imageNamed:@"NoResultFound.png"];
+        [cell addSubview:imageV];
+        cell.backgroundColor = [UIColor clearColor];
+        return cell;
+    }
+    
     EBCarListCell *cell = [[[NSBundle mainBundle] loadNibNamed:@"EBCarListCell" owner:nil options:nil] objectAtIndex:0];
     cell.delegate = self;
-    cell.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"Background"]];
+    cell.backgroundColor = [UIColor clearColor];
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
     EBCarListModel *model = [_dataArray objectAtIndex:indexPath.row];
     

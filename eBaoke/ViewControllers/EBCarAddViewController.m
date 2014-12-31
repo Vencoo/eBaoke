@@ -46,7 +46,7 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     
-    [AppContext setTempContextValueByKey:kTempKeyPlateNumberTypeDes value:@"请选择号牌类型"];
+    [AppContext setTempContextValueByKey:kTempKeyPlateNumberTypeDes value:@"号牌类型"];
     [AppContext setTempContextValueByKey:kTempKeyPlateNumberType value:@"-1"];
     
     UILabel *titleLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, 100, 30)];
@@ -119,8 +119,10 @@
     _cateButton = [UIButton buttonWithType:UIButtonTypeSystem];
     _cateButton.frame = CGRectMake(20, 240, 280, 40);
     [_cateButton setBackgroundImage:[UIImage imageNamed:@"cell_backgd.png"] forState:UIControlStateNormal];
-    [_cateButton setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
-    //[_cateButton setTitle:@"无号牌" forState:UIControlStateNormal];
+    _cateButton.contentHorizontalAlignment = UIControlContentHorizontalAlignmentLeft;
+    _cateButton.titleEdgeInsets = UIEdgeInsetsMake(0, 10, 0, 0);
+    [_cateButton setTitleColor:kColorLightBlue forState:UIControlStateNormal];
+
     [_cateButton addTarget:self action:@selector(cateAction:) forControlEvents:UIControlEventTouchUpInside];
     [_contentView addSubview:_cateButton];
 
@@ -185,7 +187,7 @@
         }
         
         if ([_plateNumberType isEqualToString:@"-1"] || _plateNumberType ==nil) {
-            [AppContext alertContent:@"请选择号牌类型"];
+            [AppContext alertContent:@"号牌类型"];
             return;
         }
     }

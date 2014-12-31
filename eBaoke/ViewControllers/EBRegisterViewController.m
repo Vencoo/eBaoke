@@ -70,10 +70,15 @@
 
 @implementation EBRegisterViewController
 
--(void)viewWillAppear:(BOOL)animated{
-    [super viewWillAppear:animated];
+- (void)viewDidLoad {
+    [super viewDidLoad];
+    if (IOSVersion>=7.0) {
+        [self setEdgesForExtendedLayout:UIRectEdgeNone];
+        self.navigationController.navigationBar.translucent = NO;
+    }
+    
     self.navigationController.navigationBar.hidden = NO;
-
+    
     UILabel *titleLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, 100, 30)];
     titleLabel.font = [UIFont systemFontOfSize:17];
     titleLabel.textColor = [UIColor whiteColor];
@@ -82,24 +87,7 @@
     titleLabel.text = @"免费注册";
     self.navigationItem.titleView = titleLabel;
     
-    if (current_page == 2) {
-        if ([AppContext getTempContextValueByKey:kTempKeyPlateNumberTypeDes]) {
-            [carTypeBtn setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
-            [carTypeBtn.titleLabel setTextAlignment:NSTextAlignmentLeft];
-            [carTypeBtn setTitle:[AppContext getTempContextValueByKey:kTempKeyPlateNumberTypeDes] forState:UIControlStateNormal];
-        }
-    }
-  
-}
-
-- (void)viewDidLoad {
-    [super viewDidLoad];
-    if (IOSVersion>=7.0) {
-        [self setEdgesForExtendedLayout:UIRectEdgeNone];
-        self.navigationController.navigationBar.translucent = NO;
-    }
-    
-    [AppContext setTempContextValueByKey:kTempKeyPlateNumberTypeDes value:@"请选择号牌类型"];
+    [AppContext setTempContextValueByKey:kTempKeyPlateNumberTypeDes value:@"号牌类型 "];
     [AppContext setTempContextValueByKey:kTempKeyPlateNumberType value:@"-1"];
     
 
@@ -130,6 +118,19 @@
     [self reloadView];
 
 
+}
+
+-(void)viewWillAppear:(BOOL)animated{
+    [super viewWillAppear:animated];
+    
+    
+    if (current_page == 2) {
+        if ([AppContext getTempContextValueByKey:kTempKeyPlateNumberTypeDes]) {
+            
+            [carTypeBtn setTitle:[AppContext getTempContextValueByKey:kTempKeyPlateNumberTypeDes] forState:UIControlStateNormal];
+        }
+    }
+    
 }
 
 #pragma mark - Button Action
@@ -303,15 +304,16 @@
         for (int i = 0; i < 4; i ++){
             if (i == 3) {
                 carTypeBtn = [UIButton buttonWithType:UIButtonTypeCustom];
+                
                 [carTypeBtn setFrame:CGRectMake(20, 126 + 37 * i, 280, 31)];
                 [carTypeBtn setBackgroundImage:[UIImage imageNamed:@"cell_backgd.png"] forState:UIControlStateNormal];
-                [carTypeBtn setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
-                [carTypeBtn.titleLabel setTextAlignment:NSTextAlignmentLeft];
-                if ([AppContext getTempContextValueByKey:@"car_type"]) {
-                    [carTypeBtn setTitle:[AppContext getTempContextValueByKey:@"car_type"] forState:UIControlStateNormal];
-                }else{
-                    [carTypeBtn setTitle:@"请选择号牌类型" forState:UIControlStateNormal];
-                }
+                [carTypeBtn setTitleColor:kColorLightBlue forState:UIControlStateNormal];
+                carTypeBtn.contentHorizontalAlignment = UIControlContentHorizontalAlignmentLeft;
+                carTypeBtn.titleEdgeInsets = UIEdgeInsetsMake(0, 10, 0, 0);
+
+                
+                [carTypeBtn setTitle:[AppContext getTempContextValueByKey:kTempKeyPlateNumberTypeDes] forState:UIControlStateNormal];
+                
                 [carTypeBtn addTarget:self action:@selector(switchCarType) forControlEvents:UIControlEventTouchUpInside];
                 [pageView addSubview:carTypeBtn];
                 continue;
@@ -526,7 +528,7 @@
         [postDict setObject:@"registration" forKey:kPostContentTypeSelect];//process_flag
         [postDict setObject:@"2" forKey:@"process_flag"];
         
-        [postDict setObject:engineNo_label.text forKey:@"engine_no"];
+        [postDict setObject:[engineNo_label.text uppercaseString] forKey:@"engine_no"];
         
         if (isNewCarBtnTouched) {
             //如果是新车，plate_no传两个空格，若不传则会出错
@@ -556,6 +558,20 @@
         //        [postDict setObject:@"2" forKey:@"process_flag"];
         [postDict setObject:[AppContext getPreferenceByKey:@"registration_id" needMerge:NO] forKey:@"registration_id"];
         [postDict setObject:msgText.text forKey:@"code"];
+        
+        //判断是否标记为新车，如果是，则不向服务器发送号牌号码和号牌类型   -jack
+        if (isNewCarBtnTouched)
+        {
+            //        [postDict setObject:@"  " forKey:@"plate_no"];
+            [postDict removeObjectForKey:@"plate_no"];
+            
+            [postDict removeObjectForKey:@"plate_type"];
+        }else {
+            NSString *plate_type = [AppContext getTempContextValueByKey:kTempKeyPlateNumberType];
+            
+            [postDict setObject:plate_type forKey:@"plate_type"];
+            
+        }
     }
     else
     {
@@ -598,6 +614,11 @@
         [postDict removeObjectForKey:@"plate_no"];
         
         [postDict removeObjectForKey:@"plate_type"];
+    }else {
+        NSString *plate_type = [AppContext getTempContextValueByKey:kTempKeyPlateNumberType];
+        
+        [postDict setObject:plate_type forKey:@"plate_type"];
+
     }
     
     NSLog(@"---- postDict %@", postDict);
@@ -706,7 +727,8 @@
         
         if (car_owner.length == 0) {
             
-            [[[UIAlertView alloc] initWithTitle:@"提示" message:@"没有匹配的车辆信息" delegate:self cancelButtonTitle:@"我知道了" otherButtonTitles:nil] show];
+#warning 这个提示要求屏蔽 linbo 2014 12 31
+//            [[[UIAlertView alloc] initWithTitle:@"提示" message:@"没有匹配的车辆信息" delegate:self cancelButtonTitle:@"我知道了" otherButtonTitles:nil] show];
             
             current_page = 2;
             
@@ -1056,23 +1078,15 @@
                 }
             }
         }
-//        //原型
-//        if ([carTypeBtn.titleLabel.text isEqualToString:@"请选择号牌类型"]||[carTypeBtn.titleLabel.text isEqualToString:@"全部"]) {
-//                [self alertShowWithMessage:@"请选择具体的车辆类型再提交！"];
-//                return NO;
-//            }else{
-//        
-//                [AppContext setPreferenceByKey:[registerArray objectAtIndex:8] value:[AppContext getTempContextValueByKey:@"car_type"]];
-//                }
         
         //myChange 修改后
         if (isNewCarImage.hidden==YES) {
-            if ([carTypeBtn.titleLabel.text isEqualToString:@"请选择号牌类型"]||[carTypeBtn.titleLabel.text isEqualToString:@"全部"]) {
+            if ([[AppContext getTempContextValueByKey:kTempKeyPlateNumberType] isEqualToString:@"-1"]) {
                 [self alertShowWithMessage:@"请选择具体的车辆类型再提交！"];
                 return NO;
             }else{
                 
-                [AppContext setPreferenceByKey:[registerArray objectAtIndex:8] value:[AppContext getTempContextValueByKey:@"car_type"]];
+                [AppContext setPreferenceByKey:[registerArray objectAtIndex:8] value:[AppContext getTempContextValueByKey:kTempKeyPlateNumberType]];
             }
         }
     }

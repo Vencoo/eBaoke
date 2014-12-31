@@ -54,7 +54,7 @@
     NSDictionary *dict =[[NSDictionary alloc] initWithContentsOfFile:path];
     NSArray *dataArray = [dict objectForKey:@"CarType"];
     
-    [AppContext setTempContextValueByKey:kTempKeyPlateNumberTypeDes value:@"请选择号牌类型"];
+    [AppContext setTempContextValueByKey:kTempKeyPlateNumberTypeDes value:@"号牌类型 "];
     [AppContext setTempContextValueByKey:kTempKeyPlateNumberType value:@"-1"];
     if (_carModel.plateType) {
         for (NSDictionary *dic in dataArray) {
@@ -99,7 +99,7 @@
     
     _plateNumberTypeDes = [AppContext getTempContextValueByKey:kTempKeyPlateNumberTypeDes];
     
-    [_cateButton setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
+    [_cateButton setTitleColor:kColorLightBlue forState:UIControlStateNormal];
     [_cateButton setTitle:_plateNumberTypeDes forState:UIControlStateNormal];
 }
 

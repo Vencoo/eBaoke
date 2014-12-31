@@ -71,6 +71,8 @@
 		A2D7A4E319D2BFCC008EF275 /* AppContext.m in Sources */ = {isa = PBXBuildFile; fileRef = A2D7A4E219D2BFCC008EF275 /* AppContext.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		A2D7A4E719D2EBB3008EF275 /* EBViolationCell.m in Sources */ = {isa = PBXBuildFile; fileRef = A2D7A4E519D2EBB3008EF275 /* EBViolationCell.m */; };
 		A2D7A4E819D2EBB3008EF275 /* EBViolationCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = A2D7A4E619D2EBB3008EF275 /* EBViolationCell.xib */; };
+		A2F881F31A53E3F600762AC8 /* EBClaimRecordCell.m in Sources */ = {isa = PBXBuildFile; fileRef = A2F881F11A53E3F600762AC8 /* EBClaimRecordCell.m */; };
+		A2F881F41A53E3F600762AC8 /* EBClaimRecordCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = A2F881F21A53E3F600762AC8 /* EBClaimRecordCell.xib */; };
 		D71F84EA19CA8E8E00D61707 /* SendSMS.png in Resources */ = {isa = PBXBuildFile; fileRef = D71F84E919CA8E8E00D61707 /* SendSMS.png */; };
 		D71F84F419CAD23D00D61707 /* EBCarListCell.m in Sources */ = {isa = PBXBuildFile; fileRef = D71F84F319CAD23D00D61707 /* EBCarListCell.m */; };
 		D71F84FA19CAD5D300D61707 /* EBCarListCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = D71F84F919CAD5D300D61707 /* EBCarListCell.xib */; };
@@ -294,6 +296,9 @@
 		A2D7A4E419D2EBB3008EF275 /* EBViolationCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EBViolationCell.h; sourceTree = "<group>"; };
 		A2D7A4E519D2EBB3008EF275 /* EBViolationCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EBViolationCell.m; sourceTree = "<group>"; };
 		A2D7A4E619D2EBB3008EF275 /* EBViolationCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = EBViolationCell.xib; sourceTree = "<group>"; };
+		A2F881F01A53E3F600762AC8 /* EBClaimRecordCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EBClaimRecordCell.h; sourceTree = "<group>"; };
+		A2F881F11A53E3F600762AC8 /* EBClaimRecordCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EBClaimRecordCell.m; sourceTree = "<group>"; };
+		A2F881F21A53E3F600762AC8 /* EBClaimRecordCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = EBClaimRecordCell.xib; sourceTree = "<group>"; };
 		D71F84E919CA8E8E00D61707 /* SendSMS.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = SendSMS.png; sourceTree = "<group>"; };
 		D71F84F219CAD23C00D61707 /* EBCarListCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EBCarListCell.h; sourceTree = "<group>"; };
 		D71F84F319CAD23D00D61707 /* EBCarListCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EBCarListCell.m; sourceTree = "<group>"; };
@@ -540,6 +545,9 @@
 				A2D7A4E419D2EBB3008EF275 /* EBViolationCell.h */,
 				A2D7A4E519D2EBB3008EF275 /* EBViolationCell.m */,
 				A2D7A4E619D2EBB3008EF275 /* EBViolationCell.xib */,
+				A2F881F01A53E3F600762AC8 /* EBClaimRecordCell.h */,
+				A2F881F11A53E3F600762AC8 /* EBClaimRecordCell.m */,
+				A2F881F21A53E3F600762AC8 /* EBClaimRecordCell.xib */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -911,6 +919,7 @@
 				TargetAttributes = {
 					403C914F19C6786D0081F864 = {
 						CreatedOnToolsVersion = 6.0;
+						DevelopmentTeam = ZY63995S65;
 					};
 					403C916519C6786D0081F864 = {
 						CreatedOnToolsVersion = 6.0;
@@ -1067,6 +1076,7 @@
 				D7D2197419C6B80200C585FA /* NoResultFound_en_US.png in Resources */,
 				D770E99A19C98BB9001F9B60 /* 新增车辆-5.png in Resources */,
 				D770E98C19C98BB9001F9B60 /* 车辆列表-2.png in Resources */,
+				A2F881F41A53E3F600762AC8 /* EBClaimRecordCell.xib in Resources */,
 				A24B91C919EE47F6009D5AF7 /* btnGreen_pressed.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1097,6 +1107,7 @@
 				403C919219C694180081F864 /* EBBaseViewController.m in Sources */,
 				403C91A719C695230081F864 /* EBPremiumViewController.m in Sources */,
 				D7373AC719CBF1AB0056C772 /* EBCarDetailModel.m in Sources */,
+				A2F881F31A53E3F600762AC8 /* EBClaimRecordCell.m in Sources */,
 				D7D2198519C6B89900C585FA /* UIViewExt.m in Sources */,
 				A2D177E519D516B80001AFF2 /* EBPremiumCell.m in Sources */,
 				403C918E19C6934B0081F864 /* EBCarDetailCell.m in Sources */,
