@@ -26,45 +26,45 @@
                         <color key="backgroundColor" white="0.97999999999999998" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="赔案号:" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Itg-3q-un4">
-                        <rect key="frame" x="17" y="8" width="68" height="21"/>
-                        <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                        <rect key="frame" x="13" y="8" width="68" height="21"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="13"/>
                         <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                         <nil key="highlightedColor"/>
                     </label>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="事故类型:" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eh2-3M-rYP">
-                        <rect key="frame" x="17" y="39" width="68" height="21"/>
-                        <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                        <rect key="frame" x="13" y="39" width="68" height="21"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="13"/>
                         <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                         <nil key="highlightedColor"/>
                     </label>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="发生日期:" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6U6-qG-uY4">
-                        <rect key="frame" x="17" y="69" width="68" height="21"/>
-                        <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                        <rect key="frame" x="13" y="70" width="68" height="21"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="13"/>
                         <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                         <nil key="highlightedColor"/>
                     </label>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="赔付日期:" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Cwy-4J-cnv">
-                        <rect key="frame" x="160" y="69" width="65" height="21"/>
-                        <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                        <rect key="frame" x="158" y="70" width="65" height="21"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="13"/>
                         <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                         <nil key="highlightedColor"/>
                     </label>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="已赔付" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Dbz-Ep-W9u">
                         <rect key="frame" x="86" y="39" width="132" height="21"/>
                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                        <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                        <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                         <nil key="highlightedColor"/>
                     </label>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="2014.1.10" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="a7p-Yo-XTu">
-                        <rect key="frame" x="86" y="69" width="77" height="21"/>
+                        <rect key="frame" x="84" y="70" width="85" height="21"/>
                         <fontDescription key="fontDescription" type="system" pointSize="15"/>
-                        <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                        <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                         <nil key="highlightedColor"/>
                     </label>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="2014.1.10" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Gox-Gv-dVh">
-                        <rect key="frame" x="229" y="69" width="77" height="21"/>
+                        <rect key="frame" x="226" y="70" width="83" height="21"/>
                         <fontDescription key="fontDescription" type="system" pointSize="15"/>
-                        <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                        <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                         <nil key="highlightedColor"/>
                     </label>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="RDAA0000000000000000" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mNd-iC-qWQ">
@@ -81,7 +81,7 @@
                 <outlet property="dealTimeLabel" destination="Gox-Gv-dVh" id="1UY-qM-T0v"/>
                 <outlet property="happenTimeLabel" destination="a7p-Yo-XTu" id="cyl-HM-tnT"/>
             </connections>
-            <point key="canvasLocation" x="136" y="221"/>
+            <point key="canvasLocation" x="136" y="219"/>
         </tableViewCell>
     </objects>
     <resources>

@@ -229,7 +229,8 @@
     UITableViewCell *cell;
     
     if (self.vcType == 1) {
-        EBPremiumRecordCell *cell1 = [[[NSBundle mainBundle] loadNibNamed:@"EBPremiumRecordCell" owner:nil options:nil] objectAtIndex:0];
+        
+        EBClaimRecordCell *cell1 = [[[NSBundle mainBundle] loadNibNamed:@"EBClaimRecordCell" owner:nil options:nil] objectAtIndex:0];
         
         cell1.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"Background"]];
         cell1.selectionStyle = UITableViewCellSelectionStyleNone;
@@ -240,7 +241,8 @@
         cell = cell1;
 
     }else {
-        EBClaimRecordCell *cell1 = [[[NSBundle mainBundle] loadNibNamed:@"EBClaimRecordCell" owner:nil options:nil] objectAtIndex:0];
+        
+        EBPremiumRecordCell *cell1 = [[[NSBundle mainBundle] loadNibNamed:@"EBPremiumRecordCell" owner:nil options:nil] objectAtIndex:0];
         
         cell1.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"Background"]];
         cell1.selectionStyle = UITableViewCellSelectionStyleNone;
@@ -249,6 +251,7 @@
         cell1.cModel = cModel;
         
         cell = cell1;
+
     }
 
     
