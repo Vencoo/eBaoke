@@ -7,7 +7,14 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "Globals.h"
 
 @interface EBClaimRecordCell : UITableViewCell
+@property (weak, nonatomic) IBOutlet UILabel *claimNumberLabel;
+@property (weak, nonatomic) IBOutlet UILabel *claimTypeLabel;
+@property (weak, nonatomic) IBOutlet UILabel *happenTimeLabel;
+@property (weak, nonatomic) IBOutlet UILabel *dealTimeLabel;
+
+@property (nonatomic) EBClaimsRecordModel *cModel;
 
 @end

@@ -9,6 +9,9 @@
 #import "EBClaimsRecordViewController.h"
 
 #import "EBPremiumRecordCell.h"
+
+#import "EBClaimRecordCell.h"
+
 #import "EBClaimsDetailViewController.h"
 
 @interface EBClaimsRecordViewController ()<UITableViewDataSource,UITableViewDelegate>
@@ -223,13 +226,31 @@
         return cell;
     }
     
-    EBPremiumRecordCell *cell = [[[NSBundle mainBundle] loadNibNamed:@"EBPremiumRecordCell" owner:nil options:nil] objectAtIndex:0];
+    UITableViewCell *cell;
     
-    cell.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"Background"]];
-    cell.selectionStyle = UITableViewCellSelectionStyleNone;
-    
-    EBClaimsRecordModel *cModel = [_dataArray objectAtIndex:indexPath.row];
-    cell.cModel = cModel;
+    if (self.vcType == 1) {
+        EBPremiumRecordCell *cell1 = [[[NSBundle mainBundle] loadNibNamed:@"EBPremiumRecordCell" owner:nil options:nil] objectAtIndex:0];
+        
+        cell1.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"Background"]];
+        cell1.selectionStyle = UITableViewCellSelectionStyleNone;
+        
+        EBClaimsRecordModel *cModel = [_dataArray objectAtIndex:indexPath.row];
+        cell1.cModel = cModel;
+        
+        cell = cell1;
+
+    }else {
+        EBClaimRecordCell *cell1 = [[[NSBundle mainBundle] loadNibNamed:@"EBClaimRecordCell" owner:nil options:nil] objectAtIndex:0];
+        
+        cell1.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"Background"]];
+        cell1.selectionStyle = UITableViewCellSelectionStyleNone;
+        
+        EBClaimsRecordModel *cModel = [_dataArray objectAtIndex:indexPath.row];
+        cell1.cModel = cModel;
+        
+        cell = cell1;
+    }
+
     
     return cell;
 }

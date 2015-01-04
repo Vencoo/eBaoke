@@ -20,7 +20,7 @@
         _caseStatus = @"";
         _caseType = @"";
         _claimType = @"";
-        
+        _casePayDate = @"";
     }
     return self;
 }
@@ -47,6 +47,7 @@
         _happenTime = [dic objectForKey:@"happenTime"];
         _caseType = [dic objectForKey:@"caseType"];
         _reportNo = [dic objectForKey:@"reportNo"];
+        _casePayDate = [dic objectForKey:@"casePayDate"];
     }
     return self;
 }

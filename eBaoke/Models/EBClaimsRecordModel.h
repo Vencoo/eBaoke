@@ -16,6 +16,8 @@
 
 @property (nonatomic) NSString *happenTime;
 
+@property (nonatomic) NSString *casePayDate;
+
 @property (nonatomic) NSString *caseStatus;
 
 @property (nonatomic) NSString *caseType;
