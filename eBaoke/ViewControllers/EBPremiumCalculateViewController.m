@@ -47,9 +47,6 @@
     
     __weak IBOutlet UILabel *_lab_12_0;
     
-    
-    
-    
 }
 @end
 
@@ -80,13 +77,18 @@
 
 - (void)viewDidAppear:(BOOL)animated {
     [super viewDidAppear:animated];
-    
-    _scrollView.frame = CGRectMake(0, 0, kDeviceWidth, KDeviceHeight-64);
-    _scrollView.layer.masksToBounds = YES;
-    _scrollView.contentSize = CGSizeMake(320, 860);
-    _scrollView.scrollEnabled = YES;
+//    
+//    _scrollView.frame = CGRectMake(0, 0, kDeviceWidth, KDeviceHeight-64);
+//    _scrollView.layer.masksToBounds = YES;
+//    _scrollView.contentSize = CGSizeMake(320, 860);
+//    _scrollView.scrollEnabled = YES;
 }
 
+- (void)viewDidLayoutSubviews{
+    _scrollView.contentSize = CGSizeMake(320, 860);
+
+     _scrollView.frame = CGRectMake(0, 0, kDeviceWidth, KDeviceHeight-64);
+}
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];

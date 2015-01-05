@@ -17,6 +17,8 @@
 // 如果只是修改为真 为假时做新增操作
 @property (nonatomic) BOOL isEditAction;
 
+@property (nonatomic) int vcType;
+
 @property (nonatomic, weak) EBBaseViewController *addVC;
 
 @end

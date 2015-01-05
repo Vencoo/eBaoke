@@ -22,36 +22,36 @@
 
     [[UINavigationBar appearance] setBackgroundImage:[UIImage imageNamed:@"NavBar"] forBarMetrics:UIBarMetricsDefault];
 
-    // 生成一个新的UUID
-    NSString *uuidStr = [self uuidForKeychina];
-    NSLog(@"uuidStr=%@",uuidStr);
+//    // 生成一个新的UUID
+//    NSString *uuidStr = [self uuidForKeychina];
+//    NSLog(@"uuidStr=%@",uuidStr);
+//    
+//    // 获取保存的UUID , 为舟:W64H86P59A
+//    KeychainItemWrapper *wrapper = [[KeychainItemWrapper alloc] initWithIdentifier:@"AccountNumber" accessGroup:@"W64H86P59A.com.vencoo.vencoo01id"];
+//    NSString *UUID = [wrapper objectForKey:(id)CFBridgingRelease(kSecAttrAccount)];
+//
+//    if ([UUID isEqualToString:@""] || UUID == nil) {
+//        // 没有设置UUID
+//        [wrapper setObject:uuidStr forKey:(id)CFBridgingRelease(kSecAttrAccount)];
+//    }else {
+//        // 有设置过UUID
+//    }
+//    
+//    UUID = [wrapper objectForKey:(id)CFBridgingRelease(kSecAttrAccount)];
+//    NSLog(@"MY UUID=%@",UUID);
+//
+//    // 保存UUID
+//    [AppContext setTempContextValueByKey:kUniqueGlobalDeviceIdentifierKey value:UUID];
+//    
+//    // 保存UUID的MD5
+//    [AppContext setTempContextValueByKey:kUniqueAppKey value:[UUID stringFromMD5]];
+//   
     
-    // 获取保存的UUID , 为舟:W64H86P59A
-    KeychainItemWrapper *wrapper = [[KeychainItemWrapper alloc] initWithIdentifier:@"AccountNumber" accessGroup:@"W64H86P59A.com.vencoo.vencoo01id"];
-    NSString *UUID = [wrapper objectForKey:(id)CFBridgingRelease(kSecAttrAccount)];
-
-    if ([UUID isEqualToString:@""] || UUID == nil) {
-        // 没有设置UUID
-        [wrapper setObject:uuidStr forKey:(id)CFBridgingRelease(kSecAttrAccount)];
-    }else {
-        // 有设置过UUID
-    }
-    
-    UUID = [wrapper objectForKey:(id)CFBridgingRelease(kSecAttrAccount)];
-    NSLog(@"MY UUID=%@",UUID);
-
     // 保存UUID
-    [AppContext setTempContextValueByKey:kUniqueGlobalDeviceIdentifierKey value:UUID];
+    [AppContext setTempContextValueByKey:kUniqueGlobalDeviceIdentifierKey value:@"123"];
     
     // 保存UUID的MD5
-    [AppContext setTempContextValueByKey:kUniqueAppKey value:[UUID stringFromMD5]];
-   
-    
-    // 保存UUID
-    [AppContext setTempContextValueByKey:kUniqueGlobalDeviceIdentifierKey value:UUID];
-    
-    // 保存UUID的MD5
-    [AppContext setTempContextValueByKey:kUniqueAppKey value:[UUID stringFromMD5]];
+    [AppContext setTempContextValueByKey:kUniqueAppKey value:[@"123" stringFromMD5]];
     return YES;
 }
 

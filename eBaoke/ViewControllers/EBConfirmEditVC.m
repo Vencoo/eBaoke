@@ -8,6 +8,8 @@
 
 #import "EBConfirmEditVC.h"
 
+#import "EBRegisterViewController.h"
+
 @interface EBConfirmEditVC ()
 {
  
@@ -35,7 +37,14 @@
 }
 
 - (IBAction)confirmAction:(id)sender {
-    
+    if (self.vcType == 1) {
+        [self dismissViewControllerAnimated:YES completion:^{
+            EBRegisterViewController *vc = (EBRegisterViewController *)_addVC;
+            
+            [vc confirmAction];
+        }];
+        return;
+    }
     [self submitRequest];
 }
 - (IBAction)cancelAction:(id)sender {
