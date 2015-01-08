@@ -41,7 +41,6 @@
         [self dismissViewControllerAnimated:YES completion:^{
             EBRegisterViewController *vc = (EBRegisterViewController *)_addVC;
             
-            [vc confirmAction];
         }];
         return;
     }
@@ -51,6 +50,7 @@
     [self dismissViewControllerAnimated:YES completion:^{
         
     }];
+    
 }
 
 - (void)submitRequest

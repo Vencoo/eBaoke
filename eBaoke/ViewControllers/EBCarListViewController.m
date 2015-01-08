@@ -356,7 +356,7 @@
     if(_isEditing) {
         EBCarEditViewController *editVC = [[EBCarEditViewController alloc] initWithNibName:@"EBCarEditViewController" bundle:[NSBundle mainBundle]];
         EBCarListModel *model = [_dataArray objectAtIndex:indexPath.row];
-        editVC.carModel = model;
+        editVC.carModel1 = model;
         [self.navigationController pushViewController:editVC animated:YES];
         
     }else {

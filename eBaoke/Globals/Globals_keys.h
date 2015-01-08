@@ -29,4 +29,9 @@
 #define kRememberUser                   @"_remember_user"
 
 #define kColorLightBlue [UIColor colorWithRed:102/255.0 green:153/255.0 blue:204/255.0 alpha:1.0]
+
+#define SCREEN_RECT [[UIScreen mainScreen]bounds]
+
+#define KEYWINDOW [[[UIApplication sharedApplication]windows]objectAtIndex:0]
+
 #endif

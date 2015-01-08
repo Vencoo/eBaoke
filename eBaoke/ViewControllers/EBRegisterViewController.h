@@ -14,7 +14,4 @@
 {
    
 }
-
-- (void)confirmAction;
-
 @end

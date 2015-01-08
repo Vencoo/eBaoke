@@ -13,11 +13,6 @@
 
 @interface EBCarEditViewController ()<UITextFieldDelegate>
 {
-    
-    
-    
-    
-    
     NSString *_carType;
     
     NSString *_plateNumberType;
@@ -32,7 +27,16 @@
     
     __weak IBOutlet UITextField *_engineTextField;
     
-    EBCarListModel *_getCarModel;
+    EBCarListModel *carModel;
+
+    UIView *affirmInfoView;
+    
+    UILabel *name_label;
+    UILabel *engineNo_label;
+    UILabel *vinCode_label;
+    
+    // 0Check 1Edit
+    int _requestType;
 
 }
 @end
@@ -43,12 +47,13 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
     
-  
-    if (_carModel) {
-        _nameTextField.text = _carModel.carOwner;
-        _plateNumTextField.text = _carModel.plateNo;
-        _engineTextField.text = _carModel.engineNo;
+    if (_carModel1) {
+        _nameTextField.text = _carModel1.carOwner;
+        _plateNumTextField.text = _carModel1.plateNo;
+        _engineTextField.text = _carModel1.engineNo;
     }
+    
+    carModel = [[EBCarListModel alloc] init];
     
     NSString *path = [[NSBundle mainBundle] pathForResource:@"CarTypeList" ofType:@"plist"];
     NSDictionary *dict =[[NSDictionary alloc] initWithContentsOfFile:path];
@@ -56,9 +61,9 @@
     
     [AppContext setTempContextValueByKey:kTempKeyPlateNumberTypeDes value:@"号牌类型 "];
     [AppContext setTempContextValueByKey:kTempKeyPlateNumberType value:@"-1"];
-    if (_carModel.plateType) {
+    if (_carModel1.plateType) {
         for (NSDictionary *dic in dataArray) {
-            if ([[dic objectForKey:@"CARMARK_CATEGORY_CODE"] isEqualToString:_carModel.plateType]) {
+            if ([[dic objectForKey:@"CARMARK_CATEGORY_CODE"] isEqualToString:_carModel1.plateType]) {
                 [AppContext setTempContextValueByKey:kTempKeyPlateNumberType
                                                value:[dic objectForKey:@"CARMARK_CATEGORY_CODE"]];
                 [AppContext setTempContextValueByKey:kTempKeyPlateNumberTypeDes
@@ -121,6 +126,8 @@
 
 - (void)rightButtonItem:(UIBarButtonItem *)buttonItem
 {
+    
+    [self.view endEditing:YES];
     // 完成
     [self checkEdit];
     
@@ -141,7 +148,7 @@
         return;
     }
     
-    [self submitRequest];
+    [self submitRequestCheck];
     
 }
 
@@ -155,8 +162,9 @@
 }
 #pragma mark - 编辑请求
 
-- (void)submitRequest
+- (void)submitRequestCheck
 {
+    _requestType = 0;
     // 提交验证
     NSString *kRequestURLPath;
     NSString *error;
@@ -202,6 +210,67 @@
     }
 }
 
+
+- (void)submitRequestEdit
+{
+    _requestType = 1;
+    // 提交Edit
+    NSString *kRequestURLPath;
+    NSString *error;
+    NSMutableDictionary *postDict = [[NSMutableDictionary alloc] init];
+    
+    [postDict setObject:carModel.carOwner forKey:@"car_owner"];
+    
+    // 新增
+    
+    [postDict setObject:@"binding_modify" forKey:@"select"];
+        
+    kRequestURLPath = [NSString stringWithFormat:@"%@",[AppContext getServiceUrl:@"CircBindingModifyResp"]];
+    
+    [postDict setObject:[AppContext getTempContextValueByKey:kTempKeyUserId] forKey:@"user_id"];
+    
+    [postDict setObject:carModel.vehicleId forKey:@"vehicle_id"];
+    
+    [postDict setObject:carModel.userCarId forKey:@"usercar_id"];
+    
+    [postDict setObject:carModel.vinCode forKey:@"vin_code"];
+    
+    [postDict setObject:carModel.engineNo forKey:@"engine_no"];
+    
+    [postDict setObject:[carModel.plateNo uppercaseString] forKey:@"plate_no"];
+    
+    [postDict setObject:carModel.plateType forKey:@"plate_type"];
+    
+    // 确认标志
+    [postDict setObject:@"2" forKey:@"process_flag"];
+    
+    NSString *postContent = [AppContext dictionaryToXml:postDict error:&error];
+    
+    NSLog(@"%@",postDict);
+    NSLog(@"%@",postContent);
+    NSLog(@"---- kRequestURLPath %@", kRequestURLPath);
+    _rData = [[NSMutableData alloc] init];
+    if (!error) {
+        NSLog(@"---- content %@", postContent);
+        NSURL *url = [NSURL URLWithString:kRequestURLPath];
+        
+        NSMutableURLRequest* request = [NSMutableURLRequest requestWithURL:url];
+        NSLog(@"url=%@",url);
+        [request setHTTPMethod:@"POST"];
+        request.HTTPBody = [postContent dataUsingEncoding:NSUTF8StringEncoding];
+        [request setValue:kHTTPHeader forHTTPHeaderField:@"content-type"];//请求头
+        NSURLConnection *connection = [[NSURLConnection alloc]initWithRequest:request delegate:self];
+        
+        [connection start];
+        [AppContext didStartNetworking];
+        HUD = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+        HUD.labelText = @"加载中...";
+        
+    }else {
+        [AppContext alertContent:error];
+    }
+}
+
 #pragma mark - connection delegate
 
 - (void)connectionDidFinishLoading:(NSURLConnection *)connection
@@ -209,44 +278,63 @@
     [HUD hide:YES];
     [AppContext didStopNetworking];
     
-    NSDictionary *dict = [AppContext nsDataToObject:_rData encoding:NSUTF8StringEncoding];
-    
-    if ([AppContext checkResponse:dict])
-    {
-        NSLog(@"数据接收成功URL=:%@",[connection.currentRequest.URL description]);
+    if (_requestType == 0) {
+        NSDictionary *dict = [AppContext nsDataToObject:_rData encoding:NSUTF8StringEncoding];
         
-        NSString *str = [connection description];
-        
-        if ([str rangeOfString:@"BindingQuery"].length > 0) {
-            // 处理列表
-            NSLog(@"确认数据：%@",dict);
-          
-            //NSArray *array = [[dict allValues] firstObject];
+        if ([AppContext checkResponse:dict])
+        {
+            NSLog(@"数据接收成功URL=:%@",[connection.currentRequest.URL description]);
             
-            for (NSArray *array in [dict allValues]) {
-                if ([array isKindOfClass:[NSArray class]]) {
-                    NSString *vId = [array objectAtIndex:0];
-                    if ([vId isEqualToString:_carModel.userCarId]) {
-                        _getCarModel = [[EBCarListModel alloc] initWithArray:array];
-                        _getCarModel.plateNo = _plateNumTextField.text;
-                        _getCarModel.plateType = _plateNumberType;
-                        _getCarModel.vehicleId = _carModel.vehicleId;
-                        // 进入确认界面
-                        EBConfirmEditVC *vc = [[EBConfirmEditVC alloc] initWithNibName:@"EBConfirmEditVC" bundle:[NSBundle mainBundle]];
-                        vc.carModel = _getCarModel;
-                        vc.isEditAction = YES;
-                        vc.addVC = self;
-                        [self presentViewController:vc animated:YES completion:^{
+            NSString *str = [connection description];
+            
+            if ([str rangeOfString:@"BindingQuery"].length > 0) {
+                // 处理列表
+                NSLog(@"确认数据：%@",dict);
+                
+                //NSArray *array = [[dict allValues] firstObject];
+                
+                for (NSArray *array in [dict allValues]) {
+                    if ([array isKindOfClass:[NSArray class]]) {
+                        NSString *vId = [array objectAtIndex:0];
+                        if ([vId isEqualToString:_carModel1.userCarId]) {
+
+                            carModel = [[EBCarListModel alloc] initWithArray:array];
+                            carModel.plateNo = _plateNumTextField.text;
+                            carModel.plateType = _plateNumberType;
+                            carModel.vehicleId = _carModel1.vehicleId;
                             
-                        }];
-                        
-                        return;
+                            [self showAffirmInfoView];
+                            name_label.text = carModel.carOwner;
+                            vinCode_label.text = carModel.vinCode;
+                            engineNo_label.text = carModel.engineNo;
+                            
+                            return;
+                        }
                     }
                 }
+                [AppContext alertContent:@"错误数据无法提交"];
             }
-            [AppContext alertContent:@"错误数据无法提交"];
         }
-       
+    }
+    
+    if (_requestType == 1) {
+        NSDictionary *dict = [AppContext nsDataToObject:_rData encoding:NSUTF8StringEncoding];
+        NSLog(@"绑定成功%@",dict);
+        
+        if ([AppContext checkResponse:dict])
+        {
+            
+            if ([[dict allKeys]containsObject:@"errorDesc"]) {
+                [AppContext alertContent:[dict objectForKey:@"errorDesc"]];
+            }else {
+                // 新增成功
+                [AppContext alertContent:@"编辑成功"];
+                
+                [self.navigationController popViewControllerAnimated:YES];
+            }
+            
+        }
+
     }
 }
 
@@ -257,5 +345,71 @@
     return YES;
 }
 
+- (void)showAffirmInfoView {
+    
+    affirmInfoView = [[UIView alloc]initWithFrame:SCREEN_RECT];
+    affirmInfoView.backgroundColor = [UIColor clearColor];
+    
+    [KEYWINDOW addSubview:affirmInfoView];
+    
+    UIView *bg_view = [[UIView alloc]initWithFrame:CGRectMake(0, 0, affirmInfoView.frame.size.width, affirmInfoView.frame.size.height)];
+    bg_view.backgroundColor = [UIColor blackColor];
+    bg_view.alpha = 0.3;
+    [affirmInfoView addSubview:bg_view];
+    
+    UIView *info_view = [[UIView alloc]initWithFrame:CGRectMake(0, 0, 265, 288)];
+    [affirmInfoView addSubview:info_view];
+    info_view.center = affirmInfoView.center;
+    
+    UIImageView *bg_image_view = [[UIImageView alloc]initWithFrame:CGRectMake(0, 0, 265, 288)];
+    bg_image_view.image = [UIImage imageNamed:@"车辆绑定信息确认-2"];
+    [info_view addSubview:bg_image_view];
+    
+    UIImageView *topimage = [[UIImageView alloc]initWithFrame:CGRectMake((265-110)/2, 25, 110, 18)];
+    topimage.image = [UIImage imageNamed:@"车辆绑定信息确认-8"];
+    [info_view addSubview:topimage];
+    
+    UIImageView *ownerInfo = [[UIImageView alloc]initWithFrame:CGRectMake(13, 60, 73, 119)];
+    ownerInfo.image = [UIImage imageNamed:@"车辆绑定信息确认-3"];
+    [info_view addSubview:ownerInfo];
+    
+    name_label = [[UILabel alloc]initWithFrame:CGRectMake(CGRectGetMaxX(ownerInfo.frame)+5, CGRectGetMinY(ownerInfo.frame), 150, 17)];
+    name_label.font = [UIFont systemFontOfSize:15];
+    name_label.textColor = [UIColor grayColor];
+    [info_view addSubview:name_label];
+    
+    engineNo_label = [[UILabel alloc]initWithFrame:CGRectMake(CGRectGetMaxX(ownerInfo.frame)+5, CGRectGetMaxY(name_label.frame)+33, 150, 17)];
+    engineNo_label.font = [UIFont systemFontOfSize:15];
+    engineNo_label.textColor = [UIColor grayColor];
+    [info_view addSubview:engineNo_label];
+    
+    vinCode_label = [[UILabel alloc]initWithFrame:CGRectMake(CGRectGetMaxX(ownerInfo.frame)+5, CGRectGetMaxY(engineNo_label.frame)+36, 150, 17)];
+    vinCode_label.font = [UIFont systemFontOfSize:15];
+    vinCode_label.textColor = [UIColor grayColor];
+    [info_view addSubview:vinCode_label];
+    
+    
+    UIButton *affirmButton = [[UIButton alloc]initWithFrame:CGRectMake(30, CGRectGetMaxY(ownerInfo.frame)+40, 63, 25)];
+    [affirmButton setImage:[UIImage imageNamed:@"车辆绑定信息确认-17"] forState:UIControlStateNormal];
+    [affirmButton addTarget:self action:@selector(affirmAction) forControlEvents:UIControlEventTouchDown];
+    [info_view addSubview:affirmButton];
+    
+    
+    UIButton *cancelButton = [[UIButton alloc]initWithFrame:CGRectMake(CGRectGetMaxX(info_view.frame)-63-60, CGRectGetMaxY(ownerInfo.frame)+40, 63, 25)];
+    [cancelButton setImage:[UIImage imageNamed:@"车辆绑定信息确认-7"] forState:UIControlStateNormal];
+    [cancelButton addTarget:self action:@selector(cancelAction) forControlEvents:UIControlEventTouchDown];
+    [info_view addSubview:cancelButton];
+}
+
+- (void)affirmAction {
+    [affirmInfoView removeFromSuperview];
+    
+    [self submitRequestEdit];
+}
+
+- (void)cancelAction {
+    
+    [affirmInfoView removeFromSuperview];
+}
 
 @end

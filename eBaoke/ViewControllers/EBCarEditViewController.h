@@ -12,6 +12,6 @@
 
 @interface EBCarEditViewController : EBBaseViewController
 
-@property (strong, nonatomic) EBCarListModel *carModel;
+@property (strong, nonatomic) EBCarListModel *carModel1;
 
 @end

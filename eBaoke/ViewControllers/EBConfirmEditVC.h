@@ -6,7 +6,7 @@
 //  Copyright (c) 2014年 vencoo. All rights reserved.
 //
 /**********
- 新增确认
+ 新增确认 不再使用
  **********/
 #import "EBBaseViewController.h"
 

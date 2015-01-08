@@ -46,7 +46,6 @@
     BOOL isNewCarBtnTouched;
     UIImageView *isNewCarImage;
     
-    //UIView *affirmInfoView;
     //车主姓名
     NSString *owner_name;
     //车主身份证号码
@@ -60,9 +59,11 @@
     //车架号
     NSString *vinCode;
     
-//    UILabel *name_label;
-//    UILabel *engineNo_label;
-//    UILabel *vinCode_label;
+    UIView *affirmInfoView;
+
+    UILabel *name_label;
+    UILabel *engineNo_label;
+    UILabel *vinCode_label;
     EBCarListModel *carModel;
     
     NSString *selected_plate_type;
@@ -124,9 +125,9 @@
     nextPage = [[UIBarButtonItem alloc] initWithCustomView:nextBtn];
     
     UIButton *backBtn1 = [UIButton buttonWithType:UIButtonTypeCustom];
-    backBtn1.frame = CGRectMake(0, 0, 50, 25);
+    backBtn1.frame = CGRectMake(0, 0, 75, 25);
     backBtn1.titleLabel.font = [UIFont systemFontOfSize:14];
-    [backBtn1 setTitle:@"返回" forState:UIControlStateNormal];
+    [backBtn1 setTitle:@"返 回" forState:UIControlStateNormal];
     [backBtn1 setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
     [backBtn1 addTarget:self action:@selector(back) forControlEvents:UIControlEventTouchUpInside];
     [backBtn1 setBackgroundImage:[UIImage imageNamed:@"btn_bg"] forState:UIControlStateNormal];
@@ -134,9 +135,9 @@
     backBtn = [[UIBarButtonItem alloc] initWithCustomView:backBtn1];
     
     UIButton *finishBtn1 = [UIButton buttonWithType:UIButtonTypeCustom];
-    finishBtn1.frame = CGRectMake(0, 0, 50, 25);
+    finishBtn1.frame = CGRectMake(0, 0, 75, 25);
     finishBtn1.titleLabel.font = [UIFont systemFontOfSize:14];
-    [finishBtn1 setTitle:@"完成" forState:UIControlStateNormal];
+    [finishBtn1 setTitle:@"完 成" forState:UIControlStateNormal];
     [finishBtn1 setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
     [finishBtn1 addTarget:self action:@selector(finishRegister) forControlEvents:UIControlEventTouchUpInside];
     [finishBtn1 setBackgroundImage:[UIImage imageNamed:@"btn_bg"] forState:UIControlStateNormal];
@@ -340,7 +341,7 @@
             if (i == 3) {
                 carTypeBtn = [UIButton buttonWithType:UIButtonTypeCustom];
                 
-                [carTypeBtn setFrame:CGRectMake(20, 126 + 37 * i, 280, 40)];
+                [carTypeBtn setFrame:CGRectMake(20, 126 + 37 * i, 280, 30)];
                 [carTypeBtn setBackgroundImage:[UIImage imageNamed:@"cell_backgd.png"] forState:UIControlStateNormal];
                 [carTypeBtn setTitleColor:kColorLightBlue forState:UIControlStateNormal];
                 carTypeBtn.contentHorizontalAlignment = UIControlContentHorizontalAlignmentLeft;
@@ -477,11 +478,11 @@
     texts = (UITextField *)[self.view viewWithTag:203];
     if (isNewCarBtnTouched)
     {
-        car_engine_num = texts.text;
+        car_engine_num = [texts.text uppercaseString];
     }
     else
     {
-        car_plate_num = texts.text;
+        car_plate_num = [texts.text uppercaseString];
     }
     NSLog(@"text == %@",texts.text);
     
@@ -501,7 +502,7 @@
     
     if (isNewCarBtnTouched)
     {
-        [postDict setObject:[car_engine_num uppercaseString] forKey:@"engine_no"];
+        [postDict setObject:@"  "forKey:@"engine_no"];
     }
     else
     {
@@ -555,9 +556,20 @@
         
         [postDict setObject:[carModel.engineNo uppercaseString] forKey:@"engine_no"];
         
-        if (isNewCarBtnTouched) {
-            //如果是新车，plate_no传两个空格，若不传则会出错
-            [postDict setObject:@"  " forKey:@"plate_no"];
+        if (isNewCarBtnTouched)
+        {
+            [postDict removeObjectForKey:@"plate_no"];
+            
+            [postDict removeObjectForKey:@"plate_type"];
+            
+        }else {
+            
+            [postDict setObject:car_plate_num forKeyedSubscript:@"plate_no"];
+            
+            NSString *plate_type = [AppContext getTempContextValueByKey:kTempKeyPlateNumberType];
+            
+            [postDict setObject:plate_type forKey:@"plate_type"];
+            
         }
         
         for (int i = 0; i < [registerArray count]; i ++)
@@ -569,6 +581,10 @@
                 
                 if (value) {
                     [postDict setObject:value forKey:[registerArray objectAtIndex:i]];
+                    if (i == 7) {
+                        NSString *str = value;
+                    [postDict setObject:[str uppercaseString] forKey:[registerArray objectAtIndex:i]];
+                    }
                 }
             }
         }
@@ -587,11 +603,14 @@
         //判断是否标记为新车，如果是，则不向服务器发送号牌号码和号牌类型   -jack
         if (isNewCarBtnTouched)
         {
-            //        [postDict setObject:@"  " forKey:@"plate_no"];
             [postDict removeObjectForKey:@"plate_no"];
             
             [postDict removeObjectForKey:@"plate_type"];
+            
         }else {
+            
+            [postDict setObject:carModel.engineNo forKeyedSubscript:@"plate_no"];
+            
             NSString *plate_type = [AppContext getTempContextValueByKey:kTempKeyPlateNumberType];
             
             [postDict setObject:plate_type forKey:@"plate_type"];
@@ -632,18 +651,6 @@
     }
     
     
-    //判断是否标记为新车，如果是，则不向服务器发送号牌号码和号牌类型   -jack
-    if (isNewCarBtnTouched)
-    {
-        [postDict removeObjectForKey:@"plate_no"];
-        
-        [postDict removeObjectForKey:@"plate_type"];
-    }else {
-        NSString *plate_type = [AppContext getTempContextValueByKey:kTempKeyPlateNumberType];
-        
-        [postDict setObject:plate_type forKey:@"plate_type"];
-
-    }
     
     NSLog(@"---- postDict %@", postDict);
     NSLog(@"---- kRequestURLPath == %@", kRequestURLPath);
@@ -751,7 +758,6 @@
         
         if (car_owner.length == 0) {
             
-//warning 这个提示要求屏蔽  2014 12 31
         [[[UIAlertView alloc] initWithTitle:@"提示" message:@"没有匹配的车辆信息" delegate:self cancelButtonTitle:@"我知道了" otherButtonTitles:nil] show];
             
             current_page = 2;
@@ -759,28 +765,19 @@
             return;
         }
         
-        //[self showAffirmInfoView];
-        
-        EBConfirmEditVC *vc = [[EBConfirmEditVC alloc] initWithNibName:@"EBConfirmEditVC" bundle:[NSBundle mainBundle]];
+        [self showAffirmInfoView];
         
         EBCarListModel *model = [[EBCarListModel alloc] init];
         model.carOwner = [dict objectForKey:@"car_owner"];
-        model.engineNo = [dict objectForKey:@"engine_no"];
-        model.vinCode = [dict objectForKey:@"vin_code"];
+        model.engineNo = [[dict objectForKey:@"engine_no"] uppercaseString];
+        model.vinCode = [[dict objectForKey:@"vin_code"] uppercaseString];
         
         carModel = model;
-        
-        vc.vcType = 1;
-        vc.carModel = model;
-        vc.addVC = self;
-        
-        [self presentViewController:vc animated:YES completion:nil];
-        
         [self oneTap];
         
-        //name_label.text = [dict objectForKey:@"car_owner"];
-        //engineNo_label.text = [dict objectForKey:@"engine_no"];
-        //vinCode_label.text = [dict objectForKey:@"vin_code"];
+        name_label.text = [dict objectForKey:@"car_owner"];
+        engineNo_label.text = [[dict objectForKey:@"engine_no"] uppercaseString];
+        vinCode_label.text = [[dict objectForKey:@"vin_code"] uppercaseString];
         
         return;
     }
@@ -861,77 +858,72 @@
     
 }
 
-- (void)confirmAction
-{
-    [self affirmAction];
+- (void)showAffirmInfoView {
+    [self oneTap];
+    
+    affirmInfoView = [[UIView alloc]initWithFrame:SCREEN_RECT];
+    affirmInfoView.backgroundColor = [UIColor clearColor];
+    
+    [KEYWINDOW addSubview:affirmInfoView];
+    
+    UIView *bg_view = [[UIView alloc]initWithFrame:CGRectMake(0, 0, affirmInfoView.frame.size.width, affirmInfoView.frame.size.height)];
+    bg_view.backgroundColor = [UIColor blackColor];
+    bg_view.alpha = 0.3;
+    [affirmInfoView addSubview:bg_view];
+    
+    UIView *info_view = [[UIView alloc]initWithFrame:CGRectMake(0, 0, 265, 288)];
+    [affirmInfoView addSubview:info_view];
+    info_view.center = affirmInfoView.center;
+    
+    UIImageView *bg_image_view = [[UIImageView alloc]initWithFrame:CGRectMake(0, 0, 265, 288)];
+    bg_image_view.image = [UIImage imageNamed:@"车辆绑定信息确认-2"];
+    [info_view addSubview:bg_image_view];
+    
+    UIImageView *topimage = [[UIImageView alloc]initWithFrame:CGRectMake((265-110)/2, 25, 110, 18)];
+    topimage.image = [UIImage imageNamed:@"车辆绑定信息确认-8"];
+    [info_view addSubview:topimage];
+    
+    UIImageView *ownerInfo = [[UIImageView alloc]initWithFrame:CGRectMake(13, 60, 73, 119)];
+    ownerInfo.image = [UIImage imageNamed:@"车辆绑定信息确认-3"];
+    [info_view addSubview:ownerInfo];
+    
+    name_label = [[UILabel alloc]initWithFrame:CGRectMake(CGRectGetMaxX(ownerInfo.frame)+5, CGRectGetMinY(ownerInfo.frame), 150, 17)];
+    name_label.font = [UIFont systemFontOfSize:15];
+    name_label.textColor = [UIColor grayColor];
+    [info_view addSubview:name_label];
+    
+    engineNo_label = [[UILabel alloc]initWithFrame:CGRectMake(CGRectGetMaxX(ownerInfo.frame)+5, CGRectGetMaxY(name_label.frame)+33, 150, 17)];
+    engineNo_label.font = [UIFont systemFontOfSize:15];
+    engineNo_label.textColor = [UIColor grayColor];
+    [info_view addSubview:engineNo_label];
+    
+    vinCode_label = [[UILabel alloc]initWithFrame:CGRectMake(CGRectGetMaxX(ownerInfo.frame)+5, CGRectGetMaxY(engineNo_label.frame)+36, 150, 17)];
+    vinCode_label.font = [UIFont systemFontOfSize:15];
+    vinCode_label.textColor = [UIColor grayColor];
+    [info_view addSubview:vinCode_label];
+    
+    
+    UIButton *affirmButton = [[UIButton alloc]initWithFrame:CGRectMake(30, CGRectGetMaxY(ownerInfo.frame)+40, 63, 25)];
+    [affirmButton setImage:[UIImage imageNamed:@"车辆绑定信息确认-17"] forState:UIControlStateNormal];
+    [affirmButton addTarget:self action:@selector(affirmAction) forControlEvents:UIControlEventTouchDown];
+    [info_view addSubview:affirmButton];
+    
+    
+    UIButton *cancelButton = [[UIButton alloc]initWithFrame:CGRectMake(CGRectGetMaxX(info_view.frame)-63-60, CGRectGetMaxY(ownerInfo.frame)+40, 63, 25)];
+    [cancelButton setImage:[UIImage imageNamed:@"车辆绑定信息确认-7"] forState:UIControlStateNormal];
+    [cancelButton addTarget:self action:@selector(cancelAction) forControlEvents:UIControlEventTouchDown];
+    [info_view addSubview:cancelButton];
 }
 
-//- (void)showAffirmInfoView {
-//    [self oneTap];
-//    
-//    affirmInfoView = [[UIView alloc]initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height)];
-//    affirmInfoView.backgroundColor = [UIColor clearColor];
-//    
-//    [self.view addSubview:affirmInfoView];
-//    
-//    UIView *bg_view = [[UIView alloc]initWithFrame:CGRectMake(0, 0, affirmInfoView.frame.size.width, affirmInfoView.frame.size.height)];
-//    bg_view.backgroundColor = [UIColor blackColor];
-//    bg_view.alpha = 0.3;
-//    [affirmInfoView addSubview:bg_view];
-//    
-//    UIView *info_view = [[UIView alloc]initWithFrame:CGRectMake(0, 0, 265, 288)];
-//    [affirmInfoView addSubview:info_view];
-//    info_view.center = affirmInfoView.center;
-//    
-//    UIImageView *bg_image_view = [[UIImageView alloc]initWithFrame:CGRectMake(0, 0, 265, 288)];
-//    bg_image_view.image = [UIImage imageNamed:@"车辆绑定信息确认-2"];
-//    [info_view addSubview:bg_image_view];
-//    
-//    UIImageView *topimage = [[UIImageView alloc]initWithFrame:CGRectMake((265-110)/2, 25, 110, 18)];
-//    topimage.image = [UIImage imageNamed:@"车辆绑定信息确认-8"];
-//    [info_view addSubview:topimage];
-//    
-//    UIImageView *ownerInfo = [[UIImageView alloc]initWithFrame:CGRectMake(13, 60, 73, 119)];
-//    ownerInfo.image = [UIImage imageNamed:@"车辆绑定信息确认-3"];
-//    [info_view addSubview:ownerInfo];
-//    
-//    name_label = [[UILabel alloc]initWithFrame:CGRectMake(CGRectGetMaxX(ownerInfo.frame)+5, CGRectGetMinY(ownerInfo.frame), 150, 17)];
-//    name_label.font = [UIFont systemFontOfSize:15];
-//    name_label.textColor = [UIColor grayColor];
-//    [info_view addSubview:name_label];
-//    
-//    engineNo_label = [[UILabel alloc]initWithFrame:CGRectMake(CGRectGetMaxX(ownerInfo.frame)+5, CGRectGetMaxY(name_label.frame)+33, 150, 17)];
-//    engineNo_label.font = [UIFont systemFontOfSize:15];
-//    engineNo_label.textColor = [UIColor grayColor];
-//    [info_view addSubview:engineNo_label];
-//    
-//    vinCode_label = [[UILabel alloc]initWithFrame:CGRectMake(CGRectGetMaxX(ownerInfo.frame)+5, CGRectGetMaxY(engineNo_label.frame)+36, 150, 17)];
-//    vinCode_label.font = [UIFont systemFontOfSize:15];
-//    vinCode_label.textColor = [UIColor grayColor];
-//    [info_view addSubview:vinCode_label];
-//    
-//    
-//    UIButton *affirmButton = [[UIButton alloc]initWithFrame:CGRectMake(30, CGRectGetMaxY(ownerInfo.frame)+40, 63, 25)];
-//    [affirmButton setImage:[UIImage imageNamed:@"车辆绑定信息确认-17"] forState:UIControlStateNormal];
-//    [affirmButton addTarget:self action:@selector(affirmAction) forControlEvents:UIControlEventTouchDown];
-//    [info_view addSubview:affirmButton];
-//    
-//    
-//    UIButton *cancelButton = [[UIButton alloc]initWithFrame:CGRectMake(CGRectGetMaxX(info_view.frame)-63-60, CGRectGetMaxY(ownerInfo.frame)+40, 63, 25)];
-//    [cancelButton setImage:[UIImage imageNamed:@"车辆绑定信息确认-7"] forState:UIControlStateNormal];
-//    [cancelButton addTarget:self action:@selector(cancelAction) forControlEvents:UIControlEventTouchDown];
-//    [info_view addSubview:cancelButton];
-//}
-
 - (void)affirmAction {
-    //[affirmInfoView removeFromSuperview];
+    [affirmInfoView removeFromSuperview];
     requestTag = 0;
     [self toPage3];
 }
 
 - (void)cancelAction {
     current_page = 2;
-    //[affirmInfoView removeFromSuperview];
+    [affirmInfoView removeFromSuperview];
 }
 
 - (void)toPage3 {
@@ -942,14 +934,18 @@
         UITextField *texts = (UITextField *)[self.view viewWithTag:201 + i];
         if (![AppContext getPreferenceByKey:[registerArray objectAtIndex:5 + i] needMerge:NO])
         {
-            [AppContext setPreferenceByKey:[registerArray objectAtIndex:5 + i] value:texts.text];
+            NSString *text = texts.text;
+           
+            [AppContext setPreferenceByKey:[registerArray objectAtIndex:5 + i] value:text];
             k++;
         }
         else
         {
             if (![[AppContext getPreferenceByKey:[registerArray objectAtIndex:5 + i] needMerge:NO]isEqualToString:texts.text])
             {
-                [AppContext setPreferenceByKey:[registerArray objectAtIndex:5 + i] value:texts.text];
+                NSString *text = texts.text;
+              
+                [AppContext setPreferenceByKey:[registerArray objectAtIndex:5 + i] value:text];
                 k ++;
             }
         }
@@ -1209,8 +1205,8 @@
             [self postToServer];
         }
         if (textField.tag == 202) {
-            sendType = ksendTypeOwnerIdCheck;
-            [self postToServer];
+            //sendType = ksendTypeOwnerIdCheck;
+            //[self postToServer];
         }
         
     }
