@@ -502,7 +502,7 @@
     
     if (isNewCarBtnTouched)
     {
-        [postDict setObject:@"  "forKey:@"engine_no"];
+        [postDict setObject:car_engine_num forKey:@"engine_no"];
     }
     else
     {
@@ -554,24 +554,6 @@
         [postDict setObject:@"registration" forKey:kPostContentTypeSelect];//process_flag
         [postDict setObject:@"2" forKey:@"process_flag"];
         
-        [postDict setObject:[carModel.engineNo uppercaseString] forKey:@"engine_no"];
-        
-        if (isNewCarBtnTouched)
-        {
-            [postDict removeObjectForKey:@"plate_no"];
-            
-            [postDict removeObjectForKey:@"plate_type"];
-            
-        }else {
-            
-            [postDict setObject:car_plate_num forKeyedSubscript:@"plate_no"];
-            
-            NSString *plate_type = [AppContext getTempContextValueByKey:kTempKeyPlateNumberType];
-            
-            [postDict setObject:plate_type forKey:@"plate_type"];
-            
-        }
-        
         for (int i = 0; i < [registerArray count]; i ++)
         {
             if (i != 4)
@@ -588,6 +570,25 @@
                 }
             }
         }
+        
+        if (isNewCarBtnTouched)
+        {
+            [postDict removeObjectForKey:@"plate_no"];
+            
+            [postDict removeObjectForKey:@"plate_type"];
+            
+            [postDict setValue:car_engine_num forKey:@"engine_no"];
+            
+        }else {
+            
+            [postDict setValue:car_plate_num forKey:@"plate_no"];
+            
+            NSString *plate_type = [AppContext getTempContextValueByKey:kTempKeyPlateNumberType];
+            
+            [postDict setObject:plate_type forKey:@"plate_type"];
+            
+        }
+
     }
     else if ([sendType isEqualToString:ksendTypeFinishRegister])
     {
@@ -607,9 +608,11 @@
             
             [postDict removeObjectForKey:@"plate_type"];
             
+            //[postDict setObject:carModel.engineNo forKeyedSubscript:@"engin_no"];
+
+            
         }else {
             
-            [postDict setObject:carModel.engineNo forKeyedSubscript:@"plate_no"];
             
             NSString *plate_type = [AppContext getTempContextValueByKey:kTempKeyPlateNumberType];
             
@@ -1205,7 +1208,7 @@
             [self postToServer];
         }
         if (textField.tag == 202) {
-            //sendType = ksendTypeOwnerIdCheck;
+            sendType = ksendTypeOwnerIdCheck;
             //[self postToServer];
         }
         
